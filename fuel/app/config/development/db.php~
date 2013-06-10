@@ -8,7 +8,7 @@ return array(
 		'connection'  => array(
 			'dsn'        => 'mysql:host=localhost;dbname=invoice',
 			'username'   => 'root',
-			'password'   => 'root',
+			'password'   => 'outrage',
 		),
 	),
 );
