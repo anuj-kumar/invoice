@@ -159,3 +159,7 @@ ERROR - 2013-06-10 12:37:21 --> Error - Relation "users" was not found in the mo
 WARNING - 2013-06-10 12:37:21 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-10 12:37:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-10 12:37:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2013-06-10 15:07:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2013-06-10 15:07:52 --> Warning - Illegal offset type in /var/www/invoice/fuel/core/classes/response.php on line 255
+WARNING - 2013-06-10 16:40:21 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2013-06-10 16:40:21 --> Warning - Illegal offset type in /var/www/invoice/fuel/core/classes/response.php on line 255
