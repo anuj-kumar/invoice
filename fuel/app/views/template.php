@@ -31,6 +31,15 @@
 <?php endif; ?>
 		</div>
 		<div class="span12">
+            <?php
+            if($user = Session::get('user')) {
+                echo "Logged in as " . $user->name . " <a href='/my/logout'>Logout</a>";
+            }
+            else {
+                echo Html::anchor('my/login', 'Login');
+            }
+            ?>            
+            
 <?php echo $content; ?>
 		</div>
 		<footer>

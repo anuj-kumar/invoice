@@ -29,24 +29,11 @@ class Auth_User extends \Orm\Model
 	 */
 	protected static $_properties = array(
 		'id',
-		'username'        => array(
+		'name'        => array(
 			'label'		  => 'auth_model_user.name',
 			'default' 	  => 0,
 			'null'		  => false,
 			'validation'  => array('required', 'max_length' => array(255))
-		),
-		'email'           => array(
-			'label'		  => 'auth_model_user.email',
-			'default' 	  => 0,
-			'null'		  => false,
-			'validation'  => array('required', 'valid_email')
-		),
-		'group_id'        => array(
-			'label'		  => 'auth_model_user.group_id',
-			'default' 	  => 0,
-			'null'		  => false,
-			'form'  	  => array('type' => 'select'),
-			'validation'  => array('required', 'is_numeric')
 		),
 		'password'        => array(
 			'label'		  => 'auth_model_user.password',
@@ -55,18 +42,7 @@ class Auth_User extends \Orm\Model
 			'form'  	  => array('type' => 'password'),
 			'validation'  => array('min_length' => array(8), 'match_field' => array('confirm'))
 		),
-		'last_login'	  => array(
-			'form'  	  => array('type' => false),
-		),
-		'previous_login'  => array(
-			'form'  	  => array('type' => false),
-		),
-		'login_hash'	  => array(
-			'form'  	  => array('type' => false),
-		),
-		'user_id'         => array(
-			'default' 	  => 0,
-			'null'		  => false,
+		'last_login_at'	  => array(
 			'form'  	  => array('type' => false),
 		),
 		'created_at'      => array(
@@ -111,58 +87,6 @@ class Auth_User extends \Orm\Model
             'value' => 'value',
         ),
     );
-
-	/**
-	 * @var array	belongs_to relationships
-	 */
-	protected static $_belongs_to = array(
-		'group' => array(
-			'model_to' => 'Model\\Auth_Group',
-			'key_from' => 'group_id',
-			'key_to'   => 'id',
-			'cascade_delete' => false,
-		),
-	);
-
-	/**
-	 * @var array	has_many relationships
-	 */
-	protected static $_has_many = array(
-		'metadata' => array(
-			'model_to' => 'Model\\Auth_Metadata',
-			'key_from' => 'id',
-			'key_to'   => 'parent_id',
-			'cascade_delete' => true,
-		),
-		'userpermission' => array(
-			'model_to' => 'Model\\Auth_Userpermission',
-			'key_from' => 'id',
-			'key_to'   => 'user_id',
-			'cascade_delete' => false,
-		),
-	);
-
-	/**
-	 * @var array	many_many relationships
-	 */
-	protected static $_many_many = array(
-		'roles' => array(
-			'key_from' => 'id',
-			'model_to' => 'Model\\Auth_Role',
-			'key_to' => 'id',
-			'table_through' => null,
-			'key_through_from' => 'user_id',
-			'key_through_to' => 'role_id',
-		),
-		'permissions' => array(
-			'key_from' => 'id',
-			'model_to' => 'Model\\Auth_Permission',
-			'key_to' => 'id',
-			'table_through' => null,
-			'key_through_from' => 'user_id',
-			'key_through_to' => 'perms_id',
-		),
-	);
 
 	/**
 	 * init the class
