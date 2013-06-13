@@ -159,7 +159,19 @@ ERROR - 2013-06-10 12:37:21 --> Error - Relation "users" was not found in the mo
 WARNING - 2013-06-10 12:37:21 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-10 12:37:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-10 12:37:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+<<<<<<< HEAD
 WARNING - 2013-06-10 15:07:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 ERROR - 2013-06-10 15:07:52 --> Warning - Illegal offset type in /var/www/invoice/fuel/core/classes/response.php on line 255
 WARNING - 2013-06-10 16:40:21 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 ERROR - 2013-06-10 16:40:21 --> Warning - Illegal offset type in /var/www/invoice/fuel/core/classes/response.php on line 255
+=======
+WARNING - 2013-06-10 15:07:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2013-06-10 15:07:57 --> Error - Call to undefined method Fuel\Core\Html::br() in /var/www/invoice/fuel/app/views/my/index.php on line 4
+WARNING - 2013-06-10 15:08:11 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+ERROR - 2013-06-10 15:08:11 --> Error - Call to undefined method Fuel\Core\Html::br() in /var/www/invoice/fuel/app/views/my/index.php on line 4
+WARNING - 2013-06-10 15:08:11 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2013-06-10 15:08:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2013-06-10 15:08:32 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2013-06-10 15:08:32 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+WARNING - 2013-06-10 17:42:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
+>>>>>>> 807773cc300b268e5f877d6831d912accc7f759b
