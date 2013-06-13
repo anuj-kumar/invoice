@@ -14,6 +14,7 @@ class Controller_Archive extends Controller_Template {
 
     public function action_search() {
         $data["subnav"] = array('search' => 'active');
+        $query = Input::get('q');
         $this->template->title = 'Archive &raquo; Search';
         $this->template->content = View::forge('archive/search', $data);
     }

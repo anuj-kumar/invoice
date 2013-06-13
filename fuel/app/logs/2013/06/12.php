@@ -1,69 +1,5 @@
 <?php defined('COREPATH') or exit('No direct script access allowed'); ?>
 
-<<<<<<< HEAD
-WARNING - 2013-06-12 16:13:05 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:13:15 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:13:15 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:14:26 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:32 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:44 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:49 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:50 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:51 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:56 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:57 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:58 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:59 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:14:59 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:15:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:15:01 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:15:02 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:15:02 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:15:06 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:15:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:16:39 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:16:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:16:52 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:05 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:07 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:08 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:09 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:10 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:11 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:12 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:13 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:14 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:15 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:15 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:16 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:18:22 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:22 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:23 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:23 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:23 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:23 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:23 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:23 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:24 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:24 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:24 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:24 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:24 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:24 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:25 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:25 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-WARNING - 2013-06-12 16:18:25 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:18:25 --> Error - SQLSTATE[42S22]: Column not found: 1054 Unknown column 't0.user_id' in 'field list' with query: "SELECT `t0`.`id` AS `t0_c0`, `t0`.`user_id` AS `t0_c1`, `t0`.`print_invoice` AS `t0_c2`, `t0`.`add_panel` AS `t0_c3`, `t0`.`add_monthly_customer` AS `t0_c4`, `t0`.`created_at` AS `t0_c5`, `t0`.`updated_at` AS `t0_c6`, `t1`.`last_login_at` AS `t1_c0`, `t1`.`id` AS `t1_c1`, `t1`.`name` AS `t1_c2`, `t1`.`password` AS `t1_c3`, `t1`.`created_at` AS `t1_c4`, `t1`.`updated_at` AS `t1_c5` FROM `access_rights` AS `t0` LEFT JOIN `users` AS `t1` ON (`t0`.`user_id` = `t1`.`id`)" in /var/www/invoice/fuel/core/classes/database/pdo/connection.php on line 208
-=======
 WARNING - 2013-06-12 09:52:20 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-12 10:56:13 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 ERROR - 2013-06-12 10:56:13 --> Notice - Undefined variable: users in /var/www/invoice/fuel/app/classes/controller/my.php on line 33
@@ -382,29 +318,6 @@ WARNING - 2013-06-12 12:58:52 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2013-06-12 12:58:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-12 12:58:53 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-12 12:58:55 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-<<<<<<< HEAD
->>>>>>> 807773cc300b268e5f877d6831d912accc7f759b
-WARNING - 2013-06-12 16:27:51 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:27:51 --> Notice - Trying to get property of non-object in /var/www/invoice/fuel/app/views/my/index.php on line 5
-WARNING - 2013-06-12 16:28:15 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:28:17 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:33:28 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-ERROR - 2013-06-12 16:33:28 --> Error - Could not find asset: home.jpg in /var/www/invoice/fuel/core/classes/asset/instance.php on line 249
-WARNING - 2013-06-12 16:33:44 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:34:09 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:34:25 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:34:58 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:38:48 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:39:00 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:39:06 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:39:36 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:39:51 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 16:40:07 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 17:00:27 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 17:00:33 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 17:00:39 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-WARNING - 2013-06-12 17:01:57 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
-=======
 WARNING - 2013-06-12 13:01:55 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-12 13:01:55 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-12 17:07:02 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
@@ -720,4 +633,3 @@ WARNING - 2013-06-12 19:42:54 --> Fuel\Core\Fuel::init - The configured locale e
 WARNING - 2013-06-12 19:42:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-12 19:42:54 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
 WARNING - 2013-06-12 22:02:08 --> Fuel\Core\Fuel::init - The configured locale en_US is not installed on your system.
->>>>>>> 0ab95a81ff3d588beab5cbb72df2cff3afc653bb

@@ -1,28 +1,61 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset=utf-8 />
-        <title>NEOGEN</title>
+        <meta charset="utf-8">
+        <title><?php echo $title; ?></title>
         <?php echo Asset::css('bootstrap.css'); ?>
         <?php echo Asset::css('template.css'); ?>
         <?php echo Asset::css('menu.css'); ?>
         <?php echo Asset::js('jquery.js'); ?>
         <?php echo Asset::js('bootstrap.js'); ?>
         <?php echo Asset::js('menu.js'); ?>
-        
+
 
     </head>
     <body>
         <!-- Header  -->
         <div class="top" >
-            <div class=" logo pull-right" ><?php echo Asset::img('home.jpg',array('style' => 'height:60px')); ?></div>
+            <div class=" logo pull-right" ><?php echo Asset::img('home.jpg', array('style' => 'height:60px')); ?></div>
             <center>
                 <div id="title" class="span10 offset1">
                     <h3> INVOICE MANAGEMENT SYSTEM ADMIN PANEL</h3>
                 </div>
             </center>
-            <div class="logout pull-right btn btn-danger" style="">
-                Logout
+            <div class="pull-right">
+                <?php
+                if ($user = Session::get('user')) {
+                    echo "Logged in as " . $user->name;
+                    ?>
+                    <div class="logout btn btn-danger" style="">
+                        <?php
+                        Html::anchor('login/logout', 'Logout');
+                    } else {
+                        echo Html::anchor('login/login', 'Login');
+                    }
+                    ?> 
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="span12">
+                <h1><?php echo $title; ?></h1>
+                <hr>
+                <?php if (Session::get_flash('success')): ?>
+                    <div class="alert alert-success">
+                        <strong>Success</strong>
+                        <p>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+                <?php if (Session::get_flash('error')): ?>
+                    <div class="alert alert-error">
+                        <strong>Error</strong>
+                        <p>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
         <!-- Side menu bar  -->
@@ -70,6 +103,11 @@
                 <div class="span10 offset1 " style="padding-top: 10px">
                 </div>
             </div>
+            <footer>
+                <p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
+                <p>
+                </p>
+            </footer>
         </div>
     </body>
 </html>
