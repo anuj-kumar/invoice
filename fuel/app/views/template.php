@@ -28,9 +28,9 @@
                     ?>
                     <div class="logout btn btn-danger" style="">
                         <?php
-                        Html::anchor('login/logout', 'Logout');
+                        Html::anchor('login/logout', 'Logout', array('class' => 'btn btn-danger'));
                     } else {
-                        echo Html::anchor('login/login', 'Login');
+                        echo "not logged ";
                     }
                     ?> 
                 </div>
@@ -39,7 +39,7 @@
         <div class="container">
             <div class="span12">
                 <h1><?php echo $title; ?></h1>
-                <hr>
+                <hr />
                 <?php if (Session::get_flash('success')): ?>
                     <div class="alert alert-success">
                         <strong>Success</strong>

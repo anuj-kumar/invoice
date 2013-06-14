@@ -1,6 +1,6 @@
-/fuel/app/config/config.php
-/fuel/app/config/development/db.php
-/nbproject/private/
-/fuel/app/logs/*/*/*
-/fuel/app/cache/*/*
-/docs/*
+fuel/app/config/config.php
+fuel/app/config/development/db.php
+nbproject/private/
+fuel/app/logs/*/*/*
+fuel/app/cache/*/*
+docs/*
