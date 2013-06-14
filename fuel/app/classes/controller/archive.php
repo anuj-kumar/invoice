@@ -2,7 +2,7 @@
 
 class Controller_Archive extends Controller_Template {
 
-        public function action_index($sort = NULL) {
+        public function action_index() {
         $data['invoices'] = Model_Invoice::find('all');
         $data["subnav"] = array('view' => 'active');
         $this->template->title = 'Archive &raquo; View';
@@ -12,7 +12,7 @@ class Controller_Archive extends Controller_Template {
     
     public function action_view($sort = NULL) {
         $data['invoices'] = Model_Invoice::find('all', array(
-                    'order_by' => $sort,
+                    'order_by' => $sort, 'rows_limit' => 10,
                         )
         );
         $data["subnav"] = array('view' => 'active');

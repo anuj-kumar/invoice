@@ -9,10 +9,9 @@
         <?php echo Asset::js('jquery.js'); ?>
         <?php echo Asset::js('bootstrap.js'); ?>
         <?php echo Asset::js('menu.js'); ?>
-
-
     </head>
-    <body>
+
+<body>
         <!-- Header  -->
         <div class="top" >
             <div class=" logo pull-right" ><?php echo Asset::img('home.jpg', array('style' => 'height:60px')); ?></div>
@@ -21,20 +20,17 @@
                     <h3> INVOICE MANAGEMENT SYSTEM ADMIN PANEL</h3>
                 </div>
             </center>
-            <div class="pull-right">
+            <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
                     echo "Logged in as " . $user->name;
-                    ?>
-                    <div class="logout btn btn-danger" style="">
-                        <?php
-                        Html::anchor('login/logout', 'Logout', array('class' => 'btn btn-danger'));
+                    ?> <a class="btn btn-danger" href="/login/lougout">Logout</a>
+                <?php
                     } else {
                         echo "not logged ";
                     }
                     ?> 
                 </div>
-            </div>
         </div>
         <div class="container">
             <div class="span12">
@@ -95,7 +91,9 @@
             <?php echo $content; ?> 
         </div> 
         <div class="right-sidebar" >
-            Instructions: <br /> Errors* :
+            <div class="instructions"><h5>Instructions: </h5><hr /></div>
+            
+            <div class="errors"><h5>Errors* :</h5><hr /></div>
         </div>
 
         <div class="footer" >
@@ -104,9 +102,7 @@
                 </div>
             </div>
             <footer>
-                <p class="pull-right">Page rendered in {exec_time}s using {mem_usage}mb of memory.</p>
-                <p>
-                </p>
+
             </footer>
         </div>
     </body>

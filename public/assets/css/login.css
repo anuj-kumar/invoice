@@ -1,0 +1,32 @@
+body {overflow-x: hidden}
+
+#header{
+    background-color: rgb(75,140,97);
+    position:relative; 
+    height:200px; 
+    width:200%;
+}
+
+.login{
+    margin-left:400px;
+    padding: 20px; 
+    border: 1px solid #0e90d2; 
+    margin-top: 5px; 
+    margin-bottom: 5px; 
+    width: 300px; 
+    padding-left: 80px;
+    webkit-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 4px 6px 12px rgba(77, 49, 128, 0.64);
+    -moz-box-shadow:    4px 6px 12px rgba(77, 49, 128, 0.64);
+    box-shadow:         4px 6px 12px rgba(77, 49, 128, 0.64);
+}
+
+#neogen{color : rgb(50, 180, 94) }
+
+#footer{
+    background-color: rgb(75,140,97);
+    position:fixed; 
+    height:100%;
+    width:200%;
+}
