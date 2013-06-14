@@ -9,9 +9,11 @@
         <?php echo Asset::js('jquery.js'); ?>
         <?php echo Asset::js('bootstrap.js'); ?>
         <?php echo Asset::js('menu.js'); ?>
+        <?php echo Asset::js('template.js'); ?>
     </head>
 
-<body>
+<body onload="ShowCurrentTime()">
+
         <!-- Header  -->
         <div class="top" >
             <div class=" logo pull-right" ><?php echo Asset::img('home.jpg', array('style' => 'height:60px')); ?></div>
@@ -54,6 +56,7 @@
                 <?php endif; ?>
             </div>
         </div>
+        <div id="time"></div>
         <!-- Side menu bar  -->
         <div class="left-sidebar" >
             <div  style="margin-top:100px;">

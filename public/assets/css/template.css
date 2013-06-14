@@ -9,6 +9,11 @@
     padding-bottom:8px 
 
 }
+#time{
+    font-size:20px;
+    margin-left:200px
+    
+}
 .top {
     position:fixed; 
     height:40px;
