@@ -1,49 +1,78 @@
-<ul class="nav nav-pills">
-    <li class='<?php echo Arr::get($subnav, "view"); ?>'><?php echo Html::anchor('archive/view', 'View'); ?></li>
-    <li class='<?php echo Arr::get($subnav, "search"); ?>'><?php echo Html::anchor('archive/search', 'Search'); ?></li>
+<div class="row">
+    <h3 class="span6 pull-left">ARCHIVE</h3>
+    <div class="span pull-right">
+        <form class="form-search">
+            <form class="form-search">
+                <div class="input-append">
+                    <input type="text" class="span2 search-query">
+                    <button type="submit" class="btn">Search</button>
+                </div>
 
-</ul>
+            </form>
+        </form>
+    </div>    
+</div>
+<div class="row span10"><span style="float: right"> <?php echo Html::anchor('archive/view/amount', 'Prev') . " | " . Html::anchor('archive/view/amount', 'Next'); ?></span></div>
+<style>
+    .archive_view th{width: 150px;
+                     border-bottom:1px solid black;
+    }
 
-<table>
-    <th>
-    <tr>
-        <td>
-            <?php echo Html::anchor('archive/view/id', 'ID'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/date', 'Date'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/timestamp', 'Timestamp'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/amount', 'Amount'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/tax_2', 'Tax'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/tax_3', 'ID'); ?>
-        </td>
-    </tr>
-    </th>
-   <?php foreach ($invoices as $invoice): ?>
+    .archive_view td{width: 150px;
+                     border-bottom:1px solid black;
+    }
+    .archive_view{margin-left: 15px;}
+    .archive{height: 400px;overflow-y: visible}
+</style>
+
+<div class="row archive">
+    <table class="archive_view">
+
         <tr>
-            <td>
-                <?php echo $invoice->id ?>
-            </td>
-            <td>
-                <?php echo $invoice->date ?>
-            </td>
-            <td>
-                <?php echo $invoice->timestamp ?>
-            </td>
-            <td>
-                <?php echo $invoice->amount ?>
-            </td>
-            <td>
-                <?php echo $invoice->tax_1 ?>
-            </td>
+            <th width="40px">
+                <?php echo "S. No." ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/id', 'ID'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/id', 'Name'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/date', 'Date'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/timestamp', 'Timestamp'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/amount', 'Amount'); ?>
+            </th>
+
         </tr>
-    <?php endforeach ?>
-</table>
+        <?php $i = 0;
+        foreach ($invoices as $invoice):
+            ?>
+            <tr>
+                <td width="40px">
+    <?php echo ($i++); ?>
+                </td>
+                <td>
+    <?php echo $invoice->id ?>
+                </td>
+                <td>
+    <?php echo $invoice->date ?>
+                </td>
+                <td>
+    <?php echo $invoice->timestamp ?>
+                </td>
+                <td>
+    <?php echo $invoice->amount ?>
+                </td>
+                <td>
+    <?php echo $invoice->tax_1 ?>
+                </td>
+            </tr>
+<?php endforeach ?>
+    </table>
+</div>
+<div class="row pull-right"> <?php echo Html::anchor('archive/view/prev', 'Prev') . " | " . Html::anchor('archive/view/next', 'Next'); ?></div>

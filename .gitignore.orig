@@ -1,6 +1,10 @@
 fuel/app/config/config.php
 fuel/app/config/development/db.php
+<<<<<<< HEAD
+nbproject/
+=======
 nbproject/*
+>>>>>>> 14bdc2b0ccaaa76d0d71ab48814753543a2860f6
 fuel/app/logs/*/*/*
 fuel/app/cache/*/*
 docs/*
