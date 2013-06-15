@@ -12,7 +12,7 @@
         <?php echo Asset::js('template.js'); ?>
     </head>
 
-<body onload="ShowCurrentTime()">
+    <body onload="ShowCurrentTime()">
 
         <!-- Header  -->
         <div class="top" >
@@ -27,12 +27,12 @@
                 if ($user = Session::get('user')) {
                     echo "Logged in as " . $user->name;
                     ?> <a class="btn btn-danger" href="/login/lougout">Logout</a>
-                <?php
-                    } else {
-                        echo "not logged ";
-                    }
-                    ?> 
-                </div>
+                    <?php
+                } else {
+                    echo "not logged ";
+                }
+                ?> 
+            </div>
         </div>
         <div class="container">
             <div class="span12">
@@ -91,11 +91,29 @@
             </div>
         </div>
         <div class="main well" >
+            <div class="row">
+                <div class="span3 pull-left">
+                    <h2>Invoicing</h2>
+                </div>
+                <div class="span3 ">
+                    <span class="pull-left"><p><?php echo Html::anchor('../monthly', 'Single', array("class"=>"btn btn-large btn-success")); ?></p></span>
+                    <span class="pull-right"><p><?php echo Html::anchor('../monthly', 'Monthly', array("class"=>"btn btn-large btn-success")); ?></p></span>
+                </div>
+                <div class="span4 pull-right">
+                    Date: 
+                    <br>Invoice No: 
+                    <br>Billing Period: 
+                    <br>PAN:
+                    <br>TIN:
+                    <br>FP NO: 
+                    
+                </div>
+            </div> 
             <?php echo $content; ?> 
         </div> 
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>
-            
+
             <div class="errors"><h5>Errors* :</h5><hr /></div>
         </div>
 
