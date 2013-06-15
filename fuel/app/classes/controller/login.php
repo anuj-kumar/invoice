@@ -15,10 +15,11 @@ class Controller_Login extends Controller_Base {
     }
 
     public function action_login() {
-        $this->template->title = 'My &raquo; Login';
+        
+        //$data = 'My &raquo; Login';
         //echo Session::get('user');
         if (!Session::get('user'))
-            $this->template->content = View::forge('login/login');
+         return Response::forge(View::forge('login/login'));
         else
             Response::redirect('login/index');
     }
