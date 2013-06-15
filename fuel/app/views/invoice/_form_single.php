@@ -68,14 +68,23 @@
         </div>
     </div>
 
-    <div class="control-group">
-        <?php echo Form::label('Description', 'description', array('class' => 'control-label')); ?>
+<div class=" control-group pull-left">
+        <?php echo Form::label('Telephone Number:', 'tele', array('class' => 'control-label')); ?>
 
         <div class="controls">
-            <?php echo Form::input('description', Input::post('description', isset($monkey) ? $monkey->description : ''), array('class' => 'span8', 'rows' => 8, 'placeholder' => 'Description')); ?>
+            <?php echo Form::input('tele', Input::post('tele', isset($monkey) ? $monkey->tele : ''), array('class' => 'span2', 'placeholder' => 'Telephone Number')); ?>
 
         </div>
     </div>
+    <div class="span6 control-group pull-right" style="margin-right: 40px">
+        <?php echo Form::label('Email', 'email', array('class' => 'control-label')); ?>
+
+        <div class="controls " >
+            <?php echo Form::input('email', Input::post('email', isset($monkey) ? $monkey->email : ''), array('class' => 'span2 email', 'placeholder' => 'Email')); ?>
+
+        </div>
+    </div>
+
     <div class="control-group pull-right">
         <label class='control-label'>&nbsp;</label>
         <div class='controls'>

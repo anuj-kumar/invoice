@@ -1,7 +1,7 @@
 <?php
 
 class Controller_Invoice extends Controller_Base {
-
+    public $template= 'template_invoice';
     public function action_index() {
         Response::redirect('index.php/invoice/single');
     }
