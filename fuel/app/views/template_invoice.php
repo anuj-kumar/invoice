@@ -58,13 +58,14 @@
         </div>
         <div id="time"></div>
         <!-- Side menu bar  -->
+
         <div class="left-sidebar" >
             <div  style="margin-top:100px;">
                 <ul class="menu">
                     <li class="item1"><a href="#">Invoice  </a>
                         <ul>
-                            <li class="subitem1"><a href="#">Individual </a></li>
-                            <li class="subitem2"><a href="#">Monthly</a></li>
+                            <li class="subitem1"><?php echo Html::anchor('invoice/single', 'Single'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('invoice/monthly', 'Monthly'); ?></li>
 
                         </ul>
                     </li>
@@ -75,7 +76,7 @@
 
                         </ul>
                     </li>
-                    <li class="item3"><a href="#">Archives</a>
+                    <li class="item3"><?php echo Html::anchor('archive', 'Archive'); ?>
                     </li>
                     <li class="item4"><a href="#">Users</a>
                         <ul>
@@ -96,8 +97,8 @@
                     <h2>Invoicing</h2>
                 </div>
                 <div class="span3 ">
-                    <span class="pull-left"><p><?php echo Html::anchor('../monthly', 'Single', array("class"=>"btn btn-large btn-success")); ?></p></span>
-                    <span class="pull-right"><p><?php echo Html::anchor('../monthly', 'Monthly', array("class"=>"btn btn-large btn-success")); ?></p></span>
+                    <span class="pull-left"><p><?php echo Html::anchor('../monthly', 'Single', array("class" => "btn btn-large btn-success")); ?></p></span>
+                    <span class="pull-right"><p><?php echo Html::anchor('../monthly', 'Monthly', array("class" => "btn btn-large btn-success")); ?></p></span>
                 </div>
                 <div class="span4 pull-right">
                     Date: 
@@ -106,7 +107,7 @@
                     <br>PAN:
                     <br>TIN:
                     <br>FP NO: 
-                    
+
                 </div>
             </div> 
             <?php echo $content; ?> 

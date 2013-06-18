@@ -26,7 +26,7 @@
                 <?php
                 if ($user = Session::get('user')) {
                     echo "Logged in as " . $user->name;
-                    ?> <a class="btn btn-danger" href="/login/lougout">Logout</a>
+                    ?> <a class="btn btn-danger" href="login/lougout">Logout</a>
                 <?php
                     } else {
                         echo "not logged ";
@@ -63,8 +63,8 @@
                 <ul class="menu">
                     <li class="item1"><a href="#">Invoice  </a>
                         <ul>
-                            <li class="subitem1"><a href="#">Individual </a></li>
-                            <li class="subitem2"><a href="#">Monthly</a></li>
+                            <li class="subitem1"><?php echo Html::anchor('invoice/single', 'Single'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('invoice/monthly', 'Monthly'); ?></li>
 
                         </ul>
                     </li>
@@ -75,7 +75,7 @@
 
                         </ul>
                     </li>
-                    <li class="item3"><a href="#">Archives</a>
+                    <li class="item3"><?php echo Html::anchor('archive', 'Archive'); ?>
                     </li>
                     <li class="item4"><a href="#">Users</a>
                         <ul>

@@ -49,7 +49,7 @@ class Controller_Login extends Controller_Base {
             $data["subnav"] = array('index' => 'active');
 
             parent::do_login($user);
-            $this->template->content = View::forge('login/index', $data);
+            $this->template->content = View::forge('home/index', $data);
         }
         //print_r($user);
     }

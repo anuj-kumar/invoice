@@ -10,4 +10,9 @@ class Controller_Invoice extends Controller_Base {
         $this->template->title = 'Invoice | Single';
         $this->template->content = View::forge('invoice/single', $data);
     }
+    public function action_monthly() {
+        $data["subnav"] = array('index' => 'active');
+        $this->template->title = 'Invoice | Monthly';
+        $this->template->content = View::forge('invoice/monthly', $data);
+    }
 }
