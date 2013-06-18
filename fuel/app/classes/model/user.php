@@ -23,10 +23,10 @@ class Model_User extends \Orm\Model {
             'mysql_timestamp' => true,
         ),
     );
-    protected static $_belongs_to = array('access_rights',
+    protected static $_has_one = array('access_right',
         array(
-            'key_from' => 'user_id',
-            'key_to' => 'id',
+            'key_from' => 'id',
+            'key_to' => 'user_id',
         )
     );
     protected static $_table_name = 'users';

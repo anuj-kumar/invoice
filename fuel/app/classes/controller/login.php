@@ -15,19 +15,17 @@ class Controller_Login extends Controller_Base {
     }
 
     public function action_login() {
-        
-        //$data = 'My &raquo; Login';
-        //echo Session::get('user');
-        if (!Session::get('user'))
-         return Response::forge(View::forge('login/login'));
+        $this->template->title = 'My &raquo; Login';
+        if (Session::get('user') == NULL)
+            $this->template->content = View::forge('login/login');
         else
-            Response::redirect('login/index');
+            Response::redirect('archive/view');
     }
 
     public function action_verify() {
         $this->template->title = 'My &raquo; Login';
         if (!Input::post()) {
-            Response::redirect('login/login');
+            Response::redirect('login/index');
         }
         $name = Input::post('name');
         $password = Input::post('password');
