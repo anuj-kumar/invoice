@@ -12,7 +12,8 @@
         </form>
     </div>    
 </div>
-<div class="row span10"><span style="float: right"> <?php echo Html::anchor('archive/view/amount', 'Prev') . " | " . Html::anchor('archive/view/amount', 'Next'); ?></span></div>
+<!-- Disable the prev link if on first page -->
+<div class="row span10"><span style="float: right"> <?php echo Html::anchor($prev, 'Prev') . " | " . Html::anchor($next, 'Next'); ?></span></div>
 <style>
     .archive_view th{width: 150px;
                      border-bottom:1px solid black;
