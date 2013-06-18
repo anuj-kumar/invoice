@@ -26,7 +26,7 @@
                 <?php
                 if ($user = Session::get('user')) {
                     echo "Logged in as " . $user->name;
-                    ?> <a class="btn btn-danger" href="/login/lougout">Logout</a>
+                    ?> <a class="btn btn-danger" href="/login/logout">Logout</a>
                 <?php
                     } else {
                         echo "not logged in";
