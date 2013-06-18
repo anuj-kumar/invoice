@@ -45,6 +45,12 @@ class Model_Customer extends \Orm\Model {
             )
         )
     );
+    protected $_has_many = array(
+        'invoices', array(
+            'key_from' => 'id',
+            'key_to' => 'customer_id',
+        )
+    );
     protected static $_table_name = 'customers';
 
 }

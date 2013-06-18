@@ -27,7 +27,6 @@
 
 <div class="row archive">
     <table class="archive_view">
-
         <tr>
             <th width="40px">
                 <?php echo "S. No." ?>
@@ -36,7 +35,7 @@
                 <?php echo Html::anchor('archive/view/id', 'ID'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/id', 'Name'); ?>
+                <?php echo Html::anchor('archive/view/name', 'Name'); ?>
             </th>
             <th>
                 <?php echo Html::anchor('archive/view/date', 'Date'); ?>
@@ -49,30 +48,24 @@
             </th>
 
         </tr>
-        <?php $i = 0;
-        foreach ($invoices as $invoice):
-            ?>
-            <tr>
-                <td width="40px">
-    <?php echo ($i++); ?>
-                </td>
-                <td>
-    <?php echo $invoice->id ?>
-                </td>
-                <td>
-    <?php echo $invoice->date ?>
-                </td>
-                <td>
-    <?php echo $invoice->timestamp ?>
-                </td>
-                <td>
-    <?php echo $invoice->amount ?>
-                </td>
-                <td>
-    <?php echo $invoice->tax_1 ?>
-                </td>
-            </tr>
-<?php endforeach ?>
-    </table>
-</div>
-<div class="row pull-right"> <?php echo Html::anchor('archive/view/prev', 'Prev') . " | " . Html::anchor('archive/view/next', 'Next'); ?></div>
+
+   <?php foreach ($invoices as $invoice): ?>
+        <tr>
+            <td>
+                <?php echo $invoice->id ?>
+            </td>
+            <td>
+                <?php echo $invoice->customer->name ?>
+            </td>
+            <td>
+                <?php echo $invoice->date ?>
+            </td>
+            <td>
+                <?php echo $invoice->timestamp ?>
+            </td>
+            <td>
+                <?php echo $invoice->amount ?>
+            </td>
+        </tr>
+    <?php endforeach ?>
+</table>

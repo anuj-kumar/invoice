@@ -29,7 +29,7 @@
                     ?> <a class="btn btn-danger" href="/login/lougout">Logout</a>
                 <?php
                     } else {
-                        echo "not logged ";
+                        echo "not logged in";
                     }
                     ?> 
                 </div>
@@ -37,7 +37,7 @@
         <div class="container">
             <div class="span12">
                 <h1><?php echo $title; ?></h1>
-                <hr />
+                <hr/>
                 <?php if (Session::get_flash('success')): ?>
                     <div class="alert alert-success">
                         <strong>Success</strong>

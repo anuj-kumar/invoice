@@ -12,7 +12,9 @@ class Controller_Archive extends Controller_Template {
     
     public function action_view($sort = NULL) {
         $data['invoices'] = Model_Invoice::find('all', array(
-                    'order_by' => $sort, 'rows_limit' => 10,
+                    'order_by' => $sort,
+                    'related' => array('customer'),
+					'rows_limit' => 10,
                         )
         );
         $data["subnav"] = array('view' => 'active');
@@ -21,10 +23,29 @@ class Controller_Archive extends Controller_Template {
     }
 
     public function action_search() {
+        
         $data["subnav"] = array('search' => 'active');
         $query = Input::get('q');
+
+        /* $invoices = Fuel\Core\DB::query("SELECT * FROM invoices i LEFT JOIN customers c
+         * ON i.customer_id = c.id
+         * WHERE c.name like '%" . $query . "%'")->as_object()->execute();
+         */
+        
+        $data['invoices'] = Model_Invoice::find('all', array(
+                    'related' => array('customer'),
+                    'where' => array(
+                        array('content', 'like', '%' . $query . '%'),
+                        'or' => array(
+                            array('t1.name', 'like', '%' . $query . '%'),
+                        )
+                    )
+                        )
+        );
+
+        $data['query'] = $query;
         $this->template->title = 'Archive &raquo; Search';
-        $this->template->content = View::forge('archive/search', $data);
+        $this->template->content = View::forge('archive/view', $data);
     }
 
 }
