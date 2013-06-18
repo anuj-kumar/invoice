@@ -24,6 +24,7 @@
     }
     .archive_view{margin-left: 15px;}
     .archive{height: 400px;overflow-y: visible}
+    .archive td{text-align: center}
 </style>
 
 <div class="row archive">
@@ -50,8 +51,11 @@
 
         </tr>
 
-   <?php foreach ($invoices as $invoice): ?>
+   <?php $i=1;  foreach ($invoices as $invoice): ?>
         <tr>
+            <td>
+                <?php echo $i; $i++ ?>
+            </td>
             <td>
                 <?php echo $invoice->id ?>
             </td>

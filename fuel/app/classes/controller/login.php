@@ -17,7 +17,7 @@ class Controller_Login extends Controller_Base {
     public function action_login() {
         $this->template->title = 'My &raquo; Login';
         if (Session::get('user') == NULL)
-            $this->template->content = View::forge('login/login');
+             return Response::forge(View::forge('login/login'));
         else
             Response::redirect('archive/view');
     }
