@@ -12,7 +12,7 @@
         <?php echo Asset::js('template.js'); ?>
     </head>
 
-<body onload="ShowCurrentTime()">
+    <body onload="ShowCurrentTime()">
 
         <!-- Header  -->
         <div class="top" >
@@ -25,14 +25,15 @@
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
-                    echo "Logged in as " . $user->name;
-                    ?> <a class="btn btn-danger" href="/login/logout">Logout</a>
-                <?php
-                    } else {
-                        echo "not logged in";
-                    }
-                    ?> 
-                </div>
+                    
+                    echo Html::anchor('login/logout', 'LOGOUT | '.$user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
+                    ?>
+                    <?php
+                } else {
+                    Response::redirect('login/login');
+                }
+                ?> 
+            </div>    
         </div>
         <div class="container">
             <div class="span12">
@@ -95,7 +96,7 @@
         </div> 
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>
-            
+
             <div class="errors"><h5>Errors* :</h5><hr /></div>
         </div>
 

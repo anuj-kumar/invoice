@@ -5,13 +5,31 @@
         <title><?php echo "" ?></title>
         <?php echo Asset::css('bootstrap.css'); ?>
         <?php echo Asset::css('login.css'); ?>
-       
+
     </head>
     <body>
 
         <div id="header" >
         </div>
-    <div class="login" >
+        <div class="login" >
+            <div class="login_alert" style="margin-left: -60px">          
+                <?php if (Session::get_flash('success')): ?>
+                    <div class="alert alert-success" >
+                        <strong>Success</strong>
+                        <p>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+                <?php if (Session::get_flash('error')): ?>
+                    <div class="alert alert-error">
+                        <strong>Error</strong>
+                        <p>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </div>
             <h1><span id="neogen">NeoGen Labs</span></h1>
             <br />
             <?php echo Form::open('index.php/login/verify'); ?>

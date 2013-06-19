@@ -19,7 +19,7 @@ class Controller_Login extends Controller_Base {
         if (Session::get('user') == NULL)
              return Response::forge(View::forge('login/login'));
         else
-            Response::redirect('archive/view');
+            Response::redirect('login/verify');
     }
 
     public function action_verify() {
@@ -37,7 +37,7 @@ class Controller_Login extends Controller_Base {
         ));
         if (!$user) {
             Session::set_flash('error', 'Invalid username or password');
-            $this->template->content = View::forge('login/login');
+            return Response::forge(View::forge('login/login'));
         }
         else {
             $data['user'] = $user;
@@ -47,7 +47,7 @@ class Controller_Login extends Controller_Base {
             $data["subnav"] = array('index' => 'active');
 
             parent::do_login($user);
-            $this->template->content = View::forge('home/index', $data);
+               Response::redirect('invoice/');
         }
         //print_r($user);
     }
