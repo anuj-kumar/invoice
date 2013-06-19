@@ -14,15 +14,16 @@ class Controller_Archive extends Controller_Template {
         $offset = Fuel\Core\Input::get('o');
         $limit = 10;
         $data['invoices'] = Model_Invoice::find('all', array(
-                    'order_by' => $sort == 'name' ? 't1.' . $sort : $sort,
+                    'order_by' => ($sort == 'first_name' || $sort == 'last_name') ? 't1.' . $sort : $sort,
                     'related' => array('customer'),
                     'rows_limit' => $limit,
                     'rows_offset' => $offset
                         )
         );
 //        $data["subnav"] = array('view' => 'active');
+        
         $uri = Input::uri();
-//        echo $offset - $limit;
+
         $data['prev'] = $uri . ((isset($offset) && $offset > $limit) ? '?o=' . ($offset - $limit) : NULL);
         $data['next'] = $uri . '?o=';
         $data['next'] .= (isset($offset) ? $offset : 0) + $limit ;

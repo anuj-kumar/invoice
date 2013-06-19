@@ -22,12 +22,20 @@ class Model_City extends \Orm\Model
 		),
 	);
     protected static $_has_one = array(
-        'profile' => array(
+        'customer' => array(
             'key_from' => 'id',
-            'key_to' => 'state_id',
+            'key_to' => 'city_id',
             'cascade_delete' => false,
         )
     );
-	protected static $_table_name = 'cities';
+    
+    protected static $_belongs_to = array(
+        'state' => array(
+            'key_from' => 'state_id',
+            'key_to' => 'id'
+        )
+    );
+    
+    protected static $_table_name = 'cities';
 
 }

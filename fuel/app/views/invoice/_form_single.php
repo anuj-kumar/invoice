@@ -1,4 +1,4 @@
-<?php echo Form::open(array("class" => "form-horizontal")); ?>
+<?php echo Form::open(array("class" => "form-horizontal", "action" => "/invoice/submit_single")); ?>
 
 <fieldset>
     <div class=" control-group pull-left">
@@ -69,10 +69,10 @@
     </div>
 
 <div class=" control-group pull-left">
-        <?php echo Form::label('Telephone Number:', 'tele', array('class' => 'control-label')); ?>
+        <?php echo Form::label('Phone Number:', 'phone', array('class' => 'control-label')); ?>
 
         <div class="controls">
-            <?php echo Form::input('tele', Input::post('tele', isset($monkey) ? $monkey->tele : ''), array('class' => 'span2', 'placeholder' => 'Telephone Number')); ?>
+            <?php echo Form::input('phone', Input::post('phone', isset($monkey) ? $monkey->tele : ''), array('class' => 'span2', 'placeholder' => 'Phone Number')); ?>
 
         </div>
     </div>
@@ -88,7 +88,7 @@
     <div class="control-group pull-right">
         <label class='control-label'>&nbsp;</label>
         <div class='controls'>
-            <?php echo Form::submit('submit', 'Next', array('class' => 'btn btn-large btn-success','style'=> 'width:100px')); ?>			</div>
+            <?php echo Form::submit(array('class' => 'btn btn-large btn-success','style'=> 'width:100px', 'value' => 'Next', 'name' => 'submit')); ?>			</div>
     </div>
 </fieldset>
 <?php echo Form::close(); ?>

@@ -36,7 +36,10 @@
                 <?php echo Html::anchor('archive/view/id', 'ID'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/name', 'Name'); ?>
+                <?php echo Html::anchor('archive/view/first_name', 'First Name'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/last_name', 'Last Name'); ?>
             </th>
             <th>
                 <?php echo Html::anchor('archive/view/date', 'Date'); ?>
@@ -56,7 +59,10 @@
                 <?php echo $invoice->id ?>
             </td>
             <td>
-                <?php echo $invoice->customer->name ?>
+                <?php echo $invoice->customer->first_name ?>
+            </td>
+            <td>
+                <?php echo $invoice->customer->last_name ?>
             </td>
             <td>
                 <?php echo $invoice->date ?>

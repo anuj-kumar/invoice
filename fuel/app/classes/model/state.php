@@ -20,6 +20,14 @@ class Model_State extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-	protected static $_table_name = 'states';
+
+    protected static $_has_one = array('city',
+        array(
+            'key_from' => 'id',
+            'key_to' => 'state_id',
+        )
+    );
+
+    protected static $_table_name = 'states';
 
 }
