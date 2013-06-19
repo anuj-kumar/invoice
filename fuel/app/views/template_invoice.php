@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,22 +40,22 @@
             <div class="span12">
                 <h1><?php echo $title; ?></h1>
                 <hr />
-<?php if (Session::get_flash('success')): ?>
+                <?php if (Session::get_flash('success')): ?>
                     <div class="alert alert-success">
                         <strong>Success</strong>
                         <p>
-    <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
                         </p>
                     </div>
                 <?php endif; ?>
-<?php if (Session::get_flash('error')): ?>
+                <?php if (Session::get_flash('error')): ?>
                     <div class="alert alert-error">
                         <strong>Error</strong>
                         <p>
-    <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
                         </p>
                     </div>
-<?php endif; ?>
+                <?php endif; ?>
             </div>
         </div>
         <div id="time"></div>
@@ -113,7 +112,7 @@
 
                 </div>
             </div> 
-<?php echo $content; ?> 
+            <?php echo $content; ?> 
         </div> 
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>

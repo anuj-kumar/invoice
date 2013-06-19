@@ -5,6 +5,7 @@ class Model_Customer extends \Orm\Model {
 
     protected static $_properties = array(
         'id',
+        'type',
         'first_name',
         'last_name',
         'address_line_1',

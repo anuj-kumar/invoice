@@ -34,33 +34,40 @@
                 <?php echo "S. No." ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/id', 'ID'); ?>
+                <?php echo Html::anchor('archive/view/id/' . $order, 'ID'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/first_name', 'First Name'); ?>
+                <?php echo Html::anchor('archive/view/type/' . $order, 'Type'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/last_name', 'Last Name'); ?>
+                <?php echo Html::anchor('archive/view/first_name/' . $order, 'First Name'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/date', 'Date'); ?>
+                <?php echo Html::anchor('archive/view/last_name/' . $order, 'Last Name'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/timestamp', 'Timestamp'); ?>
+                <?php echo Html::anchor('archive/view/date/' . $order, 'Date'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/amount', 'Amount'); ?>
+                <?php echo Html::anchor('archive/view/timestamp/' . $order, 'Timestamp'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/amount/' . $order, 'Amount'); ?>
             </th>
 
         </tr>
 
-   <?php $i=1;  foreach ($invoices as $invoice): ?>
+   <?php $i=1;
+         foreach ($invoices as $invoice): ?>
         <tr>
             <td>
                 <?php echo $i; $i++ ?>
             </td>
             <td>
                 <?php echo $invoice->id ?>
+            </td>
+            <td>
+                <?php echo $invoice->customer->type ?>
             </td>
             <td>
                 <?php echo $invoice->customer->first_name ?>
@@ -80,3 +87,4 @@
         </tr>
     <?php endforeach ?>
 </table>
+</div>

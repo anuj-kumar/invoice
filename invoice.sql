@@ -33,7 +33,7 @@ CREATE TABLE `access_rights` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `access_rights_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `access_rights` (
 
 LOCK TABLES `access_rights` WRITE;
 /*!40000 ALTER TABLE `access_rights` DISABLE KEYS */;
-INSERT INTO `access_rights` VALUES (1,3,'1','1','1','2013-06-10 00:00:00','2013-06-10 00:00:00');
+INSERT INTO `access_rights` VALUES (2,5,'0','1','0','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `access_rights` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +81,9 @@ DROP TABLE IF EXISTS `customers`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `type` enum('single','monthly') NOT NULL DEFAULT 'single',
+  `first_name` varchar(20) NOT NULL,
+  `last_name` varchar(20) NOT NULL,
   `address_line_1` varchar(50) NOT NULL,
   `address_line_2` varchar(50) NOT NULL,
   `address_line_3` varchar(50) NOT NULL,
@@ -93,7 +95,7 @@ CREATE TABLE `customers` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +104,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
+INSERT INTO `customers` VALUES (1,'single','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,7 +122,7 @@ CREATE TABLE `disorders` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,6 +131,7 @@ CREATE TABLE `disorders` (
 
 LOCK TABLES `disorders` WRITE;
 /*!40000 ALTER TABLE `disorders` DISABLE KEYS */;
+INSERT INTO `disorders` VALUES (1,'1','','2013-06-18 00:00:00','2013-06-18 00:00:00'),(2,'2','','2013-06-18 00:00:00','2013-06-18 00:00:00'),(3,'3','','2013-06-18 00:00:00','2013-06-18 00:00:00'),(4,'4','','2013-06-18 00:00:00','2013-06-18 00:00:00'),(5,'5','','2013-06-18 00:00:00','2013-06-18 00:00:00');
 /*!40000 ALTER TABLE `disorders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -147,7 +151,7 @@ CREATE TABLE `global_panel_prices` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,6 +160,7 @@ CREATE TABLE `global_panel_prices` (
 
 LOCK TABLES `global_panel_prices` WRITE;
 /*!40000 ALTER TABLE `global_panel_prices` DISABLE KEYS */;
+INSERT INTO `global_panel_prices` VALUES (1,1,25,1,5000.00,'2013-06-18 18:53:22','0000-00-00 00:00:00'),(2,26,50,1,4000.00,'2013-06-18 18:57:53','0000-00-00 00:00:00'),(3,51,75,1,3750.00,'2013-06-18 18:57:53','0000-00-00 00:00:00'),(4,76,100,1,3500.00,'2013-06-18 18:57:53','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `global_panel_prices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -168,6 +173,7 @@ DROP TABLE IF EXISTS `invoices`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `invoices` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) NOT NULL,
   `content` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `timestamp` datetime NOT NULL,
@@ -183,8 +189,10 @@ CREATE TABLE `invoices` (
   `review_number` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `fk_invoice_costumer` (`customer_id`),
+  CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -193,7 +201,34 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
+INSERT INTO `invoices` VALUES (1,1,'Kuch bhi falana dimka','2013-06-13','2013-06-13 00:00:00',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'lksadngfkansg','2013-06-13','0000-00-00 00:00:00',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,2,'askdjflakjfkl','2013-06-18','0000-00-00 00:00:00',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,'laknsdlkgfsd',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `invoices_panels`
+--
+
+DROP TABLE IF EXISTS `invoices_panels`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `invoices_panels` (
+  `invoice_id` int(11) unsigned NOT NULL,
+  `panel_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`invoice_id`,`panel_id`),
+  KEY `panel_id` (`panel_id`),
+  CONSTRAINT `invoices_panels_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`),
+  CONSTRAINT `invoices_panels_ibfk_2` FOREIGN KEY (`panel_id`) REFERENCES `panels` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `invoices_panels`
+--
+
+LOCK TABLES `invoices_panels` WRITE;
+/*!40000 ALTER TABLE `invoices_panels` DISABLE KEYS */;
+/*!40000 ALTER TABLE `invoices_panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -291,7 +326,7 @@ CREATE TABLE `panels` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -300,6 +335,7 @@ CREATE TABLE `panels` (
 
 LOCK TABLES `panels` WRITE;
 /*!40000 ALTER TABLE `panels` DISABLE KEYS */;
+INSERT INTO `panels` VALUES (1,'Hb+FS+','2013-06-18 18:18:22','0000-00-00 00:00:00'),(2,'FS+','2013-06-18 18:21:36','0000-00-00 00:00:00'),(3,'FS','2013-06-18 18:24:01','0000-00-00 00:00:00'),(4,'MS','2013-06-18 18:24:01','0000-00-00 00:00:00'),(5,'Bio 6','2013-06-18 18:25:09','0000-00-00 00:00:00'),(6,'Bio 5','2013-06-18 18:25:09','0000-00-00 00:00:00'),(7,'Bio 4','2013-06-18 18:26:59','0000-00-00 00:00:00'),(8,'Hb+','2013-06-18 18:26:59','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -311,9 +347,12 @@ DROP TABLE IF EXISTS `panels_disorders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `panels_disorders` (
-  `panel_id` int(11) NOT NULL,
-  `disorder_id` int(11) NOT NULL,
-  PRIMARY KEY (`panel_id`,`disorder_id`)
+  `panel_id` int(11) unsigned NOT NULL,
+  `disorder_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`panel_id`,`disorder_id`),
+  KEY `fk_panel_disorder_2` (`disorder_id`),
+  CONSTRAINT `panels_disorders_ibfk_1` FOREIGN KEY (`panel_id`) REFERENCES `panels` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `panels_disorders_ibfk_2` FOREIGN KEY (`disorder_id`) REFERENCES `disorders` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -323,6 +362,7 @@ CREATE TABLE `panels_disorders` (
 
 LOCK TABLES `panels_disorders` WRITE;
 /*!40000 ALTER TABLE `panels_disorders` DISABLE KEYS */;
+INSERT INTO `panels_disorders` VALUES (1,1),(2,1),(3,1),(4,1),(1,2),(2,2),(3,2),(5,2),(6,2),(7,2),(1,3),(2,3),(5,3),(6,3),(1,4),(2,4),(5,4),(1,5),(8,5);
 /*!40000 ALTER TABLE `panels_disorders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -366,7 +406,7 @@ CREATE TABLE `users` (
   `created_at` timestamp NOT NULL DEFAULT '1999-12-31 13:00:00',
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -375,7 +415,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (3,'Anuj','laksjdf','2013-06-07 18:30:00','1999-12-31 13:00:00','2013-06-10 05:44:29'),(4,'Anuj','kjhfasdf','2013-06-07 18:30:00','2013-06-11 18:30:00','2013-06-12 05:35:30');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-19 05:52:13','2013-06-11 18:30:00','2013-06-19 05:52:13');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -388,4 +428,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-12 16:19:35
+-- Dump completed on 2013-06-19 14:33:17

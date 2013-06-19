@@ -27,6 +27,8 @@ class Model_User extends \Orm\Model {
         array(
             'key_from' => 'id',
             'key_to' => 'user_id',
+            'model_to' => 'Model_Access_right',
+            'cascade_save' => false,
         )
     );
     protected static $_table_name = 'users';

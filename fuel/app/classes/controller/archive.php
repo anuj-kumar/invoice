@@ -3,30 +3,31 @@
 class Controller_Archive extends Controller_Template {
 
     public function action_index() {
-        $data['invoices'] = Model_Invoice::find('all');
-        $data["subnav"] = array('view' => 'active');
-        $this->template->title = 'Archive &raquo; View';
-        $this->template->content = View::forge('archive/view', $data);
+        Response::redirect('/archive/view');
     }
 
-    public function action_view($sort = NULL) {
+    public function action_view($sort = 'id', $order = 'a') {
 
         $offset = Fuel\Core\Input::get('o');
         $limit = 10;
+        $data['order'] = ($order == 'd' ? 'a' : 'd');
+        $order = ($order == 'd' ? 'desc' : 'asc');
         $data['invoices'] = Model_Invoice::find('all', array(
-                    'order_by' => ($sort == 'first_name' || $sort == 'last_name') ? 't1.' . $sort : $sort,
+                    'order_by' => array(
+                        (($sort == 'first_name' || $sort == 'last_name' || $sort == 'type') ? 't1.' . $sort : $sort) => $order
+                    ),
                     'related' => array('customer'),
                     'rows_limit' => $limit,
                     'rows_offset' => $offset
                         )
         );
 //        $data["subnav"] = array('view' => 'active');
-        
+
         $uri = Input::uri();
 
         $data['prev'] = $uri . ((isset($offset) && $offset > $limit) ? '?o=' . ($offset - $limit) : NULL);
         $data['next'] = $uri . '?o=';
-        $data['next'] .= (isset($offset) ? $offset : 0) + $limit ;
+        $data['next'] .= (isset($offset) ? $offset : 0) + $limit;
         $this->template->title = 'Archive &raquo; View';
         $this->template->content = View::forge('archive/view', $data);
     }

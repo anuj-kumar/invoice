@@ -8,7 +8,9 @@ class Create_customers
 	{
 		\DBUtil::create_table('customers', array(
 			'id' => array('constraint' => 11, 'type' => 'int', 'auto_increment' => true, 'unsigned' => true, 'primery key' => true),
-			'name' => array('constraint' => 50, 'type' => 'varchar'),
+            'type' => array('constraint' => '"single", "monthly"', 'type' => 'enum'),
+			'first_name' => array('constraint' => 20, 'type' => 'varchar'),
+			'last_name' => array('constraint' => 20, 'type' => 'varchar'),
 			'address_line_1' => array('constraint' => 50, 'type' => 'varchar'),
 			'address_line_2' => array('constraint' => 50, 'type' => 'varchar'),
 			'address_line_3' => array('constraint' => 50, 'type' => 'varchar'),
