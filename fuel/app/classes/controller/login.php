@@ -3,9 +3,8 @@
 class Controller_Login extends Controller_Base {
 
     public function action_index() {
-        if(!parent::access('print_invoice')) {
+        if (!parent::access('print_invoice')) {
             Response::redirect('login/logout');
-           
         }
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'My &raquo; Index';
@@ -17,7 +16,7 @@ class Controller_Login extends Controller_Base {
     public function action_login() {
         $this->template->title = 'My &raquo; Login';
         if (Session::get('user') == NULL)
-             return Response::forge(View::forge('login/login'));
+            return Response::forge(View::forge('login/login'));
         else
             Response::redirect('login/verify');
     }
@@ -35,21 +34,25 @@ class Controller_Login extends Controller_Base {
                         array('password', $password),
                     ),
         ));
+        
         if (!$user) {
             Session::set_flash('error', 'Invalid username or password');
             return Response::forge(View::forge('login/login'));
         }
         else {
             $data['user'] = $user;
+            $time = date('Y-m-d H:i:s');
+            echo $time;
+            $user->last_login_at = $time;
+            $user->save();
             View::set_global('current_user', $user);
             Session::set_flash('Success', 'Login Successful');
 
             $data["subnav"] = array('index' => 'active');
 
             parent::do_login($user);
-               Response::redirect('invoice/');
+            Response::redirect('invoice/');
         }
-        //print_r($user);
     }
 
     public function action_logout() {
