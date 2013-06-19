@@ -5,7 +5,7 @@
     <div class="grid-12-12 ">
         <div class="grid-4-12 ">
             <label>First Name : <em class="formee-req">*</em></label>
-            <input type="text" class="formee-large" placeholder="First Name" required>
+            <input type="text" class="formee-large" placeholder="First Name" required autofocus>
         </div>
         <div class="grid-4-12 ">
             <label>Last Name : <em class="formee-req">*</em></label>
