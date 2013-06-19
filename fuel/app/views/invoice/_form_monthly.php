@@ -34,22 +34,22 @@
     <div class="grid-12-12 ">
         <div class="grid-4-12 ">
             <label>City : <em class="formee-req"></em></label>
-            <input type="text" class="formee-large" placeholder="Adress Line #1" required>
+            <input type="text" class="formee-large" placeholder="City" required>
         </div>
         <div class="grid-4-12 ">
             <label>State : <em class="formee-req">*</em></label>
-            <input type="text" class="formee-large" placeholder="Address Line #2" required>
+            <input type="text" class="formee-large" placeholder="State" required>
         </div>
         <div class="grid-4-12 ">
             <label>Pin Code : </label>
-            <input type="text" class="formee-large" placeholder="Address Line #3" >
+            <input type="text" class="formee-large" placeholder="Pin Code" >
         </div>
     </div>
     
     <div class="grid-12-12 ">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
-            <input type='tele' pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' placeholder='Tele: +99(99)9999-9999' autocomplete="off" required>
+            <input type='tel' pattern='[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}' placeholder='Tele: +99(99)9999-9999' autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Email : <em class="formee-req">*</em></label>

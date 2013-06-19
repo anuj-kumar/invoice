@@ -33,9 +33,9 @@
             <h1><span id="neogen">NeoGen Labs</span></h1>
             <br />
             <?php echo Form::open('index.php/login/verify'); ?>
-            <input name='name' type='text' placeholder='Name'/> 
+            <input name='name' type='text' placeholder='Name'required autofocus /> 
             <br>
-            <input name='password' type='password' placeholder='Password'/> 
+            <input name='password' type='password' placeholder='Password'required  /> 
             <br>
             <input type='submit' value='Login' class='btn'/>
             <input style="width:100px" type='' value='Forgot Password' class='btn'/>

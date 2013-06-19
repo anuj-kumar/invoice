@@ -42,7 +42,7 @@ class Controller_Login extends Controller_Base {
         else {
             $data['user'] = $user;
             $time = date('Y-m-d H:i:s');
-            echo $time;
+            //echo $time;
             $user->last_login_at = $time;
             $user->save();
             View::set_global('current_user', $user);

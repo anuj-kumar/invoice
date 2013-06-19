@@ -47,7 +47,7 @@ class Controller_Archive extends Controller_Template {
                     'where' => array(
                         array('content', 'like', '%' . $query . '%'),
                         'or' => array(
-                            array('t1.name', 'like', '%' . $query . '%'),
+                            array('t1.first_name', 'like', '%' . $query . '%'),
                         )
                     )
                         )
