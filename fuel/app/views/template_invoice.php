@@ -27,8 +27,8 @@
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
-                    
-                    echo Html::anchor('login/logout', 'LOGOUT | '.$user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
+
+                    echo Html::anchor('login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
                     ?>
                     <?php
                 } else {
@@ -41,22 +41,22 @@
             <div class="span12">
                 <h1><?php echo $title; ?></h1>
                 <hr />
-<?php if (Session::get_flash('success')): ?>
+                <?php if (Session::get_flash('success')): ?>
                     <div class="alert alert-success">
                         <strong>Success</strong>
                         <p>
-    <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('success'))); ?>
                         </p>
                     </div>
                 <?php endif; ?>
-<?php if (Session::get_flash('error')): ?>
+                <?php if (Session::get_flash('error')): ?>
                     <div class="alert alert-error">
                         <strong>Error</strong>
                         <p>
-    <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
+                            <?php echo implode('</p><p>', e((array) Session::get_flash('error'))); ?>
                         </p>
                     </div>
-<?php endif; ?>
+                <?php endif; ?>
             </div>
         </div>
         <div id="time"></div>
@@ -79,7 +79,12 @@
 
                         </ul>
                     </li>
-                    <li class="item3"><?php echo Html::anchor('archive', 'Archive'); ?>
+                    <li class="item3"><a href="#">Archive</a>
+                        <ul>
+                            <li class="subitem1"><?php echo Html::anchor('archive/view', 'Single'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('archive/', 'Monthly'); ?></li>
+
+                        </ul>
                     </li>
                     <li class="item4"><a href="#">Users</a>
                         <ul>
@@ -101,7 +106,7 @@
                 </div>
                 <div class="span3 ">
                     <span class="pull-left"><p><?php echo Html::anchor('invoice/single', 'Single', array("class" => "btn btn-large btn-success")); ?></p></span>
-                    <span class="pull-right"><p><?php  echo Html::anchor('invoice/monthly', 'Monthly', array("class" => "btn btn-large btn-success")); ?></p></span>
+                    <span class="pull-right"><p><?php echo Html::anchor('invoice/monthly', 'Monthly', array("class" => "btn btn-large btn-success")); ?></p></span>
                 </div>
                 <div class="span4 pull-right">
                     Date: 
@@ -113,7 +118,7 @@
 
                 </div>
             </div> 
-<?php echo $content; ?> 
+            <?php echo $content; ?> 
         </div> 
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>
