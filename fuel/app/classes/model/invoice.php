@@ -1,4 +1,3 @@
-
 <?php
 
 class Model_Invoice extends \Orm\Model {
