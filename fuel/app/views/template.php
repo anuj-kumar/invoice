@@ -25,8 +25,8 @@
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
-                    
-                    echo Html::anchor('login/logout', 'LOGOUT | '.$user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
+
+                    echo Html::anchor('login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
                     ?>
                     <?php
                 } else {
@@ -76,9 +76,13 @@
 
                         </ul>
                     </li>
-                    <li class="item3"><?php echo Html::anchor('archive', 'Archive'); ?>
-                    </li>
-                    <li class="item4"><a href="#">Users</a>
+                    <li class="item3"><a href="#">Archive</a>
+                        <ul>
+                            <li class="subitem1"><?php echo Html::anchor('archive/view', 'Single'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('archive/', 'Monthly'); ?></li>
+
+                        </ul>
+                    </li>                    <li class="item4"><a href="#">Users</a>
                         <ul>
                             <li class="subitem1"><a href="#">List All Users</a></li>
                             <li class="subitem2"><a href="#">Create</a></li>

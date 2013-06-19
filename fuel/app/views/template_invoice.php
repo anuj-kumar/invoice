@@ -26,8 +26,8 @@
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
-                    
-                    echo Html::anchor('login/logout', 'LOGOUT | '.$user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
+
+                    echo Html::anchor('login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
                     ?>
                     <?php
                 } else {
@@ -78,7 +78,12 @@
 
                         </ul>
                     </li>
-                    <li class="item3"><?php echo Html::anchor('archive', 'Archive'); ?>
+                    <li class="item3"><a href="#">Archive</a>
+                        <ul>
+                            <li class="subitem1"><?php echo Html::anchor('archive/view', 'Single'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('archive/', 'Monthly'); ?></li>
+
+                        </ul>
                     </li>
                     <li class="item4"><a href="#">Users</a>
                         <ul>
@@ -95,21 +100,23 @@
         </div>
         <div class="main well" >
             <div class="row">
-                <div class="span3 pull-left">
+                <div class="span2 pull-left">
                     <h2>Invoicing</h2>
                 </div>
-                <div class="span3 ">
-                    <span class="pull-left"><p><?php echo Html::anchor('invoice/single', 'Single', array("class" => "btn btn-large btn-success")); ?></p></span>
-                    <span class="pull-right"><p><?php  echo Html::anchor('invoice/monthly', 'Monthly', array("class" => "btn btn-large btn-success")); ?></p></span>
+                <div class="span2 " style="margin-top: 10px">
+                    <span class="pull-left"><p><?php echo Html::anchor('invoice/single', 'Single', array("class" => "btn btn-medium btn-success")); ?></p></span>
+                    <span class="pull-right"><p><?php echo Html::anchor('invoice/monthly', 'Monthly', array("class" => "btn btn-medium btn-success")); ?></p></span>
                 </div>
-                <div class="span4 pull-right">
-                    Date: 
-                    <br>Invoice No: 
-                    <br>Billing Period: 
-                    <br>PAN:
-                    <br>TIN:
-                    <br>FP NO: 
-
+                <div class="span6 pull-right" style="column-count: 2">
+                    <div class="span2 pull-left" >Date: 
+                        <br>Invoice No: 
+                        <br>Billing Period: 
+                    </div>
+                    <div class="span3 pull-right">
+                        PAN:
+                        <br>TIN:
+                        <br>FP NO: 
+                    </div>
                 </div>
             </div> 
             <?php echo $content; ?> 
