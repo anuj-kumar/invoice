@@ -4,7 +4,7 @@
         <form class="form-search">
             <form class="form-search">
                 <div class="input-append">
-                    <input type="text" class="span2 search-query">
+                    <input type="text" class="span2 search-query" name="q" value="<?php echo Session::get('query') ?>" />
                     <button type="submit" class="btn">Search</button>
                 </div>
 
