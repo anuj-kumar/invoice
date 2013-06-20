@@ -22,6 +22,7 @@
                     <h3> INVOICE MANAGEMENT SYSTEM ADMIN PANEL</h3>
                 </div>
             </center>
+
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
@@ -38,7 +39,7 @@
         <div class="container">
             <div class="span12">
                 <h1><?php echo $title; ?></h1>
-                <hr/>
+                <hr />
                 <?php if (Session::get_flash('success')): ?>
                     <div class="alert alert-success">
                         <strong>Success</strong>
@@ -59,6 +60,7 @@
         </div>
         <div id="time"></div>
         <!-- Side menu bar  -->
+
         <div class="left-sidebar" >
             <div  style="margin-top:100px;">
                 <ul class="menu">
@@ -82,7 +84,8 @@
                             <li class="subitem2"><?php echo Html::anchor('archive/', 'Monthly'); ?></li>
 
                         </ul>
-                    </li>                    <li class="item4"><a href="#">Users</a>
+                    </li>
+                    <li class="item4"><a href="#">Users</a>
                         <ul>
                             <li class="subitem1"><a href="#">List All Users</a></li>
                             <li class="subitem2"><a href="#">Create</a></li>
@@ -96,6 +99,26 @@
             </div>
         </div>
         <div class="main well" >
+            <div class="row">
+                <div class="span2 pull-left">
+                    <h2>Invoicing</h2>
+                </div>
+                <div class="span2 " style="margin-top: 10px">
+                    <span class="pull-left"><p><?php echo Html::anchor('invoice/single', 'Single', array("class" => "btn btn-medium btn-success")); ?></p></span>
+                    <span class="pull-right"><p><?php echo Html::anchor('invoice/monthly', 'Monthly', array("class" => "btn btn-medium btn-success")); ?></p></span>
+                </div>
+                <div class="span6 pull-right" style="column-count: 2">
+                    <div class="span2 pull-left" >Date: 
+                        <br>Invoice No: 
+                        <br>Billing Period: 
+                    </div>
+                    <div class="span3 pull-right">
+                        PAN:
+                        <br>TIN:
+                        <br>FP NO: 
+                    </div>
+                </div>
+            </div> 
             <?php echo $content; ?> 
         </div> 
         <div class="right-sidebar" >

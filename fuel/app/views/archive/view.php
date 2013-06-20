@@ -1,40 +1,79 @@
-<ul class="nav nav-pills">
-    <li class='<?php echo Arr::get($subnav, "view"); ?>'><?php echo Html::anchor('archive/view', 'View'); ?></li>
-    <li class='<?php echo Arr::get($subnav, "search"); ?>'><?php echo Html::anchor('archive/search', 'Search'); ?></li>
+<div class="row">
+    <h3 class="span6 pull-left">ARCHIVE</h3>
+    <div class="span pull-right">
+        <form class="form-search">
+            <form class="form-search">
+                <div class="input-append">
+                    <input type="text" class="span2 search-query" name="q" value="<?php echo Session::get('query') ?>" />
+                    <button type="submit" class="btn">Search</button>
+                </div>
 
-</ul>
+            </form>
+        </form>
+    </div>    
+</div>
+<!-- Disable the prev link if on first page -->
+<div class="row span10"><span style="float: right"> <?php echo Html::anchor($prev, 'Prev') . " | " . Html::anchor($next, 'Next'); ?></span></div>
+<style>
+    .archive_view th{width: 150px;
+                     border-bottom:1px solid black;
+    }
 
-<form method='GET' action='/archive/search'>
-    <input type='text' name='q' <?php echo isset($query) ? "value = '" . $query . "'" : '' ?> placeholder='Enter search query...'/>
-    <input type='submit' value='search'/>
-</form>
-<table>
-    <th>
-    <tr>
-        <td>
-            <?php echo Html::anchor('archive/view/id', 'ID'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/date', 'Date'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/timestamp', 'Timestamp'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/amount', 'Amount'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/tax_2', 'Tax'); ?>
-        </td>
-        <td>
-            <?php echo Html::anchor('archive/view/name', 'Name'); ?>
-        </td>
-    </tr>
-    </th>
-   <?php foreach ($invoices as $invoice): ?>
+    .archive_view td{width: 150px;
+                     border-bottom:1px solid black;
+    }
+    .archive_view{margin-left: 15px;}
+    .archive{height: 400px;overflow-y: visible}
+    .archive td{text-align: center}
+</style>
+
+<div class="row archive">
+    <table class="archive_view">
+        <tr>
+            <th width="40px">
+                <?php echo "S. No." ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/id/' . $order, 'ID'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/type/' . $order, 'Type'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/first_name/' . $order, 'First Name'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/last_name/' . $order, 'Last Name'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/date/' . $order, 'Date'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/timestamp/' . $order, 'Timestamp'); ?>
+            </th>
+            <th>
+                <?php echo Html::anchor('archive/view/amount/' . $order, 'Amount'); ?>
+            </th>
+
+        </tr>
+
+   <?php $i=1;
+         foreach ($invoices as $invoice): ?>
         <tr>
             <td>
+                <?php echo $i; $i++ ?>
+            </td>
+            <td>
                 <?php echo $invoice->id ?>
+            </td>
+            <td>
+                <?php echo $invoice->customer->type ?>
+            </td>
+            <td>
+                <?php echo $invoice->customer->first_name ?>
+            </td>
+            <td>
+                <?php echo $invoice->customer->last_name ?>
             </td>
             <td>
                 <?php echo $invoice->date ?>
@@ -45,10 +84,7 @@
             <td>
                 <?php echo $invoice->amount ?>
             </td>
-            <td>
-                <?php echo $invoice->name ?>
-            </td>
         </tr>
     <?php endforeach ?>
 </table>
-<? //print_r($invoices); ?>
+</div>

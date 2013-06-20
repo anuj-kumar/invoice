@@ -1,35 +1,28 @@
 <?php
 
-class Controller_Archive extends Controller_Template {
+class Controller_Archive extends Controller_ArchiveBase {
 
-    public function action_view($sort = NULL) {
-        $data['invoices'] = Model_Invoice::find('all', array(
-                    'order_by' => $sort,
-                        )
-        );
-        $data["subnav"] = array('view' => 'active');
-        $this->template->title = 'Archive &raquo; View';
-        $this->template->content = View::forge('archive/view', $data);
+    public function action_index() {
+        Response::redirect('/archive/view');
     }
 
-    public function action_search() {
-        $data["subnav"] = array('search' => 'active');
-        $query = Input::get('q');
-        $invoices = Fuel\Core\DB::query("SELECT * FROM invoices i LEFT JOIN customers c
-            ON i.customer_id = c.id
-            WHERE c.name like '%" . $query . "%'")->as_object()->execute();
-        $data['invoices'] = $invoices;
-        /* = Model_Invoice::find('all', array(
-          'where' => array(
-          //array('content', 'like', '%' . $query . '%'),
-          array('date', 'like', '%' . $query . '%'),
-          )
-          )
-          ); */
-//        print_r($data['invoices']);
-        
-        $data['query'] = $query;
-        $this->template->title = 'Archive &raquo; Search';
+    public function action_view($sort = 'id', $order = 'a') {
+
+        $offset = Input::get('o');
+        $limit = 10;
+        $data['order'] = ($order == 'd' ? 'a' : 'd');
+        $order = ($order == 'd' ? 'desc' : 'asc');
+
+        $data['invoices'] = parent::get_view_results($offset, $limit, $sort, $order);
+
+        $uri = Input::uri();
+        $count = count($data['invoices']);
+
+        $data['prev'] = $uri . ((isset($offset) && $offset > $limit) ? '?o=' . ($offset - $limit) : NULL);
+        $data['next'] = $uri . '?o=';
+        $data['next'] .= (isset($offset) ? ($offset + $offset < $count ? $limit : 0) : $limit);
+
+        $this->template->title = 'Archive &raquo; View';
         $this->template->content = View::forge('archive/view', $data);
     }
 

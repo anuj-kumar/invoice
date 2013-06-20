@@ -1,11 +1,10 @@
-
 <?php
 
 class Model_Invoice extends \Orm\Model {
 
     protected static $_properties = array(
         'id',
-        'costumer_id',
+        'customer_id',
         'content',
         'date',
         'timestamp',
@@ -32,9 +31,10 @@ class Model_Invoice extends \Orm\Model {
             'mysql_timestamp' => false,
         ),
     );
-    protected static $_belongs_to = array('customers',
+    protected static $_belongs_to = array('customer',
         array(
-            'key_from' => 'costumer_id',
+            'key_from' => 'customer_id',
+            'model_to' => 'Model_Customer',
             'key_to' => 'id',
     ));
     protected static $_many_many = array(
