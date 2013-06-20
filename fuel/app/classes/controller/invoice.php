@@ -9,7 +9,6 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_single() {
-        $data['panels'] = Model_Panel::find('all');
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Single';
         $this->template->content = View::forge('invoice/single', $data);
@@ -50,10 +49,10 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_invoice_content() {
-        $data["subnav"] = array('invoice' => 'active');
-        $this->template->title = 'Invoice | Main Content';
-        $this->template->content = View::forge('invoice/invoice', $data);
-            
+       $data['panels']= Model_Panel::find('all');
+       $this->template->title = 'Invoice | Main Content';
+       $this->template->content = View::forge('invoice/invoice', $data);
+       
     }
 
 }
