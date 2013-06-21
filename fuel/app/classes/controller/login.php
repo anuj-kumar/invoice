@@ -41,9 +41,6 @@ class Controller_Login extends Controller_Base {
         }
         else {
             $data['user'] = $user;
-            $time = date('Y-m-d H:i:s');
-            $user->last_login_at = $time;
-            $user->save();
             View::set_global('current_user', $user);
             Session::set_flash('Success', 'Login Successful');
 

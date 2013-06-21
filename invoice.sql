@@ -25,9 +25,10 @@ DROP TABLE IF EXISTS `access_rights`;
 CREATE TABLE `access_rights` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
-  `print_invoice` enum('0','1') NOT NULL,
-  `add_panel` enum('0','1') NOT NULL,
-  `add_monthly_customer` enum('0','1') NOT NULL,
+  `print_invoice` enum('0','1') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '0',
+  `view_archive` enum('0','1') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '0',
+  `add_panel` enum('0','1') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '0',
+  `add_monthly_customer` enum('0','1') CHARACTER SET latin1 COLLATE latin1_bin NOT NULL DEFAULT '0',
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
@@ -42,7 +43,7 @@ CREATE TABLE `access_rights` (
 
 LOCK TABLES `access_rights` WRITE;
 /*!40000 ALTER TABLE `access_rights` DISABLE KEYS */;
-INSERT INTO `access_rights` VALUES (2,5,'0','1','0','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `access_rights` VALUES (2,5,'0','0','1','0','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `access_rights` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -174,24 +175,28 @@ DROP TABLE IF EXISTS `invoices`;
 CREATE TABLE `invoices` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `content` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `timestamp` datetime NOT NULL,
   `amount` float NOT NULL,
-  `tax_1` float(3,2) NOT NULL,
-  `tax_2` float(3,2) NOT NULL,
-  `tax_3` float(3,2) NOT NULL,
-  `tax_4` float(3,2) NOT NULL,
-  `discount_1` float(2,2) NOT NULL,
-  `discount_2` float(2,2) NOT NULL,
-  `discount_3` float(2,2) NOT NULL,
+  `tax_1` float(5,2) NOT NULL,
+  `tax_2` float(5,2) NOT NULL,
+  `tax_3` float(5,2) NOT NULL,
+  `tax_4` float(5,2) NOT NULL,
+  `discount_1` float(4,2) NOT NULL,
+  `discount_2` float(4,2) NOT NULL,
+  `discount_3` float(4,2) NOT NULL,
+  `balance` float(12,2) NOT NULL,
   `comment` text NOT NULL,
   `review_number` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_invoice_costumer` (`customer_id`),
-  CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE
+  KEY `fk_invoice_user` (`user_id`),
+  CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `invoices_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -201,7 +206,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-INSERT INTO `invoices` VALUES (1,1,'Kuch bhi falana dimka','2013-06-13','2013-06-13 00:00:00',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,'lksadngfkansg','2013-06-13','0000-00-00 00:00:00',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,2,'askdjflakjfkl','2013-06-18','0000-00-00 00:00:00',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,'laknsdlkgfsd',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `invoices` VALUES (1,1,5,'Kuch bhi falana dimka','2013-06-13','2013-06-13 00:00:00',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,0.00,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,5,'lksadngfkansg','2013-06-13','0000-00-00 00:00:00',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,0.00,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,2,5,'askdjflakjfkl','2013-06-18','0000-00-00 00:00:00',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,0.00,'laknsdlkgfsd',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,7 +301,7 @@ CREATE TABLE `monthly_customers` (
   `customer_id` int(11) NOT NULL,
   `contract_file` varchar(50) NOT NULL,
   `contract_discount` decimal(2,2) NOT NULL,
-  `outstanding` decimal(8,2) NOT NULL,
+  `outstanding` decimal(12,2) NOT NULL,
   `duedate` date NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
@@ -415,7 +420,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-19 05:52:13','2013-06-11 18:30:00','2013-06-19 05:52:13');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-21 05:20:43','2013-06-11 18:30:00','2013-06-21 05:20:43');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -428,4 +433,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-19 14:33:17
+-- Dump completed on 2013-06-21 11:09:06

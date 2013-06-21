@@ -20,9 +20,9 @@ class Controller_Base extends Controller_Template {
 
     protected static function do_login($user) {
         Session::set('user', $user);
-        //$user->last_login_at =
-       // echo date('Y-m-d') . time('HH:MM:SS');
-//        $user->save();
+            $time = date('Y-m-d H:i:s');
+            $user->last_login_at = $time;
+            $user->save();
     }
 
     protected function logout_user() {

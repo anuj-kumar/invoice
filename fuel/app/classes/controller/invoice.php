@@ -17,7 +17,6 @@ class Controller_Invoice extends Controller_Base {
 
     public function action_submit_single() {
 //        print_r(Fuel\Core\Input::post());
-        $time = date('Y-m-d H:i:s');
         $customer = Model_Customer::forge(array(
                     'first_name' => Input::post('f_name'),
                     'last_name' => Input::post('l_name'),
@@ -49,11 +48,10 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = View::forge('invoice/monthly', $data);
     }
 
-    public function action_invoice_content() {
+    public function action_content() {
         $data["subnav"] = array('invoice' => 'active');
         $this->template->title = 'Invoice | Main Content';
-        $this->template->content = View::forge('invoice/invoice', $data);
-            
+        $this->template->content = View::forge('invoice/content', $data);
     }
 
 }

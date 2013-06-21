@@ -57,34 +57,36 @@
 
         </tr>
 
-   <?php $i=1;
-         foreach ($invoices as $invoice): ?>
-        <tr>
-            <td>
-                <?php echo $i; $i++ ?>
-            </td>
-            <td>
-                <?php echo $invoice->id ?>
-            </td>
-            <td>
-                <?php echo $invoice->customer->type ?>
-            </td>
-            <td>
-                <?php echo $invoice->customer->first_name ?>
-            </td>
-            <td>
-                <?php echo $invoice->customer->last_name ?>
-            </td>
-            <td>
-                <?php echo $invoice->date ?>
-            </td>
-            <td>
-                <?php echo $invoice->timestamp ?>
-            </td>
-            <td>
-                <?php echo $invoice->amount ?>
-            </td>
-        </tr>
-    <?php endforeach ?>
-</table>
+        <?php $i = 1;
+        foreach ($invoices as $invoice):
+            ?>
+            <tr>
+                <td>
+                    <?php echo $i;
+                    $i++ ?>
+                </td>
+                <td>
+                    <?php echo $invoice->id ?>
+                </td>
+                <td>
+                    <?php echo $invoice->customer->type ?>
+                </td>
+                <td>
+                    <?php echo $invoice->customer->first_name ?>
+                </td>
+                <td>
+                    <?php echo $invoice->customer->last_name ?>
+                </td>
+                <td>
+                    <?php echo $invoice->date ?>
+                </td>
+                <td>
+                    <?php echo $invoice->timestamp ?>
+                </td>
+                <td>
+                    <?php echo $invoice->amount ?>
+                </td>
+            </tr>
+        <?php endforeach ?>
+    </table>
 </div>
