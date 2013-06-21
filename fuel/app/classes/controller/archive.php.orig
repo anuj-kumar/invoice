@@ -1,9 +1,30 @@
 <?php
 
+<<<<<<< HEAD
+class Controller_Archive extends Controller_Template {
+
+        public function action_index() {
+        $data['invoices'] = Model_Invoice::find('all');
+        $data["subnav"] = array('view' => 'active');
+        $this->template->title = 'Archive &raquo; View';
+        $this->template->content = View::forge('archive/view', $data);
+    }
+
+    
+    public function action_view($sort = NULL) {
+        $data['invoices'] = Model_Invoice::find('all', array(
+                    'order_by' => $sort, 'rows_limit' => 10,
+                        )
+        );
+        $data["subnav"] = array('view' => 'active');
+        $this->template->title = 'Archive &raquo; View';
+        $this->template->content = View::forge('archive/view', $data);
+=======
 class Controller_Archive extends Controller_ArchiveBase {
 
     public function action_index() {
         Response::redirect('/archive/view');
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
     }
 
     public function action_view($sort = 'id', $order = 'a') {
@@ -22,33 +43,7 @@ class Controller_Archive extends Controller_ArchiveBase {
         $data['next'] = $uri . '?o=';
         $data['next'] .= (isset($offset) ? ($offset + $offset < $count ? $limit : 0) : $limit);
 
-<<<<<<< HEAD
         $this->template->title = 'Archive &raquo; View';
-=======
-    public function action_search() {
-
-        $data["subnav"] = array('search' => 'active');
-        $query = Input::get('q');
-
-        /* $invoices = Fuel\Core\DB::query("SELECT * FROM invoices i LEFT JOIN customers c
-         * ON i.customer_id = c.id
-         * WHERE c.name like '%" . $query . "%'")->as_object()->execute();
-         */
-
-        $data['invoices'] = Model_Invoice::find('all', array(
-                    'related' => array('customer'),
-                    'where' => array(
-                        array('content', 'like', '%' . $query . '%'),
-                        'or' => array(
-                            array('t1.first_name', 'like', '%' . $query . '%'),
-                        )
-                    )
-                        )
-        );
-
-        $data['query'] = $query;
-        $this->template->title = 'Archive &raquo; Search';
->>>>>>> f511dbc2507219c3ab5c2c73200269f2e9f3f6b8
         $this->template->content = View::forge('archive/view', $data);
     }
 

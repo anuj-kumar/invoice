@@ -14,9 +14,17 @@ class Controller_Login extends Controller_Base {
     }
 
     public function action_login() {
+<<<<<<< HEAD
+        
+        //$data = 'My &raquo; Login';
+        //echo Session::get('user');
+        if (!Session::get('user'))
+         return Response::forge(View::forge('login/login'));
+=======
         $this->template->title = 'My &raquo; Login';
         if (Session::get('user') == NULL)
             return Response::forge(View::forge('login/login'));
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
         else
             Response::redirect('invoice/single');
     }
@@ -42,10 +50,6 @@ class Controller_Login extends Controller_Base {
         else {
             $data['user'] = $user;
             $time = date('Y-m-d H:i:s');
-<<<<<<< HEAD
-=======
-            //echo $time;
->>>>>>> f511dbc2507219c3ab5c2c73200269f2e9f3f6b8
             $user->last_login_at = $time;
             $user->save();
             View::set_global('current_user', $user);

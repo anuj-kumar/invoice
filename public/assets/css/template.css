@@ -30,11 +30,12 @@
     margin-top:50px
 }
 
-.logout{
-
+.login_info{
+    color:black;
     margin-top:5px;
     margin-right:-0px
 }
+
 
 .left-sidebar{
     position:fixed; 
