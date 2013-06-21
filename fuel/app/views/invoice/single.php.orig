@@ -1,0 +1,12 @@
+<<<<<<< HEAD
+<span class="pull-left"><h4>Single User Personnel Details: </h4> </span> 
+<br /><hr />
+<?php echo render('invoice/_form_single'); ?>
+<p><?php echo Html::anchor('monkey', 'Back'); ?></p>
+=======
+<?php echo Asset::css('formee-structure.css'); ?>
+<?php echo Asset::css('formee-style.css'); ?>
+<?php echo Asset::js('formee.js'); ?>
+
+<?php echo render('invoice/_form_single'); ?>
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b

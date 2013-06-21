@@ -9,14 +9,13 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_single() {
+        $data['panels'] = Model_Panel::find('all');
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Single';
         $this->template->content = View::forge('invoice/single', $data);
     }
 
     public function action_submit_single() {
-//        print_r(Fuel\Core\Input::post());
-        $time = date('Y-m-d H:i:s');
         $customer = Model_Customer::forge(array(
                     'first_name' => Input::post('f_name'),
                     'last_name' => Input::post('l_name'),
