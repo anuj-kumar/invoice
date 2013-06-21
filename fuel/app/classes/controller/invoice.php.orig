@@ -1,6 +1,12 @@
 <?php
 
 class Controller_Invoice extends Controller_Base {
+<<<<<<< HEAD
+    public $template= 'template_invoice';
+    public function action_index() {
+        Response::redirect('index.php/invoice/single');
+    }
+=======
 
     public $template = 'template_invoice';
 
@@ -8,11 +14,14 @@ class Controller_Invoice extends Controller_Base {
         Response::redirect('/invoice/single');
     }
 
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
     public function action_single() {
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Single';
         $this->template->content = View::forge('invoice/single', $data);
     }
+<<<<<<< HEAD
+=======
 
     public function action_submit_single() {
 //        print_r(Fuel\Core\Input::post());
@@ -55,4 +64,5 @@ class Controller_Invoice extends Controller_Base {
        
     }
 
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
 }

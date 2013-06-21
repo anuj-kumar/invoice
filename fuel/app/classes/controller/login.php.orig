@@ -14,9 +14,17 @@ class Controller_Login extends Controller_Base {
     }
 
     public function action_login() {
+<<<<<<< HEAD
+        
+        //$data = 'My &raquo; Login';
+        //echo Session::get('user');
+        if (!Session::get('user'))
+         return Response::forge(View::forge('login/login'));
+=======
         $this->template->title = 'My &raquo; Login';
         if (Session::get('user') == NULL)
             return Response::forge(View::forge('login/login'));
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
         else
             Response::redirect('invoice/single');
     }

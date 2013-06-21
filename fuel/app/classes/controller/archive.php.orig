@@ -1,9 +1,30 @@
 <?php
 
+<<<<<<< HEAD
+class Controller_Archive extends Controller_Template {
+
+        public function action_index() {
+        $data['invoices'] = Model_Invoice::find('all');
+        $data["subnav"] = array('view' => 'active');
+        $this->template->title = 'Archive &raquo; View';
+        $this->template->content = View::forge('archive/view', $data);
+    }
+
+    
+    public function action_view($sort = NULL) {
+        $data['invoices'] = Model_Invoice::find('all', array(
+                    'order_by' => $sort, 'rows_limit' => 10,
+                        )
+        );
+        $data["subnav"] = array('view' => 'active');
+        $this->template->title = 'Archive &raquo; View';
+        $this->template->content = View::forge('archive/view', $data);
+=======
 class Controller_Archive extends Controller_ArchiveBase {
 
     public function action_index() {
         Response::redirect('/archive/view');
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
     }
 
     public function action_view($sort = 'id', $order = 'a') {

@@ -22,6 +22,20 @@
                     <h3> INVOICE MANAGEMENT SYSTEM ADMIN PANEL</h3>
                 </div>
             </center>
+<<<<<<< HEAD
+            <div class="login_info pull-right">
+                <?php
+                if ($user = Session::get('user')) {
+                    echo "Logged in as " . $user->name;
+                    ?> <a class="btn btn-danger" href="/login/lougout">Logout</a>
+                    <?php
+                } else {
+                    echo "not logged ";
+                }
+                ?> 
+            </div>
+=======
+
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
@@ -34,11 +48,12 @@
                 }
                 ?> 
             </div>    
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
         </div>
         <div class="container">
             <div class="span12">
                 <h1><?php echo $title; ?></h1>
-                <hr/>
+                <hr />
                 <?php if (Session::get_flash('success')): ?>
                     <div class="alert alert-success">
                         <strong>Success</strong>
@@ -59,13 +74,22 @@
         </div>
         <div id="time"></div>
         <!-- Side menu bar  -->
+<<<<<<< HEAD
+=======
+
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
         <div class="left-sidebar" >
             <div  style="margin-top:100px;">
                 <ul class="menu">
                     <li class="item1"><a href="#">Invoice  </a>
                         <ul>
+<<<<<<< HEAD
+                            <li class="subitem1"><a href="#">Individual </a></li>
+                            <li class="subitem2"><a href="#">Monthly</a></li>
+=======
                             <li class="subitem1"><?php echo Html::anchor('invoice/single', 'Single'); ?></li>
                             <li class="subitem2"><?php echo Html::anchor('invoice/monthly', 'Monthly'); ?></li>
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
 
                         </ul>
                     </li>
@@ -76,13 +100,18 @@
 
                         </ul>
                     </li>
+<<<<<<< HEAD
+                    <li class="item3"><a href="#">Archives</a>
+=======
                     <li class="item3"><a href="#">Archive</a>
                         <ul>
                             <li class="subitem1"><?php echo Html::anchor('archive/view', 'Single'); ?></li>
                             <li class="subitem2"><?php echo Html::anchor('archive/', 'Monthly'); ?></li>
 
                         </ul>
-                    </li>                    <li class="item4"><a href="#">Users</a>
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
+                    </li>
+                    <li class="item4"><a href="#">Users</a>
                         <ul>
                             <li class="subitem1"><a href="#">List All Users</a></li>
                             <li class="subitem2"><a href="#">Create</a></li>
@@ -96,6 +125,44 @@
             </div>
         </div>
         <div class="main well" >
+            <div class="row">
+<<<<<<< HEAD
+                <div class="span3 pull-left">
+                    <h2>Invoicing</h2>
+                </div>
+                <div class="span3 ">
+                    <span class="pull-left"><p><?php echo Html::anchor('../monthly', 'Single', array("class"=>"btn btn-large btn-success")); ?></p></span>
+                    <span class="pull-right"><p><?php echo Html::anchor('../monthly', 'Monthly', array("class"=>"btn btn-large btn-success")); ?></p></span>
+                </div>
+                <div class="span4 pull-right">
+                    Date: 
+                    <br>Invoice No: 
+                    <br>Billing Period: 
+                    <br>PAN:
+                    <br>TIN:
+                    <br>FP NO: 
+                    
+=======
+                <div class="span2 pull-left">
+                    <h2>Invoicing</h2>
+                </div>
+                <div class="span2 " style="margin-top: 10px">
+                    <span class="pull-left"><p><?php echo Html::anchor('invoice/single', 'Single', array("class" => "btn btn-medium btn-success")); ?></p></span>
+                    <span class="pull-right"><p><?php echo Html::anchor('invoice/monthly', 'Monthly', array("class" => "btn btn-medium btn-success")); ?></p></span>
+                </div>
+                <div class="span6 pull-right" style="column-count: 2">
+                    <div class="span2 pull-left" >Date: 
+                        <br>Invoice No: 
+                        <br>Billing Period: 
+                    </div>
+                    <div class="span3 pull-right">
+                        PAN:
+                        <br>TIN:
+                        <br>FP NO: 
+                    </div>
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
+                </div>
+            </div> 
             <?php echo $content; ?> 
         </div> 
         <div class="right-sidebar" >

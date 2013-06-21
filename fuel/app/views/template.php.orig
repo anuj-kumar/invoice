@@ -12,7 +12,11 @@
         <?php echo Asset::js('template.js'); ?>
     </head>
 
+<<<<<<< HEAD
+<body onload="ShowCurrentTime()">
+=======
     <body onload="ShowCurrentTime()">
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
 
         <!-- Header  -->
         <div class="top" >
@@ -25,6 +29,16 @@
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
+<<<<<<< HEAD
+                    echo "Logged in as " . $user->name;
+                    ?> <a class="btn btn-danger" href="/login/lougout">Logout</a>
+                <?php
+                    } else {
+                        echo "not logged ";
+                    }
+                    ?> 
+                </div>
+=======
 
                     echo Html::anchor('login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
                     ?>
@@ -34,11 +48,16 @@
                 }
                 ?> 
             </div>    
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
         </div>
         <div class="container">
             <div class="span12">
                 <h1><?php echo $title; ?></h1>
+<<<<<<< HEAD
+                <hr />
+=======
                 <hr/>
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
                 <?php if (Session::get_flash('success')): ?>
                     <div class="alert alert-success">
                         <strong>Success</strong>
@@ -100,7 +119,11 @@
         </div> 
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>
+<<<<<<< HEAD
+            
+=======
 
+>>>>>>> cfb866987858baf8314b5465b3885f959a67dd6b
             <div class="errors"><h5>Errors* :</h5><hr /></div>
         </div>
 

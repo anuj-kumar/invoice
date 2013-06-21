@@ -5,12 +5,14 @@ class Model_Customer extends \Orm\Model {
 
     protected static $_properties = array(
         'id',
-        'name',
+        'type',
+        'first_name',
+        'last_name',
         'address_line_1',
         'address_line_2',
         'address_line_3',
-        'city_id',
-        'state_id',
+        'city',
+        'state',
         'pincode',
         'phone',
         'email',
@@ -27,9 +29,9 @@ class Model_Customer extends \Orm\Model {
             'mysql_timestamp' => false,
         ),
     );
-    protected static $_has_one = array(
+   /* protected static $_has_one = array(
         array(
-            'profile' => array(
+            'city' => array(
                 'key_from' => 'id',
                 'key_to' => 'city_id',
                 'cascade_save' => true,
@@ -37,14 +39,20 @@ class Model_Customer extends \Orm\Model {
             )
         ),
         array(
-            'profile' => array(
+            'state' => array(
                 'key_from' => 'id',
                 'key_to' => 'state_id',
                 'cascade_save' => true,
                 'cascade_delete' => false,
             )
         )
-    );
+    );*/
+    /*protected static $_has_many = array(
+        'invoices', array(
+            'key_from' => 'id',
+            'key_to' => 'customer_id',
+        )
+    );*/
     protected static $_table_name = 'customers';
 
 }
