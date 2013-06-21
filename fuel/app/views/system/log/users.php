@@ -1,6 +1,5 @@
-<ul class="nav nav-pills">
-	<li class='<?php echo Arr::get($subnav, "users" ); ?>'><?php echo Html::anchor('system/log/users','Users');?></li>
-	<li class='<?php echo Arr::get($subnav, "invoices" ); ?>'><?php echo Html::anchor('system/log/invoices','Invoices');?></li>
+<?php foreach($users as $user) : ?>
+<?php var_dump($user);?>
 
-</ul>
-<p>Users</p>
+
+<?php endforeach; ?>

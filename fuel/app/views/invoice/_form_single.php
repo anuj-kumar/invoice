@@ -33,7 +33,14 @@
         </div>
         <div class="grid-4-12 ">
             <label>State : <em class="formee-req">*</em></label>
-            <input type="text" name="state" class="formee-large" placeholder="Address Line #2" required>
+            <input list="browsers" name="browser" placeholder="State" required>
+<datalist id="browsers">
+  <option value="Karnataka">
+  <option value="Goa">
+  <option value="Kerala">
+  <option value="West Bengal">
+  <option value="Tamil Nadu">
+</datalist>
         </div>
         <div class="grid-4-12 ">
             <label>Pin Code : </label>

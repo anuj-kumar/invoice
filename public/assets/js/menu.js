@@ -6,7 +6,7 @@
 	    menu_ul.hide();
 	
 	    menu_a.click(function(e) {
-	        e.preventDefault();
+	     //   e.preventDefault();
 	        if(!$(this).hasClass('active')) {
 	            menu_a.removeClass('active');
 	            menu_ul.filter(':visible').slideUp('normal');

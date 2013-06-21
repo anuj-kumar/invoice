@@ -92,7 +92,7 @@
 
                         </ul>
                     </li>
-                    <li class="item5"><a href="#">System Log</a>
+                    <li id="item5" class="item5 "><?php echo Html::anchor('system_log/users', 'System Log', array('class' => 'single')); ?>
 
                     </li>
                 </ul>
