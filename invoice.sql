@@ -88,8 +88,8 @@ CREATE TABLE `customers` (
   `address_line_1` varchar(50) NOT NULL,
   `address_line_2` varchar(50) NOT NULL,
   `address_line_3` varchar(50) NOT NULL,
-  `city_id` int(11) NOT NULL,
-  `state_id` int(11) NOT NULL,
+  `city` int(11) NOT NULL,
+  `state` int(11) NOT NULL,
   `pincode` int(6) NOT NULL,
   `phone` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -300,13 +300,15 @@ CREATE TABLE `monthly_customers` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `contract_file` varchar(50) NOT NULL,
-  `contract_discount` decimal(2,2) NOT NULL,
+  `contract_discount` decimal(4,2) NOT NULL,
   `outstanding` decimal(12,2) NOT NULL,
   `duedate` date NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  PRIMARY KEY (`id`),
+  KEY `fk_monthly_customer` (`customer_id`),
+  CONSTRAINT `monthly_customers_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -315,6 +317,7 @@ CREATE TABLE `monthly_customers` (
 
 LOCK TABLES `monthly_customers` WRITE;
 /*!40000 ALTER TABLE `monthly_customers` DISABLE KEYS */;
+INSERT INTO `monthly_customers` VALUES (1,2,'/var/www/invoice/readme.md',0.00,12000.00,'2013-06-28','2013-06-21 12:09:05','2013-06-21 12:09:05');
 /*!40000 ALTER TABLE `monthly_customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -420,7 +423,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-21 05:20:43','2013-06-11 18:30:00','2013-06-21 05:20:43');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-21 09:41:53','2013-06-11 18:30:00','2013-06-21 09:41:53');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -433,4 +436,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-21 11:09:06
+-- Dump completed on 2013-06-21 15:51:34

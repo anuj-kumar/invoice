@@ -43,8 +43,8 @@
         </div>
         <div class="grid-4-12 ">
             <label>State : <em class="formee-req">*</em></label>
-            <input list="browsers" name="browser" placeholder="State" required>
-<datalist id="browsers">
+            <input list="states" name="browser" placeholder="State" required>
+<datalist id="states">
   <option value="Karnataka">
   <option value="Goa">
   <option value="Kerala">
