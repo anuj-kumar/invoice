@@ -4,12 +4,16 @@
     .invoice_content td,th{width: 200px;border-bottom: 1px solid black;text-align: center}
     .qty{width: 40px}
 </style>
+<?php echo Asset::css('formee-structure.css'); ?>
+<?php echo Asset::css('formee-style.css'); ?>
+<?php echo Asset::js('formee.js'); ?>
+
 <?php
-$i=0;
-$disorder[$i]="";
+$i = 0;
+$disorder[$i] = "";
 foreach ($panels as $panel):
-$disorder[$i]=$panel->name;
-$i++;
+    $disorder[$i] = $panel->name;
+    $i++;
 endforeach;
 print_r($disorder);
 ?>
@@ -79,7 +83,7 @@ Invoice Content:
  
                         var rowCount = table.rows.length;
                         var row = table.insertRow(rowCount);
-    
+
             var choices = [];
             choices[0] = "one";
             choices[1] = "two";

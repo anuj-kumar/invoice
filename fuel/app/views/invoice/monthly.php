@@ -1,5 +1,5 @@
-<?php echo Asset::css('formee-structure.css'); ?>
-<?php echo Asset::css('formee-style.css'); ?>
-<?php echo Asset::js('formee.js'); ?>
+<?php foreach ($monthly as $month): ?>
 
-<?php echo render('invoice/_form_monthly'); ?>
+<?php echo $month->id."<br />"; ?>
+<?php endforeach; ?>
+<?php echo Html::anchor('invoice/monthly_new','Add New', array('class'=>'btn btn-large btn-danger' ));?>
