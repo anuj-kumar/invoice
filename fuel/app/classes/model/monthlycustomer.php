@@ -1,7 +1,7 @@
 
 <?php
 
-class Model_Monthly_Customer extends \Orm\Model
+class Model_Monthlycustomer extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
@@ -24,9 +24,12 @@ class Model_Monthly_Customer extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-    protected static $_has_one = array(
-        'customer'
-    );
+    protected static $_belongs_to = array('customer',
+            array(
+                'key_from' => 'customer_id',
+                'model_to' => 'Model_Customer',
+                'key_to' => 'id',
+            ));
 	protected static $_table_name = 'monthly_customers';
 
 }

@@ -15,19 +15,19 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = View::forge('invoice/single', $data);
     }
 
-    public function action_submit_single() {
+    private function submit_customer_details($data, $type) {
         $customer = Model_Customer::forge(array(
-                    'first_name' => Input::post('f_name'),
-                    'last_name' => Input::post('l_name'),
-                    'address_line_1' => Input::post('addr_1'),
-                    'address_line_2' => Input::post('addr_2'),
-                    'address_line_3' => Input::post('addr_3'),
-                    'city' => Input::post('city'),
-                    'state' => Input::post('state'),
-                    'pincode' => Input::post('pin'),
-                    'phone' => Input::post('tele'),
-                    'email' => Input::post('email'),
-                    'type' => 'single',
+                    'first_name' => $data['f_name'],
+                    'last_name' => $data['l_name'],
+                    'address_line_1' => $data['addr_1'],
+                    'address_line_2' => $data['addr_2'],
+                    'address_line_3' => $data['addr_3'],
+                    'city' => $data['city'],
+                    'state' => $data['state'],
+                    'pincode' => $data['pin'],
+                    'phone' => $data['tele'],
+                    'email' => $data['email'],
+                    'type' => $type,
         ));
         $val = $customer->save();
 
@@ -41,12 +41,25 @@ class Controller_Invoice extends Controller_Base {
         }
     }
 
+    public function action_submit_single() {
+        $this->submit_customer_details(Input::post);
+        
+    }
+
     public function action_monthly() {
-        $data['monthly']= Model_Monthly_Customer::find('all');
+        $data['monthly_customers'] = Model_Monthlycustomer::find('all', array(
+                    'related' => array('customer'),
+//            'where' => array('t1.type' => 'monthly')
+        ));
         $this->template->title = 'Invoice | Monthly';
         $this->template->content = View::forge('invoice/monthly', $data);
     }
-    
+
+    public function action_submit_monthly() {
+//        $this->submit_customer_details($_POST, 'monthly');
+        print_r($_POST);
+
+    }
     public function action_monthly_new() {
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Monthly';
@@ -54,17 +67,15 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_content() {
-       $data['panels']= Model_Panel::find('all');
-       $this->template->title = 'Invoice | Main Content';
-       $this->template->content = View::forge('invoice/invoice', $data);
-       
+        $data['panels'] = Model_Panel::find('all');
+        $this->template->title = 'Invoice | Main Content';
+        $this->template->content = View::forge('invoice/invoice', $data);
     }
-    
+
     public function action_payment() {
-       $data['panels']= Model_Panel::find('all');
-       $this->template->title = 'Invoice | Payment';
-       $this->template->content = View::forge('invoice/payment', $data);
-       
+        $data['panels'] = Model_Panel::find('all');
+        $this->template->title = 'Invoice | Payment';
+        $this->template->content = View::forge('invoice/payment', $data);
     }
 
 }

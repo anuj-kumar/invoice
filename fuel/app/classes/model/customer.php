@@ -6,6 +6,7 @@ class Model_Customer extends \Orm\Model {
     protected static $_properties = array(
         'id',
         'type',
+        'title',
         'first_name',
         'last_name',
         'address_line_1',
@@ -29,28 +30,36 @@ class Model_Customer extends \Orm\Model {
             'mysql_timestamp' => false,
         ),
     );
-   /* protected static $_has_one = array(
-        array(
-            'city' => array(
-                'key_from' => 'id',
-                'key_to' => 'city_id',
-                'cascade_save' => true,
-                'cascade_delete' => false,
-            )
-        ),
-        array(
-            'state' => array(
-                'key_from' => 'id',
-                'key_to' => 'state_id',
-                'cascade_save' => true,
-                'cascade_delete' => false,
-            )
-        )
-    );*/
-    /*protected static $_has_many = array(
-        'invoices', array(
+    /* protected static $_has_one = array(
+      array(
+      'city' => array(
+      'key_from' => 'id',
+      'key_to' => 'city_id',
+      'cascade_save' => true,
+      'cascade_delete' => false,
+      )
+      ),
+      array(
+      'state' => array(
+      'key_from' => 'id',
+      'key_to' => 'state_id',
+      'cascade_save' => true,
+      'cascade_delete' => false,
+      )
+      )
+      ); */
+    /*    protected static $_has_many = array(
+      'invoices', array(
+      'key_from' => 'id',
+      'key_to' => 'customer_id',
+      )
+      ); */
+    /*protected static $_has_one = array(
+        'monthlycustomer', array(
             'key_from' => 'id',
             'key_to' => 'customer_id',
+            'Model_from' => 'Model_Monthlycustomer',
+            'cascade_save' => false
         )
     );*/
     protected static $_table_name = 'customers';

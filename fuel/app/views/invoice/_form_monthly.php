@@ -1,5 +1,5 @@
 
-<?php echo Form::open(array("class" => "", "action" => "/invoice/submit_single")); ?>
+<?php echo Form::open(array("class" => "", "action" => "/invoice/submit_monthly")); ?>
 <h4>Monthly Customer</h4>    
 <fieldset>
     <div class="grid-12-12 ">
