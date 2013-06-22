@@ -2,14 +2,11 @@
     <h3 class="span6 pull-left">ARCHIVE</h3>
     <div class="span pull-right">
         <form class="form-search">
-            <form class="form-search">
                 <div class="input-append">
                     <input type="text" class="span2 search-query" name="q" value="<?php echo Session::get('query') ?>" />
                     <button type="submit" class="btn">Search</button>
                 </div>
-
             </form>
-        </form>
     </div>    
 </div>
 <!-- Disable the prev link if on first page -->

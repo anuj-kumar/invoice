@@ -4,7 +4,7 @@
 <fieldset>
     <div class="grid-12-12 ">
         <div class="grid-2-12 ">
-            
+
             <label>Title : <em class="formee-req">*</em></label>
             <select name="title" style="width: 60px" required>
                 <option>Dr.</option>
@@ -37,27 +37,40 @@
         </div>
     </div>
     <div class="grid-12-12 " style="margin-top: -20px">
-        <div class="grid-4-12 ">
+        <div class="grid-5-12 ">
             <label>City : <em class="formee-req"></em></label>
-            <input type="text" name="city" class="formee-large" placeholder="Adress Line #1" required>
+            <input type="hidden" name="city" />
+            <input list="city" name="city" placeholder="city" required autocomplete='off'>
+            <datalist id="city">
+                <option value="Kolkata">
+                <option value="Delhi">
+                <option value="Chennai">
+                <option value="Mumbai">
+                <option value="Bangalore">
+                <option value="Panjim">
+                <option value="Jaipur">
+                <option value="Chandigarh">
+            </datalist>
+            </di<input type="text" class="formee-small" name="city_txt" style="display: none;" />
         </div>
-        <div class="grid-4-12 ">
+        <div class="grid-3-12 ">
             <label>State : <em class="formee-req">*</em></label>
-            <input list="states" name="browser" placeholder="State" required>
-<datalist id="states">
-  <option value="Karnataka">
-  <option value="Goa">
-  <option value="Kerala">
-  <option value="West Bengal">
-  <option value="Tamil Nadu">
-</datalist>
+            <input list="states" name="city" placeholder="State" required autocomplete='off'>
+            <datalist id="states">
+                <option value="Karnataka">
+                <option value="Goa">
+                <option value="Kerala">
+                <option value="West Bengal">
+                <option value="Tamil Nadu">
+                    <option value="Punjab">
+            </datalist>
         </div>
-        <div class="grid-4-12 " >
+        <div class="grid-2-12  " style="float: right" >
             <label>Pin Code : </label>
-            <input type="text" name="pin" class="formee-large" placeholder="Address Line #3" >
+            <input type="text" name="pin" class="formee-large" placeholder="Pincode" style="width:100px" >
         </div>
     </div>
-    
+
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
@@ -73,3 +86,23 @@
     </div>    
 </fieldset>
 <?php echo Form::close(); ?>
+
+<script>
+    function DropDownChanged(oDDL) {
+        var oTextbox = oDDL.form.elements["city_txt"];
+        if (oTextbox) {
+            oTextbox.style.display = (oDDL.value == "") ? "" : "none";
+            if (oDDL.value == "")
+                oTextbox.focus();
+        }
+    }
+
+    function FormSubmit(oForm) {
+        var oHidden = oForm.elements["city"];
+        var oDDL = oForm.elements["city_ddl"];
+        var oTextbox = oForm.elements["city_txt"];
+        if (oHidden && oDDL && oTextbox)
+            oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
+    }
+
+</script>
