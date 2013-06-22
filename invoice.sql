@@ -83,6 +83,7 @@ DROP TABLE IF EXISTS `customers`;
 CREATE TABLE `customers` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` enum('single','monthly') NOT NULL DEFAULT 'single',
+  `title` enum('Mr.','Mrs.','Ms.','Dr.') NOT NULL,
   `first_name` varchar(20) NOT NULL,
   `last_name` varchar(20) NOT NULL,
   `address_line_1` varchar(50) NOT NULL,
@@ -105,7 +106,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'single','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,6 +189,11 @@ CREATE TABLE `invoices` (
   `discount_2` float(4,2) NOT NULL,
   `discount_3` float(4,2) NOT NULL,
   `balance` float(12,2) NOT NULL,
+  `payment_mode` enum('cash','cheque','demand draft') NOT NULL,
+  `cheque_number` int(11) DEFAULT NULL,
+  `bank_name` varchar(50) DEFAULT NULL,
+  `bank_branch` varchar(50) DEFAULT NULL,
+  `bank_city` varchar(50) DEFAULT NULL,
   `comment` text NOT NULL,
   `review_number` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
@@ -206,7 +212,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-INSERT INTO `invoices` VALUES (1,1,5,'Kuch bhi falana dimka','2013-06-13','2013-06-13 00:00:00',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,0.00,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,5,'lksadngfkansg','2013-06-13','0000-00-00 00:00:00',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,0.00,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,2,5,'askdjflakjfkl','2013-06-18','0000-00-00 00:00:00',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,0.00,'laknsdlkgfsd',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `invoices` VALUES (1,1,5,'Kuch bhi falana dimka','2013-06-13','2013-06-13 00:00:00',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,5,'lksadngfkansg','2013-06-13','0000-00-00 00:00:00',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,2,5,'askdjflakjfkl','2013-06-18','0000-00-00 00:00:00',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'laknsdlkgfsd',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -423,7 +429,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-21 09:41:53','2013-06-11 18:30:00','2013-06-21 09:41:53');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-22 05:43:53','2013-06-11 18:30:00','2013-06-22 05:43:53');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -436,4 +442,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-21 15:51:34
+-- Dump completed on 2013-06-22 11:48:16
