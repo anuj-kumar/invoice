@@ -14,6 +14,7 @@ class Controller_ArchiveBase extends Controller_Template {
 
         return Model_Invoice::find('all', array(
                     'where' => array(
+                                array('t1.type' => 'single'),
                         array('content', 'like', '%' . $query . '%'),
                         'or' => array(
                             array('t1.first_name', 'like', '%' . $query . '%'),
