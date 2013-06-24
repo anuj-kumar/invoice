@@ -54,14 +54,7 @@ class Model_Customer extends \Orm\Model {
       'key_to' => 'customer_id',
       )
       ); */
-    /*protected static $_has_one = array(
-        'monthlycustomer', array(
-            'key_from' => 'id',
-            'key_to' => 'customer_id',
-            'Model_from' => 'Model_Monthlycustomer',
-            'cascade_save' => false
-        )
-    );*/
+    protected static $_has_one = array('monthlycustomer');
     protected static $_table_name = 'customers';
 
 }

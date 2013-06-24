@@ -2,11 +2,11 @@
     <h3 class="span6 pull-left">ARCHIVE</h3>
     <div class="span pull-right">
         <form class="form-search">
-                <div class="input-append">
-                    <input type="text" class="span2 search-query" name="q" value="<?php echo Session::get('query') ?>" />
-                    <button type="submit" class="btn">Search</button>
-                </div>
-            </form>
+            <div class="input-append">
+                <input type="text" class="span2 search-query" name="q" value="<?php echo Session::get('query') ?>" />
+                <button type="submit" class="btn">Search</button>
+            </div>
+        </form>
     </div>    
 </div>
 <!-- Disable the prev link if on first page -->
@@ -23,7 +23,7 @@
     .archive{height: 400px;overflow-y: visible}
     .archive td{text-align: center}
 </style>
-<?//= $base; ?> 
+<? //= $base; ?>
 <div class="row archive">
     <table class="archive_view">
         <tr>
@@ -51,13 +51,15 @@
 
         </tr>
 
-        <?php $i = 1;
+        <?php
+        $i = 1;
         foreach ($invoices as $invoice):
             ?>
             <tr>
                 <td>
                     <?php echo $i;
-                    $i++ ?>
+                    $i++
+                    ?>
                 </td>
                 <td>
                     <?php echo $invoice->id ?>
@@ -75,9 +77,9 @@
                     <?php echo $invoice->timestamp ?>
                 </td>
                 <td>
-                    <?php echo $invoice->amount ?>
+            <?php echo $invoice->amount ?>
                 </td>
             </tr>
-        <?php endforeach ?>
+<?php endforeach ?>
     </table>
 </div>

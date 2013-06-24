@@ -6,6 +6,9 @@ class Model_Monthlycustomer extends \Orm\Model
 	protected static $_properties = array(
 		'id',
 		'customer_id',
+        'org_name',
+        'org_print_name',
+        'org_code',
 		'contract_file',
 		'contract_discount',
 		'outstanding',

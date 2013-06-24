@@ -23,6 +23,27 @@ class Controller_User extends Controller_Base {
         $user->save();
     }
     
+    public function action_list() {
+        $offset = Input::get('o');
+        $limit = 10;
+        $data['users'] = Model_User::find('all', array(
+                    'related' => 'access_right',
+                    'rows_limit' => $limit,
+                    'rows_offset' => $offset,
+        ));
+
+        $uri = Input::uri();
+        $count = count($data['users']);
+
+        $data['prev'] = $uri . ((isset($offset) && $offset > $limit) ? '?o=' . ($offset - $limit) : NULL);
+        $data['next'] = $uri . '?o=';
+        $data['next'] .= (isset($offset) ? ($offset + $offset < $count ? $limit : 0) : $limit);
+
+        $data["subnav"] = array('users' => 'active');
+        $this->template->title = 'System log | Users';
+        $this->template->content = View::forge('user/list', $data);
+    }
+
     public function action_modify() {
         $access_right = Model_Access_Right::find('first', array(
             'where' => array('user_id' => Input::post('user_id'))
@@ -36,7 +57,7 @@ class Controller_User extends Controller_Base {
         $res = $access_right->save();
         if($res) {
             Session::set_flash('Permissions changed successfully!');
-            Response::redirect('system_log/users');
+            Response::redirect('user/list');
         }
     }
 
