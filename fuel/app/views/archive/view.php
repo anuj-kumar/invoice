@@ -8,7 +8,7 @@
                 <button type="submit" class="btn">Search</button>
             </div>
         </form>
-    </div>    
+   </div>    
 </div>
 <!-- Disable the prev link if on first page -->
 <div class="row span10"><span style="float: right"> <?php echo Html::anchor($prev, 'Prev') . " | " . Html::anchor($next, 'Next'); ?></span></div>
