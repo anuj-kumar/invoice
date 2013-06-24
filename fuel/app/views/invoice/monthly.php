@@ -36,13 +36,13 @@
                 <?php echo "S. No." ?>
             </th>
             <th>
-                ID
+                Organization Code
             </th>
             <th>
-                Name
+                Organization Name
             </th>
             <th>
-                Last Name
+                Outstanding Amount
             </th>
             
         </tr>
@@ -52,18 +52,23 @@
             ?>
             <tr>
                 <td>
-                    <?php echo $i;
+                    <?php echo Html::anchor('archive/invoice/monthly_details/'.$month->id, $i);                    
                     $i++ ?>
                 </td>
                 <td>
-                    <?php echo $month->id ?>
+                    <?php echo Html::anchor('archive/invoice/monthly_details/'.$month->id, $month->org_code);                    
+                    ?>
                 </td>
                 <td>
-                    <?php echo $month->customer->first_name ?>
+                    <?php echo Html::anchor('archive/invoice/monthly_details/'.$month->id, $month->org_name); ?>
                 </td>
                 <td>
-                    <?php echo $month->customer->last_name ?>
+                    <?php 
+                    if(($month->outstanding) > 0){
+                    echo "<span style='color:red'>".$month->outstanding."</span>"; }
+                    else echo "<span style='color:green'>".$month->outstanding."</span>";?>
                 </td>
+                
             </tr>
         <?php endforeach ?>
     </table>
