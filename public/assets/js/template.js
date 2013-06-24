@@ -9,6 +9,6 @@ var Month=months[m];
 var Day=days[da];
 var Y=dt.getFullYear();
 //console.log(d);
-document.getElementById("time").innerHTML = Month+" "+d+"<sup>th</sup> "+Y+", "+Day+", " + dt.toLocaleTimeString();
+document.getElementById("time").innerHTML = "<h4>"+Month+" "+d+"<sup>th</sup> "+Y+", "+Day+", " + dt.toLocaleTimeString()+"</h4>";
 window.setTimeout("ShowCurrentTime()", 1000); 
 }

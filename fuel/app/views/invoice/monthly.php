@@ -2,7 +2,7 @@
     <div class="span5 ">
         <form class="form-search">
             <div class="input-append">
-                <input type="text" class="span2 search-query" name="q" value="<?php echo Session::get('query') ?>" />
+                <input type="text" class="span2 search-query" name="q" value="<?php echo Session::get('monthly_query') ?>" />
                 <button type="submit" class="btn">Search</button>
             </div>
         </form>

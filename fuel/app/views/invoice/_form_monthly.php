@@ -72,10 +72,7 @@
             <label>Contract File : <em class="formee-req"></em></label>
             <input type="file" name="file" class="formee-large" placeholder="Contract File" required>
         </div>
-        <div class="grid-4-12 ">
-            <label>Client Discount : <em class="formee-req">*</em></label>
-            <input type="number" name="discount" class="formee-large" placeholder="discount" required>
-        </div>
+        
     </div>
 
 </fieldset>
