@@ -6,7 +6,7 @@ class Controller_Archive extends Controller_ArchiveBase {
         Response::redirect('/archive/view');
     }
 
-    public function action_view($type = '', $sort = 'id', $order = 'a') {
+    public function view($type = '', $sort = 'id', $order = 'a') {
 
         $offset = Input::get('o');
         $limit = 10;
@@ -21,10 +21,17 @@ class Controller_Archive extends Controller_ArchiveBase {
         $data['prev'] = $uri . ((isset($offset) && $offset > $limit) ? '?o=' . ($offset - $limit) : NULL);
         $data['next'] = $uri . '?o=';
         $data['next'] .= (isset($offset) ? ($offset + $offset < $count ? $limit : 0) : $limit);
-        $data['base'] = 'archive/view';
+        $data['base'] = $uri;//'archive/view';
 
         $this->template->title = 'Archive &raquo; View';
         $this->template->content = View::forge('archive/view', $data);
     }
+    
+    public function action_single($sort = 'id', $order = 'a') {
+        $this->view('single', $sort, $order);
+    }
 
+    public function action_monthly($sort = 'id', $order = 'a') {
+        $this->view('monthly', $sort, $order);
+    }
 }

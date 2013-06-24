@@ -43,7 +43,7 @@ CREATE TABLE `access_rights` (
 
 LOCK TABLES `access_rights` WRITE;
 /*!40000 ALTER TABLE `access_rights` DISABLE KEYS */;
-INSERT INTO `access_rights` VALUES (2,5,'0','0','1','0','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `access_rights` VALUES (2,5,'1','','1','1','0000-00-00 00:00:00','0000-00-00 00:00:00');
 /*!40000 ALTER TABLE `access_rights` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -305,6 +305,9 @@ DROP TABLE IF EXISTS `monthly_customers`;
 CREATE TABLE `monthly_customers` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
+  `org_name` varchar(50) NOT NULL,
+  `org_print_name` varchar(30) DEFAULT NULL,
+  `org_code` varchar(5) NOT NULL,
   `contract_file` varchar(50) NOT NULL,
   `contract_discount` decimal(4,2) NOT NULL,
   `outstanding` decimal(12,2) NOT NULL,
@@ -323,7 +326,7 @@ CREATE TABLE `monthly_customers` (
 
 LOCK TABLES `monthly_customers` WRITE;
 /*!40000 ALTER TABLE `monthly_customers` DISABLE KEYS */;
-INSERT INTO `monthly_customers` VALUES (1,2,'/var/www/invoice/readme.md',0.00,12000.00,'2013-06-28','2013-06-21 12:09:05','2013-06-21 12:09:05');
+INSERT INTO `monthly_customers` VALUES (1,2,'',NULL,'','/var/www/invoice/readme.md',0.00,12000.00,'2013-06-28','2013-06-21 12:09:05','2013-06-21 12:09:05');
 /*!40000 ALTER TABLE `monthly_customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -429,7 +432,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-22 05:43:53','2013-06-11 18:30:00','2013-06-22 05:43:53');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-24 05:11:21','2013-06-11 18:30:00','2013-06-24 05:11:21');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -442,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-22 11:48:16
+-- Dump completed on 2013-06-24 13:05:06
