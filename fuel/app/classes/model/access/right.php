@@ -7,6 +7,7 @@ class Model_Access_Right extends \Orm\Model {
         'id',
         'user_id',
         'print_invoice',
+        'view_archive',
         'add_panel',
         'add_monthly_customer',
         'created_at',
@@ -26,7 +27,7 @@ class Model_Access_Right extends \Orm\Model {
         'user' => array(
             'key_from' => 'user_id',
             'key_to' => 'id',
-            'cascade_save' => false,
+            'cascade_save' => true,
             'cascade_delete' => true,
         )
     );

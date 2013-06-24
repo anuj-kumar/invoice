@@ -23,7 +23,7 @@
     .archive{height: 400px;overflow-y: visible}
     .archive td{text-align: center}
 </style>
-
+<?//= $base; ?> 
 <div class="row archive">
     <table class="archive_view">
         <tr>
@@ -31,25 +31,22 @@
                 <?php echo "S. No." ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/id/' . $order, 'ID'); ?>
+                <?php echo Html::anchor($base . '/id/' . $order, 'ID'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/type/' . $order, 'Type'); ?>
+                <?php echo Html::anchor($base . '/first_name/' . $order, 'First Name'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/first_name/' . $order, 'First Name'); ?>
+                <?php echo Html::anchor($base . '/last_name/' . $order, 'Last Name'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/last_name/' . $order, 'Last Name'); ?>
+                <?php echo Html::anchor($base . '/date/' . $order, 'Date'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/date/' . $order, 'Date'); ?>
+                <?php echo Html::anchor($base . '/timestamp/' . $order, 'Timestamp'); ?>
             </th>
             <th>
-                <?php echo Html::anchor('archive/view/timestamp/' . $order, 'Timestamp'); ?>
-            </th>
-            <th>
-                <?php echo Html::anchor('archive/view/amount/' . $order, 'Amount'); ?>
+                <?php echo Html::anchor($base . '/amount/' . $order, 'Amount'); ?>
             </th>
 
         </tr>
@@ -64,9 +61,6 @@
                 </td>
                 <td>
                     <?php echo $invoice->id ?>
-                </td>
-                <td>
-                    <?php echo $invoice->customer->type ?>
                 </td>
                 <td>
                     <?php echo $invoice->customer->first_name ?>
