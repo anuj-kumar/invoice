@@ -1,18 +1,20 @@
+<?php echo Asset::css('formee-structure.css'); ?>
+<?php echo Asset::css('formee-style.css'); ?>
+<?php echo Asset::js('formee.js'); ?>
 
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_monthly")); ?>
-<h4>Monthly Customer</h4>    
 <fieldset>
     <div class="grid-12-12 ">
         <div class="grid-4-12 ">
-            <label>Client Name : <em class="formee-req">*</em></label>
-            <input type="text" name="client_name" class="formee-large" placeholder="Client Name" required autofocus>
+            <label>Organization Name : <em class="formee-req">*</em></label>
+            <input type="text" name="client_name" class="formee-large" value="<?php echo $monthly_customers->org_name; ?>" placeholder="Organization Name" required autofocus>
         </div>
         <div class="grid-3-12 ">
-            <label>Client Print Name : <em class="formee-req">*</em></label>
-            <input type="text" name="client_print" class="" placeholder="Last Name" style="width: 150px" required>
+            <label>Organization Print Name : <em class="formee-req">*</em></label>
+            <input type="text" name="client_print" class="" placeholder="PrintName" style="width: 150px" required>
         </div>
         <div class="grid-2-12 ">
-            <label>Client Title : <em class="formee-req">*</em></label>
+            <label>Title : <em class="formee-req">*</em></label>
             <select name="title" style="width: 60px" required>
                 <option>Dr.</option>
                 <option>Mr.</option>
@@ -22,7 +24,7 @@
         </div>
         <div class="grid-3-12 ">
             <label>Client Contact : <em class="formee-req">*</em></label>
-            <input type="text" name="name" class="formee-medium" placeholder="Last Name" required>
+            <input type="text" name="name" class="formee-large" placeholder="Name" required>
         </div>
     </div>  
     <div class="grid-12-12 " style="margin-top: -20px">
@@ -57,7 +59,7 @@
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
-            <input type='tel' name="tele" pattern='[\+]\d{12}' placeholder='Tele: +99(99)9999-9999' autocomplete="off" required>
+            +<input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px" placeholder='9999999999' autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Email : <em class="formee-req">*</em></label>

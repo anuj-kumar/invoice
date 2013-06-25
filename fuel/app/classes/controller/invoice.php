@@ -43,7 +43,6 @@ class Controller_Invoice extends Controller_Base {
 
     public function action_submit_single() {
         $this->submit_customer_details(Input::post);
-        
     }
 
     public function action_monthly() {
@@ -58,8 +57,8 @@ class Controller_Invoice extends Controller_Base {
     public function action_submit_monthly() {
 //        $this->submit_customer_details($_POST, 'monthly');
         print_r($_POST);
-
     }
+
     public function action_monthly_new() {
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Monthly';
@@ -76,6 +75,15 @@ class Controller_Invoice extends Controller_Base {
         $data['panels'] = Model_Panel::find('all');
         $this->template->title = 'Invoice | Payment';
         $this->template->content = View::forge('invoice/payment', $data);
+    }
+
+    public function action_monthly_details($id = 1) {
+        $data['monthly_customers'] = Model_Monthlycustomer::find($id, array(
+                    'related' => array('customer'),
+//            'where' => array('t1.type' => 'monthly')
+        ));
+        $this->template->title = 'Invoice | Monthly';
+        $this->template->content = View::forge('invoice/monthly_details', $data);
     }
 
 }
