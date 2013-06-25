@@ -50,6 +50,9 @@
     top:120px; 
     width:65%;
     height:70%;
+    overflow-y: auto;
+    overflow-x: hidden;
+
 }
 
 .right-sidebar{

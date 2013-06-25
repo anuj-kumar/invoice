@@ -52,15 +52,15 @@
             ?>
             <tr>
                 <td>
-                    <?php echo Html::anchor('archive/invoice/monthly_details/'.$month->id, $i);                    
+                    <?php echo Html::anchor('invoice/monthly_details/'.$month->id, $i);                    
                     $i++ ?>
                 </td>
                 <td>
-                    <?php echo Html::anchor('archive/invoice/monthly_details/'.$month->id, $month->org_code);                    
+                    <?php echo Html::anchor('invoice/monthly_details/'.$month->id, $month->org_code);                    
                     ?>
                 </td>
                 <td>
-                    <?php echo Html::anchor('archive/invoice/monthly_details/'.$month->id, $month->org_name); ?>
+                    <?php echo Html::anchor('invoice/monthly_details/'.$month->id, $month->org_name); ?>
                 </td>
                 <td>
                     <?php 
