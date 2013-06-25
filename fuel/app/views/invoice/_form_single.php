@@ -55,8 +55,8 @@
         </div>
         <div class="grid-3-12 ">
             <label>State : <em class="formee-req">*</em></label>
-            <input list="states" name="city" placeholder="State" required autocomplete='off'>
-            <datalist id="states">
+            <input list="state" name="state" placeholder="State" required autocomplete='off'>
+            <datalist id="state">
                 <option value="Karnataka">
                 <option value="Goa">
                 <option value="Kerala">

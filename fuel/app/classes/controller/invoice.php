@@ -17,6 +17,8 @@ class Controller_Invoice extends Controller_Base {
 
     private function submit_customer_details($data, $type) {
         $customer = Model_Customer::forge(array(
+                    'type' => 'single',
+                    'title' => $data['title'],
                     'first_name' => $data['f_name'],
                     'last_name' => $data['l_name'],
                     'address_line_1' => $data['addr_1'],
@@ -29,6 +31,8 @@ class Controller_Invoice extends Controller_Base {
                     'email' => $data['email'],
                     'type' => $type,
         ));
+        $customer->invoice = new Model_Invoice();
+        $customer->invoice->user_id = Session::get('user')->id;
         $val = $customer->save();
 
         print_r($customer);
@@ -42,7 +46,7 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_submit_single() {
-        $this->submit_customer_details(Input::post);
+        $this->submit_customer_details($_POST, 'single');
     }
 
     public function action_monthly() {

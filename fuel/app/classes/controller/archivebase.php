@@ -12,7 +12,13 @@ class Controller_ArchiveBase extends Controller_Template {
             $query = Session::get('query');
         }
 
-        return Model_Invoice::find('all', array(
+        if($sort == 'first_name' || $sort == 'last_name' || $sort == 'type') {
+            $sort = 't1.' . $sort;
+        }
+        else if($sort == 'user') {
+            $sort = 't2.name';
+        }
+        $invoices = Model_Invoice::find('all', array(
                     'where' => array(
                         array('t1.type', 'like', '%' . $type . '%'),
                         array(
@@ -26,13 +32,16 @@ class Controller_ArchiveBase extends Controller_Template {
                         )
                     ),
                     'order_by' => array(
-                        (($sort == 'first_name' || $sort == 'last_name' || $sort == 'type') ? 't1.' . $sort : $sort) => $order
+                            $sort => $order
                     ),
-                    'related' => array('customer'),
+                    'related' => array('customer', 'user'),
                     'rows_limit' => $limit,
                     'rows_offset' => $offset
                         )
         );
+        
+        return $invoices;
+        
     }
 
 }
