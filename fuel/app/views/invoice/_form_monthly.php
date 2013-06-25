@@ -59,7 +59,7 @@
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
-            +<input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px" placeholder='9999999999' autocomplete="off" required>
+            <input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px" placeholder='9999999999' autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Email : <em class="formee-req">*</em></label>

@@ -21,7 +21,7 @@ class Controller_Archive extends Controller_ArchiveBase {
         $data['prev'] = $uri . ((isset($offset) && $offset > $limit) ? '?o=' . ($offset - $limit) : NULL);
         $data['next'] = $uri . '?o=';
         $data['next'] .= (isset($offset) ? ($offset + $offset < $count ? $limit : 0) : $limit);
-        $data['base'] = $uri;//'archive/view';
+        $data['base'] = 'archive/' . $type;
 
         $this->template->title = 'Archive &raquo; View';
         $this->template->content = View::forge('archive/view', $data);

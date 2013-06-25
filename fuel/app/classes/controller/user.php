@@ -7,20 +7,28 @@
  */
 class Controller_User extends Controller_Base {
 
-    public function action_index() {
+    public function action_create() {
+        $this->template->title = 'Create User';
+        $this->template->content = View::forge('user/create');
         
     }
 
-    public function action_create() {
-        $user = new Model_User();
-        $user->name = Input::post('name');
-        $user->password = Input::post('password');
-        $user->access_right = new Model_Access_Right();
-        $user->access_right->print_invoice = Input::post('print_invoice');
-        $user->access_right->view_archive = Input::post('view_archive');
-        $user->access_right->add_panel = Input::post('add_panel');
-        $user->access_right->add_monthly_customer = Input::post('add_monthly_customer');
-        $user->save();
+    public function action_user_submit() {
+        if(Input::post()) {
+            $user = new Model_User();
+            $user->name = Input::post('name');
+            $user->password = Input::post('password');
+            $user->access_right = new Model_Access_Right();
+            $user->access_right->print_invoice = Input::post('print_invoice');
+            $user->access_right->view_archive = Input::post('view_archive');
+            $user->access_right->add_panel = Input::post('add_panel');
+            $user->access_right->add_monthly_customer = Input::post('add_monthly_customer');
+            $user->save();
+            Response::redirect('user/list');
+        }
+        else {
+            Response::redirect('user/index');
+        }
     }
     
     public function action_list() {

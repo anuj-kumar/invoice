@@ -48,12 +48,11 @@ class Model_Customer extends \Orm\Model {
       )
       )
       ); */
-    /*    protected static $_has_many = array(
-      'invoices', array(
-      'key_from' => 'id',
-      'key_to' => 'customer_id',
-      )
-      ); */
+    protected static $_has_many = array(
+        'invoices', array(
+            'cascade_save' => true
+        )
+    );
     protected static $_has_one = array('monthlycustomer');
     protected static $_table_name = 'customers';
 
