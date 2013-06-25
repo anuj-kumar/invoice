@@ -80,8 +80,8 @@
                     </li>
                     <li class="item3"><a href="#">Archive</a>
                         <ul>
-                            <li class="subitem1"><?php echo Html::anchor('archive/view/single', 'Single'); ?></li>
-                            <li class="subitem2"><?php echo Html::anchor('archive/view/monthly', 'Monthly'); ?></li>
+                            <li class="subitem1"><?php echo Html::anchor('archive/single', 'Single'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('archive/monthly', 'Monthly'); ?></li>
 
                         </ul>
                     </li>

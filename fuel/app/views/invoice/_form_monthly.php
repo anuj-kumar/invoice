@@ -72,7 +72,6 @@
             <label>Contract File : <em class="formee-req"></em></label>
             <input type="file" name="file" class="formee-large" placeholder="Contract File" required>
         </div>
-        
     </div>
 
 </fieldset>
