@@ -38,7 +38,7 @@ class Controller_Invoice extends Controller_Base {
         print_r($customer);
 
         if ($val == 1) {
-            Response::redirect('/invoice/content');
+            Response::redirect('/invoice/content/' . $customer->id);
         } else {
             Session::set_flash('error', 'Error in Form');
             return Response::forge(View::forge('invoice/single'));
@@ -64,14 +64,15 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_monthly_new() {
-        
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Monthly';
         $this->template->content = View::forge('invoice/monthly_new', $data);
     }
 
-    public function action_content() {
-        $data['panels'] = Model_Panel::find('all');
+    public function action_content($customer_id = NULL) {
+        $panels = Model_Panel::find('all');
+        $data['panels'] = $panels;
+        $data['customer_id'] = $customer_id;
         $this->template->title = 'Invoice | Main Content';
         $this->template->content = View::forge('invoice/invoice', $data);
     }

@@ -49,7 +49,7 @@ class Model_Customer extends \Orm\Model {
       )
       ); */
     protected static $_has_many = array(
-        'invoices', array(
+        'invoices' => array(
             'cascade_save' => true
         )
     );

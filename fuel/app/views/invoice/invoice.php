@@ -21,6 +21,8 @@ print_r($disorder);
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_content")); ?>
 Invoice Content:
     <div class="span3 pull-right">
+
+    <input type="hidden" name="customer_id" value="<?php echo $customer_id ?>" />
     <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('invoice_content')" />
         <input class="btn btn-danger" type="button" value="Delete Row" onclick="deleteRow('invoice_content')" />
 </div>
@@ -47,9 +49,9 @@ Invoice Content:
                 <TR>
                         <td><INPUT type="checkbox" name="chk"/></td>
                         <td > <INPUT class="qty" type="number" placeholder="Qty." style="width:40px" /> </td>
-            <TD> <INPUT type="text"  placeholder="panel" style="width:150px" /> </TD>
-            <TD> <INPUT type="text"   placeholder="unit price" style="width:100px" /> </TD>
-            <TD> <INPUT type="text"  placeholder="price" style="width:100px" /> </TD>
+            <TD> <INPUT type="text" placeholder="panel" style="width:150px" /> </TD>
+            <TD> <INPUT type="text" placeholder="unit price" style="width:100px" /> </TD>
+            <TD> <INPUT type="text" placeholder="price" style="width:100px" /> </TD>
                     </TR>
 
     </table>

@@ -95,9 +95,9 @@ CREATE TABLE `customers` (
   `phone` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'single','Mr.','alskdf','lksdjf','laksjdhf','lksadjfg','sldkfjg',0,0,123231,2147483647,'a@a.xom','0000-00-00 00:00:00','2013-06-24 11:59:07'),(4,'single','Dr.','laskdf','lsdkjfng','lkdsfng','lkdsfng','sklfdg',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:03:10'),(5,'single','Dr.','laskdf','lsdkjfng','laskdjf','ksdjfg','kjfgld',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:15:07'),(6,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 05:45:27'),(7,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 06:00:20');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -197,7 +197,7 @@ CREATE TABLE `invoices` (
   `comment` text NOT NULL,
   `review_number` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk_invoice_costumer` (`customer_id`),
   KEY `fk_invoice_user` (`user_id`),
@@ -432,7 +432,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-24 05:11:21','2013-06-11 18:30:00','2013-06-24 05:11:21');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-25 05:01:00','2013-06-11 18:30:00','2013-06-25 05:01:00');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -445,4 +445,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-24 13:05:06
+-- Dump completed on 2013-06-26 10:29:39
