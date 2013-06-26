@@ -74,7 +74,7 @@
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
-            <input type='tele' name="tele" pattern='[\+]\d{2}\d{2}\d{4}\d{4}' placeholder='Tele: +99(99)9999-9999' autocomplete="off" required>
+            + <input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Email :</label>

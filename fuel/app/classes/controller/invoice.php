@@ -64,6 +64,7 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_monthly_new() {
+        
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Monthly';
         $this->template->content = View::forge('invoice/monthly_new', $data);
