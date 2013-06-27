@@ -35,7 +35,7 @@ class Controller_Invoice extends Controller_Base {
         $customer->invoice->user_id = Session::get('user')->id;
         $val = $customer->save();
 
-        print_r($customer);
+//        print_r($customer);
 
         if ($val == 1) {
             Response::redirect('/invoice/content/' . $customer->id);

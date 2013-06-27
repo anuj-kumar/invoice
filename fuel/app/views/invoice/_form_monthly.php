@@ -7,7 +7,7 @@
     <div class="grid-12-12 ">
         <div class="grid-4-12 ">
             <label>Organization Name : <em class="formee-req">*</em></label>
-            <input type="text" name="client_name" class="formee-large"  placeholder="Organization Name" required autofocus>
+            <input type="text" name="client_name" class="formee-large" value="<?php echo $monthly_customers->org_name; ?>" placeholder="Organization Name" required autofocus>
         </div>
         <div class="grid-3-12 ">
             <label>Organization Print Name : <em class="formee-req">*</em></label>
