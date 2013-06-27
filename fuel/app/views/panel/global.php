@@ -9,8 +9,9 @@
 </script>
 <div class="row container">
     <h4>Global Panel</h4>
-        <div class="span3 pull-right">
+        <div class="span4 pull-right">
         <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('panel_table')" />
+      <input class="btn btn-danger"type="button" value="Delete Row" onclick="deleteRow('panel_table')" />
 
     </div>
     <br /><br />

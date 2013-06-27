@@ -11,13 +11,17 @@
 
 <?php
 $i = 0;
+$panel_arr[$i]="";
+
 foreach ($panels as $panel):
     $panel_arr[$i]['name'] = $panel->name;
-    echo $panel->name;
+    echo $panel->name." , ";
     $j = 0;
     foreach ($panel->global_panel_prices as $price_obj):
         $panel_arr[$i]['price'] = $price_obj->price;
-        //echo $price_obj->price;
+         $panel_arr[$i]['vol_high'] = $price_obj->vol_high;
+       
+//echo $price_obj->price;
         //echo "<br>";
         break;
     endforeach;
@@ -28,9 +32,9 @@ endforeach;
 //print_r($disorder);
 ?>
 <script type="text/javascript">
-    var panels = new Array();
-    panels = <?php echo json_encode((array) $panel_arr); ?>
-//    alert(panel.name + " " + panel.price);
+    var panel = new Array();
+    panel = <?php echo json_encode((array) $panel_arr); ?>;
+    console.log(panel);
 </script>
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_content")); ?>
 Invoice Content:
@@ -42,7 +46,7 @@ Invoice Content:
 </div>
 <div class="invoice_content_table">
     <table id="invoice_content" class="invoice_content">
-        <th>Delete</th>
+        
         <th>Qty.</th>
         <th>Panel</th>
         <th>Unit Price</th>
@@ -59,7 +63,6 @@ Invoice Content:
             <td id = "price" style="text-align: right"></td>
             <td>Add Row</td>
         </tr>
-        -->
                 <TR>
                         <td><INPUT type="checkbox" name="chk"/></td>
                         <td > <INPUT class="qty" type="number" placeholder="Qty." style="width:40px" /> </td>
@@ -67,7 +70,7 @@ Invoice Content:
             <TD> <INPUT type="text" placeholder="unit price" style="width:100px" /> </TD>
             <TD> <INPUT type="text" placeholder="price" style="width:100px" /> </TD>
                     </TR>
-
+-->
     </table>
      
 

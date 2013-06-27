@@ -33,6 +33,7 @@ $pdf->setPrintFooter(false);
 // add a page
 $pdf->AddPage();
 
+
 // set some text to print
 // create some HTML content
 

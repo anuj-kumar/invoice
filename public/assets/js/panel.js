@@ -96,29 +96,22 @@ function addRow(tableID) {
             element11.style.width = "60px";
     element11.placeholder = "INR";
         cell10.appendChild(element11);
- 
+ count++;
         }
  
 //window.onload=addRow('panel_table');
+   
         function deleteRow(tableID) {
                 try {
                     var table = document.getElementById(tableID);
                     var rowCount = table.rows.length;
- 
-                    for (var i = 0; i < rowCount; i++) {
-                            var row = table.rows[i];
-                            var chkbox = row.cells[0].childNodes[0];
-                            if (null != chkbox && true == chkbox.checked) {
-                                    table.deleteRow(i);
-                                    rowCount--;
-                                    i--;
-                            }
- 
- 
-                    }
+                    if(count>0){
+                    table.deleteRow(count);
+                    rowCount--;
+                    count--;
+                     }
                 } catch (e) {
                         alert(e);
                 }
-    count++;
         }
  
