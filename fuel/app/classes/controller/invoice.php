@@ -59,6 +59,8 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_submit_monthly() {
+        $this->template->title = 'Invoice | Monthly';
+        $this->template->content = 1;
 //        $this->submit_customer_details($_POST, 'monthly');
         print_r($_POST);
     }
@@ -90,6 +92,21 @@ class Controller_Invoice extends Controller_Base {
         ));
         $this->template->title = 'Invoice | Monthly';
         $this->template->content = View::forge('invoice/monthly_details', $data);
+    }
+
+    public function action_submit_payment() {
+        print_r($_POST);
+        $this->template->title = 'Invoice | Monthly';
+        $this->template->content = 1;
+    }
+
+    public function action_print($id=1) {
+          $data['monthly_customers'] = Model_Monthlycustomer::find($id, array(
+                    'related' => array('customer'),
+//            'where' => array('t1.type' => 'monthly')
+        ));
+        $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
+        return Response::forge(View::forge('invoice/pdf', $data));
     }
 
 }
