@@ -11,13 +11,27 @@
 
 <?php
 $i = 0;
-$disorder[$i] = "";
 foreach ($panels as $panel):
-    $disorder[$i] = $panel->name;
+    $panel_arr[$i]['name'] = $panel->name;
+    echo $panel->name;
+    $j = 0;
+    foreach ($panel->global_panel_prices as $price_obj):
+        $panel_arr[$i]['price'] = $price_obj->price;
+        //echo $price_obj->price;
+        //echo "<br>";
+        break;
+    endforeach;
+//    print_r($disorder);
+//    break;
     $i++;
 endforeach;
-print_r($disorder);
+//print_r($disorder);
 ?>
+<script type="text/javascript">
+    var panels = new Array();
+    panels = <?php echo json_encode((array) $panel_arr); ?>
+//    alert(panel.name + " " + panel.price);
+</script>
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_content")); ?>
 Invoice Content:
     <div class="span3 pull-right">

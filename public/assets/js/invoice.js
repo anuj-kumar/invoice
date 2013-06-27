@@ -1,9 +1,9 @@
-      function addRow(tableID) {
- 
-                var table = document.getElementById(tableID);
- 
-                var rowCount = table.rows.length;
-                var row = table.insertRow(rowCount);
+function addRow(tableID) {
+    
+    var table = document.getElementById(tableID);
+
+    var rowCount = table.rows.length;
+    var row = table.insertRow(rowCount);
 
     var choices = [];
     choices[0] = "one";
