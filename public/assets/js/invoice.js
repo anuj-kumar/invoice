@@ -11,7 +11,7 @@ function addRow(tableID) {
     var cell2 = row.insertCell(0);
      var newDiv = document.createElement('div');
     var selectHTML = "";
-    selectHTML = "<input type='number' id='panel_qty"+ct+"' name='panel_qty"+ct+"' style='width:80px' onchange='panel_change(this,"+ct+");'>";
+    selectHTML = "<input type='number' id='panel_qty"+ct+"' name='panel_qty"+ct+"' style='width:80px' onkeyup='change("+ct+");'>";
      selectHTML += "</input>";
     newDiv.innerHTML = selectHTML;
     cell2.appendChild(newDiv);
@@ -30,7 +30,7 @@ function addRow(tableID) {
     var cell4 = row.insertCell(2);
     var newDiv = document.createElement('div');
     var selectHTML = "";
-    selectHTML = "<input id='panel_price"+ct+"' name='panel_price"+ct+"' style='width:80px' onchange='panel_change(this,"+ct+");'>";
+    selectHTML = "<input id='panel_price"+ct+"' name='panel_price"+ct+"' style='width:80px' >";
      selectHTML += "</input>";
     newDiv.innerHTML = selectHTML;
     cell4.appendChild(newDiv);
@@ -57,6 +57,25 @@ function addRow(tableID) {
      for(var i=0;i<=panel.length;i++){   
      console.log(panel[i]);
         if(panel[i].name==oDDL.value){
+             document.getElementById(panel_price).value=panel[i].price;
+             document.getElementById(panel_ext).value=qty*panel[i].price;
+             
+        } 
+    }
+     
+    }
+    
+ function change(n){
+        //var opt=document.getElementById('panel_select').
+     console.log('1');
+     panel_price="panel_price"+n;
+     panel_ext="panel_ext_price"+n;
+     panel_qty="panel_qty"+n;
+     panel_name="panel_select"+n;
+     var name=document.getElementById(panel_name).value;
+     var qty=document.getElementById(panel_qty).value;
+     for(var i=0;i<=panel.length;i++){   
+        if(panel[i].name==name){
              document.getElementById(panel_price).value=panel[i].price;
              document.getElementById(panel_ext).value=qty*panel[i].price;
              
