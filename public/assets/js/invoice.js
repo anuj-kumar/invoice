@@ -1,7 +1,7 @@
 var ct=0;
 var vol=0;
 var total=0;
-
+var flag=0;
 function addRow(tableID) {
     var table = document.getElementById(tableID);
     console.log(panel);
@@ -84,9 +84,9 @@ function addRow(tableID) {
     }
     amt(); 
     }
-    
+    var vol_count=0;
  function change(n){
-     var flag=0;
+     
      console.log('Qty changed');   
      panel_price="panel_price"+n;
      panel_ext="panel_ext_price"+n;
@@ -94,10 +94,13 @@ function addRow(tableID) {
      panel_name="panel_select"+n;
      var name=document.getElementById(panel_name).value;
      var qty=document.getElementById(panel_qty).value;
-     console.log(qty);
+     //console.log(qty);
+     //if(vol_count==1 && vol==0) vol=1;
+     if(qty >= panel[0][vol].vol_high ){ console.log('high');vol++; flag=1;  vol_count=1;}
+     else if(flag==1 && qty <= panel[0][vol-1].vol_high  ){ console.log('low');vol--; flag=0;}
+     if(qty >= panel[0][vol].vol_high && flag==1) console.log(qty);
+     console.log('flag:'+flag+'vol:'+vol);
      console.log(panel[0][vol].vol_high)
-     if(qty >= panel[0][vol].vol_high ){ console.log('high');vol++; flag=1}
-     else if(qty <= panel[0][vol-1].vol_high && flag==1){ console.log('low');vol--;}
      for(var i=0;i<panel.length;i++){
      if(panel[i][vol].name==name){
              document.getElementById(panel_price).value=panel[i][vol].price;
