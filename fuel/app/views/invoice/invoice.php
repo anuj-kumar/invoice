@@ -12,32 +12,27 @@
 <?php
 $i = 0;
 $panel_arr[$i]="";
-
+ //$j = 1;
 foreach ($panels as $panel):
-    $panel_arr[$i]['name'] = $panel->name;
-    echo $panel->name." , ";
-    $j = 0;
+    $j =0;
+    //echo $panel->name." , ";
+    
     foreach ($panel->global_panel_prices as $price_obj):
-        $panel_arr[$i]['price'] = $price_obj->price;
-         $panel_arr[$i]['vol_high'] = $price_obj->vol_high;
-       
-//echo $price_obj->price;
-        //echo "<br>";
-        break;
+        $panel_arr[$i][$j]['name'] = $panel->name;
+        $panel_arr[$i][$j]['price'] = $price_obj->price;
+        $panel_arr[$i][$j]['vol_high'] = $price_obj->vol_high;
+        $j++; 
     endforeach;
-//    print_r($disorder);
-//    break;
     $i++;
 endforeach;
-//print_r($disorder);
+//print_r($panel_arr);
 ?>
 <script type="text/javascript">
     var panel = new Array();
     panel = <?php echo json_encode((array) $panel_arr); ?>;
-    console.log(panel);
+    
 </script>
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_content")); ?>
-Invoice Content:
     <div class="span3 pull-right">
 
     <input type="hidden" name="customer_id" value="<?php echo $customer_id ?>" />
@@ -78,7 +73,7 @@ Invoice Content:
 <div class="row" style="border-bottom:1px solid black"></div>
 <div class="row" style="padding-top:5px">
     <div class="span5 pull-left">
-        Total Rs.<input type="text" /> 
+        Total Rs.<input type="text" id="total" name="total" /> 
         <br />Current Due ( Rs.) :
         <br />Outstanding (Rs. ):
         <br />Due Date:
