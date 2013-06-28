@@ -3,6 +3,7 @@ var vol=0;
 var total=0;
 var flag=0;
 function addRow(tableID) {
+    
     var table = document.getElementById(tableID);
     console.log(panel);
     var rowCount = table.rows.length;
