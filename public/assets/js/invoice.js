@@ -68,7 +68,7 @@ function addRow(tableID) {
     }
     
  function price_change(n){
-     console.log('unit price changed');
+  console.log('unit price changed');
      panel_price="panel_price"+n;
      panel_ext="panel_ext_price"+n;
      panel_qty="panel_qty"+n;
