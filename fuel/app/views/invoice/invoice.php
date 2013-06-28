@@ -11,17 +11,13 @@
 
 <?php
 $i = 0;
-$panel_arr[$i]="";
-
 foreach ($panels as $panel):
     $panel_arr[$i]['name'] = $panel->name;
-    echo $panel->name." , ";
+    echo $panel->name;
     $j = 0;
     foreach ($panel->global_panel_prices as $price_obj):
         $panel_arr[$i]['price'] = $price_obj->price;
-         $panel_arr[$i]['vol_high'] = $price_obj->vol_high;
-       
-//echo $price_obj->price;
+        //echo $price_obj->price;
         //echo "<br>";
         break;
     endforeach;
@@ -79,14 +75,14 @@ Invoice Content:
 <div class="row" style="padding-top:5px">
     <div class="span5 pull-left">
         Total Rs.<input type="text" /> 
-        <br />Current Due ( Rs.) :
-        <br />Outstanding (Rs. ):
+        <br />Current Due (Rs.):
+        <br />Outstanding (Rs.):
         <br />Due Date:
 
     </div>
     <div class="span4 ">
         <label>Comment Box:</label>
-        <textarea style="height: 70px;width: 300px" >All amounts are due within 30 days of receipt of invoice.Interest on outstanding balances will be charged at a monthly rate of 1.5% </textarea> 
+        <textarea style="height: 70px;width: 300px" >All amounts are due within 30 days of receipt of invoice. Interest on outstanding balances will be charged at a monthly rate of 1.5% </textarea>
     </div>
     <div class="span1" style="margin-top:40px;margin-left: 40px">
         <input class="btn btn-large btn-danger" type="submit" value="Next" />

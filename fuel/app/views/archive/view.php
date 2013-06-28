@@ -24,7 +24,6 @@
     .archive{height: 400px;overflow-y: visible}
     .archive td{text-align: center}
 </style>
-<? //= $base; ?>
 <div class="row archive">
     <table class="archive_view">
         <tr>

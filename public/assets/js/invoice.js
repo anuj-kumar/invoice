@@ -1,5 +1,6 @@
 var ct=0;
 function addRow(tableID) {
+    
     var table = document.getElementById(tableID);
 
     var rowCount = table.rows.length;

@@ -73,7 +73,8 @@ class Controller_Invoice extends Controller_Base {
 
     public function action_content($customer_id = NULL) {
         $panels = Model_Panel::find('all', array(
-            'related' => array('global_panel_prices')
+            'related' => array('global_panel_prices'),
+            'where' => array('t1.vol_low' => '1')
         ));
         $data['panels'] = $panels;
         $data['customer_id'] = $customer_id;

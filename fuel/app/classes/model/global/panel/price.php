@@ -23,7 +23,7 @@ class Model_Global_Panel_Price extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-    
+
     protected static $_belongs_to = array('panel');
 	protected static $_table_name = 'global_panel_prices';
 
