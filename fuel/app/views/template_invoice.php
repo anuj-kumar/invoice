@@ -73,8 +73,9 @@
                     </li>
                     <li class="item2"><a href="#">Panels</a>
                         <ul>
-                            <li class="subitem1"><a href="#">Pricing </a></li>
-                            <li class="subitem2"><a href="#">Add</a></li>
+                            <li class="subitem1"><?php echo Html::anchor('panel/', 'Global'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('panel/', 'Local'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('panel/add', 'Add'); ?></li>
 
                         </ul>
                     </li>
@@ -124,7 +125,7 @@
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>
 
-            <div class="errors"><h5>Errors* :</h5><hr /></div>
+            <div class="errors" id="error"><h5>Errors* :</h5><hr /></div>
         </div>
 
         <div class="footer" >

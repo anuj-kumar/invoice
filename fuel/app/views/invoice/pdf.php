@@ -42,45 +42,41 @@ $html = '
 <style >
 
  .address{}
- .header{ border-bottom:4px solid black;}
+ .line{ border-bottom:4px solid black;}
 </style>
 
-<table>
-<tr>
+<table style="height:100px">
+<tr style="height:60px">
 <td style="width:220px">
 <h4>NeoGen Labs Pvt. Ltd</h4>
 </td>
-<td style="text-align: right;width:320px">
-		<p >
+<td style="text-align: right;width:320px;">
 			UCF CENTER # 84/3 Oil Mill Road (On Hennur Main Road)<br />
 			Lingarajuram # Bangalore 560084 # Karnataka # India <br />	
 			T: + 91 80 25805600 # F: 91 80 2580 5603 <br />
 			E: info@neogenlabs.com <br />
 			W: www.neogenlabs.com	
-		</p>
-
+                   <br /><br /><h1>Invoice No. : 12345</h1>
 </td>
 </tr>
-</table>
-<div class="header">
 
-		<div class="address" style="position:fixed;left:50px;top:0px;text-align:right;width:500px">
-		</div>
+<div class="line">
 </div>
 
+</table>
 <div class= "main" style="position:fixed;top:0px;width:100%;min-height:400px">
 <h4 style="text-align:center"> FIRST STEP<sup>TM</sup> SALES INVOICE </h4>
 <table>
 <tr>
 <td style="width:400px">
-Name: '.$monthly_customers->customer->first_name." ".$monthly_customers->customer->last_name.'<br />address line #1 <br />line #2<br /> city State
-<br />T: #
-<br />E: aa@aa.com
+<b>'.$invoice->customer->first_name." ".$invoice->customer->last_name.'</b><br />'.$invoice->customer->address_line_1.' <br />'.$invoice->customer->address_line_2.'<br />'.$invoice->customer->city." ".$invoice->customer->state.'
+<br />T: '.$invoice->customer->phone.'
+<br />E: '.$invoice->customer->email.'
 <br /><br />
 </td>
 <td>
-Date: <br/>
-Invoice No: <br />
+Date:  <br/>
+Invoice No: '.'12345'.' <br />
 Billing Period: <br />
 PAN: <br />
 TIN: NA*<br /><br />
@@ -100,27 +96,27 @@ FP No:<br />
 </table>
 <br />
 <table border="1" style="text-align:center;">
-<tr>
+<tr style="background-color: grey;">
 <td></td>
 <td>Qty.</td>
 <td>Panel</td>
 <td>Unit Price</td>
 <td>Extended Price</td>
 </tr>
-<tr  style="background-color: grey;">
+<tr  style="">
 <td style="">1.</td>
 <td style="">10</td>
-<td style="">HS+</td>
-<td style="">100</td>
-<td style="">1000</td>
+<td style="text-align:left">HS+</td>
+<td style="text-align:right">100.00</td>
+<td style="text-align:right">1000.00</td>
 
 </tr>
-<tr  style="background-color: white;">
+<tr  style="background-color: grey;">
 <td style=""></td>
 <td style=""></td>
-<td style="">Total</td>
+<td style="text-align:left">Total</td>
 <td style=""></td>
-<td style="">100000</td>
+<td style="text-align:right">1000.00</td>
 
 </tr>
 

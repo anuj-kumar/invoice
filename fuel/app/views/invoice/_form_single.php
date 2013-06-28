@@ -24,8 +24,8 @@
     </div>  
     <div class="grid-12-12 " style="margin-top: 0px">
         <div class="grid-4-12 ">
-            <label>Address Line #1 : <em class="formee-req"></em></label>
-            <input type="text" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
+            <label>Address Line #1 : </label>
+            <input type="text" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" >
         </div>
         <div class="grid-4-12 ">
             <label>Address Line #2 : <em class="formee-req">*</em></label>
@@ -37,10 +37,9 @@
         </div>
     </div>
     <div class="grid-12-12 " style="margin-top: -20px">
-        <div class="grid-5-12 ">
-            <label>City : <em class="formee-req"></em></label>
-            <input type="hidden" name="city" />
-            <input list="city" name="city" placeholder="city" required autocomplete='off'>
+        <div class="grid-3-12 ">
+            <label>City : <em class="formee-req">*</em></label>
+            <input list="city" name="city" placeholder="city" required autocomplete='off' style="width: 140px">
             <datalist id="city">
                 <option value="Kolkata">
                 <option value="Delhi">
@@ -51,11 +50,10 @@
                 <option value="Jaipur">
                 <option value="Chandigarh">
             </datalist>
-            </di<input type="text" class="formee-small" name="city_txt" style="display: none;" />
         </div>
         <div class="grid-3-12 ">
             <label>State : <em class="formee-req">*</em></label>
-            <input list="state" name="state" placeholder="State" required autocomplete='off'>
+            <input list="state" name="state" placeholder="State"  style="width: 140px" autocomplete='off'>
             <datalist id="state">
                 <option value="Karnataka">
                 <option value="Goa">
@@ -65,16 +63,29 @@
                     <option value="Punjab">
             </datalist>
         </div>
+        
+        <div class="grid-3-12 ">
+            <label>Country : <em class="formee-req">*</em></label>
+            <input list="country" name="country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+            <datalist id="country">
+                <option value="India">
+                <option value="USA">
+                <option value="">
+                <option value="">
+                <option value="">
+                    <option value="">
+            </datalist>
+        </div>
         <div class="grid-2-12  " style="float: right" >
             <label>Pin Code : </label>
-            <input type="text" name="pin" class="formee-large" placeholder="Pincode" style="width:100px" >
+            <input type="text" name="pin" id="pincode" class="formee-large" placeholder="Pincode" style="width:100px" onBlur="pincode_val()">
         </div>
     </div>
 
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
-            + <input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
+            + <input type='tel' name="tele" id="country_code" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Email :</label>
@@ -104,5 +115,27 @@
         if (oHidden && oDDL && oTextbox)
             oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
     }
+    
+    function pincode_val(){
+            var country=document.getElementById('country').value;
+            if(country=="India" || country=="india") {
+                var pincode= document.getElementById('pincode').value;
+                if(pincode.length != 6) 
+                       {
+                           document.getElementById('error').innerHTML="* Pincode should be 6 characters";
+                           document.getElementById('country_code').value="91";
+                           document.getElementById('pincode').focus();
+                       }
+                else
+                        {
+                           document.getElementById('error').innerHTML="";
+                           
+                       }
+                       
+            }
+            else  document.getElementById('country_code').value=" ";
+                 
+    }
+    
 
 </script>

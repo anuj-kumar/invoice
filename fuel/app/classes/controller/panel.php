@@ -10,6 +10,7 @@ class Controller_Panel extends Controller_Base {
     }
 
     public function action_submit() {
+        
         print_r(Input::post('vol_low'));
         print_r(Input::post('vol_low.0'));
         $i = 0;

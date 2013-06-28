@@ -103,11 +103,18 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = 1;
     }
 
-    public function action_print($id=1) {
-          $data['monthly_customers'] = Model_Monthlycustomer::find($id, array(
+    public function action_print_single($id=1) {
+          $data['invoice'] = Model_Invoice::find($id, array(
                     'related' => array('customer'),
-//            'where' => array('t1.type' => 'monthly')
         ));
+        $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
+        return Response::forge(View::forge('invoice/pdf', $data));
+    }
+    public function action_print_monthly($id=1) {
+          $data['invoice'] = Model_Invoice::find($id, array(
+                    'related' => array('customer'),
+        ));
+          
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
         return Response::forge(View::forge('invoice/pdf', $data));
     }

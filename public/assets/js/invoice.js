@@ -96,11 +96,12 @@ function addRow(tableID) {
      var qty=document.getElementById(panel_qty).value;
      //console.log(qty);
      //if(vol_count==1 && vol==0) vol=1;
-     if(qty >= panel[0][vol].vol_high ){ console.log('high');vol++; flag=1;  vol_count=1;}
-     else if(flag==1 && qty <= panel[0][vol-1].vol_high  ){ console.log('low');vol--; flag=0;}
-     if(qty >= panel[0][vol].vol_high && flag==1) console.log(qty);
-     console.log('flag:'+flag+'vol:'+vol);
-     console.log(panel[0][vol].vol_high)
+     //if(qty >= panel[0][vol].vol_high ){ console.log('high');vol++; flag=1;  vol_count=1;}
+     //else if(flag==1 && qty <= panel[0][vol-1].vol_high  ){ console.log('low');vol--; flag=0;}
+     //if(qty >= panel[0][vol].vol_high && flag==1) console.log(qty);
+     //console.log('flag:'+flag+'vol:'+vol);
+     //console.log(panel[0][vol].vol_high);
+     find_vol(qty);
      for(var i=0;i<panel.length;i++){
      if(panel[i][vol].name==name){
              document.getElementById(panel_price).value=panel[i][vol].price;
@@ -117,11 +118,30 @@ function addRow(tableID) {
          panel_price="panel_ext_price"+i;
          var value=parseFloat(document.getElementById(panel_price).value);
          total=total+value;
-         console.log('total:'+total);
+        // console.log('total:'+total);
         }
         document.getElementById('total').value=total;
     } 
-     
+ 
+    function find_vol(qty){
+        
+        var len=panel[0].length;
+        var low =0;
+        console.log(qty)
+        for(var i=0;i<len;i++){
+                console.log(i);
+                if(qty > low  && qty < parseInt(panel[0][i].vol_high) )
+                {  
+                    console.log(low+' '+ parseInt(panel[0][i].vol_high));
+                    vol=i;
+                    console.log(low+' '+vol+' '+ parseInt(panel[0][i].vol_high));
+                    
+                   
+                }
+                low=panel[0][i].vol_high;
+        }
+            
+    }
     
         function deleteRow(tableID) {
                 try {

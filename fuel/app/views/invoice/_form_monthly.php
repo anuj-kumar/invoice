@@ -7,7 +7,7 @@
     <div class="grid-12-12 ">
         <div class="grid-4-12 ">
             <label>Organization Name : <em class="formee-req">*</em></label>
-            <input type="text" name="client_name" class="formee-large" value="<?php echo $monthly_customers->org_name; ?>" placeholder="Organization Name" required autofocus>
+            <input type="text" name="client_name" class="formee-large" value="" placeholder="Organization Name" required autofocus>
         </div>
         <div class="grid-3-12 ">
             <label>Organization Print Name : <em class="formee-req">*</em></label>
@@ -29,12 +29,12 @@
     </div>  
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
-            <label>Address Line #1 : <em class="formee-req"></em></label>
+            <label>Address Line #1 : <em class="formee-req">*</em></label>
             <input type="text" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
-            <label>Address Line #2 : <em class="formee-req">*</em></label>
-            <input type="text" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" required>
+            <label>Address Line #2 : </label>
+            <input type="text" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
         </div>
         <div class="grid-4-12 ">
             <label>Address Line #3 : </label>
@@ -43,7 +43,7 @@
     </div>
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
-            <label>City : <em class="formee-req"></em></label>
+            <label>City : <em class="formee-req">*</em></label>
             <input type="text" name="city" class="formee-large" placeholder="City" required>
         </div>
         <div class="grid-4-12 ">
