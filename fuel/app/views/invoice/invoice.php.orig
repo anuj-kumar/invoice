@@ -11,14 +11,24 @@
 
 <?php
 $i = 0;
-$j = 0;
 foreach ($panels as $panel):
-    $panel_arr[$i][$j]['name'] = $panel->name;
+<<<<<<< HEAD
+    $panel_arr[$i]['name'] = $panel->name;
+    echo $panel->name;
+=======
+>>>>>>> 3d7a9a11f8c405bb6760e48d78c871784f30dc36
+    $j = 0;
+    $panel_arr[$i]['name'] = $panel->name;
+    //echo $panel->name." , ";
+    
     foreach ($panel->global_panel_prices as $price_obj):
-        $panel_arr[$i][$j]['price'] = $price_obj->price;
-        $panel_arr[$i][$j]['vol_high'] = $price_obj->vol_high;
-		$j++;
+        $panel_arr[$i]['price'] = $price_obj->price;
+        //echo $price_obj->price;
+        //echo "<br>";
+        break;
     endforeach;
+//    print_r($disorder);
+//    break;
     $i++;
 endforeach;
 //print_r($disorder);
@@ -69,9 +79,15 @@ endforeach;
 <div class="row" style="border-bottom:1px solid black"></div>
 <div class="row" style="padding-top:5px">
     <div class="span5 pull-left">
-        Total Rs.<input type="text" id="total" name="total" /> 
+<<<<<<< HEAD
+        Total Rs.<input type="text" /> 
         <br />Current Due (Rs.):
         <br />Outstanding (Rs.):
+=======
+        Total Rs.<input type="text" id="total" name="total" /> 
+        <br />Current Due ( Rs.) :
+        <br />Outstanding (Rs. ):
+>>>>>>> 3d7a9a11f8c405bb6760e48d78c871784f30dc36
         <br />Due Date:
 
     </div>
