@@ -73,7 +73,8 @@ class Controller_Invoice extends Controller_Base {
 
     public function action_content($customer_id = NULL) {
         $panels = Model_Panel::find('all', array(
-            'related' => array('global_panel_prices')
+            'related' => array('global_panel_prices'),
+            'where' => array('t1.vol_low' => '1')
         ));
         
         $data['panels'] = $panels;
@@ -103,14 +104,7 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = 1;
     }
 
-    public function action_print_single($id=1) {
-          $data['invoice'] = Model_Invoice::find($id, array(
-                    'related' => array('customer'),
-        ));
-        $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
-        return Response::forge(View::forge('invoice/pdf', $data));
-    }
-    public function action_print_monthly($id=1) {
+    public function action_print($id=1) {
           $data['invoice'] = Model_Invoice::find($id, array(
                     'related' => array('customer'),
         ));

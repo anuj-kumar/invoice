@@ -251,7 +251,7 @@ return array(
             'orm',
             'auth',
             'parser',
-	    'pdf',
+	    	'pdf',
         ),
     /**
      * These modules are always loaded on Fuel's startup. You can specify them

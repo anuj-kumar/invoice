@@ -24,7 +24,6 @@
     .archive{height: 400px;overflow-y: visible}
     .archive td{text-align: center}
 </style>
-<? //= $base; ?>
 <div class="row archive">
     <table class="archive_view">
         <tr>
@@ -67,16 +66,16 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo $invoice->user->name ?>
+                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->user->name); ?> 
                 </td>
                 <td>
-                    <?php echo $invoice->id ?>
+                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->user->id); ?> 
                 </td>
                 <td>
-                    <?php echo $invoice->customer->first_name ?>
+                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->customer->first_name); ?> 
                 </td>
                 <td>
-                    <?php echo $invoice->customer->last_name ?>
+                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->customer->last_name); ?> 
                 </td>
                 <td>
                     <?php echo $invoice->date ?>
@@ -85,7 +84,7 @@
                     <?php echo $invoice->timestamp ?>
                 </td>
                 <td>
-            <?php echo $invoice->amount ?>
+            <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->amount); ?>
                 </td>
             </tr>
 <?php endforeach ?>
