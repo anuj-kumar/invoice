@@ -27,13 +27,13 @@ class Model_Monthlycustomer extends \Orm\Model
 			'mysql_timestamp' => false,
 		),
 	);
-    protected $_has_many = array('local_panel_prices');
-    protected static $_belongs_to = array('customer',
+    protected static $_has_many = array('local_panel_prices');
+    protected static $_belongs_to = array('customer'/*,
             array(
                 'key_from' => 'customer_id',
                 'model_to' => 'Model_Customer',
                 'key_to' => 'id',
-            ));
+            )*/);
 	protected static $_table_name = 'monthly_customers';
 
 }

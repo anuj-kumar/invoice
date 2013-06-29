@@ -15,7 +15,7 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = View::forge('invoice/single', $data);
     }
 
-    private function submit_customer_details($data, $type) {
+    private function fill_customer_details($data, $type) {
         $customer = Model_Customer::forge(array(
                     'type' => 'single',
                     'title' => $data['title'],
@@ -31,6 +31,11 @@ class Controller_Invoice extends Controller_Base {
                     'email' => $data['email'],
                     'type' => $type,
         ));
+        return $customer;
+    }
+
+    public function action_submit_single() {
+        $customer = $this->submit_customer_details($_POST, 'single');
         $customer->invoice = new Model_Invoice();
         $customer->invoice->user_id = Session::get('user')->id;
         $val = $customer->save();
@@ -43,10 +48,6 @@ class Controller_Invoice extends Controller_Base {
             Session::set_flash('error', 'Error in Form');
             return Response::forge(View::forge('invoice/single'));
         }
-    }
-
-    public function action_submit_single() {
-        $this->submit_customer_details($_POST, 'single');
     }
 
     public function action_monthly() {
@@ -99,7 +100,7 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_submit_payment() {
-        print_r($_POST);
+//        print_r($_POST);
         $this->template->title = 'Invoice | Monthly';
         $this->template->content = 1;
     }
@@ -113,4 +114,29 @@ class Controller_Invoice extends Controller_Base {
         return Response::forge(View::forge('invoice/pdf', $data));
     }
 
+    public function action_submit_monthly_new() {
+/*            $name  = explode(' ', Input::post('name'));
+            $customer = Model_Customer::forge(array(
+            'title' => Input::post('title'),
+            'first_name' => $name[0],
+            'last_name' => 'name',
+            'address_line_1' => Input::post('addr_1'),
+            'address_line_2' => Input::post('addr_2'),
+            'city' => Input::post('city'),
+            'state' => Input::post('state'),
+            'pincode' => Input::post('pincode'),
+            'phone' => Input::post('phone'),
+            'email' => Input::post('email'),
+            'type' => 'monthly',
+        ));*/
+//        $customer->monthlycustomer = new Model_Monthlycustomer();
+        $customer = $this->fill_customer_details($_POST, 'monthly');
+        $customer->monthlycustomer = Model_Monthlycustomer::forge(array(
+            'org_name' => Input::post('org_name'),
+            'org_print_name' => Input::post('org_name'),
+            'org_code' => Input::post('org_code'),
+        ));
+        if(Upload::is_valid()) $this->template->content = "Yes";
+        $customer->save();
+    }
 }
