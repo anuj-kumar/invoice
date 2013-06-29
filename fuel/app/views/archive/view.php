@@ -55,6 +55,8 @@
         </tr>
 
         <?php
+		$base = '/invoice/print/';
+		$url = $base . $invoice->id;
         $i = 1;
         foreach ($invoices as $invoice):
             ?>
@@ -66,16 +68,16 @@
                     ?>
                 </td>
                 <td>
-                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->user->name); ?> 
+                    <?php echo Html::anchor($url, $invoice->user->name); ?> 
                 </td>
                 <td>
-                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->user->id); ?> 
+                    <?php echo Html::anchor($url, $invoice->user->id); ?> 
                 </td>
                 <td>
-                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->customer->first_name); ?> 
+                    <?php echo Html::anchor($url, $invoice->customer->first_name); ?> 
                 </td>
                 <td>
-                    <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->customer->last_name); ?> 
+                    <?php echo Html::anchor($url, $invoice->customer->last_name); ?> 
                 </td>
                 <td>
                     <?php echo $invoice->date ?>
@@ -84,7 +86,7 @@
                     <?php echo $invoice->timestamp ?>
                 </td>
                 <td>
-            <?php echo Html::anchor('/invoice/print/'.$invoice->id, $invoice->amount); ?>
+            <?php echo Html::anchor($url, $invoice->amount); ?>
                 </td>
             </tr>
 <?php endforeach ?>

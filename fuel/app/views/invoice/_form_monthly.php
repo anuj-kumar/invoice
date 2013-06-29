@@ -2,16 +2,16 @@
 <?php echo Asset::css('formee-style.css'); ?>
 <?php echo Asset::js('formee.js'); ?>
 
-<?php echo Form::open(array("class" => "", "action" => "/invoice/submit_monthly")); ?>
+<?php echo Form::open(array("class" => "", "action" => "/invoice/submit_monthly_new", "enctype" => "multipart/form-data")); ?>
 <fieldset>
     <div class="grid-12-12 ">
         <div class="grid-4-12 ">
             <label>Organization Name : <em class="formee-req">*</em></label>
-            <input type="text" name="client_name" class="formee-large" value="" placeholder="Organization Name" required autofocus>
+            <input type="text" name="org_name" class="formee-large" placeholder="Organization Name" required autofocus>
         </div>
         <div class="grid-3-12 ">
             <label>Organization Print Name : <em class="formee-req">*</em></label>
-            <input type="text" name="client_print" class="" placeholder="PrintName" style="width: 150px" required>
+            <input type="text" name="org_print_name" class="" placeholder="PrintName" style="width: 150px" required>
         </div>
         <div class="grid-2-12 ">
             <label>Title : <em class="formee-req">*</em></label>
@@ -59,20 +59,20 @@
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
-            <input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
+            <input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="phone" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Email : <em class="formee-req">*</em></label>
             <input type='email' name="email" placeholder='Email: example@example.com' autocomplete="off" >
         </div>
         <div class="grid-4-12 ">
-            <input  class="btn btn-large btn-danger" type='submit'  value="Submit" style="margin-left: 40px;margin-top: 20px;min-width:100px">
+            <label>Contract File : <em class="formee-req"></em></label>
+            <input type="file" name="file" class="formee-large" placeholder="Contract File" required>
         </div>
     </div>
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
-            <label>Contract File : <em class="formee-req"></em></label>
-            <input type="file" name="file" class="formee-large" placeholder="Contract File" required>
+            <input  class="btn btn-large btn-danger" type='submit'  value="Submit" style="margin-left: 40px;margin-top: 20px;min-width:100px">
         </div>
     </div>
 
