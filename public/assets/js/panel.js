@@ -33,6 +33,7 @@ function addRow(tableID, num_of_panels) {
  
 }
  
+console.log(count);
 //window.onload=addRow('panel_table');
         function deleteRow(tableID) {
                 try {

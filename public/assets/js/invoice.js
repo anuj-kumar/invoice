@@ -24,7 +24,7 @@ function addRow(tableID) {
     var selectHTML = "";
     selectHTML = "<select id='panel_select"+ct+"' name='panel_name"+ct+"' onchange='panel_change(this,"+ct+");' required>";
     for (i = 0; i < panel.length; i = i + 1) {
-        selectHTML += "<option value='" + panel[i][vol].name + "'>" + panel[i][vol].name + "</option>";
+        selectHTML += "<option value='" + panel[i][vol].id + "'>" + panel[i][vol].name + "</option>";
     }
     selectHTML += "</select>";
     newDiv.innerHTML = selectHTML;

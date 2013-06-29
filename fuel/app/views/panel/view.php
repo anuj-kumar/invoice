@@ -1,3 +1,6 @@
+<style>
+    .panel_table th,td{width: 80px;border-bottom: 1px black solid;padding-bottom: 2px;padding-top: 10px}
+</style>
 <?php
 $i = 0;
 foreach ($panels as $panel):
@@ -14,6 +17,7 @@ $j = 0;
     $i++;
 endforeach;
 $len=$j;
+echo $len.'<br />';
 ?>
 <script type="text/javascript">
     var panel = new Array();
@@ -22,25 +26,7 @@ $len=$j;
     console.log(len);
 </script>
 
-
-<?php ?>
-<style>
-    .panel_table th,td{width: 80px;border-bottom: 1px black solid;padding-bottom: 2px;padding-top: 10px}
-</style>
-<script>
-    var count = 0;
-</script>
-<div class="row container">
-    <h2>Panels Pricing </h2>
-        <div class="span3 pull-right">
-
-    </div>
-    
-</div>
-<div class="row container">
-    
-    <h1><?php if($monthly_customer) { echo $monthly_customer->org_name;} else { echo 'Global Panels'; } ?></h1>
-    <form action="/panel/submit_<?php echo isset($monthly_customer_id) ? "local" : "global"?>" method="POST">
+<form action="/invoice/public/panel/submit_<?php echo isset($monthly_customer_id) ? "local" : "global"?>" method="POST">
         <?php
         if (isset($monthly_customer_id)) {
             echo "<input type='hidden' name='monthly_customer_id' value='" . $monthly_customer_id . "'/>";
@@ -61,7 +47,7 @@ $len=$j;
         <div class="span5 pull-right" style="margin-top:10px">
         <input class="btn btn-danger"type="submit" value="Update"/>
                 <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('panel_table', <?php echo $num_of_panels ?>)" />
-                       <input class="btn btn-danger"type="button" value="Delete Row" onclick="deleteRow('panel_table')" />
+                <input class="btn btn-danger"type="button" value="Delete Row" onclick="deleteRow('panel_table')" />
         </div>
     </form>
 

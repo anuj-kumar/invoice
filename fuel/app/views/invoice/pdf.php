@@ -47,10 +47,10 @@ $html = '
 
 <table style="height:100px">
 <tr style="height:60px">
-<td style="width:220px">
-<h4>NeoGen Labs Pvt. Ltd</h4>
+<td style="width:200px">
+<img src="assets/img/Logo.jpg" height="140px" />
 </td>
-<td style="text-align: right;width:320px;">
+<td style="text-align: right;width:340px;">
 			UCF CENTER # 84/3 Oil Mill Road (On Hennur Main Road)<br />
 			Lingarajuram # Bangalore 560084 # Karnataka # India <br />	
 			T: + 91 80 25805600 # F: 91 80 2580 5603 <br />
@@ -68,7 +68,7 @@ $html = '
 <h4 style="text-align:center"> FIRST STEP<sup>TM</sup> SALES INVOICE </h4>
 <table>
 <tr>
-<td style="width:400px">
+<td style="width:350px">
 <b>'.$invoice->customer->first_name." ".$invoice->customer->last_name.'</b><br />'.$invoice->customer->address_line_1.' <br />'.$invoice->customer->address_line_2.'<br />'.$invoice->customer->city." ".$invoice->customer->state.'
 <br />T: '.$invoice->customer->phone.'
 <br />E: '.$invoice->customer->email.'
@@ -91,12 +91,13 @@ Name: B/O
 <td>
 FP No:<br />
 *NA: Not Applicable
-
+<br />
 </td></tr>
 </table>
 <br />
+<br />
 <table border="1" style="text-align:center;">
-<tr style="background-color: grey;">
+<tr style="">
 <td></td>
 <td>Qty.</td>
 <td>Panel</td>
@@ -111,7 +112,7 @@ FP No:<br />
 <td style="text-align:right">1000.00</td>
 
 </tr>
-<tr  style="background-color: grey;">
+<tr  style="">
 <td style=""></td>
 <td style=""></td>
 <td style="text-align:left">Total</td>
