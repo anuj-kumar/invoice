@@ -57,6 +57,7 @@ function addRow(tableID) {
      panel_ext="panel_ext_price"+n;
      panel_qty="panel_qty"+n;
      var qty=document.getElementById(panel_qty).value;
+     if(isNaN(qty)) qty=0;
      for(var i=0;i<panel.length;i++){   
      //console.log(panel[i]);
      if(panel[i][vol].name==oDDL.value){
@@ -76,7 +77,7 @@ function addRow(tableID) {
      panel_name="panel_select"+n;
      var name=document.getElementById(panel_name).value;
      var qty=document.getElementById(panel_qty).value;
-     
+     if(isNaN(qty)) qty=0;
      for(var i=0;i<panel.length;i++){   
         if(panel[i][vol].name==name){
              document.getElementById(panel_ext).value=qty*(document.getElementById(panel_price).value);
@@ -94,7 +95,8 @@ function addRow(tableID) {
      panel_qty="panel_qty"+n;
      panel_name="panel_select"+n;
      var name=document.getElementById(panel_name).value;
-     var qty=document.getElementById(panel_qty).value;
+     var qty=parseInt(document.getElementById(panel_qty).value);
+     if(isNaN(qty)) qty=0;
      //console.log(qty);
      //if(vol_count==1 && vol==0) vol=1;
      //if(qty >= panel[0][vol].vol_high ){ console.log('high');vol++; flag=1;  vol_count=1;}
@@ -127,7 +129,7 @@ function addRow(tableID) {
     function find_vol(qty){
         
         var len=panel[0].length;
-        var low =0;
+        var low = 0;
         console.log(qty)
         for(var i=0;i<len;i++){
                 console.log(i);
@@ -135,7 +137,7 @@ function addRow(tableID) {
                 {  
                     console.log(low+' '+ parseInt(panel[0][i].vol_high));
                     vol=i;
-                    console.log(low+' '+vol+' '+ parseInt(panel[0][i].vol_high));
+                    console.log(low+' '+ qty +' '+ parseInt(panel[0][i].vol_high));
                     
                    
                 }
