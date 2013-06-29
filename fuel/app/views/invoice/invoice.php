@@ -11,9 +11,9 @@
 
 <?php
 $i = 0;
-$j = 0;
 foreach ($panels as $panel):
-    $panel_arr[$i][$j]['name'] = $panel->name;
+$j = 0;
+
     foreach ($panel->global_panel_prices as $price_obj):
         $panel_arr[$i][$j]['name'] = $panel->name;
         $panel_arr[$i][$j]['price'] = $price_obj->price;

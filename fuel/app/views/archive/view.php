@@ -55,10 +55,11 @@
         </tr>
 
         <?php
-		$base = '/invoice/print/';
-		$url = $base . $invoice->id;
+		
         $i = 1;
         foreach ($invoices as $invoice):
+            $base = '/invoice/print/';
+            $url = $base . $invoice->id;
             ?>
             <tr>
                 <td>
