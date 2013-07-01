@@ -88,7 +88,7 @@ CREATE TABLE `customers` (
   `last_name` varchar(20) NOT NULL,
   `address_line_1` varchar(50) NOT NULL,
   `address_line_2` varchar(50) NOT NULL,
-  `address_line_3` varchar(50) NOT NULL,
+  `address_line_3` varchar(50) DEFAULT NULL,
   `city` int(11) NOT NULL,
   `state` int(11) NOT NULL,
   `pincode` int(6) NOT NULL,
@@ -97,7 +97,7 @@ CREATE TABLE `customers` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'single','Mr.','alskdf','lksdjf','laksjdhf','lksadjfg','sldkfjg',0,0,123231,2147483647,'a@a.xom','0000-00-00 00:00:00','2013-06-24 11:59:07'),(4,'single','Dr.','laskdf','lsdkjfng','lkdsfng','lkdsfng','sklfdg',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:03:10'),(5,'single','Dr.','laskdf','lsdkjfng','laskdjf','ksdjfg','kjfgld',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:15:07'),(6,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 05:45:27'),(7,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 06:00:20');
+INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'single','Mr.','alskdf','lksdjf','laksjdhf','lksadjfg','sldkfjg',0,0,123231,2147483647,'a@a.xom','0000-00-00 00:00:00','2013-06-24 11:59:07'),(4,'single','Dr.','laskdf','lsdkjfng','lkdsfng','lkdsfng','sklfdg',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:03:10'),(5,'single','Dr.','laskdf','lsdkjfng','laskdjf','ksdjfg','kjfgld',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:15:07'),(6,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 05:45:27'),(7,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 06:00:20'),(8,'monthly','Dr.','dofijg','name','sjfb','dfgj',NULL,0,0,251001,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-28 10:03:26'),(9,'monthly','Dr.','ldskfj','name','lkdfj','ldkfjg',NULL,0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-28 10:06:33'),(10,'monthly','Dr.','ldskfj','name','lkdfj','ldkfjg',NULL,0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-28 11:05:42');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -151,9 +151,9 @@ CREATE TABLE `global_panel_prices` (
   `panel_id` int(11) NOT NULL,
   `price` float(8,2) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +162,7 @@ CREATE TABLE `global_panel_prices` (
 
 LOCK TABLES `global_panel_prices` WRITE;
 /*!40000 ALTER TABLE `global_panel_prices` DISABLE KEYS */;
-INSERT INTO `global_panel_prices` VALUES (1,1,25,1,5000.00,'2013-06-18 18:53:22','0000-00-00 00:00:00'),(2,26,50,1,4000.00,'2013-06-18 18:57:53','0000-00-00 00:00:00'),(3,51,75,1,3750.00,'2013-06-18 18:57:53','0000-00-00 00:00:00'),(4,76,100,1,3500.00,'2013-06-18 18:57:53','0000-00-00 00:00:00');
+INSERT INTO `global_panel_prices` VALUES (1,1,25,1,5000.00,'0000-00-00 00:00:00','2013-06-27 09:43:47'),(2,1,25,2,4500.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(3,1,25,3,4250.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(4,1,25,4,4000.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(5,1,25,5,3750.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(6,1,25,6,3500.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(7,1,25,7,3250.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(8,1,25,8,3000.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(9,1,25,9,2750.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(10,25,50,1,4750.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(11,25,50,2,4500.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(12,25,50,3,4250.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(13,25,50,4,4000.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(14,25,50,5,3500.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(15,25,50,6,3250.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(16,25,50,7,3000.00,'0000-00-00 00:00:00','2013-06-27 09:43:48'),(17,25,50,8,2750.00,'0000-00-00 00:00:00','2013-06-27 09:43:49'),(18,25,50,9,2500.00,'0000-00-00 00:00:00','2013-06-27 09:43:49'),(19,51,100,1,4500.00,'0000-00-00 00:00:00','2013-06-28 01:45:53'),(20,51,100,2,4250.00,'0000-00-00 00:00:00','2013-06-28 01:46:14'),(21,51,100,3,4000.00,'0000-00-00 00:00:00','2013-06-28 01:46:23'),(22,51,100,4,3850.00,'0000-00-00 00:00:00','2013-06-28 01:46:35'),(23,51,100,5,3550.00,'0000-00-00 00:00:00','2013-06-28 01:46:43'),(24,51,100,6,3250.00,'0000-00-00 00:00:00','2013-06-28 01:46:50'),(25,51,100,7,3000.00,'0000-00-00 00:00:00','2013-06-28 01:47:05'),(26,51,100,8,2000.00,'0000-00-00 00:00:00','2013-06-28 01:47:12'),(27,51,100,9,1000.00,'0000-00-00 00:00:00','2013-06-28 01:47:18');
 /*!40000 ALTER TABLE `global_panel_prices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,6 +226,8 @@ DROP TABLE IF EXISTS `invoices_panels`;
 CREATE TABLE `invoices_panels` (
   `invoice_id` int(11) unsigned NOT NULL,
   `panel_id` int(11) unsigned NOT NULL,
+  `panel_quantity` int(11) NOT NULL,
+  `panel_price` float(12,2) NOT NULL,
   PRIMARY KEY (`invoice_id`,`panel_id`),
   KEY `panel_id` (`panel_id`),
   CONSTRAINT `invoices_panels_ibfk_1` FOREIGN KEY (`invoice_id`) REFERENCES `invoices` (`id`),
@@ -239,6 +241,7 @@ CREATE TABLE `invoices_panels` (
 
 LOCK TABLES `invoices_panels` WRITE;
 /*!40000 ALTER TABLE `invoices_panels` DISABLE KEYS */;
+INSERT INTO `invoices_panels` VALUES (1,1,12,0.00),(1,2,12,0.00);
 /*!40000 ALTER TABLE `invoices_panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -257,9 +260,9 @@ CREATE TABLE `local_panel_prices` (
   `panel_id` int(11) NOT NULL,
   `price` float(8,2) NOT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -268,6 +271,7 @@ CREATE TABLE `local_panel_prices` (
 
 LOCK TABLES `local_panel_prices` WRITE;
 /*!40000 ALTER TABLE `local_panel_prices` DISABLE KEYS */;
+INSERT INTO `local_panel_prices` VALUES (1,1,1,21,1,58.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(2,1,1,21,2,218.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(3,1,1,21,3,186.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(4,1,1,21,4,1684.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(5,1,1,21,5,1678.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(6,1,1,21,6,187.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(7,1,1,21,7,15647.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(8,1,1,21,8,4189.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(9,1,0,0,1,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(10,1,0,0,2,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(11,1,0,0,3,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(12,1,0,0,4,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(13,1,0,0,5,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(14,1,0,0,6,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(15,1,0,0,7,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(16,1,0,0,8,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16');
 /*!40000 ALTER TABLE `local_panel_prices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -310,10 +314,12 @@ CREATE TABLE `monthly_customers` (
   `org_code` varchar(5) NOT NULL,
   `contract_file` varchar(50) NOT NULL,
   `contract_discount` decimal(4,2) NOT NULL,
-  `outstanding` decimal(12,2) NOT NULL,
+  `outstanding` decimal(12,2) NOT NULL DEFAULT '0.00',
   `duedate` date NOT NULL,
+  `last_payment_amount` float(12,2) DEFAULT NULL,
+  `last_payment_date` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `fk_monthly_customer` (`customer_id`),
   CONSTRAINT `monthly_customers_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
@@ -326,7 +332,7 @@ CREATE TABLE `monthly_customers` (
 
 LOCK TABLES `monthly_customers` WRITE;
 /*!40000 ALTER TABLE `monthly_customers` DISABLE KEYS */;
-INSERT INTO `monthly_customers` VALUES (1,2,'',NULL,'','/var/www/invoice/readme.md',0.00,12000.00,'2013-06-28','2013-06-21 12:09:05','2013-06-21 12:09:05');
+INSERT INTO `monthly_customers` VALUES (1,2,'',NULL,'','/var/www/invoice/readme.md',0.00,12000.00,'2013-06-28',NULL,NULL,'2013-06-21 12:09:05','2013-06-21 06:39:05');
 /*!40000 ALTER TABLE `monthly_customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -432,7 +438,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-25 05:01:00','2013-06-11 18:30:00','2013-06-25 05:01:00');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-30 23:25:25','2013-06-11 18:30:00','2013-07-01 04:55:25');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -445,4 +451,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-06-26 10:29:39
+-- Dump completed on 2013-07-01 10:49:21
