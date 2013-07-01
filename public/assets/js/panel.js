@@ -10,13 +10,14 @@ function addRow(tableID, num_of_panels) {
        element1.type = "text";
        element1.name = "vol_low[" + count + "]";
        element1.style.width = "20px";
+       element1.required = "true";
        cell1.appendChild(element1);
 
        var element2 = document.createElement("input");
        element2.type = "text";
        element2.name = "vol_high[" + count + "]";
        element2.style.width = "20px";
-       cell1.appendChild(element2);
+       cell1.appendChild(element2);
  
     console.log(num_of_panels);
     for (var i = 1; i <= num_of_panels; i++) {

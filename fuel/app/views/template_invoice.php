@@ -99,25 +99,8 @@
                 </ul>
             </div>
         </div>
-        <div class="main well" >
-            <div class="row">
-                <div class="span4 pull-left">
-                    <h2><?php echo $data; ?></h2>
-                </div>
-                <div class="span6 pull-right" style="column-count: 2">
-                    <div class="span2 pull-left" >Date: 
-                        <br>Invoice No: 
-                        <br>Billing Period: 
-                    </div>
-                    <div class="span3 pull-right">
-                        PAN:
-                        <br>TIN:
-                        <br>FP NO: 
-                    </div>
-                </div>
-            </div> 
-            <?php echo $content; ?> 
-        </div> 
+        <?php echo $content; ?> 
+        
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>
 

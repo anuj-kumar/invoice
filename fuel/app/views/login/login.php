@@ -30,7 +30,7 @@
                     </div>
                 <?php endif; ?>
             </div>
-            <h1><span id="neogen">NeoGen Labs</span></h1>
+            <h1><span id="neogen">NeoGen Labs</span></h1><h4>Invoice Management System</h4>
             <br />
             <?php echo Form::open('index.php/login/verify'); ?>
             <input name='name' type='text' placeholder='Name'required autofocus /> 

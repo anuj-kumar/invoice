@@ -69,10 +69,14 @@ $html = '
 <table>
 <tr>
 <td style="width:350px">
-<b>'.$invoice->customer->first_name." ".$invoice->customer->last_name.'</b><br />'.$invoice->customer->address_line_1.' <br />'.$invoice->customer->address_line_2.'<br />'.$invoice->customer->city." ".$invoice->customer->state.'
-<br />T: '.$invoice->customer->phone.'
-<br />E: '.$invoice->customer->email.'
-<br /><br />
+                        <ul style="list-style:none;padding-left: 0px">
+                            <br /> '. $customer->first_name . ' ' . $customer->last_name . '
+                            <br />' . $customer->address_line_1 . '
+                            <br />' . $customer->address_line_2 . '
+                            <br />' . $customer->address_line_3 . '
+                            <br />' . $customer->city . ", " . $customer->state . '
+                            <br />' . $customer->pincode . '
+                        </ul>
 </td>
 <td>
 Date:  <br/>
@@ -129,9 +133,9 @@ FP No:<br />
 <table style="top:30px">
 <tr>
 <td style="width:400px">
-Outstanding:
+Outstanding:'. $invoice->amount  .'
 <br />
-Paid:
+Paid:'. $invoice->balance  .'
 <br />
 Due Date:
 <br />
