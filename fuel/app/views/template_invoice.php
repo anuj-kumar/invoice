@@ -101,12 +101,8 @@
         </div>
         <div class="main well" >
             <div class="row">
-                <div class="span2 pull-left">
-                    <h2>Invoicing</h2>
-                </div>
-                <div class="span2 " style="margin-top: 10px">
-                    <span class="pull-left"><p><?php echo Html::anchor('invoice/single', 'Single', array("class" => "btn btn-medium btn-success")); ?></p></span>
-                    <span class="pull-right"><p><?php echo Html::anchor('invoice/monthly', 'Monthly', array("class" => "btn btn-medium btn-success")); ?></p></span>
+                <div class="span4 pull-left">
+                    <h2><?php echo $data; ?></h2>
                 </div>
                 <div class="span6 pull-right" style="column-count: 2">
                     <div class="span2 pull-left" >Date: 

@@ -12,6 +12,7 @@ class Controller_Invoice extends Controller_Base {
         $data['panels'] = Model_Panel::find('all');
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Single';
+        $this->template->data = 'Single Invoice';
         $this->template->content = View::forge('invoice/single', $data);
     }
 
@@ -56,6 +57,7 @@ class Controller_Invoice extends Controller_Base {
 //            'where' => array('t1.type' => 'monthly')
         ));
         $this->template->title = 'Invoice | Monthly';
+        $this->template->data = 'Monthly Invoice';
         $this->template->content = View::forge('invoice/monthly', $data);
     }
 
@@ -69,6 +71,7 @@ class Controller_Invoice extends Controller_Base {
     public function action_monthly_new() {
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Monthly';
+        $this->template->data = 'Monthly Invoice';
         $this->template->content = View::forge('invoice/monthly_new', $data);
     }
 
@@ -81,12 +84,14 @@ class Controller_Invoice extends Controller_Base {
         $data['panels'] = $panels;
         $data['customer_id'] = $customer_id;
         $this->template->title = 'Invoice | Main Content';
+         $this->template->data = 'Panel Details';
         $this->template->content = View::forge('invoice/invoice', $data);
     }
 
     public function action_payment() {
         $data['panels'] = Model_Panel::find('all');
         $this->template->title = 'Invoice | Payment';
+         $this->template->data = 'Payment Details';
         $this->template->content = View::forge('invoice/payment', $data);
     }
 
@@ -96,6 +101,7 @@ class Controller_Invoice extends Controller_Base {
 //            'where' => array('t1.type' => 'monthly')
         ));
         $this->template->title = 'Invoice | Monthly';
+        $this->template->data = 'Monthly Invoice';
         $this->template->content = View::forge('invoice/monthly_details', $data);
     }
 
@@ -112,6 +118,13 @@ class Controller_Invoice extends Controller_Base {
           
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
         return Response::forge(View::forge('invoice/pdf', $data));
+    }
+      public function action_preview($id=1) {
+          $data['invoice'] = Model_Invoice::find($id, array(
+                    'related' => array('customer'),
+        ));
+          
+        return Response::forge(View::forge('invoice/preview', $data));
     }
 
     public function action_submit_monthly_new() {

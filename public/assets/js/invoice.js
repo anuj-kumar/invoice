@@ -60,7 +60,7 @@ function addRow(tableID) {
      if(isNaN(qty)) qty=0;
      for(var i=0;i<panel.length;i++){   
      //console.log(panel[i]);
-     if(panel[i][vol].name==oDDL.value){
+     if(panel[i][vol].id==oDDL.value){
              document.getElementById(panel_price).value=panel[i][vol].price;
              document.getElementById(panel_ext).value=qty*panel[i][vol].price;
              
@@ -79,7 +79,7 @@ function addRow(tableID) {
      var qty=document.getElementById(panel_qty).value;
      if(isNaN(qty)) qty=0;
      for(var i=0;i<panel.length;i++){   
-        if(panel[i][vol].name==name){
+        if(panel[i][vol].id==name){
              document.getElementById(panel_ext).value=qty*(document.getElementById(panel_price).value);
              
         } 
@@ -106,7 +106,7 @@ function addRow(tableID) {
      //console.log(panel[0][vol].vol_high);
      find_vol(qty);
      for(var i=0;i<panel.length;i++){
-     if(panel[i][vol].name==name){
+     if(panel[i][vol].id===name){
              document.getElementById(panel_price).value=panel[i][vol].price;
              document.getElementById(panel_ext).value=qty*panel[i][vol].price;
              

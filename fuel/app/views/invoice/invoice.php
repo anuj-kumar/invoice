@@ -12,14 +12,14 @@
 <?php
 $i = 0;
 foreach ($panels as $panel):
-$j = 0;
+    $j = 0;
 
     foreach ($panel->global_panel_prices as $price_obj):
         $panel_arr[$i][$j]['id'] = $panel->id;
         $panel_arr[$i][$j]['name'] = $panel->name;
         $panel_arr[$i][$j]['price'] = $price_obj->price;
         $panel_arr[$i][$j]['vol_high'] = $price_obj->vol_high;
-		$j++;
+        $j++;
     endforeach;
     $i++;
 endforeach;
@@ -28,7 +28,7 @@ endforeach;
 <script type="text/javascript">
     var panel = new Array();
     panel = <?php echo json_encode((array) $panel_arr); ?>;
-    
+
 </script>
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_content")); ?>
     <div class="span3 pull-right">
@@ -39,31 +39,10 @@ endforeach;
 </div>
 <div class="invoice_content_table">
     <table id="invoice_content" class="invoice_content">
-        
         <th>Qty.</th>
         <th>Panel</th>
         <th>Unit Price</th>
         <th>Extended Price</th>
-     <!--   <tr id="add_row">
-            <td id="serial" style="text-align:center">1.</td>
-            <td id=""><input type="number" name="quantity" style="width:50px"  ></td>
-            <td id = "panels" > 
-                <select >
-        
-                </select>
-            </td>
-            <td id = "unit_price"></td>
-            <td id = "price" style="text-align: right"></td>
-            <td>Add Row</td>
-        </tr>
-                <TR>
-                        <td><INPUT type="checkbox" name="chk"/></td>
-                        <td > <INPUT class="qty" type="number" placeholder="Qty." style="width:40px" /> </td>
-            <TD> <INPUT type="text" placeholder="panel" style="width:150px" /> </TD>
-            <TD> <INPUT type="text" placeholder="unit price" style="width:100px" /> </TD>
-            <TD> <INPUT type="text" placeholder="price" style="width:100px" /> </TD>
-                    </TR>
--->
     </table>
      
 
@@ -90,5 +69,5 @@ endforeach;
 </fieldset>
 <?php echo Form::close(); ?>
 <script>
-window.onload = addRow('invoice_content');    
+    window.onload = addRow('invoice_content');
 </script>

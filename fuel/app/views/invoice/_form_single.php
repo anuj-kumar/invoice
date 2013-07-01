@@ -1,6 +1,5 @@
 
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_single")); ?>
-<h4>Single Customer</h4>    
 <fieldset>
     <div class="grid-12-12 ">
         <div class="grid-2-12 ">

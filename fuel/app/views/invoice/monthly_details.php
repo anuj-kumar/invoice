@@ -79,16 +79,18 @@ $phone=$s[2].$s[3].$s[4].$s[5].$s[6].$s[7].$s[8].$s[9].$s[10].$s[11];
             <label>Email : <em class="formee-req">*</em></label>
             <input type='email' name="email" placeholder='Email: example@example.com' value="<?php echo $monthly_customers->customer->email; ?>" autocomplete="off" >
         </div>
-        <div class="grid-4-12 ">
-            <input  class="btn btn-large btn-danger" type='submit'  value="Next" style="margin-left: 40px;margin-top: 20px;min-width:100px">
-        </div>
+        
     </div>
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
-            <h4 ><?php echo Html::anchor('panel/local'.$monthly_customers->contract_file, 'Contract File', array('style'=>'color:red')); ?></h4>
+            
+            <h4 ><?php echo Html::anchor('panel/local/'.$monthly_customers->contract_file, 'Contract File', array('class'=>'btn btn-large btn-info span2', 'style'=>'')); ?></h4>
         </div>
         <div class="grid-4-12 ">
-            <h4 ><?php echo Html::anchor('panel/local/'.$monthly_customers->id, 'Panel', array('style'=>'color:red')); ?></h4>
+            <input  class="btn btn-large btn-danger span2" type='submit'  value="Next" style="width:150px">
+        </div>
+        <div class="grid-4-12 ">
+            <h4 ><?php echo Html::anchor('panel/local/'.$monthly_customers->id, 'Panel', array('class'=>'btn btn-large btn-info span2', 'style'=>'')); ?></h4>
         </div>
 
     </div>
