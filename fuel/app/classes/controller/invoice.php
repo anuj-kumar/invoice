@@ -108,6 +108,7 @@ class Controller_Invoice extends Controller_Base {
         endforeach;
         $this->template->title = 'Invoice | Preview';
         return Response::forge(View::forge('invoice/preview', $data));
+        
     }
 
     public function action_submit_content() {
