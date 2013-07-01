@@ -105,6 +105,7 @@ class Controller_Invoice extends Controller_Base {
                         'where' => array('t1.invoice_id' => $invoice->id)
             ));
         $data['invoice'] = $invoice;
+        
         endforeach;
         $this->template->title = 'Invoice | Preview';
         return Response::forge(View::forge('invoice/preview', $data));
@@ -136,6 +137,12 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = View::forge('invoice/payment', $data);
     }
 
+    public function action_submit_payment() {
+//        print_r($_POST);
+        $this->template->title = 'Invoice | Monthly';
+        $this->template->content = 1;
+    }
+
     public function action_monthly_details($id = 1) {
         $data['monthly_customers'] = Model_Monthlycustomer::find($id, array(
                     'related' => array('customer'),
@@ -146,12 +153,6 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = View::forge('invoice/monthly_details', $data);
     }
 
-    public function action_submit_payment() {
-//        print_r($_POST);
-        $this->template->title = 'Invoice | Monthly';
-        $this->template->content = 1;
-    }
-
     public function action_print($id = 1) {
         $data['invoice'] = Model_Invoice::find($id, array(
                     'related' => array('customer'),
@@ -160,7 +161,6 @@ class Controller_Invoice extends Controller_Base {
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
         return Response::forge(View::forge('invoice/pdf', $data));
     }
-     
 
     public function action_submit_monthly_new() {
         /*            $name  = explode(' ', Input::post('name'));
