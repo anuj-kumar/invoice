@@ -83,21 +83,45 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = View::forge('invoice/invoice', $data);
     }
 
+    public function action_preview($invoice_id = NULL) {
+        $customer = Model_Customer::find('first', array(
+                    'related' => array('invoices',
+                    ),
+                    'where' => array('t1.id' => $invoice_id),
+        ));
+        
+        $data['customer'] = $customer;
+        foreach ($customer->invoices as $invoice):
+
+//        $query = DB::query('SELECT * from customers c INNER JOIN invoices i ON c.id = i.customer_id INNER JOIN invoices_panels ip ON i.id = ip.invoice_id');
+//        $result = $query->as_object()->execute();
+//            print_r($customer->last_name);
+            $invoice->panels = Model_Panel::find('all', array(
+                        'related' => array('invoices_panels'),
+                        'where' => array('t1.invoice_id' => $invoice->id)
+            ));
+        $data['invoice'] = $invoice;
+        
+        endforeach;
+        $this->template->title = 'Invoice | Preview';
+        $this->template->content = View::forge('invoice/preview', $data);
+    }
+
     public function action_submit_content() {
         $this->template->title = 'Invoice | Main Content';
         $this->template->content = print_r(Input::post());
         $panels = Input::post('panel_name');
         $quantity = Input::post('panel_qty');
 //        print_r($quantity);
-        for($i=0; $i<sizeof($panels); $i++) {
+        for ($i = 0; $i < sizeof($panels); $i++) {
 //            echo "HEllo";
-        $invoice = Model_Invoices_Panels::forge(
-                        array(
-                            'invoice_id' => Input::post('invoice_id'),
-                            'panel_id' => $panels[$i],
-                            'panel_quantity' => $quantity[$i]                            
-        ));
-        $invoice->save();
+            $invoice = Model_Invoices_Panels::forge(
+                            array(
+                                'invoice_id' => Input::post('invoice_id'),
+                                'panel_id' => $panels[$i],
+                                'panel_quantity' => $quantity[$i]
+            ));
+            $invoice->save();
         }
     }
 
@@ -157,4 +181,5 @@ class Controller_Invoice extends Controller_Base {
             $this->template->content = "Yes";
         $customer->save();
     }
+
 }
