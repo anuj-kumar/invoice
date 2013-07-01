@@ -19,7 +19,7 @@ class Model_Panel extends \Orm\Model {
             'mysql_timestamp' => false,
         ),
     );
-    protected static $_has_many = array('global_panel_prices', 'local_panel_prices');
+    protected static $_has_many = array('global_panel_prices', 'local_panel_prices', 'invoices_panels');
     protected static $_many_many = array(
         'disorders' => array(
             'table_through' => 'panels_disorders',
