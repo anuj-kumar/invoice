@@ -227,6 +227,7 @@ CREATE TABLE `invoices_panels` (
   `invoice_id` int(11) unsigned NOT NULL,
   `panel_id` int(11) unsigned NOT NULL,
   `panel_quantity` int(11) NOT NULL,
+  `panel_name` varchar(20) DEFAULT NULL,
   `panel_price` float(12,2) NOT NULL,
   PRIMARY KEY (`invoice_id`,`panel_id`),
   KEY `panel_id` (`panel_id`),
@@ -241,7 +242,7 @@ CREATE TABLE `invoices_panels` (
 
 LOCK TABLES `invoices_panels` WRITE;
 /*!40000 ALTER TABLE `invoices_panels` DISABLE KEYS */;
-INSERT INTO `invoices_panels` VALUES (1,1,12,0.00),(1,2,12,0.00);
+INSERT INTO `invoices_panels` VALUES (1,1,12,NULL,0.00),(1,2,12,NULL,0.00);
 /*!40000 ALTER TABLE `invoices_panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,8 +452,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
-<<<<<<< HEAD
--- Dump completed on 2013-07-01 10:49:21
-=======
--- Dump completed on 2013-07-01 15:57:32
->>>>>>> 08f648faf0fa2ce15c78463c7cdeddf952c52f3b
+-- Dump completed on 2013-07-01 17:01:55
