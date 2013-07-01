@@ -33,7 +33,7 @@ endforeach;
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_content")); ?>
     <div class="span3 pull-right">
 
-    <input type="hidden" name="customer_id" value="<?php echo $customer_id ?>" />
+    <input type="hidden" name="invoice_id" value="<?php echo $invoice_id ?>" />
     <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('invoice_content')" />
         <input class="btn btn-danger" type="button" value="Delete Row" onclick="deleteRow('invoice_content')" />
 </div>
@@ -90,5 +90,5 @@ endforeach;
 </fieldset>
 <?php echo Form::close(); ?>
 <script>
-window.onload = addRow('invoice_content');    
+    window.onload = addRow('invoice_content');
 </script>

@@ -17,7 +17,7 @@ class Controller_Invoice extends Controller_Base {
 
     private function fill_customer_details($data, $type) {
         $customer = Model_Customer::forge(array(
-                    'type' => 'single',
+                    'type' => $type,
                     'title' => $data['title'],
                     'first_name' => $data['f_name'],
                     'last_name' => $data['l_name'],
@@ -43,7 +43,7 @@ class Controller_Invoice extends Controller_Base {
 //        print_r($customer);
 
         if ($val == 1) {
-            Response::redirect('/invoice/content/' . $customer->id);
+            Response::redirect('/invoice/content/' . $customer->invoice->id);
         } else {
             Session::set_flash('error', 'Error in Form');
             return Response::forge(View::forge('invoice/single'));
@@ -72,16 +72,33 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = View::forge('invoice/monthly_new', $data);
     }
 
-    public function action_content($customer_id = NULL) {
+    public function action_content($invoice_id = NULL) {
         $panels = Model_Panel::find('all', array(
-            'related' => array('global_panel_prices'),
-            
+                    'related' => array('global_panel_prices'),
         ));
-        
+
         $data['panels'] = $panels;
-        $data['customer_id'] = $customer_id;
+        $data['invoice_id'] = $invoice_id;
         $this->template->title = 'Invoice | Main Content';
         $this->template->content = View::forge('invoice/invoice', $data);
+    }
+
+    public function action_submit_content() {
+        $this->template->title = 'Invoice | Main Content';
+        $this->template->content = print_r(Input::post());
+        $panels = Input::post('panel_name');
+        $quantity = Input::post('panel_qty');
+//        print_r($quantity);
+        for($i=0; $i<sizeof($panels); $i++) {
+//            echo "HEllo";
+        $invoice = Model_Invoices_Panels::forge(
+                        array(
+                            'invoice_id' => Input::post('invoice_id'),
+                            'panel_id' => $panels[$i],
+                            'panel_quantity' => $quantity[$i]                            
+        ));
+        $invoice->save();
+        }
     }
 
     public function action_payment() {
@@ -105,38 +122,39 @@ class Controller_Invoice extends Controller_Base {
         $this->template->content = 1;
     }
 
-    public function action_print($id=1) {
-          $data['invoice'] = Model_Invoice::find($id, array(
+    public function action_print($id = 1) {
+        $data['invoice'] = Model_Invoice::find($id, array(
                     'related' => array('customer'),
         ));
-          
+
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
         return Response::forge(View::forge('invoice/pdf', $data));
     }
 
     public function action_submit_monthly_new() {
-/*            $name  = explode(' ', Input::post('name'));
-            $customer = Model_Customer::forge(array(
-            'title' => Input::post('title'),
-            'first_name' => $name[0],
-            'last_name' => 'name',
-            'address_line_1' => Input::post('addr_1'),
-            'address_line_2' => Input::post('addr_2'),
-            'city' => Input::post('city'),
-            'state' => Input::post('state'),
-            'pincode' => Input::post('pincode'),
-            'phone' => Input::post('phone'),
-            'email' => Input::post('email'),
-            'type' => 'monthly',
-        ));*/
+        /*            $name  = explode(' ', Input::post('name'));
+          $customer = Model_Customer::forge(array(
+          'title' => Input::post('title'),
+          'first_name' => $name[0],
+          'last_name' => 'name',
+          'address_line_1' => Input::post('addr_1'),
+          'address_line_2' => Input::post('addr_2'),
+          'city' => Input::post('city'),
+          'state' => Input::post('state'),
+          'pincode' => Input::post('pincode'),
+          'phone' => Input::post('phone'),
+          'email' => Input::post('email'),
+          'type' => 'monthly',
+          )); */
 //        $customer->monthlycustomer = new Model_Monthlycustomer();
         $customer = $this->fill_customer_details($_POST, 'monthly');
         $customer->monthlycustomer = Model_Monthlycustomer::forge(array(
-            'org_name' => Input::post('org_name'),
-            'org_print_name' => Input::post('org_name'),
-            'org_code' => Input::post('org_code'),
+                    'org_name' => Input::post('org_name'),
+                    'org_print_name' => Input::post('org_name'),
+                    'org_code' => Input::post('org_code'),
         ));
-        if(Upload::is_valid()) $this->template->content = "Yes";
+        if (Upload::is_valid())
+            $this->template->content = "Yes";
         $customer->save();
     }
 }

@@ -14,7 +14,7 @@ function addRow(tableID) {
     var cell2 = row.insertCell(0);
     var newDiv = document.createElement('div');
     var selectHTML = "";
-    selectHTML = "<input type='number' id='panel_qty"+ct+"' name='panel_qty"+ct+"' style='width:80px' onkeyup='change("+ct+");' required>";
+    selectHTML = "<input type='number' id='panel_qty"+ct+"' name='panel_qty["+ct+"]' style='width:80px' onkeyup='change("+ct+");' required>";
     selectHTML += "</input>";
     newDiv.innerHTML = selectHTML;
     cell2.appendChild(newDiv);
@@ -22,8 +22,8 @@ function addRow(tableID) {
     var cell3 = row.insertCell(1);
     var newDiv = document.createElement('div');
     var selectHTML = "";
-    selectHTML = "<select id='panel_select"+ct+"' name='panel_name"+ct+"' onchange='panel_change(this,"+ct+");' required>";
-    for (i = 0; i < panel.length; i = i + 1) {
+    selectHTML = "<select id='panel_select"+ct+"' name='panel_name["+ct+"]' onchange='panel_change(this,"+ct+");' required>";
+    for (i = 0; i < panel.length; i++) {
         selectHTML += "<option value='" + panel[i][vol].id + "'>" + panel[i][vol].name + "</option>";
     }
     selectHTML += "</select>";
@@ -33,7 +33,7 @@ function addRow(tableID) {
     var cell4 = row.insertCell(2);
     var newDiv = document.createElement('div');
     var selectHTML = "";
-    selectHTML = "<input id='panel_price"+ct+"' name='panel_price"+ct+"' style='width:80px' onkeyup='price_change("+ct+");'  required>";
+    selectHTML = "<input id='panel_price"+ct+"' name='panel_price["+ct+"]' style='width:80px' onkeyup='price_change("+ct+");'  required>";
     selectHTML += "</input>";
     newDiv.innerHTML = selectHTML;
     cell4.appendChild(newDiv);
@@ -43,7 +43,7 @@ function addRow(tableID) {
     var cell5 = row.insertCell(3);
     var newDiv = document.createElement('div');
     var selectHTML = "";
-    selectHTML = "<input id='panel_ext_price"+ct+"' name='panel_ext_price"+ct+"' value='0' style='width:80px' onkeydown='price_change("+ct+");' disabled>";
+    selectHTML = "<input id='panel_ext_price"+ct+"' name='panel_ext_price["+ct+"]' value='0' style='width:80px' onkeydown='price_change("+ct+");' disabled>";
     selectHTML += "</input>";   
     newDiv.innerHTML = selectHTML;
     cell5.appendChild(newDiv);
@@ -60,7 +60,7 @@ function addRow(tableID) {
      if(isNaN(qty)) qty=0;
      for(var i=0;i<panel.length;i++){   
      //console.log(panel[i]);
-     if(panel[i][vol].name==oDDL.value){
+     if(panel[i][vol].id==oDDL.value){
              document.getElementById(panel_price).value=panel[i][vol].price;
              document.getElementById(panel_ext).value=qty*panel[i][vol].price;
              
@@ -68,7 +68,7 @@ function addRow(tableID) {
     }
      amt();
     }
-    
+
  function price_change(n){
   console.log('unit price changed');
      panel_price="panel_price"+n;
@@ -79,7 +79,7 @@ function addRow(tableID) {
      var qty=document.getElementById(panel_qty).value;
      if(isNaN(qty)) qty=0;
      for(var i=0;i<panel.length;i++){   
-        if(panel[i][vol].name==name){
+        if(panel[i][vol].id==name){
              document.getElementById(panel_ext).value=qty*(document.getElementById(panel_price).value);
              
         } 
@@ -106,7 +106,7 @@ function addRow(tableID) {
      //console.log(panel[0][vol].vol_high);
      find_vol(qty);
      for(var i=0;i<panel.length;i++){
-     if(panel[i][vol].name==name){
+     if(panel[i][vol].id==name){
              document.getElementById(panel_price).value=panel[i][vol].price;
              document.getElementById(panel_ext).value=qty*panel[i][vol].price;
              
