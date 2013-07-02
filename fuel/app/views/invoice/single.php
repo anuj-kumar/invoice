@@ -1,6 +1,7 @@
 <?php echo Asset::css('formee-structure.css'); ?>
 <?php echo Asset::css('formee-style.css'); ?>
 <?php echo Asset::js('formee.js'); ?>
+<?php echo Asset::js('validatel.js'); ?>
 
 
 <?php echo Form::open(array("class" => "", "action" => "/invoice/submit_single")); ?>
@@ -9,7 +10,7 @@
         <div class="grid-2-12 ">
 
             <label>Title : <em class="formee-req">*</em></label>
-            <select name="title" style="width: 60px" required>
+            <select name="title" id="id" style="width: 60px" required>
                 <option>Dr.</option>
                 <option>Mr.</option>
                 <option>Mrs.</option>
@@ -18,31 +19,31 @@
         </div>
         <div class="grid-4-12 ">
             <label>First Name : <em class="formee-req">*</em></label>
-            <input type="text" name="f_name" class="formee-large" placeholder="First Name" required autofocus autocomplete="off">
+            <input type="text" id="f_name" name="f_name" class="formee-large" placeholder="First Name" required autofocus autocomplete="off">
         </div>
         <div class="grid-4-12 ">
             <label>Last Name : <em class="formee-req">*</em></label>
-            <input type="text" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
+            <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
         </div>
     </div>  
     <div class="grid-12-12 " style="margin-top: 0px">
         <div class="grid-4-12 ">
             <label>Address Line #1 : <em class="formee-req">*</em> </label>
-            <input type="text" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
+            <input type="text" id="addr_1" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Address Line #2 : <em class="formee-req">*</em></label>
-            <input type="text" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
+            <input type="text" id="addr_2" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
         </div>
         <div class="grid-4-12 ">
             <label>Address Line #3 : </label>
-            <input type="text" name="addr_3" class="formee-large" placeholder="Address Line #3" autocomplete="off" >
+            <input type="text" name="addr_3" id="addr_3" class="formee-large" placeholder="Address Line #3" autocomplete="off" >
         </div>
     </div>
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-3-12 ">
             <label>City : <em class="formee-req">*</em></label>
-            <input list="city" name="city" placeholder="city" required autocomplete='off' style="width: 140px">
+            <input list="city" name="city" id="city" placeholder="city" required autocomplete='off' style="width: 140px">
             <datalist id="city">
                 <option value="Kolkata">
                 <option value="Delhi">
@@ -56,7 +57,7 @@
         </div>
         <div class="grid-3-12 ">
             <label>State : <em class="formee-req">*</em></label>
-            <input list="state" name="state" placeholder="State"  style="width: 140px" autocomplete='off'>
+            <input list="state" name="state" id="state" placeholder="State"  style="width: 140px" autocomplete='off'>
             <datalist id="state">
                 <?php foreach ( $states as $state ): ?>
                     <option value="<?php echo $state->name; ?>">
@@ -66,7 +67,7 @@
 
         <div class="grid-3-12 ">
             <label>Country : <em class="formee-req">*</em></label>
-            <input list="country" name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+            <input list="country"  name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
             <datalist id="country">
                 <option value="India">
                 <option value="USA">
@@ -85,11 +86,11 @@
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
             <label>Telephone : <em class="formee-req">*</em></label>
-            + <input type='tel' name="tele" id="country_code"  placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
+            + <input type='tel' name="tele" id="country_code"  placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' id="tele" name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
         </div>
         <div class="grid-4-12 ">
             <label>Email :</label>
-            <input type='email'  name="email" placeholder='Email: example@example.com' autocomplete="off" >
+            <input type='email' id="email"  name="email" placeholder='Email: example@example.com' autocomplete="off" >
         </div>
         <div class="grid-4-12 ">
             <input  class="btn btn-large btn-danger" type='submit'  value="Next" style="margin-left: 40px;margin-top: 20px;width:100px">

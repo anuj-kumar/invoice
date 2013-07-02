@@ -79,6 +79,7 @@ class Controller_Invoice extends Controller_Base {
     }
 
     public function action_monthly_new() {
+        $data['states'] = Model_State::find('all');
         $data['panels'] = Model_Panel::find('all');
         $data["subnav"] = array('index' => 'active');
         $data['monthly_customer'] = 0;

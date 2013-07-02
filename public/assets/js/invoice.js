@@ -124,6 +124,8 @@ function addRow(tableID) {
         // console.log('total:'+total);
         }
         document.getElementById('total').value=total;
+        document.getElementById('total_amount').value=total;
+        
     } 
  
     function find_vol(qty){

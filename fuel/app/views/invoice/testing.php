@@ -9,6 +9,8 @@
 <?php echo Asset::css('formee-style.css'); ?>
 <?php echo Asset::js('formee.js'); ?>
 <?php echo Asset::js('invoice.js'); ?>
+<?php echo Asset::js('validate.js'); ?>
+
 <?php
 $i = 0;
 foreach ($panels as $panel):
@@ -51,12 +53,11 @@ endforeach;
 
     <div id="form1" style="display:block;">
         <fieldset>
-
-            <div class="grid-12-12 " >
+            <div class="grid-12-12 ">
                 <div class="grid-2-12 ">
 
                     <label>Title : <em class="formee-req">*</em></label>
-                    <select name="title" style="width: 60px" required>
+                    <select name="title" id="id" style="width: 60px" required>
                         <option>Dr.</option>
                         <option>Mr.</option>
                         <option>Mrs.</option>
@@ -65,31 +66,31 @@ endforeach;
                 </div>
                 <div class="grid-4-12 ">
                     <label>First Name : <em class="formee-req">*</em></label>
-                    <input type="text" name="f_name" class="formee-large" placeholder="First Name" required autofocus autocomplete="off">
+                    <input type="text" id="f_name" name="f_name" class="formee-large" placeholder="First Name" required autofocus autocomplete="off">
                 </div>
                 <div class="grid-4-12 ">
                     <label>Last Name : <em class="formee-req">*</em></label>
-                    <input type="text" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
+                    <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
                 </div>
             </div>  
             <div class="grid-12-12 " style="margin-top: 0px">
                 <div class="grid-4-12 ">
                     <label>Address Line #1 : <em class="formee-req">*</em> </label>
-                    <input type="text" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
+                    <input type="text" id="addr_1" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
                 </div>
                 <div class="grid-4-12 ">
                     <label>Address Line #2 : <em class="formee-req">*</em></label>
-                    <input type="text" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
+                    <input type="text" id="addr_2" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
                 </div>
                 <div class="grid-4-12 ">
                     <label>Address Line #3 : </label>
-                    <input type="text" name="addr_3" class="formee-large" placeholder="Address Line #3" autocomplete="off" >
+                    <input type="text" name="addr_3" id="addr_3" class="formee-large" placeholder="Address Line #3" autocomplete="off" >
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-3-12 ">
                     <label>City : <em class="formee-req">*</em></label>
-                    <input list="city" name="city" placeholder="city" required autocomplete='off' style="width: 140px">
+                    <input list="city" name="city" id="city" placeholder="city" required autocomplete='off' style="width: 140px">
                     <datalist id="city">
                         <option value="Kolkata">
                         <option value="Delhi">
@@ -103,8 +104,8 @@ endforeach;
                 </div>
                 <div class="grid-3-12 ">
                     <label>State : <em class="formee-req">*</em></label>
-                    <input list="state" name="state" placeholder="State"  style="width: 140px" autocomplete='off'>
-                    <datalist id="state">
+                    <input list="states" name="state" id="state" placeholder="State"  style="width: 140px" autocomplete='off'>
+                    <datalist id="states">
                         <?php foreach ($states as $state): ?>
                             <option value="<?php echo $state->name; ?>">
                             <?php endforeach; ?>
@@ -113,7 +114,7 @@ endforeach;
 
                 <div class="grid-3-12 ">
                     <label>Country : <em class="formee-req">*</em></label>
-                    <input list="country" name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+                    <input list="country"  name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
                     <datalist id="country">
                         <option value="India">
                         <option value="USA">
@@ -132,14 +133,14 @@ endforeach;
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-4-12 ">
                     <label>Telephone : <em class="formee-req">*</em></label>
-                    + <input type='tel' name="tele" id="country_code"  placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
+                    + <input type='tel' name="tele" id="country_code"  placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' id="tele" name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
                 </div>
                 <div class="grid-4-12 ">
                     <label>Email :</label>
-                    <input type='email'  name="email" placeholder='Email: example@example.com' autocomplete="off" >
+                    <input type='email' id="email"  name="email" placeholder='Email: example@example.com' autocomplete="off" >
                 </div>
                 <div class="grid-4-12 ">
-                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPanel()"  style="margin-top:20px; width:100px" />
+                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showContent();"  style="margin-top:20px; width:100px" />
                 </div>
             </div>    
         </fieldset>
@@ -168,9 +169,10 @@ endforeach;
         <div class="row" style="padding-top:5px">
             <div class="span2 pull-right">
                 <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backSingle()" />
-                <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPayment()" />
+                <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPayment();
+        ;" />
             </div>
-            <div class="span4 pull-right" style="margin-right:20px">Total Rs.<input type="text" id="total" name="total" /> </div>
+            <div class="span4 pull-right" style="margin-right:20px">Total Rs.<input type="text" id="total" name="total" disabled autocomplete="off" /> </div>
 
         </div>
         <fieldset>
@@ -180,12 +182,12 @@ endforeach;
     <div id="form3" style="display: none" >
         <fieldset>
             <div class="grid-12-12 " style="margin-top: -10px">
-                <h5>Outstanding:    </h5><br />
+
                 <div class="grid-4-12 " style="margin-top: -20px">
                     Total Amount : <em class="formee-req">*</em>
-                    <input type="text" name="total" id="total" value="100" required>
+                    <input type="text" name="total" id="total_amount" value="" required disabled>
                 </div>
-<div class="grid-4-12" style="margin-top: 0px">
+                <div class="grid-4-12" style="margin-top: 0px">
                     <input type="hidden" name="payment" id="payment" />
                     <select name="payment_ddl" id="payment_ddl" onchange="DropDownChanged(this);">
                         <option value="cash">Cash</option>
@@ -194,22 +196,31 @@ endforeach;
                 </div>
                 <div class="grid-4-12">
                     <input type="text" name="payment_txt" id="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
-                    <input type="text" name="bank" id="bank" style="display: none;" placeholder="Bank Name" />
+
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
-                <div class="grid-4-12 ">
+                <div class="grid-2-12 ">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
-                    <input type="text" name="paid" id="total" value="100" required>
+                    <input type="text" name="paid" id="total" value="" required style="width:50px">
                 </div>
-                
+            </div>
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="grid-3-12">
+                    <input type="text" name="bank_name" class="formee-large" id="bank_name" style="display: none;" placeholder="Bank Name" style="width:80px"/>
+                </div>
+                <div class="grid-3-12">
+                    <input type="text" name="bank_branch" class="formee-large" id="bank_branch" style="margin-left: 20px;display: none;" placeholder="Bank Branch" style="width:80px" />
+                </div>
+                <div class="grid-3-12">
+                    <input type="text" name="bank_city" class="formee-large" id="bank_city" style="margin-left: 40px;display: none;" placeholder="Bank City"  style="width:80px" />
+                </div>
 
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="span5 pull-left">
 
                     <br />Current Due (Rs.):
-                    <br />Outstanding (Rs.):
                     <br />Due Date:
 
                 </div>
@@ -220,8 +231,8 @@ endforeach;
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-4-12 " style="float: right">
-                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backContent()" />
-                    <input  class="btn btn-large btn-danger" type='submit'  value="Preview" >
+                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backContent();" />
+                    <input  class="btn btn-large btn-danger" type='submit'  value="Preview"  onclick="val_payment();">
                 </div>
 
             </div>
@@ -236,31 +247,7 @@ endforeach;
 
 
 
-
-
-
-
-
-
-
 <script>
-    function DropDownChanged(oDDL) {
-        var oTextbox = oDDL.form.elements["city_txt"];
-        if (oTextbox) {
-            oTextbox.style.display = (oDDL.value == "") ? "" : "none";
-            if (oDDL.value == "")
-                oTextbox.focus();
-        }
-    }
-
-    function FormSubmit(oForm) {
-        var oHidden = oForm.elements["city"];
-        var oDDL = oForm.elements["city_ddl"];
-        var oTextbox = oForm.elements["city_txt"];
-        if (oHidden && oDDL && oTextbox)
-            oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
-    }
-
     function pincode_val() {
         var country = document.getElementById('country').value;
         if (country == "India" || country == "india") {
@@ -286,15 +273,24 @@ endforeach;
     window.onload = addRow('invoice_content');
 
     function showContent() {
-        document.getElementById('form1').style.display = "none";
-        document.getElementById('form2').style.display = "block";
-        document.getElementById('form3').style.display = "none";
+        var flag = val_single();
+        //alert(flag);
+        if (flag) {
+          //  alert("1");
+            document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
+            document.getElementById('form1').style.display = "none";
+            document.getElementById('form2').style.display = "block";
+            document.getElementById('form3').style.display = "none";
+        }
     }
 
     function showPayment() {
-        document.getElementById('form1').style.display = "none";
-        document.getElementById('form2').style.display = "none";
-        document.getElementById('form3').style.display = "block";
+        var flag = val_invoice_panels();
+        if (flag) {
+            document.getElementById('form1').style.display = "none";
+            document.getElementById('form2').style.display = "none";
+            document.getElementById('form3').style.display = "block";
+        }
     }
     function backSingle() {
         document.getElementById('form1').style.display = "block";
@@ -309,10 +305,15 @@ endforeach;
     }
     function DropDownChanged(oDDL) {
         var oTextbox = document.getElementById('payment_txt');
-        var oBank = getElementById('bank');
+        var oBank_name = document.getElementById('bank_name');
+        var oBank_city = document.getElementById('bank_city');
+        var oBank_branch = document.getElementById('bank_branch');
+
         if (oTextbox) {
             oTextbox.style.display = (oDDL.value == "cheque") ? "" : "none";
-            oBank.style.display = (oDDL.value == "cheque") ? "" : "none";
+            oBank_name.style.display = (oDDL.value == "cheque") ? "" : "none";
+            oBank_city.style.display = (oDDL.value == "cheque") ? "" : "none";
+            oBank_branch.style.display = (oDDL.value == "cheque") ? "" : "none";
             if (oDDL.value == "cheque")
                 oTextbox.focus();
 
