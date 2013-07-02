@@ -6,9 +6,7 @@ class Model_Invoice extends \Orm\Model {
         'id',
         'customer_id',
         'user_id',
-        'content',
         'date',
-        'timestamp',
         'amount',
         'tax_1',
         'tax_2',
@@ -17,7 +15,7 @@ class Model_Invoice extends \Orm\Model {
         'discount_1',
         'discount_2',
         'discount_3',
-        'balance',
+        'amount_paid',
         'payment_mode',
         'cheque_number',
         'bank_name',
@@ -38,20 +36,7 @@ class Model_Invoice extends \Orm\Model {
             'mysql_timestamp' => false,
         ),
     );
-    protected static $_belongs_to = array('customer', 'user'
-            /* array('customer',
-              array(
-              'key_from' => 'customer_id',
-              'model_to' => 'Model_Customer',
-              'key_to' => 'id',
-              )),
-              array('user',
-              array(
-              'key_from' => 'user_id',
-              'model_to' => 'Model_User',
-              'key_to' => 'id',
-              )) */
-    );
+    protected static $_belongs_to = array('customer', 'user');
     protected static $_has_many = array(
         'invoices_panels'
     );

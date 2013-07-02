@@ -32,6 +32,7 @@ endforeach;
     panel = <?php echo json_encode((array) $panel_arr); ?>;
 
 </script>
+<?php echo Form::open(array("class" => "", "action" => "/invoice/submit_single")); ?>
 <div class="main well" >
     <div class="row" style="margin-top:20px">
         <div class="span4 pull-left">
@@ -114,7 +115,7 @@ endforeach;
 
                 <div class="grid-3-12 ">
                     <label>Country : <em class="formee-req">*</em></label>
-                    <input list="country"  name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+                    <input list="country" name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
                     <datalist id="country">
                         <option value="India">
                         <option value="USA">
@@ -169,8 +170,7 @@ endforeach;
         <div class="row" style="padding-top:5px">
             <div class="span2 pull-right">
                 <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backSingle()" />
-                <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPayment();
-        ;" />
+                <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPayment()" />
             </div>
             <div class="span4 pull-right" style="margin-right:20px">Total Rs.<input type="text" id="total" name="total" disabled autocomplete="off" /> </div>
 
@@ -189,7 +189,7 @@ endforeach;
                 </div>
                 <div class="grid-4-12" style="margin-top: 0px">
                     <input type="hidden" name="payment" id="payment" />
-                    <select name="payment_ddl" id="payment_ddl" onchange="DropDownChanged(this);">
+                    <select name="payment_mode" id="payment_ddl" onchange="DropDownChanged(this);">
                         <option value="cash">Cash</option>
                         <option value="cheque">Cheque </option>
                     </select> 
@@ -226,7 +226,7 @@ endforeach;
                 </div>
                 <div class="span4 ">
                     <label>Comment Box:</label>
-                    <textarea style="height: 70px;width: 300px" >All amounts are due within 30 days of receipt of invoice. Interest on outstanding balances will be charged at a monthly rate of 1.5% </textarea>
+                    <textarea style="height: 70px;width: 300px" name="comment" >All amounts are due within 30 days of receipt of invoice. Interest on outstanding balances will be charged at a monthly rate of 1.5% </textarea>
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">

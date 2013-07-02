@@ -22,12 +22,12 @@
                         <td style="width:350px;">
                             <ul style="padding-left: 0px">
 
-                                <li><input type="text" name="f_name" class="formee-small" placeholder="First Name"  value ="<?php echo $customer->first_name; ?>" required autofocus><input type="text" name="l_name" class="formee-small" placeholder="Last Name" value="<?php echo $customer->last_name ?>"" required></li>
-                                <li><input type="text" name="addr_1" class="formee-large" placeholder="Adress Line #1" value="<?php echo $customer->address_line_1 ?>" autocomplete="off" ></li>
-                                <li><input type="text" name="addr_2" class="formee-large" placeholder="Adress Line #2" value="<?php echo $customer->address_line_2 ?>" autocomplete="off" ></li>
-                                <li><input type="text" name="addr_3" class="formee-large" placeholder="Adress Line #3" value="<?php echo $customer->address_line_3 ?>" autocomplete="off" ><br /></li>
-                                <li><input type="text" name="city" class="formee-medium" placeholder="State" value="<?php echo $customer->city; ?>" autocomplete="off" ><input type="text" name="state" class="formee-small" placeholder="State" value="<?php echo $customer->state ?>" autocomplete="off" ><br /></li>
-                                <li><input type="text" name="country" class="formee-small" placeholder="Country" value="" autocomplete="off" ></li><li><input type="text" name="pincode" class="formee-small" placeholder="Pincode" value="<?php echo $customer->pincode ?>" autocomplete="off" ></li>
+                                <li><input type="text" name="f_name" class="formee-small" placeholder="First Name"  value ="<?php echo $invoice->customer->first_name; ?>" required autofocus><input type="text" name="l_name" class="formee-small" placeholder="Last Name" value="<?php echo $invoice->customer->last_name ?>"" required></li>
+                                <li><input type="text" name="addr_1" class="formee-large" placeholder="Adress Line #1" value="<?php echo $invoice->customer->address_line_1 ?>" autocomplete="off" ></li>
+                                <li><input type="text" name="addr_2" class="formee-large" placeholder="Adress Line #2" value="<?php echo $invoice->customer->address_line_2 ?>" autocomplete="off" ></li>
+                                <li><input type="text" name="addr_3" class="formee-large" placeholder="Adress Line #3" value="<?php echo $invoice->customer->address_line_3 ?>" autocomplete="off" ><br /></li>
+                                <li><input type="text" name="city" class="formee-medium" placeholder="State" value="<?php echo $invoice->customer->city; ?>" autocomplete="off" ><input type="text" name="state" class="formee-small" placeholder="State" value="<?php echo $invoice->customer->state ?>" autocomplete="off" ><br /></li>
+                                <li><input type="text" name="country" class="formee-small" placeholder="Country" value="" autocomplete="off" ></li><li><input type="text" name="pincode" class="formee-small" placeholder="Pincode" value="<?php echo $invoice->customer->pincode ?>" autocomplete="off" ></li>
 
                             </ul>
                         </td>
@@ -97,7 +97,7 @@
                         <td style="width:400px">
 
                             <br />
-                            Paid:  <?php echo $invoice->amount - $invoice->balance; ?>
+                            Paid:  <?php echo $invoice->amount - $invoice->amount_paid; ?>
                             <br />
                             Due Date:
                             <br />

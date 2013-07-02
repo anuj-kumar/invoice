@@ -95,14 +95,14 @@
 <?php echo Form::close(); ?>
 
 <script>
-                function DropDownChanged(oDDL) {
-                    var oTextbox = oDDL.form.elements["city_txt"];
-                    if (oTextbox) {
-                        oTextbox.style.display = (oDDL.value == "") ? "" : "none";
-                        if (oDDL.value == "")
-                            oTextbox.focus();
-                    }
-                }
+    function DropDownChanged(oDDL) {
+        var oTextbox = oDDL.form.elements["city_txt"];
+        if (oTextbox) {
+            oTextbox.style.display = (oDDL.value == "") ? "" : "none";
+            if (oDDL.value == "")
+                oTextbox.focus();
+        }
+    }
 
                 function FormSubmit(oForm) {
                     var oHidden = oForm.elements["city"];
