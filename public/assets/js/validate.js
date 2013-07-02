@@ -20,8 +20,6 @@ function  val_monthly() {
         document.getElementById('client_name').focus();
         return false;
     }
-
-
     var flag = val_customer_details();
     //alert(flag);
     if (flag) {

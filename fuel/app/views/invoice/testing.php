@@ -202,7 +202,7 @@ endforeach;
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-2-12 ">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
-                    <input type="text" name="amount_paid" id="amount_paid" value="" required style="width:50px">
+                    <input type="text" name="amount_paid" id="total" value="" required style="width:50px">
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
