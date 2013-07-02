@@ -1,4 +1,5 @@
-<div class="row" style="margin-top: 20px">
+<div class="main well" >
+    <div class="row" style="margin-top: 20px">
     <div class="span5 ">
         <form class="form-search">
             <div class="input-append">
@@ -72,3 +73,4 @@
             </tr>
         <?php endforeach ?>
     </table>
+</div>

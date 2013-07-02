@@ -72,7 +72,7 @@
     </div>
     <div class="grid-12-12 " style="margin-top: -20px">
         <div class="grid-4-12 ">
-            <input  class="btn btn-large btn-danger" type='submit'  value="Submit" style="margin-left: 40px;margin-top: 20px;min-width:100px">
+            <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPanel()"  style="margin-left: 40px;margin-top: 20px;min-width:100px" /> 
         </div>
     </div>
 

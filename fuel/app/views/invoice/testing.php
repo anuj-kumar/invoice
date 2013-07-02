@@ -3,6 +3,7 @@
     .invoice_content_table {min-height: 250px}
     .invoice_content td,th{width: 200px;border-bottom: 1px solid black;text-align: center}
     .qty{width: 40px}
+    input{height: 17px}
 </style>
 <?php echo Asset::css('formee-structure.css'); ?>
 <?php echo Asset::css('formee-style.css'); ?>
@@ -30,9 +31,9 @@ endforeach;
 
 </script>
 <div class="main well" >
-    <div class="row">
+    <div class="row" style="margin-top:20px">
         <div class="span4 pull-left">
-
+            <h1>Single Invoice</h1>
         </div>
         <div class="span6 pull-right" style="column-count: 2">
             <div class="span2 pull-left" >Date: 
@@ -138,7 +139,7 @@ endforeach;
                     <input type='email'  name="email" placeholder='Email: example@example.com' autocomplete="off" >
                 </div>
                 <div class="grid-4-12 ">
-                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showContent()" />
+                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPanel()"  style="margin-top:20px; width:100px" />
                 </div>
             </div>    
         </fieldset>
@@ -162,63 +163,65 @@ endforeach;
              
 
         </div>
+
         <div class="row" style="border-bottom:1px solid black"></div>
         <div class="row" style="padding-top:5px">
-            <div class="span5 pull-left">
-                Total Rs.<input type="text" id="total" name="total" /> 
-                <br />Current Due (Rs.):
-                <br />Outstanding (Rs.):
-                <br />Due Date:
-
-            </div>
-            <div class="span4 ">
-                <label>Comment Box:</label>
-                <textarea style="height: 70px;width: 300px" >All amounts are due within 30 days of receipt of invoice. Interest on outstanding balances will be charged at a monthly rate of 1.5% </textarea>
-            </div>
-            <div class="span1" style="margin-top:40px;margin-left: 40px">
+            <div class="span2 pull-right">
+                <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backSingle()" />
                 <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPayment()" />
             </div>
+            <div class="span4 pull-right" style="margin-right:20px">Total Rs.<input type="text" id="total" name="total" /> </div>
+
         </div>
         <fieldset>
         </fieldset>
     </div>
 
     <div id="form3" style="display: none" >
-        <h4>Payment Details</h4>
-
-        <div class="row container" style="margin-top: 30px;margin-left: 20px">
-            <h5>Outstanding:    </h5><br />
-
-        </div>
         <fieldset>
-
-            <div class="grid-12-12 ">
-                <div class="grid-4-12 ">
+            <div class="grid-12-12 " style="margin-top: -10px">
+                <h5>Outstanding:    </h5><br />
+                <div class="grid-4-12 " style="margin-top: -20px">
                     Total Amount : <em class="formee-req">*</em>
                     <input type="text" name="total" id="total" value="100" required>
                 </div>
-            </div>
-            <div class="grid-12-12 ">
-                <div class="grid-4-12 ">
-                    <label>Amount Paid: <em class="formee-req">*</em></label>
-                    <input type="text" name="paid" id="total" value="100" required>
-                </div>
-                <div class="grid-4-12" style="margin-top: 22px">
-                    <input type="hidden" name="payment" />
-                    <select name="payment_ddl" onchange="DropDownChanged(this);">
+<div class="grid-4-12" style="margin-top: 0px">
+                    <input type="hidden" name="payment" id="payment" />
+                    <select name="payment_ddl" id="payment_ddl" onchange="DropDownChanged(this);">
                         <option value="cash">Cash</option>
                         <option value="cheque">Cheque </option>
                     </select> 
                 </div>
                 <div class="grid-4-12">
-                    <input type="text" name="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
-                    <input type="text" name="bank" style="display: none;" placeholder="Bank Name" />
+                    <input type="text" name="payment_txt" id="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
+                    <input type="text" name="bank" id="bank" style="display: none;" placeholder="Bank Name" />
                 </div>
+            </div>
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="grid-4-12 ">
+                    <label>Amount Paid: <em class="formee-req">*</em></label>
+                    <input type="text" name="paid" id="total" value="100" required>
+                </div>
+                
 
             </div>
-            <div class="grid-12-12 ">
-                <div class="grid-3-12 " style="float: right">
-                    <input  class="btn btn-large btn-danger" type='submit'  value="Preview" style="margin-left: 40px;margin-top: 20px;width:100px">
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="span5 pull-left">
+
+                    <br />Current Due (Rs.):
+                    <br />Outstanding (Rs.):
+                    <br />Due Date:
+
+                </div>
+                <div class="span4 ">
+                    <label>Comment Box:</label>
+                    <textarea style="height: 70px;width: 300px" >All amounts are due within 30 days of receipt of invoice. Interest on outstanding balances will be charged at a monthly rate of 1.5% </textarea>
+                </div>
+            </div>
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="grid-4-12 " style="float: right">
+                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backContent()" />
+                    <input  class="btn btn-large btn-danger" type='submit'  value="Preview" >
                 </div>
 
             </div>
@@ -289,11 +292,41 @@ endforeach;
     }
 
     function showPayment() {
-         document.getElementById('form1').style.display = "none";
+        document.getElementById('form1').style.display = "none";
         document.getElementById('form2').style.display = "none";
         document.getElementById('form3').style.display = "block";
     }
-    
- 
+    function backSingle() {
+        document.getElementById('form1').style.display = "block";
+        document.getElementById('form2').style.display = "none";
+        document.getElementById('form3').style.display = "none";
+    }
+
+    function backContent() {
+        document.getElementById('form1').style.display = "none";
+        document.getElementById('form2').style.display = "block";
+        document.getElementById('form3').style.display = "none";
+    }
+    function DropDownChanged(oDDL) {
+        var oTextbox = document.getElementById('payment_txt');
+        var oBank = getElementById('bank');
+        if (oTextbox) {
+            oTextbox.style.display = (oDDL.value == "cheque") ? "" : "none";
+            oBank.style.display = (oDDL.value == "cheque") ? "" : "none";
+            if (oDDL.value == "cheque")
+                oTextbox.focus();
+
+        }
+    }
+
+    function FormSubmit(oForm) {
+        var oHidden = oForm.elements["payment"];
+        var oDDL = oForm.elements["payment_ddl"];
+        var oTextbox = oForm.elements["payment_txt"];
+        if (oHidden && oDDL && oTextbox)
+            oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
+    }
+
+
 
 </script>
