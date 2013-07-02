@@ -8,7 +8,9 @@ class Controller_Invoice extends Controller_Invoicebase {
         Response::redirect('/invoice/single');
     }
 
+   
     public function action_single() {
+        $data['panels'] = Model_Panel::find('all');
         $data['states'] = Model_State::find('all');
         $panels = Model_Panel::find('all', array(
                     'related' => array('global_panel_prices'),
@@ -34,6 +36,8 @@ class Controller_Invoice extends Controller_Invoicebase {
     }
 
     public function action_monthly() {
+
+
         $data['monthly_customers'] = Model_Monthlycustomer::find('all', array(
                     'related' => array('customer'),
 //            'where' => array('t1.type' => 'monthly')
@@ -91,8 +95,6 @@ class Controller_Invoice extends Controller_Invoicebase {
                     'where' => array('t1.invoice_id' => $invoice->id)
         ));
         $data['invoice'] = $invoice;
-        $data['invoice_id'] = $invoice_id;
-        $data['amount_words'] = Controller_Numbertowords::convert_number_to_words($invoice->amount);
         $this->template->title = 'Invoice | Preview';
         return Response::forge(View::forge('invoice/preview', $data));
     }
@@ -126,18 +128,10 @@ class Controller_Invoice extends Controller_Invoicebase {
     }
 
     public function action_monthly_details($id = 1) {
-        $data['states'] = Model_State::find('all');
-        $panels = Model_Panel::find('all', array(
-                    'related' => array('global_panel_prices'),
-        ));
-
-        $data['panels'] = $panels;
-
         $data['monthly_customers'] = Model_Monthlycustomer::find($id, array(
                     'related' => array('customer'),
 //            'where' => array('t1.type' => 'monthly')
         ));
-        $data['invoice_id'] = 1;
         $this->template->title = 'Invoice | Monthly';
         $this->template->data = 'Monthly Invoice';
         $this->template->content = View::forge('invoice/monthly_details', $data);
@@ -157,21 +151,28 @@ class Controller_Invoice extends Controller_Invoicebase {
     }
 
     public function action_print($invoice_id = 1) {
-        $invoice = Model_Invoice::find($invoice_id, array(
-                    'related' => array('customer')
+        $customer = Model_Customer::find('first', array(
+                    'related' => array('invoices',
+                    ),
+                    'where' => array('t1.id' => $invoice_id),
         ));
+
+        $data['customer'] = $customer;
+        foreach ($customer->invoices as $invoice):
 
 //        $query = DB::query('SELECT * from customers c INNER JOIN invoices i ON c.id = i.customer_id INNER JOIN invoices_panels ip ON i.id = ip.invoice_id');
-
-        $invoice->panels = Model_Panel::find('all', array(
-                    'related' => array('invoices_panels'),
-                    'where' => array('t1.invoice_id' => $invoice->id)
-        ));
-        $data['invoice'] = $invoice;
-        $data['invoice_id'] = $invoice_id;
+//        $result = $query->as_object()->execute();
+//            print_r($customer->last_name);
+            $invoice->panels = Model_Panel::find('all', array(
+                        'related' => array('invoices_panels'),
+                        'where' => array('t1.invoice_id' => $invoice->id)
+            ));
+            $data['invoice'] = $invoice;
+        endforeach;
         $this->template->title = 'Invoice | Preview';
+
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
-        return Response::forge(View::forge('invoice/print', $data));
+        return Response::forge(View::forge('invoice/pdf', $data));
     }
 
     public function action_submit_monthly_new() {

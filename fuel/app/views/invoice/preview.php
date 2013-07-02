@@ -32,22 +32,22 @@
                             </ul>
                         </td>
                         <td>
-                            Date: <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" >  <br/>
-                            Invoice No: <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" > <br />
-                            Billing Period: <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" ><br />
-                            PAN: <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" > <br />
-                            TIN: <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" > <br /><br />
+                            Date: <input type="text" class="" placeholder="" value="" autocomplete="off" >  <br/>
+                            Invoice No: <input type="text"  class="" placeholder="" value="" autocomplete="off" > <br />
+                            Billing Period: <input type="text"  class="" placeholder="" value="" autocomplete="off" ><br />
+                            PAN: <input type="text"  class="" placeholder="" value="" autocomplete="off" > <br />
+                            TIN: <input type="text"  class="" placeholder=" " value="" autocomplete="off" > <br /><br />
                             <br />
                         </td>
                     </tr>
                     <br />
                     <tr>
                         <td>
-                            Name: B/O <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" >
-                            <br />Date of Service :  <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" >
+                            Name: B/O <input type="text"  class="" placeholder="" value="" autocomplete="off" >
+                            <br />Date of Service :  <input type="text"  value="" autocomplete="off" >
                         </td>
                         <td>
-                            FP No: <input type="text" name="country" class="" placeholder="Country" value="" autocomplete="off" ><br />
+                            FP No: <input type="text" name="country" class=""  value="" autocomplete="off" ><br />
                             <br />
                         </td></tr>
                 </table>
@@ -95,7 +95,7 @@
                 <table style="top:30px">
                     <tr>
                         <td style="width:400px">
-
+                            <span style="text-transform: uppercase;">Rupee <?php echo $amount_words; ?></span>
                             <br />
                             Paid:  <?php echo $invoice->amount - $invoice->amount_paid; ?>
                             <br />
@@ -110,4 +110,10 @@
                     </tr>
                 </table>
             </div>
+    
+        <div class="span4" style="margin-left: 47% ">
+            <?php echo Html::anchor('invoice/print/'.$invoice_id, 'Print'); ?>
+        </div>
+        
 </center>
+        

@@ -172,7 +172,7 @@ endforeach;
                 <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backSingle()" />
                 <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPayment()" />
             </div>
-            <div class="span4 pull-right" style="margin-right:20px">Total Rs.<input type="text" id="total" name="total" disabled autocomplete="off" /> </div>
+            <div class="span4 pull-right" style="margin-right:20px">Total Rs.<input type="text" name="amount" id="total" readonly autocomplete="off" /> </div>
 
         </div>
         <fieldset>
@@ -185,7 +185,7 @@ endforeach;
 
                 <div class="grid-4-12 " style="margin-top: -20px">
                     Total Amount : <em class="formee-req">*</em>
-                    <input type="text" name="total" id="total_amount" value="" required disabled>
+                    <input type="text"  id="total_amount" value="" required disabled>
                 </div>
                 <div class="grid-4-12" style="margin-top: 0px">
                     <input type="hidden" name="payment" id="payment" />
@@ -195,14 +195,14 @@ endforeach;
                     </select> 
                 </div>
                 <div class="grid-4-12">
-                    <input type="text" name="payment_txt" id="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
+                    <input type="text" id="cheque_number" name="payment_txt" id="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
 
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-2-12 ">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
-                    <input type="text" name="paid" id="total" value="" required style="width:50px">
+                    <input type="text" name="amount_paid" id="amount_paid" value="" required style="width:50px">
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
@@ -215,11 +215,11 @@ endforeach;
                 <div class="grid-3-12">
                     <input type="text" name="bank_city" class="formee-large" id="bank_city" style="margin-left: 40px;display: none;" placeholder="Bank City"  style="width:80px" />
                 </div>
-
+                
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="span5 pull-left">
-
+                   
                     <br />Current Due (Rs.):
                     <br />Due Date:
 

@@ -9,28 +9,27 @@ function  val_single() {
     if (flag) {
         return true;
     }
-    else { return false; }
+    else {
+        return false;
+    }
 }
 function  val_monthly() {
     if (document.getElementById('client_name').value == "")
     {
-        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Client Contact First Name</h5>";
+        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Organization Name</h5>";
         document.getElementById('client_name').focus();
         return false;
     }
-    if (document.getElementById('client_print').value == "")
-    {
-        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Client Contact Last Name</h5>";
-        document.getElementById('client_print').focus();
-        return false;
-    }
+
 
     var flag = val_customer_details();
     //alert(flag);
     if (flag) {
         return true;
     }
-    else { return false; }
+    else {
+        return false;
+    }
 }
 
 function val_customer_details() {
@@ -77,24 +76,44 @@ function val_customer_details() {
             document.getElementById('pincode').focus();
             return false;
         }
-        else {
-            var pincode = document.getElementById('pincode').value;
-            var check = isNumber(pincode);
-            if (!check) {
+
+        var pincode = document.getElementById('pincode').value;
+        var check = isNumber(pincode);
+        if (!check) {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
+            document.getElementById('pincode').focus();
+            return false;
+        }
+        else
+        {
+            if (pincode.length != 6) {
+                document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Pincode</h5>";
                 document.getElementById('pincode').focus();
                 return false;
             }
-            if (check)
-            {
-                if (pincode.length != 6) {
-                    document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Pincode</h5>";
-                    document.getElementById('pincode').focus();
-                    return false;
-                }
-            }
+        }
+        //return true;
 
+    }
+    else {
+        if (document.getElementById('pincode').value == "")
+        {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Pincode</h5>";
+            document.getElementById('pincode').focus();
+            return false;
+        }
+
+        var pincode = document.getElementById('pincode').value;
+        var check = isNumber(pincode);
+        if (!check) {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
+            document.getElementById('pincode').focus();
+            return false;
         }
     }
+
+
+
     if (document.getElementById('country_code').value == "")
     {
         document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Country Code</h5>";
@@ -154,10 +173,10 @@ function val_customer_details() {
             document.getElementById('email').focus();
             return false;
         }
-       
+
     }
- document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
- return true;
+    document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
+    return true;
 }
 
 function val_invoice_panels() {
@@ -170,5 +189,39 @@ function val_invoice_panels() {
     return true;
 }
 function val_payment() {
-    alert("validate Payment");
+    if (document.getElementById('amount_paid').value == "")
+    {
+        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Amount Paid</h5>";
+        document.getElementById('amount_paid').focus();
+        return false;
+    }
+    if (document.getElementById('payment_ddl').value == "cheque")
+    {
+        if (document.getElementById('payment_txt').value == "")
+        {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Amount Paid</h5>";
+            document.getElementById('payment_txt').focus();
+            return false;
+        }
+        if (document.getElementById('bank_name').value == "")
+        {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Amount Paid</h5>";
+            document.getElementById('bank_name').focus();
+            return false;
+        }
+        if (document.getElementById('bank_branch').value == "")
+        {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Amount Paid</h5>";
+            document.getElementById('bank_branch').focus();
+            return false;
+        }
+        if (document.getElementById('bank_city').value == "")
+        {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Amount Paid</h5>";
+            document.getElementById('bank_city').focus();
+            return false;
+        }
+
+    }
+
 }
