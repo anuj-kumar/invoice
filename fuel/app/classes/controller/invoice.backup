@@ -10,6 +10,7 @@ class Controller_Invoice extends Controller_Invoicebase {
 
    
     public function action_single() {
+        $data['panels'] = Model_Panel::find('all');
         $data['states'] = Model_State::find('all');
         $panels = Model_Panel::find('all', array(
                     'related' => array('global_panel_prices'),
@@ -35,6 +36,8 @@ class Controller_Invoice extends Controller_Invoicebase {
     }
 
     public function action_monthly() {
+
+
         $data['monthly_customers'] = Model_Monthlycustomer::find('all', array(
                     'related' => array('customer'),
 //            'where' => array('t1.type' => 'monthly')
@@ -125,18 +128,10 @@ class Controller_Invoice extends Controller_Invoicebase {
     }
 
     public function action_monthly_details($id = 1) {
-        $data['states'] = Model_State::find('all');
-        $panels = Model_Panel::find('all', array(
-                    'related' => array('global_panel_prices'),
-        ));
-
-        $data['panels'] = $panels;
-
         $data['monthly_customers'] = Model_Monthlycustomer::find($id, array(
                     'related' => array('customer'),
 //            'where' => array('t1.type' => 'monthly')
         ));
-        $data['invoice_id'] = 1;
         $this->template->title = 'Invoice | Monthly';
         $this->template->data = 'Monthly Invoice';
         $this->template->content = View::forge('invoice/monthly_details', $data);

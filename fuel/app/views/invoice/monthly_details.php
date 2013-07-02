@@ -74,11 +74,11 @@ endforeach;
                 </div>
                 <div class="grid-4-12 ">
                     <label>Client Contact : <em class="formee-req">*</em></label>
-                    <input type="text" name="f_name" id="f_name" class="formee-large" value="<?php echo $monthly_customers->customer->first_name; ?>" placeholder="Name" required>
+                    <input type="text" id="f_name" name="f_name" id="f_name" class="formee-large" value="<?php echo $monthly_customers->customer->first_name; ?>" placeholder="Name" required>
                 </div>
                 <div class="grid-3-12 ">
                     <label>Client Contact : <em class="formee-req">*</em></label>
-                    <input type="text" name="l_name" id="l_name" class="formee-large" value="<?php echo $monthly_customers->customer->last_name; ?>" placeholder="Name" required>
+                    <input type="text" id="l_name" name="l_name" id="l_name" class="formee-large" value="<?php echo $monthly_customers->customer->last_name; ?>" placeholder="Name" required>
                 </div>
 
             </div>  
@@ -93,32 +93,36 @@ endforeach;
                 </div>
                 <div class="grid-4-12 ">
                     <label>Address Line #3 : </label>
-                    <input type="text"  name="addr_3" class="formee-large" placeholder="Address Line #3" value="<?php echo $monthly_customers->customer->address_line_3; ?>" autocomplete="off" >
+                    <input type="text" id="addr_3" name="addr_3" class="formee-large" placeholder="Address Line #3" value="<?php echo $monthly_customers->customer->address_line_3; ?>" autocomplete="off" >
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -30px">
-                <div class="grid-4-12 ">
+                <div class="grid-3-12 ">
                     <label>City : <em class="formee-req"></em></label>
-                    <input type="text" name="city" class="formee-large" placeholder="City" value="<?php echo $monthly_customers->customer->city; ?>" required>
+                    <input type="text" name="city" id="city" class="formee-medium" placeholder="City" value="<?php echo $monthly_customers->customer->city; ?>" required>
                 </div>
-                <div class="grid-4-12 ">
+                <div class="grid-3-12 ">
                     <label>State : <em class="formee-req">*</em></label>
-                    <input type="text" name="state" class="formee-large" placeholder="State" value="<?php echo $monthly_customers->customer->state; ?>" required>
+                    <input type="text" name="state" id="state" class="formee-medium" placeholder="State" value="<?php echo $monthly_customers->customer->state; ?>" required>
                 </div>
-                <div class="grid-4-12 ">
+                <div class="grid-3-12 ">
+                    <label>Country : <em class="formee-req">*</em></label>
+                    <input type="text" name="country" id="country" class="formee-medium" placeholder="country" value="<?php //echo $monthly_customers->customer->country; ?>" required>
+                </div>
+                <div class="grid-3-12 ">
                     <label>Pin Code : </label>
-                    <input type="text" name="pincode" class="formee-large" value="<?php echo $monthly_customers->customer->pincode; ?>" placeholder="Pin Code" >
+                    <input type="text" id="pincode" name="pincode" class="formee-medium" value="<?php echo $monthly_customers->customer->pincode; ?>" placeholder="Pin Code" >
                 </div>
             </div>
 
             <div class="grid-12-12 " style="margin-top: -30px">
                 <div class="grid-4-12 ">
                     <label>Telephone : <em class="formee-req">*</em></label>
-                    +<input type='tel' name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="<?php echo $country_code; ?>"  style="width: 20px" required><input type='tel' name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px " placeholder='9999999999' autocomplete="off" value="<?php echo $phone; ?>" required>
+                    +<input type='tel' id="country_code" name="tele" pattern='\d{2}' placeholder='Tele: (91)' autocomplete="off" value="<?php echo $country_code; ?>"  style="width: 20px" required><input type='tel' id="tele" name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px " placeholder='9999999999' autocomplete="off" value="<?php echo $phone; ?>" required>
                 </div>
                 <div class="grid-4-12 ">
                     <label>Email : <em class="formee-req">*</em></label>
-                    <input type='email' name="email" placeholder='Email: example@example.com' value="<?php echo $monthly_customers->customer->email; ?>" autocomplete="off" >
+                    <input type='email' id="email" name="email" placeholder='Email: example@example.com' value="<?php echo $monthly_customers->customer->email; ?>" autocomplete="off" >
                 </div>
 
             </div>
@@ -250,7 +254,7 @@ endforeach;
 
 
 <script>
-  
+
                         function pincode_val() {
                             var country = document.getElementById('country').value;
                             if (country == "India" || country == "india") {
@@ -276,9 +280,12 @@ endforeach;
                         window.onload = addRow('invoice_content');
 
                         function showContent() {
-                            document.getElementById('form1').style.display = "none";
-                            document.getElementById('form2').style.display = "block";
-                            document.getElementById('form3').style.display = "none";
+                            var flag = val_monthly();
+                            if (flag) {
+                                document.getElementById('form1').style.display = "none";
+                                document.getElementById('form2').style.display = "block";
+                                document.getElementById('form3').style.display = "none";
+                            }
                         }
 
                         function showPayment() {
@@ -297,31 +304,31 @@ endforeach;
                             document.getElementById('form2').style.display = "block";
                             document.getElementById('form3').style.display = "none";
                         }
-  
-    function DropDownChanged(oDDL) {
-        var oTextbox = document.getElementById('payment_txt');
-        var oBank_name = document.getElementById('bank_name');
-        var oBank_city = document.getElementById('bank_city');
-        var oBank_branch = document.getElementById('bank_branch');
 
-        if (oTextbox) {
-            oTextbox.style.display = (oDDL.value == "cheque") ? "" : "none";
-            oBank_name.style.display = (oDDL.value == "cheque") ? "" : "none";
-            oBank_city.style.display = (oDDL.value == "cheque") ? "" : "none";
-            oBank_branch.style.display = (oDDL.value == "cheque") ? "" : "none";
-            if (oDDL.value == "cheque")
-                oTextbox.focus();
+                        function DropDownChanged(oDDL) {
+                            var oTextbox = document.getElementById('payment_txt');
+                            var oBank_name = document.getElementById('bank_name');
+                            var oBank_city = document.getElementById('bank_city');
+                            var oBank_branch = document.getElementById('bank_branch');
 
-        }
-    }
+                            if (oTextbox) {
+                                oTextbox.style.display = (oDDL.value == "cheque") ? "" : "none";
+                                oBank_name.style.display = (oDDL.value == "cheque") ? "" : "none";
+                                oBank_city.style.display = (oDDL.value == "cheque") ? "" : "none";
+                                oBank_branch.style.display = (oDDL.value == "cheque") ? "" : "none";
+                                if (oDDL.value == "cheque")
+                                    oTextbox.focus();
 
-    function FormSubmit(oForm) {
-        var oHidden = oForm.elements["payment"];
-        var oDDL = oForm.elements["payment_ddl"];
-        var oTextbox = oForm.elements["payment_txt"];
-        if (oHidden && oDDL && oTextbox)
-            oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
-    }
+                            }
+                        }
+
+                        function FormSubmit(oForm) {
+                            var oHidden = oForm.elements["payment"];
+                            var oDDL = oForm.elements["payment_ddl"];
+                            var oTextbox = oForm.elements["payment_txt"];
+                            if (oHidden && oDDL && oTextbox)
+                                oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
+                        }
 
 
 

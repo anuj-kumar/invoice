@@ -14,13 +14,13 @@ function  val_single() {
 function  val_monthly() {
     if (document.getElementById('client_name').value == "")
     {
-        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Client Contact First Name</h5>";
+        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Organization Name</h5>";
         document.getElementById('client_name').focus();
         return false;
     }
     if (document.getElementById('client_print').value == "")
     {
-        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Client Contact Last Name</h5>";
+        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter  Contact Print Name</h5>";
         document.getElementById('client_print').focus();
         return false;
     }
