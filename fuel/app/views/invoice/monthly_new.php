@@ -208,3 +208,9 @@
                 document.getElementById('form2').style.display = "none";
             }
 </script>
+<?php 
+for ($i=0;$i<$len;$i++){
+?><script>
+window.onload = addtable('panel_table', 9  );
+</script>
+<?php } ?>

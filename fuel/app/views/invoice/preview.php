@@ -95,9 +95,9 @@
                 <table style="top:30px">
                     <tr>
                         <td style="width:400px">
-                            <span style="text-transform: uppercase;">Rupee <?php echo $amount_words; ?></span>
+                            <h5><span style="text-transform: uppercase;">Rupee <?php echo $amount_words; ?></span></h5>
                             <br />
-                            Paid:  <?php echo $invoice->amount - $invoice->amount_paid; ?>
+                            Amount Paid:  <?php echo $invoice->amount - $invoice->amount_paid; ?>
                             <br />
                             Due Date:
                             <br />
