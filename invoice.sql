@@ -91,13 +91,14 @@ CREATE TABLE `customers` (
   `address_line_3` varchar(50) DEFAULT NULL,
   `city` int(11) NOT NULL,
   `state` int(11) NOT NULL,
+  `country` varchar(20) NOT NULL,
   `pincode` int(6) NOT NULL,
-  `phone` int(11) NOT NULL,
+  `phone` bigint(12) NOT NULL,
   `email` varchar(50) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +107,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,981374,2147483647,'lksjdfgk','0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,171717,1717171717,'anuj_@outlook.com','0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,'single','Mr.','alskdf','lksdjf','laksjdhf','lksadjfg','sldkfjg',0,0,123231,2147483647,'a@a.xom','0000-00-00 00:00:00','2013-06-24 11:59:07'),(4,'single','Dr.','laskdf','lsdkjfng','lkdsfng','lkdsfng','sklfdg',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:03:10'),(5,'single','Dr.','laskdf','lsdkjfng','laskdjf','ksdjfg','kjfgld',0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-25 05:15:07'),(6,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 05:45:27'),(7,'single','Dr.','laskdf','lsdkjfng','lasdf','lksdfj','lkdsjg',0,0,0,2147483647,'a@a.b','0000-00-00 00:00:00','2013-06-25 06:00:20'),(8,'monthly','Dr.','dofijg','name','sjfb','dfgj',NULL,0,0,251001,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-28 10:03:26'),(9,'monthly','Dr.','ldskfj','name','lkdfj','ldkfjg',NULL,0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-28 10:06:33'),(10,'monthly','Dr.','ldskfj','name','lkdfj','ldkfjg',NULL,0,0,0,2147483647,'a@a.a','0000-00-00 00:00:00','2013-06-28 11:05:42');
+INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,'',981374,919903571054,'lksjdfgk','0000-00-00 00:00:00','2013-07-02 09:32:13'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,'India',171717,1256789012,'anuj_@outlook.com','0000-00-00 00:00:00','2013-07-02 13:40:04'),(35,'single','Dr.','as','kfd','kjkf','jfk','jsdkf',0,0,'',251001,2147483647,'b@a.a','0000-00-00 00:00:00','2013-07-02 07:57:32'),(36,'single','Dr.','as','lskdjf','lf','ljf','ljf',0,0,'',251001,2147483647,'a@b.c','0000-00-00 00:00:00','2013-07-02 09:04:49'),(37,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,'',171717,1234567890,'anuj_@outlook.com','0000-00-00 00:00:00','2013-07-02 10:54:59'),(38,'single','Dr.','ajsdlf','kjsfkl','jskdlf','kljskfj','jlskgj',0,0,'',251001,9592039229,'','0000-00-00 00:00:00','2013-07-02 11:12:51');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -177,25 +178,25 @@ CREATE TABLE `invoices` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `content` varchar(50) NOT NULL,
-  `date` date NOT NULL,
-  `timestamp` datetime NOT NULL,
+  `baby_of` varchar(30) DEFAULT NULL,
+  `fp_number` int(11) DEFAULT NULL,
+  `date_of_service` date DEFAULT NULL,
   `amount` float NOT NULL,
-  `tax_1` float(5,2) NOT NULL,
-  `tax_2` float(5,2) NOT NULL,
-  `tax_3` float(5,2) NOT NULL,
-  `tax_4` float(5,2) NOT NULL,
-  `discount_1` float(4,2) NOT NULL,
-  `discount_2` float(4,2) NOT NULL,
-  `discount_3` float(4,2) NOT NULL,
-  `balance` float(12,2) NOT NULL,
-  `payment_mode` enum('cash','cheque','demand draft') NOT NULL,
+  `tax_1` float(5,2) DEFAULT NULL,
+  `tax_2` float(5,2) DEFAULT NULL,
+  `tax_3` float(5,2) DEFAULT NULL,
+  `tax_4` float(5,2) DEFAULT NULL,
+  `discount_1` float(4,2) DEFAULT NULL,
+  `discount_2` float(4,2) DEFAULT NULL,
+  `discount_3` float(4,2) DEFAULT NULL,
+  `amount_paid` float(12,2) DEFAULT NULL,
+  `payment_mode` enum('cash','cheque','demand draft') DEFAULT NULL,
   `cheque_number` int(11) DEFAULT NULL,
   `bank_name` varchar(50) DEFAULT NULL,
   `bank_branch` varchar(50) DEFAULT NULL,
   `bank_city` varchar(50) DEFAULT NULL,
-  `comment` text NOT NULL,
-  `review_number` int(11) NOT NULL,
+  `comment` text,
+  `review_number` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
@@ -203,7 +204,7 @@ CREATE TABLE `invoices` (
   KEY `fk_invoice_user` (`user_id`),
   CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `invoices_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,7 +213,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-INSERT INTO `invoices` VALUES (1,1,5,'Kuch bhi falana dimka','2013-06-13','2013-06-13 00:00:00',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,5,'lksadngfkansg','2013-06-13','0000-00-00 00:00:00',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,2,5,'askdjflakjfkl','2013-06-18','0000-00-00 00:00:00',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'laknsdlkgfsd',0,'0000-00-00 00:00:00','0000-00-00 00:00:00');
+INSERT INTO `invoices` VALUES (1,1,5,NULL,NULL,'2013-06-13',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,5,NULL,NULL,'2013-06-13',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,5,NULL,NULL,'2013-06-18',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'laknsdlkgfsd',0,'0000-00-00 00:00:00','2013-07-02 09:05:59'),(4,2,5,NULL,NULL,NULL,15000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 09:12:39'),(5,36,5,NULL,NULL,NULL,15000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 09:04:49'),(6,38,5,NULL,NULL,NULL,51000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,'40000',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 11:12:51'),(7,2,5,NULL,NULL,NULL,5000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,'2000',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 13:44:35');
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -242,7 +243,7 @@ CREATE TABLE `invoices_panels` (
 
 LOCK TABLES `invoices_panels` WRITE;
 /*!40000 ALTER TABLE `invoices_panels` DISABLE KEYS */;
-INSERT INTO `invoices_panels` VALUES (1,1,12,NULL,0.00),(1,2,12,NULL,0.00);
+INSERT INTO `invoices_panels` VALUES (1,1,12,NULL,0.00),(1,2,12,NULL,0.00),(4,1,3,NULL,5000.00),(5,1,3,NULL,5000.00),(6,3,12,NULL,4250.00),(7,1,1,NULL,5000.00);
 /*!40000 ALTER TABLE `invoices_panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +334,7 @@ CREATE TABLE `monthly_customers` (
 
 LOCK TABLES `monthly_customers` WRITE;
 /*!40000 ALTER TABLE `monthly_customers` DISABLE KEYS */;
-INSERT INTO `monthly_customers` VALUES (1,2,'',NULL,'','/var/www/invoice/readme.md',0.00,12000.00,'2013-06-28',NULL,NULL,'2013-06-21 12:09:05','2013-06-21 06:39:05');
+INSERT INTO `monthly_customers` VALUES (1,2,'Neogen Labs','agr','','/var/www/invoice/readme.md',0.00,15000.00,'2013-06-28',NULL,NULL,'2013-06-21 12:09:05','2013-07-02 13:44:35');
 /*!40000 ALTER TABLE `monthly_customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -403,7 +404,7 @@ CREATE TABLE `states` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -412,6 +413,7 @@ CREATE TABLE `states` (
 
 LOCK TABLES `states` WRITE;
 /*!40000 ALTER TABLE `states` DISABLE KEYS */;
+INSERT INTO `states` VALUES (1,'NCR','0000-00-00 00:00:00','2013-07-01 07:20:50'),(2,'Andhra Pradesh','2013-02-27 09:20:16','2013-07-01 07:20:19'),(3,'Arunachal Pradesh','2013-02-27 09:20:16','2013-07-01 07:20:19'),(4,'Assam','2013-02-27 09:20:16','2013-07-01 07:20:19'),(5,'Bihar','2013-02-27 09:20:17','2013-07-01 07:20:19'),(6,'Chhattisgarh','2013-02-27 09:20:17','2013-07-01 07:20:19'),(7,'Goa','2013-02-27 09:20:17','2013-07-01 07:20:19'),(8,'Gujarat','2013-02-27 09:20:17','2013-07-01 07:20:19'),(9,'Haryana','2013-02-27 09:20:17','2013-07-01 07:20:19'),(10,'Himachal Pradesh','2013-02-27 09:20:17','2013-07-01 07:20:19'),(11,'Jammu and Kashmir','2013-02-27 09:20:17','2013-07-01 07:20:19'),(12,'Jharkhand','2013-02-27 09:20:17','2013-07-01 07:20:19'),(13,'Karnataka','2013-02-27 09:20:17','2013-07-01 07:20:19'),(14,'Kerala','2013-02-27 09:20:17','2013-07-01 07:20:19'),(15,'Madhya Pradesh','2013-02-27 09:20:17','2013-07-01 07:20:19'),(16,'Maharashtra','2013-02-27 09:20:17','2013-07-01 07:20:19'),(17,'Manipur','2013-02-27 09:20:17','2013-07-01 07:20:19'),(18,'Meghalaya','2013-02-27 09:20:17','2013-07-01 07:20:19'),(19,'Mizoram','2013-02-27 09:20:17','2013-07-01 07:20:19'),(20,'Nagaland','2013-02-27 09:20:17','2013-07-01 07:20:19'),(21,'Orissa','2013-02-27 09:20:17','2013-07-01 07:20:19'),(22,'Punjab','2013-02-27 09:20:17','2013-07-01 07:20:19'),(23,'Rajasthan','2013-02-27 09:20:17','2013-07-01 07:20:19'),(24,'Sikkim','2013-02-27 09:20:17','2013-07-01 07:20:19'),(25,'Tamil Nadu','2013-02-27 09:20:17','2013-07-01 07:20:19'),(26,'Tripura','2013-02-27 09:20:18','2013-07-01 07:20:19'),(27,'Uttar Pradesh','2013-02-27 09:20:18','2013-07-01 07:20:19'),(28,'Uttarakhand','2013-02-27 09:20:18','2013-07-01 07:20:19'),(29,'West Bengal','2013-02-27 09:20:18','2013-07-01 07:20:19');
 /*!40000 ALTER TABLE `states` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -439,7 +441,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-06-30 23:25:25','2013-06-11 18:30:00','2013-07-01 04:55:25');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-07-02 00:23:56','2013-06-11 18:30:00','2013-07-02 05:53:56');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -452,4 +454,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-01 17:01:55
+-- Dump completed on 2013-07-02 19:23:39

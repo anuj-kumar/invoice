@@ -37,7 +37,7 @@ endforeach;
 
 </script>
 
-<?php echo Form::open(array("class" => "", "action" => "/invoice/u_monthly")); ?>
+<?php echo Form::open(array("class" => "", "action" => "/invoice/submit_monthly")); ?>
 <div class="main well" >
 
     <h2>Monthly Details</h2>
@@ -46,11 +46,11 @@ endforeach;
             <div class="grid-12-12 ">
                 <div class="grid-4-12 ">
                     <label>Organization Name : <em class="formee-req">*</em></label>
-                    <input type="text" id="client_name" name="client_name" class="formee-large" value="<?php echo $monthly_customers->org_name; ?>" placeholder="Organization Name" required >
+                    <input type="text" id="client_name" name="org_name" class="formee-large" value="<?php echo $monthly_customers->org_name; ?>" placeholder="Organization Name" required >
                 </div>
                 <div class="grid-3-12 ">
                     <label>Organization Print Name : <em class="formee-req">*</em></label>
-                    <input type="text" id="client_print" name="client_print" class="" value="<?php echo $monthly_customers->org_print_name; ?>" placeholder="PrintName" style="width: 150px" required>
+                    <input type="text" id="client_print" name="org_print_name" class="" value="<?php echo $monthly_customers->org_print_name; ?>" placeholder="PrintName" style="width: 150px" required>
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
@@ -149,7 +149,6 @@ endforeach;
 
             <div class="span3 pull-right">
 
-            <input type="hidden" name="invoice_id" value="<?php echo $invoice_id ?>" />
             <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('invoice_content')" />
                 <input class="btn btn-danger" type="button" value="Delete Row" onclick="deleteRow('invoice_content')" />
         </div>
@@ -183,24 +182,24 @@ endforeach;
                 <h5>Outstanding:    </h5><br />
                 <div class="grid-4-12 " style="margin-top: -20px">
                     Total Amount : <em class="formee-req">*</em>
-                    <input type="text" name="total" id="total_amount" value="" required>
+                    <input type="text" name="amount" id="total_amount" value="" required>
                 </div>
                 <div class="grid-4-12" style="margin-top: 0px">
                     <input type="hidden" name="payment" id="payment" />
-                    <select name="payment_ddl" id="payment_ddl" onchange="DropDownChanged(this);">
+                    <select name="payment_mode" id="payment_ddl" onchange="DropDownChanged(this);">
                         <option value="cash">Cash</option>
                         <option value="cheque">Cheque </option>
                     </select> 
                 </div>
                 <div class="grid-4-12">
-                    <input type="text" name="payment_txt" id="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
+                    <input type="text" name="cheque_number" id="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
 
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-2-12 ">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
-                    <input type="text" name="paid" id="total" value="" required style="width:50px">
+                    <input type="text" name="amount_paid" id="total" value="" required style="width:50px">
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
@@ -219,7 +218,7 @@ endforeach;
                 <div class="span5 pull-left">
 
                     <br />Current Due (Rs.):
-                    <br />Outstanding (Rs.):
+                    <br />Outstanding (Rs.): <?php echo $monthly_customers->outstanding ?>
                     <br />Due Date:
 
                 </div>
@@ -238,14 +237,6 @@ endforeach;
         </fieldset>
     </div>
 </div> 
-
-
-
-
-
-
-
-
 
 
 

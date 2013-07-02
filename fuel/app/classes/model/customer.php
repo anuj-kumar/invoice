@@ -14,6 +14,7 @@ class Model_Customer extends \Orm\Model {
         'address_line_3',
         'city',
         'state',
+        'country',
         'pincode',
         'phone',
         'email',
