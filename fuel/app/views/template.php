@@ -25,15 +25,22 @@
             <div class="login_info pull-right">
                 <?php
                 if ($user = Session::get('user')) {
-
-                    echo Html::anchor('login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
-                    ?>
-                    <?php
-                } else {
+                    echo Html::anchor( 'login/logout', 'LOGOUT | ' . $user->name, array('id' => 'logout', 'class' => 'btn  btn-danger', 'style' => 'margin-top:5px'));
+                }
+                else {
                     Response::redirect('login/login');
                 }
-                ?> 
-            </div>    
+                ?>
+            </div>
+            <?php
+            $uri = explode('/', Input::uri());
+            $module = $uri[1] . "_" . $uri[2];
+            if (!Controller_Base::access($module)) {
+//                    header( "Location: /invoice/single" );
+                echo ("You dont have permission for this page!");
+                Response::redirect('/invoice/single');
+            }
+            ?>
         </div>
         <div class="container">
             <div class="span12">

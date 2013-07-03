@@ -5,7 +5,7 @@ use \Fuel\Core\Session;
 
 class Controller_Base extends Controller_Template {
 
-    protected function access($module) {
+    public static function access($module) {
         $user = Session::get('user');
         if ($user) {
             $right = Model_Access_Right::find('first', array(

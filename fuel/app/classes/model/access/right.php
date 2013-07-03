@@ -6,12 +6,17 @@ class Model_Access_Right extends \Orm\Model {
     protected static $_properties = array(
         'id',
         'user_id',
-        'print_invoice',
-        'view_archive',
-        'add_panel',
-        'add_monthly_customer',
+        'invoice_single',
+        'invoice_monthly',
+        'panel_global',
+        'panel_local',
+        'archive_single',
+        'archive_monthly',
+        'user_list',
+        'user_create',
+        'system_log',
         'created_at',
-        'updated_at',
+        'updated_at'
     );
     protected static $_observers = array(
         'Orm\Observer_CreatedAt' => array(
