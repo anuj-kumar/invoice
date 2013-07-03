@@ -108,14 +108,8 @@ FP No:<br />
 <td>Unit Price</td>
 <td>Extended Price</td>
 </tr>
-<tr  style="">
-<td style="">1.</td>
-<td style="">10</td>
-<td style="text-align:left">HS+</td>
-<td style="text-align:right">100.00</td>
-<td style="text-align:right">1000.00</td>
-
-</tr>
+';
+ $html1='   
 <tr  style="">
 <td style=""></td>
 <td style=""></td>
@@ -155,7 +149,8 @@ Comment Box !
 ';
 
 // output the HTML content
-$pdf->writeHTML($html, true, false, true, false, '');
+$pdf->wrteHTML($html, true, false, true, false, '');
+$pdf->wrteHTML($html1, true, false, true, false, '');
 
 // Print some HTML Cells
 

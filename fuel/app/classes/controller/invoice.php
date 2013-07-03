@@ -84,7 +84,9 @@ class Controller_Invoice extends Controller_Invoicebase {
         ));
         $data['invoice'] = $invoice;
         $data['invoice_id'] = $invoice_id;
-        $data['amount_words'] = Controller_Numbertowords::convert_number_to_words($invoice->amount);
+        $str=Controller_Numbertowords::convert_number_to_words($invoice->amount);
+        $data['amount_words'] = ucwords($str);
+                
         $this->template->title = 'Invoice | Preview';
         return Response::forge(View::forge('invoice/preview', $data));
     }
@@ -131,6 +133,8 @@ class Controller_Invoice extends Controller_Invoicebase {
                     'where' => array('t1.invoice_id' => $invoice->id)
         ));
         $data['invoice'] = $invoice;
+        $str=Controller_Numbertowords::convert_number_to_words($invoice->amount);
+        $data['amount_words'] = ucwords($str);   
         $data['invoice_id'] = $invoice_id;
         $this->template->title = 'Invoice | Preview';
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);

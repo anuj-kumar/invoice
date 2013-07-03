@@ -43,22 +43,22 @@
                 <?php echo Html::anchor($base . '/last_name/' . $order, 'Last Name'); ?>
             </th>
             <th>
-                <?php echo Html::anchor($base . '/date/' . $order, 'Date'); ?>
-            </th>
-            <th>
                 <?php echo Html::anchor($base . '/timestamp/' . $order, 'Timestamp'); ?>
             </th>
             <th>
                 <?php echo Html::anchor($base . '/amount/' . $order, 'Amount'); ?>
             </th>
+            <th>
+                <?php echo Html::anchor($base . '/outstanding/' . $order, 'Outstanding'); ?>
+            </th>
 
         </tr>
 
         <?php
-		$base = '/invoice/print/';
+        $base = '/invoice/preview/';
         $i = 1;
         foreach ($invoices as $invoice):
-		$url = $base . $invoice->id;
+            $url = $base . $invoice->id;
             ?>
             <tr>
                 <td>
@@ -67,28 +67,60 @@
                     $i++
                     ?>
                 </td>
-                <td>
-                    <?php echo Html::anchor($url, $invoice->user->name); ?> 
-                </td>
-                <td>
-                    <?php echo Html::anchor($url, $invoice->user->id); ?> 
-                </td>
-                <td>
-                    <?php echo Html::anchor($url, $invoice->customer->first_name); ?> 
-                </td>
-                <td>
-                    <?php echo Html::anchor($url, $invoice->customer->last_name); ?> 
-                </td>
-                <td>
-                    <?php echo $invoice->date ?>
-                </td>
-                <td>
-                    <?php echo $invoice->timestamp ?>
-                </td>
-                <td>
-            <?php echo Html::anchor($url, $invoice->amount); ?>
-                </td>
-            </tr>
-<?php endforeach ?>
+                <?php if ($invoice->customer->type == "single") {
+                    ?>          
+
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->user->name); ?> 
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->id); ?> 
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->customer->first_name); ?> 
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->customer->last_name); ?> 
+                    </td>
+                    <td>
+                        <?php echo $invoice->updated_at ?>
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->amount); ?>
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, ($invoice->amount - $invoice->amount_paid)); ?>
+
+
+                    </td>
+                <?php
+                } else if (($invoice->customer->type == "monthly")){ ?>
+                                        <td>
+                        <?php echo Html::anchor($url, $invoice->user->name); ?> 
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->id); ?> 
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->customer->first_name); ?> 
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->customer->last_name); ?> 
+                    </td>
+                    <td>
+                        <?php echo $invoice->updated_at ?>
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, $invoice->amount); ?>
+                    </td>
+                    <td>
+                        <?php echo Html::anchor($url, ($invoice->amount - $invoice->amount_paid)); ?>
+
+
+                    </td>
+                <?php } ?>
+                </tr>
+                <?php endforeach
+            ?>
     </table>
 </div>

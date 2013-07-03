@@ -95,7 +95,7 @@
                 <table style="top:30px">
                     <tr>
                         <td style="width:400px">
-                            <h5><span style="text-transform: uppercase;">Rupee <?php echo $amount_words; ?></span></h5>
+                            <h4>Rupee <?php echo $amount_words; ?></h4>
                             <br />
                             Amount Paid:  <?php echo $invoice->amount - $invoice->amount_paid; ?>
                             <br />

@@ -74,6 +74,22 @@ endforeach;
                     <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
                 </div>
             </div>  
+           <div class="grid-12-12 " style="margin-top: -30px">
+                <div class="grid-4-12 ">
+                    <label>Fp Number :</label>
+                    <input type='text' id="fp_number"  name="fp_number" placeholder='Filter Paper' autocomplete="off" required>
+                </div>
+                <div class="grid-4-12 ">
+                    <label>B/O: <em class="formee-req">*</em></label>
+                     <input type='text' name="baby_of" id="baby_of"  placeholder='Baby Of' autocomplete="off" value="" style="width: 150px;margin-left: 10px"  required>
+                </div>
+                <div class="grid-4-12 ">
+                    <label>Date Of Service :</label>
+                    <input type='date' id="date_of_service"  name="date_of_service" placeholder='Date' autocomplete="off" value="<?php echo date('Y-m-d'); ?>" >
+                </div>
+                  
+           </div>
+
             <div class="grid-12-12 " style="margin-top: 0px">
                 <div class="grid-4-12 ">
                     <label>Address Line #1 : <em class="formee-req">*</em> </label>
@@ -115,12 +131,12 @@ endforeach;
 
                 <div class="grid-3-12 ">
                     <label>Country : <em class="formee-req">*</em></label>
-                    <input list="country" name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+                    <input list="country" name="country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
                     <datalist id="country">
                         <option value="India">
                         <option value="USA">
-                        <option value="">
-                        <option value="">
+                        <option value="UK">
+                        <option value="Pakistan">
                         <option value="">
                         <option value="">
                     </datalist>
@@ -143,7 +159,9 @@ endforeach;
                 <div class="grid-4-12 ">
                     <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showContent();"  style="margin-top:20px; width:100px" />
                 </div>
-            </div>    
+            </div> 
+           
+               
         </fieldset>
     </div>
 
@@ -215,11 +233,11 @@ endforeach;
                 <div class="grid-3-12">
                     <input type="text" name="bank_city" class="formee-large" id="bank_city" style="margin-left: 40px;display: none;" placeholder="Bank City"  style="width:80px" />
                 </div>
-                
+
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="span5 pull-left">
-                   
+
                     <br />Current Due (Rs.):
                     <br />Due Date:
 
@@ -276,7 +294,7 @@ endforeach;
         var flag = val_single();
         //alert(flag);
         if (flag) {
-          //  alert("1");
+            //  alert("1");
             document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
             document.getElementById('form1').style.display = "none";
             document.getElementById('form2').style.display = "block";

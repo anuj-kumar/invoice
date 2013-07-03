@@ -31,6 +31,7 @@ class Controller_Invoicebase extends Controller_Base {
         $customer = new Model_Customer();
         $customer->type = 'single';
         $this->submit_customer_details($data, $customer);
+        return $customer;
     }
 
     protected function submit_monthly_details($data) {
@@ -51,6 +52,10 @@ class Controller_Invoicebase extends Controller_Base {
 
     protected function submit_invoice_details($data, $customer_id) {
         $invoice = new Model_Invoice();
+        $invoice->baby_of = $data['baby_of'];
+        $invoice->fp_number = $data['fp_number'];
+        $invoice->date_of_service = $data['date_of_service'];
+        $invoice->comment= $data['comment'];
         $invoice->customer_id = $customer_id;
         $invoice->user_id = Session::get('user')->id;
         $invoice->amount = $data['amount'];

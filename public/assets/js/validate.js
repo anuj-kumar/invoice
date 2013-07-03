@@ -43,6 +43,24 @@ function val_customer_details() {
         document.getElementById('l_name').focus();
         return false;
     }
+    
+    if (document.getElementById('fp_number').value == "")
+    {
+        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Filter Paper Number</h5>";
+        document.getElementById('fp_number').focus();
+        return false;
+    }
+    else if (document.getElementById('fp_number').value != ""){
+         var number = document.getElementById('fp_number').value;
+        var check = isNumber(number);
+        if (!check) {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
+             document.getElementById('fp_number').focus();
+            return false;
+        }
+        
+    }
+
     if (document.getElementById('addr_1').value == "")
     {
         document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Address Line #1</h5>";

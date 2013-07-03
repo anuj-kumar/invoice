@@ -2,7 +2,6 @@
 
 $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
 // create new PDF document
-
 // set document information
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('NeoGen Labs Pvt. Ltd.');
@@ -11,25 +10,21 @@ $pdf->SetTitle('Invoice');
 $pdf->setPrintHeader(false);
 $pdf->setPrintFooter(false);
 
+
+$pdf->SetFont('dejavusans', '', 13);
+
 // set default monospaced font
 //$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
-
 // set margins
 //$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
-
 // set auto page breaks
 //$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-
 // set image scale factor
 //$pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
 // set some language-dependent strings (optional)
-
 // ---------------------------------------------------------
-
 // set font
 //$pdf->SetFont('times', 'BI', 20);
-
 // add a page
 $pdf->AddPage();
 
@@ -48,9 +43,9 @@ $html = '
 <table style="height:100px">
 <tr style="height:60px">
 <td style="width:200px">
-<img src="assets/img/Logo.jpg" height="140px" />
+<img src="assets/img/Logo.jpg" height="120px" />
 </td>
-<td style="text-align: right;width:340px;">
+<td style="text-align: right;width:340px;font-size:25px">
 			UCF CENTER # 84/3 Oil Mill Road (On Hennur Main Road)<br />
 			Lingarajuram # Bangalore 560084 # Karnataka # India <br />	
 			T: + 91 80 25805600 # F: 91 80 2580 5603 <br />
@@ -69,18 +64,18 @@ $html = '
 <table>
 <tr>
 <td style="width:350px">
-                        <ul style="list-style:none;padding-left: 0px">
-                            <br /> '. $invoice->customer->first_name . ' ' . $invoice->customer->last_name . '
+                       
+                            <br /> ' . $invoice->customer->first_name . ' ' . $invoice->customer->last_name . '
                             <br />' . $invoice->customer->address_line_1 . '
                             <br />' . $invoice->customer->address_line_2 . '
                             <br />' . $invoice->customer->address_line_3 . '
                             <br />' . $invoice->customer->city . ", " . $invoice->customer->state . '
-                            <br />' . $invoice->customer->pincode . '
-                        </ul>
+                            <br />' . $invoice->customer->country . ' -' . $invoice->customer->pincode . '
+                       
 </td>
 <td>
-Date:  <br/>
-Invoice No: '.'12345'.' <br />
+Date: ' . date('Y-m-d') . ' <br/>
+Invoice No: ' . '12345' . ' <br />
 Billing Period: <br />
 PAN: <br />
 TIN: NA*<br /><br />
@@ -89,60 +84,75 @@ TIN: NA*<br /><br />
 </tr>
 <tr>
 <td>
-Name: B/O
-<br />Date of Service : 
+Name: B/O ' . $invoice->baby_of . '
+<br />Date of Service : ' . $invoice->date_of_service . '
 </td>
 <td>
-FP No:<br />
+FP No: ' . $invoice->fp_number . ' <br />
 *NA: Not Applicable
 <br />
 </td></tr>
 </table>
 <br />
 <br />
+<br />
+<div class="" style="height:400px"></div>
 <table border="1" style="text-align:center;">
 <tr style="">
-<td></td>
+<td>S. No.</td>
 <td>Qty.</td>
 <td>Panel</td>
 <td>Unit Price</td>
 <td>Extended Price</td>
 </tr>
-<tr  style="">
-<td style="">1.</td>
-<td style="">10</td>
-<td style="text-align:left">HS+</td>
-<td style="text-align:right">100.00</td>
-<td style="text-align:right">1000.00</td>
+</table>
 
-</tr>
+';
+$pdf->writeHTML($html, true, false, true, false, '');
+$i = 1;
+foreach ($invoice->panels as $panel):
+    foreach ($panel->invoices_panels as $other):
+
+        $html2 = '<table ><tr><td style="text-align:center">' . $i++ . '</td>
+                       <td style="text-align:center">' . $other->panel_quantity . '</td>
+                       <td style="text-align:center">' . $panel->name . '</td>
+                       <td style="text-align:right">' . $other->panel_price . '</td>        
+                       <td style="text-align:right">' . $other->panel_quantity * $other->panel_price . '</td>
+                   </tr>
+                   <hr />
+             </table>
+';
+        $pdf->writeHTML($html2, true, false, true, false, '');
+    endforeach;
+endforeach;
+$html1 = '
+    
+<table border="">
 <tr  style="">
 <td style=""></td>
 <td style=""></td>
 <td style="text-align:left">Total</td>
 <td style=""></td>
-<td style="text-align:right">1000.00</td>
+<td style="text-align:right">' . $invoice->amount . '</td>
 
 </tr>
-
 </table>
 <div class="" style="height:400px"></div>
-<div class="" style="height:400px"></div>
-<div class="" style="height:400px"></div>
+<span style="text-style: underline;">Please Pay : Rupee ' . $amount_words . '</span></h5>
 <div class="" style="height:400px"></div>
 <table style="top:30px">
 <tr>
-<td style="width:400px">
-Outstanding:'. $invoice->amount  .'
+<td style="width:250px">
+Paid:' . $invoice->amount_paid . '
 <br />
-Paid:'. $invoice->amount_paid  .'
+Balance:' . ($invoice->amount - $invoice->amount_paid) . '
 <br />
 Due Date:
 <br />
 </td>
-<td>
-<p>
-Comment Box ! 
+<td >
+<p>Comment : <br />
+' . $invoice->comment . '
 </p>
 </td>
 </tr>
@@ -153,11 +163,9 @@ Comment Box !
 
 
 ';
-
 // output the HTML content
-$pdf->writeHTML($html, true, false, true, false, '');
 
+$pdf->writeHTML($html1, true, false, true, false, '');
 // Print some HTML Cells
-
 //Close and output PDF document
 $pdf->Output('example_002.pdf', 'I');
