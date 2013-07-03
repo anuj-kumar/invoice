@@ -219,7 +219,7 @@ endforeach;
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="span5 pull-left">
-                   
+
                     <br />Current Due (Rs.):
                     <br />Due Date:
 

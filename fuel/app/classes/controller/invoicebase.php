@@ -47,6 +47,23 @@ class Controller_Invoicebase extends Controller_Base {
         $monthly_customer->save();
         $invoice = $this->submit_invoice_details($data, $customer_id);
         $this->submit_panel_details($data, $invoice->id);
+        return $invoice->id;
+    }
+
+    protected function submit_panel_pricing($data, $monthly_customer_id) {
+        $i = 0;
+        foreach ($data['panel'] as $row):
+            for ($j = 0; $j < 8; $j++) {
+                $panel_price = new Model_local_Panel_Price();
+                $panel_price->monthly_customer_id = $monthly_customer_id;
+                $panel_price->vol_low = Input::post('vol_low.' . $i);
+                $panel_price->vol_high = Input::post('vol_high.' . $i);
+                $panel_price->price = $row[$j];
+                $panel_price->panel_id = $j + 1;
+                $panel_price->save();
+            }
+            $i++;
+        endforeach;
     }
 
     protected function submit_invoice_details($data, $customer_id) {
@@ -83,7 +100,6 @@ class Controller_Invoicebase extends Controller_Base {
         }
     }
 
-   
 }
 
 ?>
