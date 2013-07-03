@@ -20,9 +20,6 @@ class Controller_Invoicebase extends Controller_Base {
         $customer->pincode = $data['pincode'];
         $customer->phone = $data['tele'];
         $customer->email = $data['email'];
-//        $customer->outstanding = $data['amount'] - $data['amount_paid'];
-        $customer->save();
-//        echo $customer->invoice->id;
 
         return $customer;
     }
@@ -30,22 +27,23 @@ class Controller_Invoicebase extends Controller_Base {
     protected function submit_single_details($data) {
         $customer = new Model_Customer();
         $customer->type = 'single';
-        $this->submit_customer_details($data, $customer);
-        return $customer;
+        $customer = $this->submit_customer_details($data, $customer);
+        $customer->save();
     }
 
     protected function submit_monthly_details($data) {
         $customer_id = $data['customer_id'];
         $customer = Model_Customer::find($customer_id);
-        $this->submit_customer_details($data, $customer);
-        $monthly_customer = Model_Monthlycustomer::find('first', array(
+        print_r($customer);
+        $customer = $this->submit_customer_details($data, $customer);
+        $customer->monthlycustomer = Model_Monthlycustomer::find('first', array(
                     'where' => array('customer_id' => $customer_id)
         ));
 //        print_r($monthly_customer);
-        $monthly_customer->org_name = $data['org_name'];
-        $monthly_customer->org_print_name = $data['org_print_name'];
-        $monthly_customer->outstanding = $data['amount'] - $data['amount_paid'] + $monthly_customer->outstanding;
-        $monthly_customer->save();
+        $customer->monthlycustomer->org_name = $data['org_name'];
+        $customer->monthlycustomer->org_print_name = $data['org_print_name'];
+        $customer->monthlycustomer->outstanding = $data['amount'] - $data['amount_paid'] + $customer->monthlycustomer->outstanding;
+        $customer->save();
         $invoice = $this->submit_invoice_details($data, $customer_id);
         $this->submit_panel_details($data, $invoice->id);
         return $invoice->id;

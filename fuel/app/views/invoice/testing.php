@@ -294,7 +294,7 @@ endforeach;
         var flag = val_single();
         //alert(flag);
         if (flag) {
-            //  alert("1");
+          //  alert("1");
             document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
             document.getElementById('form1').style.display = "none";
             document.getElementById('form2').style.display = "block";
