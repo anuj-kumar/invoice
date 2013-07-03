@@ -5,6 +5,23 @@ function isNumber(n) {
 }
 function  val_single() {
     var flag = val_customer_details();
+        if (document.getElementById('fp_number').value == "")
+    {
+        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Filter Paper Number</h5>";
+        document.getElementById('fp_number').focus();
+        return false;
+    }
+    else if (document.getElementById('fp_number').value != ""){
+         var number = document.getElementById('fp_number').value;
+        var check = isNumber(number);
+        if (!check) {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
+             document.getElementById('fp_number').focus();
+            return false;
+        }
+        
+    }
+
     //alert("flag"+flag);
     if (flag) {
         return true;
@@ -44,22 +61,6 @@ function val_customer_details() {
         return false;
     }
     
-    if (document.getElementById('fp_number').value == "")
-    {
-        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Filter Paper Number</h5>";
-        document.getElementById('fp_number').focus();
-        return false;
-    }
-    else if (document.getElementById('fp_number').value != ""){
-         var number = document.getElementById('fp_number').value;
-        var check = isNumber(number);
-        if (!check) {
-            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
-             document.getElementById('fp_number').focus();
-            return false;
-        }
-        
-    }
 
     if (document.getElementById('addr_1').value == "")
     {

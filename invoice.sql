@@ -98,7 +98,7 @@ CREATE TABLE `customers` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,7 +107,7 @@ CREATE TABLE `customers` (
 
 LOCK TABLES `customers` WRITE;
 /*!40000 ALTER TABLE `customers` DISABLE KEYS */;
-INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,'',981374,919903571054,'lksjdfgk','0000-00-00 00:00:00','2013-07-02 09:32:13'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,'India',171717,1256789012,'anuj_@outlook.com','0000-00-00 00:00:00','2013-07-02 13:40:04'),(35,'single','Dr.','as','kfd','kjkf','jfk','jsdkf',0,0,'',251001,2147483647,'b@a.a','0000-00-00 00:00:00','2013-07-02 07:57:32'),(36,'single','Dr.','as','lskdjf','lf','ljf','ljf',0,0,'',251001,2147483647,'a@b.c','0000-00-00 00:00:00','2013-07-02 09:04:49'),(37,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,'',171717,1234567890,'anuj_@outlook.com','0000-00-00 00:00:00','2013-07-02 10:54:59'),(38,'single','Dr.','ajsdlf','kjsfkl','jskdlf','kljskfj','jlskgj',0,0,'',251001,9592039229,'','0000-00-00 00:00:00','2013-07-02 11:12:51');
+INSERT INTO `customers` VALUES (1,'single','Mr.','','Kantishah','Chalti gali','Khisakti Building','',1,1,'',981374,919903571054,'lksjdfgk','0000-00-00 00:00:00','2013-07-02 09:32:13'),(2,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,'India',171717,1256789012,'anuj_@outlook.com','0000-00-00 00:00:00','2013-07-02 13:40:04'),(35,'single','Dr.','as','kfd','kjkf','jfk','jsdkf',0,0,'',251001,2147483647,'b@a.a','0000-00-00 00:00:00','2013-07-02 07:57:32'),(36,'single','Dr.','as','lskdjf','lf','ljf','ljf',0,0,'',251001,2147483647,'a@b.c','0000-00-00 00:00:00','2013-07-02 09:04:49'),(37,'monthly','Mr.','Thomas','Mookken','Neogen Labs','UCF Center','Near Lingarajapuram Bus Stand',1,1,'',171717,1234567890,'anuj_@outlook.com','0000-00-00 00:00:00','2013-07-02 10:54:59'),(38,'single','Dr.','ajsdlf','kjsfkl','jskdlf','kljskfj','jlskgj',0,0,'',251001,9592039229,'','0000-00-00 00:00:00','2013-07-02 11:12:51'),(39,'monthly','Dr.','kdfgj','lkjf','sldkf','lkjfg','lkjfg',0,0,'gjsl',251001,9292929292,'a@b.c','0000-00-00 00:00:00','2013-07-03 05:07:58'),(40,'monthly','Dr.','kdfgj','lkjf','sldkf','lkjfg','lkjfg',0,0,'gjsl',251001,9292929292,'a@b.c','0000-00-00 00:00:00','2013-07-03 05:08:52'),(41,'monthly','Dr.','kdfgj','lkjf','sldkf','lkjfg','lkjfg',0,0,'gjsl',251001,9292929292,'a@b.c','0000-00-00 00:00:00','2013-07-03 05:08:57'),(42,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:10:40'),(43,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:14:11'),(44,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:14:39'),(45,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:15:23'),(46,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:17:26'),(47,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:18:04'),(48,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:19:02'),(49,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:19:50'),(50,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:26:07'),(51,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:26:21'),(52,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:26:38'),(53,'monthly','Dr.','klfj','sfg','jfg','fkgj','',0,0,'lkgj',251001,9299292922,'lask@jaf.com','0000-00-00 00:00:00','2013-07-03 05:26:53'),(54,'monthly','Dr.','Rohit','Cariappa','UCF center','Lingarajapuram','',0,0,'India',251001,2929299229,'cariappa@neogenlabs.com','0000-00-00 00:00:00','2013-07-03 05:29:36'),(55,'monthly','Dr.','Rohit','Cariappa','UCF center','Lingarajapuram','',0,0,'India',251001,2929299229,'cariappa@neogenlabs.com','0000-00-00 00:00:00','2013-07-03 05:30:39'),(56,'monthly','Dr.','Rohit','Cariappa','UCF center','Lingarajapuram','',0,0,'India',251001,2929299229,'cariappa@neogenlabs.com','0000-00-00 00:00:00','2013-07-03 05:45:10'),(57,'monthly','Dr.','Rohit','Cariappa','UCF center','Lingarajapuram','',0,0,'India',251001,2929299229,'cariappa@neogenlabs.com','0000-00-00 00:00:00','2013-07-03 05:47:12'),(58,'monthly','Dr.','Rohit','Cariappa','UCF center','Lingarajapuram','',0,0,'India',251001,2929922912,'cariappa@neogenlabs.com','0000-00-00 00:00:00','2013-07-03 06:12:28');
 /*!40000 ALTER TABLE `customers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +204,7 @@ CREATE TABLE `invoices` (
   KEY `fk_invoice_user` (`user_id`),
   CONSTRAINT `invoices_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE,
   CONSTRAINT `invoices_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +213,7 @@ CREATE TABLE `invoices` (
 
 LOCK TABLES `invoices` WRITE;
 /*!40000 ALTER TABLE `invoices` DISABLE KEYS */;
-INSERT INTO `invoices` VALUES (1,1,5,NULL,NULL,'2013-06-13',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,5,NULL,NULL,'2013-06-13',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,5,NULL,NULL,'2013-06-18',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'laknsdlkgfsd',0,'0000-00-00 00:00:00','2013-07-02 09:05:59'),(4,2,5,NULL,NULL,NULL,15000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 09:12:39'),(5,36,5,NULL,NULL,NULL,15000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 09:04:49'),(6,38,5,NULL,NULL,NULL,51000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,'40000',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 11:12:51'),(7,2,5,NULL,NULL,NULL,5000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,'2000',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 13:44:35');
+INSERT INTO `invoices` VALUES (1,1,5,NULL,NULL,'2013-06-13',2100000,4.00,5.00,6.00,7.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'alksdjfgsdng',0,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(2,1,5,NULL,NULL,'2013-06-13',2300.23,2.30,2.30,2.30,2.30,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'lasdjfglksdga',23,'0000-00-00 00:00:00','0000-00-00 00:00:00'),(3,1,5,NULL,NULL,'2013-06-18',9128.12,2.00,2.00,2.00,2.00,0.99,0.99,0.99,0.00,'cash',NULL,NULL,NULL,NULL,'laknsdlkgfsd',0,'0000-00-00 00:00:00','2013-07-02 09:05:59'),(4,2,5,NULL,NULL,NULL,15000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 09:12:39'),(5,36,5,NULL,NULL,NULL,15000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 09:04:49'),(6,38,5,NULL,NULL,NULL,51000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,'40000',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 11:12:51'),(7,2,5,NULL,NULL,NULL,5000,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'cash',NULL,'2000',NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-02 13:44:35'),(8,58,5,NULL,NULL,NULL,4250,NULL,NULL,NULL,NULL,NULL,NULL,NULL,1200.00,'cash',NULL,NULL,NULL,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-03 06:12:28');
 /*!40000 ALTER TABLE `invoices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -243,7 +243,7 @@ CREATE TABLE `invoices_panels` (
 
 LOCK TABLES `invoices_panels` WRITE;
 /*!40000 ALTER TABLE `invoices_panels` DISABLE KEYS */;
-INSERT INTO `invoices_panels` VALUES (1,1,12,NULL,0.00),(1,2,12,NULL,0.00),(4,1,3,NULL,5000.00),(5,1,3,NULL,5000.00),(6,3,12,NULL,4250.00),(7,1,1,NULL,5000.00);
+INSERT INTO `invoices_panels` VALUES (1,1,12,NULL,0.00),(1,2,12,NULL,0.00),(4,1,3,NULL,5000.00),(5,1,3,NULL,5000.00),(6,3,12,NULL,4250.00),(7,1,1,NULL,5000.00),(8,3,1,NULL,4250.00);
 /*!40000 ALTER TABLE `invoices_panels` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -264,7 +264,7 @@ CREATE TABLE `local_panel_prices` (
   `created_at` datetime NOT NULL,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -273,7 +273,7 @@ CREATE TABLE `local_panel_prices` (
 
 LOCK TABLES `local_panel_prices` WRITE;
 /*!40000 ALTER TABLE `local_panel_prices` DISABLE KEYS */;
-INSERT INTO `local_panel_prices` VALUES (1,1,1,21,1,58.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(2,1,1,21,2,218.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(3,1,1,21,3,186.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(4,1,1,21,4,1684.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(5,1,1,21,5,1678.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(6,1,1,21,6,187.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(7,1,1,21,7,15647.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(8,1,1,21,8,4189.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(9,1,0,0,1,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(10,1,0,0,2,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(11,1,0,0,3,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(12,1,0,0,4,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(13,1,0,0,5,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(14,1,0,0,6,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(15,1,0,0,7,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(16,1,0,0,8,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16');
+INSERT INTO `local_panel_prices` VALUES (1,1,1,21,1,58.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(2,1,1,21,2,218.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(3,1,1,21,3,186.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(4,1,1,21,4,1684.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(5,1,1,21,5,1678.00,'0000-00-00 00:00:00','2013-06-27 12:35:54'),(6,1,1,21,6,187.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(7,1,1,21,7,15647.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(8,1,1,21,8,4189.00,'0000-00-00 00:00:00','2013-06-27 12:35:55'),(9,1,0,0,1,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(10,1,0,0,2,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(11,1,0,0,3,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(12,1,0,0,4,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(13,1,0,0,5,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(14,1,0,0,6,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(15,1,0,0,7,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(16,1,0,0,8,0.00,'0000-00-00 00:00:00','2013-06-27 12:39:16'),(17,13,1,25,1,5000.00,'0000-00-00 00:00:00','2013-07-03 05:47:37'),(18,13,1,25,2,4500.00,'0000-00-00 00:00:00','2013-07-03 05:47:37'),(19,13,1,25,3,4250.00,'0000-00-00 00:00:00','2013-07-03 05:47:37'),(20,13,1,25,4,4000.00,'0000-00-00 00:00:00','2013-07-03 05:47:37'),(21,13,1,25,5,3750.00,'0000-00-00 00:00:00','2013-07-03 05:47:37'),(22,13,1,25,6,3500.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(23,13,1,25,7,3250.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(24,13,1,25,8,3000.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(25,13,25,50,1,4750.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(26,13,25,50,2,4500.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(27,13,25,50,3,4250.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(28,13,25,50,4,4000.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(29,13,25,50,5,3500.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(30,13,25,50,6,3250.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(31,13,25,50,7,3000.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(32,13,25,50,8,2750.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(33,13,51,75,1,4500.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(34,13,51,75,2,4250.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(35,13,51,75,3,4000.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(36,13,51,75,4,3850.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(37,13,51,75,5,3550.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(38,13,51,75,6,3250.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(39,13,51,75,7,3000.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(40,13,51,75,8,2000.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(41,13,76,100,1,4200.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(42,13,76,100,2,4100.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(43,13,76,100,3,3600.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(44,13,76,100,4,3500.00,'0000-00-00 00:00:00','2013-07-03 05:47:38'),(45,13,76,100,5,3400.00,'0000-00-00 00:00:00','2013-07-03 05:47:39'),(46,13,76,100,6,3300.00,'0000-00-00 00:00:00','2013-07-03 05:47:39'),(47,13,76,100,7,3200.00,'0000-00-00 00:00:00','2013-07-03 05:47:39'),(48,13,76,100,8,3000.00,'0000-00-00 00:00:00','2013-07-03 05:47:39');
 /*!40000 ALTER TABLE `local_panel_prices` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -313,11 +313,11 @@ CREATE TABLE `monthly_customers` (
   `customer_id` int(11) NOT NULL,
   `org_name` varchar(50) NOT NULL,
   `org_print_name` varchar(30) DEFAULT NULL,
-  `org_code` varchar(5) NOT NULL,
-  `contract_file` varchar(50) NOT NULL,
-  `contract_discount` decimal(4,2) NOT NULL,
+  `org_code` varchar(5) DEFAULT NULL,
+  `contract_file` varchar(50) DEFAULT NULL,
+  `contract_discount` decimal(4,2) DEFAULT '0.00',
   `outstanding` decimal(12,2) NOT NULL DEFAULT '0.00',
-  `duedate` date NOT NULL,
+  `duedate` date DEFAULT NULL,
   `last_payment_amount` float(12,2) DEFAULT NULL,
   `last_payment_date` datetime DEFAULT NULL,
   `created_at` datetime NOT NULL,
@@ -325,7 +325,7 @@ CREATE TABLE `monthly_customers` (
   PRIMARY KEY (`id`),
   KEY `fk_monthly_customer` (`customer_id`),
   CONSTRAINT `monthly_customers_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -334,8 +334,41 @@ CREATE TABLE `monthly_customers` (
 
 LOCK TABLES `monthly_customers` WRITE;
 /*!40000 ALTER TABLE `monthly_customers` DISABLE KEYS */;
-INSERT INTO `monthly_customers` VALUES (1,2,'Neogen Labs','agr','','/var/www/invoice/readme.md',0.00,15000.00,'2013-06-28',NULL,NULL,'2013-06-21 12:09:05','2013-07-02 13:44:35');
+INSERT INTO `monthly_customers` VALUES (1,2,'Neogen Labs','agr','','/var/www/invoice/readme.md',0.00,15000.00,'2013-06-28',NULL,NULL,'2013-06-21 12:09:05','2013-07-02 13:44:35'),(13,58,'Neogen Labs','Neogen Labs',NULL,NULL,NULL,3050.00,NULL,NULL,NULL,'0000-00-00 00:00:00','2013-07-03 06:12:28');
 /*!40000 ALTER TABLE `monthly_customers` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `neogen_details`
+--
+
+DROP TABLE IF EXISTS `neogen_details`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `neogen_details` (
+  `id` int(11) NOT NULL,
+  `address_line_1` varchar(30) NOT NULL,
+  `address_line_2` varchar(50) NOT NULL,
+  `address_line_3` varchar(30) DEFAULT NULL,
+  `city` varchar(20) NOT NULL,
+  `pincode` int(6) NOT NULL,
+  `state` varchar(20) NOT NULL,
+  `country` varchar(20) NOT NULL,
+  `phone_number` bigint(12) NOT NULL,
+  `fax_number` bigint(12) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `website` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `neogen_details`
+--
+
+LOCK TABLES `neogen_details` WRITE;
+/*!40000 ALTER TABLE `neogen_details` DISABLE KEYS */;
+INSERT INTO `neogen_details` VALUES (1,'UCF CENTER ','84/3 Oil Mill Road (On Hennur Main Road)','Lingarajapuram','Bangalore',560084,'West Bengal','India',918025805600,908025805603,'info@neogenlabs.com','www.neogenlabs.com');
+/*!40000 ALTER TABLE `neogen_details` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -441,7 +474,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (5,'anuj','admin','2013-07-02 00:23:56','2013-06-11 18:30:00','2013-07-02 05:53:56');
+INSERT INTO `users` VALUES (5,'anuj','admin','2013-07-02 23:11:24','2013-06-11 18:30:00','2013-07-03 04:41:24');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -454,4 +487,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-07-02 19:23:39
+-- Dump completed on 2013-07-03 11:59:39

@@ -9,12 +9,13 @@
 </style>
 <div class="main well">
     <h2>Add New Monthly Organization</h2>
-    <div id="form1" style="display: block">
-        <div class="grid-12-12 ">
-            <div class="grid-4-12 ">
-                <label>Organization Name : <em class="formee-req">*</em></label>
-                <input type="text" name="org_name" id="client_name" class="formee-large" placeholder="Organization Name" required autofocus>
-            </div>
+    <form action="submit_monthly_new" method="POST" enctype="multipart/form-data">
+        <div id="form1" style="display: block">
+            <div class="grid-12-12 ">
+                <div class="grid-4-12 ">
+                    <label>Organization Name : <em class="formee-req">*</em></label>
+                    <input type="text" name="org_name" id="client_name" class="formee-large" placeholder="Organization Name" required autofocus>
+                </div>
             <div class="grid-3-12 ">
                 <label>Organization Print Name : <em class="formee-req">*</em></label>
                 <input type="text" name="org_print_name" id="client_print" class="" placeholder="PrintName" style="width: 150px" required>
@@ -23,73 +24,73 @@
         <div class="grid-12-12 " style="margin-top: -20px">
             <div class="grid-2-12 ">
 
-                <label>Title : <em class="formee-req">*</em></label>
-                <select name="title" id="id" style="width: 60px" required>
-                    <option>Dr.</option>
-                    <option>Mr.</option>
-                    <option>Mrs.</option>
-                    <option>Ms.</option>
-                </select>
+                    <label>Title : <em class="formee-req">*</em></label>
+                    <select name="title" id="id" style="width: 60px" required>
+                        <option>Dr.</option>
+                        <option>Mr.</option>
+                        <option>Mrs.</option>
+                        <option>Ms.</option>
+                    </select>
+                </div>
+                <div class="grid-4-12 ">
+                    <label>First Name : <em class="formee-req">*</em></label>
+                    <input type="text" id="f_name" name="f_name" class="formee-large" placeholder="First Name" required autocomplete="off">
+                </div>
+                <div class="grid-4-12 ">
+                    <label>Last Name : <em class="formee-req">*</em></label>
+                    <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
+                </div>
+            </div>  
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="grid-4-12 ">
+                    <label>Address Line #1 : <em class="formee-req">*</em> </label>
+                    <input type="text" id="addr_1" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
+                </div>
+                <div class="grid-4-12 ">
+                    <label>Address Line #2 : <em class="formee-req">*</em></label>
+                    <input type="text" id="addr_2" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
+                </div>
+                <div class="grid-4-12 ">
+                    <label>Address Line #3 : </label>
+                    <input type="text" name="addr_3" id="addr_3" class="formee-large" placeholder="Address Line #3" autocomplete="off" >
+                </div>
             </div>
-            <div class="grid-4-12 ">
-                <label>First Name : <em class="formee-req">*</em></label>
-                <input type="text" id="f_name" name="f_name" class="formee-large" placeholder="First Name" required autocomplete="off">
-            </div>
-            <div class="grid-4-12 ">
-                <label>Last Name : <em class="formee-req">*</em></label>
-                <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
-            </div>
-        </div>  
-        <div class="grid-12-12 " style="margin-top: -20px">
-            <div class="grid-4-12 ">
-                <label>Address Line #1 : <em class="formee-req">*</em> </label>
-                <input type="text" id="addr_1" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
-            </div>
-            <div class="grid-4-12 ">
-                <label>Address Line #2 : <em class="formee-req">*</em></label>
-                <input type="text" id="addr_2" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
-            </div>
-            <div class="grid-4-12 ">
-                <label>Address Line #3 : </label>
-                <input type="text" name="addr_3" id="addr_3" class="formee-large" placeholder="Address Line #3" autocomplete="off" >
-            </div>
-        </div>
-        <div class="grid-12-12 " style="margin-top: -30px">
-            <div class="grid-3-12 ">
-                <label>City : <em class="formee-req">*</em></label>
-                <input list="city" name="city" id="city" placeholder="city" required autocomplete='off' style="width: 140px">
-                <datalist id="city">
-                    <option value="Kolkata">
-                    <option value="Delhi">
-                    <option value="Chennai">
-                    <option value="Mumbai">
-                    <option value="Bangalore">
-                    <option value="Panjim">
-                    <option value="Jaipur">
-                    <option value="Chandigarh">
-                </datalist>
-            </div>
-            <div class="grid-3-12 ">
-                <label>State : <em class="formee-req">*</em></label>
-                <input list="states" name="state" id="state" placeholder="State"  style="width: 140px" autocomplete='off'>
-                <datalist id="states">
-                    <?php foreach ($states as $state): ?>
-                        <option value="<?php echo $state->name; ?>">
-                        <?php endforeach; ?>
-                </datalist>
-            </div>
+            <div class="grid-12-12 " style="margin-top: -30px">
+                <div class="grid-3-12 ">
+                    <label>City : <em class="formee-req">*</em></label>
+                    <input list="city" name="city" id="city" placeholder="city" required autocomplete='off' style="width: 140px">
+                    <datalist id="city">
+                        <option value="Kolkata">
+                        <option value="Delhi">
+                        <option value="Chennai">
+                        <option value="Mumbai">
+                        <option value="Bangalore">
+                        <option value="Panjim">
+                        <option value="Jaipur">
+                        <option value="Chandigarh">
+                    </datalist>
+                </div>
+                <div class="grid-3-12 ">
+                    <label>State : <em class="formee-req">*</em></label>
+                    <input list="states" name="state" id="state" placeholder="State"  style="width: 140px" autocomplete='off'>
+                    <datalist id="states">
+                        <?php foreach ($states as $state): ?>
+                            <option value="<?php echo $state->name; ?>">
+                            <?php endforeach; ?>
+                    </datalist>
+                </div>
 
-            <div class="grid-3-12 ">
-                <label>Country : <em class="formee-req">*</em></label>
-                <input list="country"  name="Country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
-                <datalist id="country">
-                    <option value="India">
-                    <option value="USA">
-                    <option value="">
-                    <option value="">
-                    <option value="">
-                    <option value="">
-                </datalist>
+                <div class="grid-3-12 ">
+                    <label>Country : <em class="formee-req">*</em></label>
+                    <input list="country"  name="country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+                    <datalist id="country">
+                        <option value="India">
+                        <option value="USA">
+                        <option value="">
+                        <option value="">
+                        <option value="">
+                        <option value="">
+                    </datalist>
             </div>
             <div class="grid-2-12  " style="float: right" >
                 <label>Pin Code : </label>
@@ -177,7 +178,6 @@
                         echo "<th>" . $panel->name . "</th>";
                         $num_of_panels++;
                     endforeach;
-//            echo $count;
                     ?>
 
                 </table>

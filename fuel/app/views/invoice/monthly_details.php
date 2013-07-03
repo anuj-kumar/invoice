@@ -5,7 +5,7 @@
 <?php
 $s = (string) $monthly_customers->customer->phone;
 $country_code = $s[0] . $s[1];
-$phone = $s[2] . $s[3] . $s[4] . $s[5] . $s[6] . $s[7] . $s[8] . $s[9] . $s[10] . $s[11];
+$phone = $s;
 ?>
 <style>
     .main {padding-top: 1px}
@@ -51,6 +51,9 @@ endforeach;
                 <div class="grid-3-12 ">
                     <label>Organization Print Name : <em class="formee-req">*</em></label>
                     <input type="text" id="client_print" name="org_print_name" class="" value="<?php echo $monthly_customers->org_print_name; ?>" placeholder="PrintName" style="width: 150px" required>
+                    <input type="hidden" id="" name="fp_number" class="" value="null" >
+                    <input type="hidden" id="" name="baby_of" class="" value="null" >
+                    <input type="hidden" id="" name="date_of_service" value="null" >
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
@@ -176,13 +179,12 @@ endforeach;
         </fieldset>
     </div>
 
-        <div id="form3" style="display: none" >
+    <div id="form3" style="display: none" >
         <fieldset>
             <div class="grid-12-12 " style="margin-top: -10px">
 
                 <div class="grid-4-12 " style="margin-top: -20px">
                     Total Amount : <em class="formee-req">*</em>
-
                     <input type="text" name="amount" id="total_amount" value="" required>
                 </div>
                 <div class="grid-4-12" style="margin-top: 0px">
@@ -193,7 +195,7 @@ endforeach;
                     </select> 
                 </div>
                 <div class="grid-4-12">
-                    <input type="text" id="cheque_number" name="payment_txt" id="payment_txt" style="display: none;" placeholder="DD / Cheque Number" />
+                    <input type="text" name="cheque_number" id="cheque_number" style="display: none;" placeholder="DD / Cheque Number" />
 
                 </div>
             </div>
@@ -213,11 +215,11 @@ endforeach;
                 <div class="grid-3-12">
                     <input type="text" name="bank_city" class="formee-large" id="bank_city" style="margin-left: 40px;display: none;" placeholder="Bank City"  style="width:80px" />
                 </div>
-                
+
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="span5 pull-left">
-                   
+
                     <br />Current Due (Rs.):
                     <br />Outstanding (Rs.): <?php echo $monthly_customers->outstanding ?>
                     <br />Due Date:
@@ -237,9 +239,8 @@ endforeach;
             </div>
         </fieldset>
     </div>
-
-
 </div> 
+
 
 
 
