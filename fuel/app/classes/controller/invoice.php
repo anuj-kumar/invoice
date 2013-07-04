@@ -8,6 +8,27 @@ class Controller_Invoice extends Controller_Invoicebase {
         Response::redirect('/invoice/single');
     }
 
+    public function action_edit($invoice_id = NULL) {
+        if ($invoice_id == NULL) {
+            die('Invalid Invoice ID');
+        }
+        $invoice = Model_Invoice::find($invoice_id, array(
+                    'related' => array('customer')
+        ));
+        $invoice->customer->monthlycustomer = Model_Monthlycustomer::find('first', array(
+                    'where' => array('customer_id' => $invoice->customer->id)
+        ));
+        $this->template->title = 'Invoice | Edit';
+        $this->template->content = print_r($invoice);
+    }
+
+    public function action_submit_edit() {
+        $invoice_id = Input::post('invoice_id');
+        $invoice = Model_Invoice::find($invoice_id, array(
+                    'related' => array('customer')
+        ));
+    }
+
     public function action_single() {
         $data['states'] = Model_State::find('all');
         $panels = Model_Panel::find('all', array(
@@ -24,7 +45,7 @@ class Controller_Invoice extends Controller_Invoicebase {
 
     public function action_submit_single() {
         print_r(Input::post());
-        $customer = parent::submit_single_details(Input::post(), 'single');
+        $customer = parent::submit_single_details(Input::post());
         print_r($customer);
         $invoice = parent::submit_invoice_details(Input::post(), $customer->id);
         parent::submit_panel_details(Input::post(), $invoice->id);
@@ -42,9 +63,9 @@ class Controller_Invoice extends Controller_Invoicebase {
                                 array('org_name', 'like', '%' . $query . '%'),
                                 'or' => array(
                                     array('org_code', 'like', '%' . $query . '%'),
-/*                                    'or' => array(
-                                        array('fp_number', 'like', '%' . $query . '%'),
-                                    )*/
+                                /*                                    'or' => array(
+                                  array('fp_number', 'like', '%' . $query . '%'),
+                                  ) */
                                 )
                             )
                         )
@@ -122,7 +143,7 @@ class Controller_Invoice extends Controller_Invoicebase {
         Response::redirect('/invoice/preview_monthly/' . $invoice_id);
     }
 
-    public function action_u_monthly() {
+    public function action_update_monthly() {
         $id = Input::post('customer_id');
         $customer = $this->submit_monthly_details(Input::post(), $id);
         $val = $customer->save();
@@ -192,8 +213,8 @@ class Controller_Invoice extends Controller_Invoicebase {
     public function action_submit_monthly_new() {
         $customer = new Model_Customer();
         $customer->type = 'monthly';
-        $state=Input::post('state');
-        $org_code=parent::find_code($state);
+        $state = Input::post('state');
+        $org_code = parent::find_code($state);
         $customer->monthlycustomer = Model_Monthlycustomer::forge(array(
                     'org_name' => Input::post('org_name'),
                     'org_print_name' => Input::post('org_name'),
@@ -201,10 +222,11 @@ class Controller_Invoice extends Controller_Invoicebase {
                     'duedate' => Input::post('due_date'),
                     'outstanding' => 0,
         ));
-        print_r($customer);
+        if (Upload::is_valid()) {
+            Upload::save();
+        }
         $customer = parent::submit_customer_details($_POST, $customer);
-        
-        $customer ->save();
+        $customer->save();
         parent::submit_panel_pricing(Input::post(), $customer->monthlycustomer->id);
         Response::redirect('invoice/monthly');
     }

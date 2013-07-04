@@ -20,7 +20,7 @@ $i = 0;
 foreach ($panels as $panel):
     $j = 0;
 
-    foreach ($panel->global_panel_prices as $price_obj):
+    foreach ($panel->local_panel_prices as $price_obj):
         $panel_arr[$i][$j]['id'] = $panel->id;
         $panel_arr[$i][$j]['name'] = $panel->name;
         $panel_arr[$i][$j]['price'] = $price_obj->price;

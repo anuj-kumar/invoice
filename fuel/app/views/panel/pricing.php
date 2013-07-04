@@ -1,19 +1,20 @@
 <?php
 $i = 0;
 foreach ($panels as $panel):
-$j = 0;
-
-    foreach ($panel->global_panel_prices as $price_obj):
+    $j = 0;
+    $url = isset($monthly_customer_id) ? "local" : "global";
+    $type = $url . '_panel_prices';
+    foreach ($panel->$type as $price_obj):
         $panel_arr[$i][$j]['id'] = $panel->id;
         $panel_arr[$i][$j]['name'] = $panel->name;
         $panel_arr[$i][$j]['price'] = $price_obj->price;
         $panel_arr[$i][$j]['vol_low'] = $price_obj->vol_low;
         $panel_arr[$i][$j]['vol_high'] = $price_obj->vol_high;
-	$j++;
+        $j++;
     endforeach;
     $i++;
 endforeach;
-$len=$j;
+$len = $j;
 ?>
 <script type="text/javascript">
     var panel = new Array();
@@ -35,46 +36,51 @@ $len=$j;
         <div class="span3 pull-right">
 
     </div>
-    
+
 </div>
 <div class="row container">
-    
-    <h1><?php if($monthly_customer) { echo $monthly_customer->org_name;} else { echo 'Global Panels'; } ?></h1>
-    <?php
-     $url=isset($monthly_customer_id) ? "local" : "global";
-    echo Form::open(array("class" => "", "action" => "/panel/submit_".$url)); ?>
-    
-        <?php
-        if (isset($monthly_customer_id)) {
-            echo "<input type='hidden' name='monthly_customer_id' value='" . $monthly_customer_id . "'/>";
-        }
-        ?>
-        <table class="panel_table" id="panel_table">
-            <th>Volume</th>
-            <?php
-            $num_of_panels = 0;
-            foreach ($panels as $panel):
-                echo "<th>" . $panel->name . "</th>";
-                $num_of_panels++;
-            endforeach;
-//            echo $count;
-            ?>
 
-        </table>
-        <div class="span5 pull-right" style="margin-top:10px">
+    <h1><?php if ($monthly_customer) {
+    echo $monthly_customer->org_name;
+} else {
+    echo 'Global Panels';
+} ?></h1>
+    <?php
+    $url = isset($monthly_customer_id) ? "local" : "global";
+    echo Form::open(array("class" => "", "action" => "/panel/submit_" . $url));
+    ?>
+
+<?php
+if (isset($monthly_customer_id)) {
+    echo "<input type='hidden' name='monthly_customer_id' value='" . $monthly_customer_id . "'/>";
+}
+?>
+    <table class="panel_table" id="panel_table">
+        <th>Volume</th>
+        <?php
+        $num_of_panels = 0;
+        foreach ($panels as $panel):
+            echo "<th>" . $panel->name . "</th>";
+            $num_of_panels++;
+        endforeach;
+//            echo $count;
+        ?>
+
+    </table>
+    <div class="span5 pull-right" style="margin-top:10px">
         <input class="btn btn-danger"type="submit" value="Update"/>
-                <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('panel_table', <?php echo $num_of_panels ?>)" />
-                       <input class="btn btn-danger"type="button" value="Delete Row" onclick="deleteRow('panel_table')" />
-        </div>
-    </form>
+        <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('panel_table', <?php echo $num_of_panels ?>)" />
+        <input class="btn btn-danger"type="button" value="Delete Row" onclick="deleteRow('panel_table')" />
+    </div>
+</form>
 
 </div>
 <?php echo Asset::js('panel.js'); ?>
 <?php echo Asset::js('build.js'); ?>
 
-<?php 
-for ($i=0;$i<$len;$i++){
-?><script>
-window.onload = addtable('panel_table', 9  );
-</script>
+<?php
+for ($i = 0; $i < $len; $i++) {
+    ?><script>
+        window.onload = addtable('panel_table', 9);
+    </script>
 <?php } ?>

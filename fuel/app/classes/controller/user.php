@@ -10,27 +10,33 @@ class Controller_User extends Controller_Base {
     public function action_create() {
         $this->template->title = 'Create User';
         $this->template->content = View::forge('user/create');
-        
     }
 
-    public function action_user_submit() {
-        if(Input::post()) {
+    public function action_submit() {
+        if (!empty($_POST)) {
             $user = new Model_User();
             $user->name = Input::post('name');
             $user->password = Input::post('password');
-            $user->access_right = new Model_Access_Right();
-            $user->access_right->print_invoice = Input::post('print_invoice');
-            $user->access_right->view_archive = Input::post('view_archive');
-            $user->access_right->add_panel = Input::post('add_panel');
-            $user->access_right->add_monthly_customer = Input::post('add_monthly_customer');
+            $access_right = new Model_Access_Right();
+            $user->access_right = $this->change_permissions(Input::post(), $access_right);
+        $user->access_right->invoice_single = Input::post('invoice_single');
+        $user->access_right->invoice_monthly = Input::post('invoice_monthly');
+        $user->access_right->invoice_monthly_new = Input::post('invoice_monthly_new');
+        $user->access_right->invoice_monthly_details = Input::post('invoice_monthly_details');
+        $user->access_right->panel_global = Input::post('panel_global');
+        $user->access_right->panel_local = Input::post('panel_local');
+        $user->access_right->archive_single = Input::post('archive_single');
+        $user->access_right->archive_monthly = Input::post('archive_monthly');
+        $user->access_right->user_list = Input::post('user_list');
+        $user->access_right->user_create = Input::post('user_create');
+            print_r($user);
             $user->save();
             Response::redirect('user/list');
-        }
-        else {
+        } else {
             Response::redirect('user/index');
         }
     }
-    
+
     public function action_list() {
         $offset = Input::get('o');
         $limit = 10;
@@ -54,20 +60,46 @@ class Controller_User extends Controller_Base {
 
     public function action_modify() {
         $access_right = Model_Access_Right::find('first', array(
-            'where' => array('user_id' => Input::post('user_id'))
+                    'where' => array('user_id' => Input::post('user_id'))
         ));
-        if(!$access_right) die('User ID not found!');
-//        print_r($_POST);
-        $access_right->print_invoice = Input::post('print_invoice');
-        $access_right->view_archive = Input::post('view_archive');
-        $access_right->add_panel = Input::post('add_panel');
-        $access_right->add_monthly_customer = Input::post('add_monthly_customer');
+        if (!$access_right)
+            die('User ID not found!');
+        print_r(Input::post());
+        print_r($access_right);
+
+        $access_right->invoice_single = Input::post('invoice_single');
+        $access_right->invoice_monthly = Input::post('invoice_monthly');
+        $access_right->invoice_monthly_new = Input::post('invoice_monthly_new');
+        $access_right->invoice_monthly_details = Input::post('invoice_monthly_details');
+        $access_right->panel_global = Input::post('panel_global');
+        $access_right->panel_local = Input::post('panel_local');
+        $access_right->archive_single = Input::post('archive_single');
+        $access_right->archive_monthly = Input::post('archive_monthly');
+        $access_right->user_list = Input::post('user_list');
+        $access_right->user_create = Input::post('user_create');
+        print_r($access_right);
         $res = $access_right->save();
-        if($res) {
+        if ($res) {
             Session::set_flash('Permissions changed successfully!');
             Response::redirect('user/list');
         }
     }
 
+/*    private function change_permissions($data, $access_right) {
+        echo $data['invoice_single'];
+        $access_right->invoice_single = (empty($data['invoice_single']) ? 0 : 1);
+        $access_right->invoice_monthly = (isset($data['invoice_monthly']) ? 1 : 0);
+        $access_right->invoice_monthly_new = isset($data['invoice_monthly_new']) ? 1 : 0;
+        $access_right->invoice_monthly_details = isset($data['invoice_monthly_details']) ? 1 : 0;
+        $access_right->panel_global = isset($data['panel_global']) ? 1 : 0;
+        $access_right->panel_local = isset($data['panel_local']) ? 1 : 0;
+        $access_right->archive_single = isset($data['archive_single']) ? 1 : 0;
+        $access_right->archive_monthly = isset($data['archive_monthly']) ? 1 : 0;
+        $access_right->user_list = isset($data['user_list']) ? 1 : 0;
+        $access_right->user_create = isset($data['user_create']) ? 1 : 0;
+        return $access_right;
+    }
+*/
 }
+
 ?>

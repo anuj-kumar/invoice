@@ -21,14 +21,13 @@ class Controller_ArchiveBase extends Controller_Template {
                     'where' => array(
                         array('t1.type', 'like', '%' . $type . '%'),
                         array(
-                            array('amount', 'like', '%' . $query . '%'),
+                            array('amount_paid', 'like', '%' . $query . '%'),
                             'or' => array(
                                 array('t1.first_name', 'like', '%' . $query . '%'),
                                 'or' => array(
                                     array('t1.last_name', 'like', '%' . $query . '%'),
                                     'or' => array(
                                         array('fp_number', 'like', '%' . $query . '%'),
-                                        
                                     )
                                 )
                             )

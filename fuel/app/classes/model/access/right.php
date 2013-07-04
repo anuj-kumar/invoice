@@ -16,7 +16,6 @@ class Model_Access_Right extends \Orm\Model {
         'archive_monthly',
         'user_list',
         'user_create',
-        'system_log',
         'created_at',
         'updated_at'
     );

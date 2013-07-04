@@ -40,7 +40,7 @@
             $module = $uri[1] . "_" . $uri[2];
             if (!Controller_Base::access($module)) {
                 echo ("You dont have permission for this page!");
-                //     Response::redirect('/invoice/single');
+           //     Response::redirect('/invoice/single');
             }
             ?>
 

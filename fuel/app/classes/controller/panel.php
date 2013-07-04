@@ -34,10 +34,13 @@ class Controller_Panel extends Controller_Base {
             $this->template->title = 'Local &raquo; Panels';
             $this->template->content = "Error Enter a  Customer Id";
         } else {
-            $data['panels'] = Model_Panel::find('all');
+            $data['panels'] = Model_Panel::find('all', array(
+                        'related' => array('local_panel_prices'),
+                        'where' => array('t1.monthly_customer_id' => $monthly_customer_id),
+            ));
             $data['monthly_customer_id'] = $monthly_customer_id;
             $data['monthly_customer'] = Model_Monthlycustomer::find($monthly_customer_id);
-    
+
             $this->template->title = 'Local &raquo; Panels';
             $this->template->content = View::forge('panel/pricing', $data);
         }
@@ -64,28 +67,24 @@ class Controller_Panel extends Controller_Base {
         endforeach;
 
         $this->template->title = 'Panels &raquo; Global';
-       Response::redirect('invoice/monthly');
+        Response::redirect('invoice/monthly');
     }
 
     public function action_view($customer_id = NULL) {
-        if($customer_id==NULL)
-        {
+        if ($customer_id == NULL) {
             $panels = Model_Panel::find('all', array(
-            'related' => array('global_panel_prices'),
-            
-        ));
+                        'related' => array('global_panel_prices'),
+            ));
+        } else {
+            $panels = Model_Panel::find('all', array(
+                        'related' => array('local_panel_prices'),
+            ));
         }
-    else { 
-            $panels = Model_Panel::find('all', array(
-            'related' => array('local_panel_prices'),
-            
-        ));
-        
-    }
-        
+
         $data['panels'] = $panels;
         $data['customer_id'] = $customer_id;
         $this->template->title = 'Invoice | Main Content';
         $this->template->content = View::forge('panel/view', $data);
     }
+
 }

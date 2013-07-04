@@ -1,32 +1,51 @@
+<style>
+    table th,td{ border-bottom : 2px solid grey; text-align: center;width:200px}
+    table td{ border-left : 1px dotted grey; text-align: center;width:200px}
+</style>
+<div class="row span10" ><span style="float: right"> <?php echo Html::anchor($prev, 'Prev') . " | " . Html::anchor($next, 'Next'); ?></span></div>
+<div class="row" style="overflow-x: none">
 
-<div class="row span10"><span style="float: right"> <?php echo Html::anchor($prev, 'Prev') . " | " . Html::anchor($next, 'Next'); ?></span></div>
+    <table >
+        <tr>
+            <th>Username</th>
 
-<table>
-    <tr>
-        <th>Name of the User</th>
-        <th>Last Login At</th>
-        <th>print_invoice</th>
-        <th>view_archive</th>
-        <th>add_panel</th>
-        <th>add_monthly_customer</th>
-    </tr>
-    <?php foreach($users as $user) : ?>
-    <tr>
-        <td><?php echo $user->name ?></td>
-        <td><?php echo $user->last_login_at ?></td>
+            <th>invoice single</th>
+            <th>invoice monthly</th>
+            <th>invoice monthly new</th>
+            <th>invoice monthly details</th>
+            <th>panel global</th>
+            <th>panel local</th>
+            <th>archive single</th>
+            <th>archive monthly</th>
+            <th>user list</th>
+            <th>user create</th>
+            <th>Last Log</th>
+            <th>Button</th>
+        </tr>
+        <?php foreach ($users as $user) : ?>
+            <tr>
+                <td style="color: rgb(82, 165, 255); "><h4><?php echo $user->name ?></h4></td>
 
-        <?php echo Form::open('/user/modify') ?>
+
+                <?php echo Form::open('/user/modify') ?>
 
             <input type="hidden" name="user_id" value="<?php echo $user->id ?>"/>
-            <td><input type="checkbox" name="print_invoice" value="1" <?php echo $user->access_right->print_invoice ? 'checked' : '' ?>/></td>
-            <td><input type="checkbox" name="view_archive"  value="1" <?php echo $user->access_right->view_archive ? 'checked' : '' ?>/></td>
-            <td><input type="checkbox" name="add_panel"  value="1" <?php echo $user->access_right->add_panel ? 'checked' : '' ?>/></td>
-            <td><input type="checkbox" name="add_monthly_customer" value="1" <?php echo $user->access_right->add_monthly_customer ? 'checked' : '' ?>/></td>
-            <td><input name="user_rights" type="submit" value="Change Access" value="1" /></td>
+            <td><input type="checkbox" value="1" name="invoice_single" <?php echo $user->access_right->invoice_single ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="invoice_monthly" <?php echo $user->access_right->invoice_monthly ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="invoice_monthly_new" <?php echo $user->access_right->invoice_monthly_new ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="invoice_monthly_details" <?php echo $user->access_right->invoice_monthly_details ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="panel_global" <?php echo $user->access_right->panel_global ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="panel_local" <?php echo $user->access_right->panel_local ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="archive_single" <?php echo $user->access_right->archive_single ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="archive_monthly" <?php echo $user->access_right->archive_monthly ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="user_list" <?php echo $user->access_right->user_list ? 'checked' : '' ?>/></td>
+            <td><input type="checkbox" value="1" name="user_create" <?php echo $user->access_right->user_create ? 'checked' : '' ?>/></td>
+            <td><?php echo $user->last_login_at ?></td>
+            <td><input type="submit" value="Change Access"/></td>
+            <? echo Form::close() ?>
 
-        <? echo Form::close() ?>
-
-    </tr>
-    <?php endforeach; ?>
-</table>
+            </tr>
+        <?php endforeach; ?>
+    </table>
+</div>
 

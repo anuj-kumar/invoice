@@ -17,19 +17,19 @@ class Controller_Invoicebase extends Controller_Base {
                 break;
             }
         endforeach;
-        echo 'State Code form Db:'.$code;
+        echo 'State Code form Db:' . $code;
         $monthly_customers = Model_Monthlycustomer::find('all', array(
                     'related' => array('customer'),
         ));
-        $org_codes[]=NULL;
+        $org_codes[] = NULL;
         foreach ($monthly_customers as $monthly_customer):
             $org_codes[] = $monthly_customer->org_code;
         endforeach;
         if ($org_codes == NULL) {
             return $code . '001';
         } else {
-         print_r($org_codes);
-           
+            print_r($org_codes);
+
             foreach ($org_codes as $org_code):
                 $string = $org_code[0] . $org_code[1];
                 if ($string == $code) {
@@ -118,7 +118,7 @@ class Controller_Invoicebase extends Controller_Base {
         $invoice->customer_id = $customer_id;
         $invoice->user_id = Session::get('user')->id;
         $invoice->amount = $data['amount'];
-         $invoice->currency = $data['currency'];
+        $invoice->currency = $data['currency'];
         $invoice->payment_mode = $data['payment_mode'];
         $invoice->amount_paid = Input::post('amount_paid');
         if ($data['payment_mode'] == "Cheque") {
