@@ -2,7 +2,7 @@
 
 class Controller_Panel extends Controller_Base {
 
-    public function action_index() {
+    public function action_global() {
         $data['panels'] = Model_Panel::find('all');
         $data["subnav"] = array('index' => 'active');
         $data['monthly_customer'] = 0;

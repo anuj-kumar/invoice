@@ -88,7 +88,7 @@ TIN: NA*<br /><br />
 </tr>
 <tr>
 <td>
-Name: B/O ' . $invoice->baby_of . '
+Name: ' . $invoice->baby_of . '
 <br />Date of Service : ' . $invoice->date_of_service . '
 </td>
 <td>

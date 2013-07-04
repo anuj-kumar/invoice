@@ -92,7 +92,7 @@ endforeach;
                 </div>
                 <div class="grid-4-12 ">
                     <label>Address Line #2 : <em class="formee-req">*</em></label>
-                    <input type="text" name="addr_2" id="addr_2" class="formee-large" placeholder="Address Line #2" value="<?php echo $monthly_customers->customer->address_line_2; ?>" autocomplete="off" required>
+                    <input type="text" name="addr_2" id="addr_2" class="formee-large" placeholder="Address Line #2" value="<?php echo $monthly_customers->customer->address_line_2; ?>" autocomplete="off" >
                 </div>
                 <div class="grid-4-12 ">
                     <label>Address Line #3 : </label>
@@ -300,7 +300,7 @@ endforeach;
                         }
 
                         function DropDownChanged(oDDL) {
-                            var oTextbox = document.getElementById('payment_txt');
+                            var oTextbox = document.getElementById('cheque_number');
                             var oBank_name = document.getElementById('bank_name');
                             var oBank_city = document.getElementById('bank_city');
                             var oBank_branch = document.getElementById('bank_branch');

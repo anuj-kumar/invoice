@@ -7,11 +7,9 @@ $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('NeoGen Labs Pvt. Ltd.');
 $pdf->SetTitle('Invoice');
 // remove default header/footer
-$pdf->setPrintHeader(false);
-$pdf->setPrintFooter(false);
 
 
-$pdf->SetFont('dejavusans', '', 13);
+$pdf->SetFont('dejavusans', 'C1', 11);
 
 // set default monospaced font
 //$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -64,8 +62,8 @@ $html = '
 <table>
 <tr>
 <td style="width:350px">
-                            <br /> ' . $monthly_customer->org_name . '
-                            <br /> ' . $invoice->customer->first_name . ' ' . $invoice->customer->last_name . '
+                            <br /> <b>' . $monthly_customer->org_name . '</b>
+                            <br /> ' . $invoice->customer->title . '<br /> ' . $invoice->customer->first_name . ' ' . $invoice->customer->last_name . '
                             <br />' . $invoice->customer->address_line_1 . '
                             <br />' . $invoice->customer->address_line_2 . '
                             <br />' . $invoice->customer->address_line_3 . '
@@ -73,13 +71,17 @@ $html = '
                             <br />' . $invoice->customer->country . ' -' . $invoice->customer->pincode . '
                        
 </td>
-<td>
-Date: ' . date('Y-m-d') . ' <br/>
-Invoice No: ' . $invoice->id . ' <br />
-Billing Period: Jun-2013 <br />
+<td style="width:100px">
+Date: <br />
+Invoice No: <br />
+Billing Period: <br />
 PAN: <br />
 TIN: NA*<br /><br />
 <br />
+</td>
+<td>
+' .  date("j F , Y") . ' <br/>
+    <b>' . $invoice->id . '</b> <br />
 </td>
 </tr>
 
@@ -122,28 +124,33 @@ $html1 = '
 <tr  style="">
 <td style=""></td>
 <td style=""></td>
-<td style="text-align:left">Total</td>
+<td style="text-align:left"><b>Total</b></td>
 <td style=""></td>
-<td style="text-align:right">' . number_format($invoice->amount, 2) . '</td>
+<td style="text-align:right"><b>' . number_format($invoice->amount, 2) . '</b></td>
 
 </tr>
 </table>
 <div class="" style="height:400px"></div>
-<span style="font-style: italics;">Please Pay : Rupee ' . $amount_words . '</span></h5>
+<span style="font-style: italics;">Please Pay : <b>Rupee ' . $amount_words . '</b></span></h5>
 <hr /><div class="" style="height:400px"></div>
 <table style="top:30px">
 <tr>
-<td style="width:250px">
-Paid:' . number_format($invoice->amount_paid, 2) . '
+<td style="width:100px">
+Paid:
 <br />
-Balance:' . number_format($invoice->amount - $invoice->amount_paid, 2) . '
+Balance:
 <br />
 Due Date:
 <br />
 </td>
+<td>
+<b>'.  number_format($invoice->amount_paid,2) .'</b>
+<br /> <b>' .  number_format(($invoice->amount - $invoice->amount_paid),2) . '    </b>
+</td>
 <td >
-<p>Comment : <br />
-' . $invoice->comment . '
+<p>Terms and Conditions : <br />
+' . $invoice->comment . '<br />
+    
 </p>
 </td>
 </tr>

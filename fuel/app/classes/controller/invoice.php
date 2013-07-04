@@ -20,7 +20,7 @@ class Controller_Invoice extends Controller_Invoicebase {
         $data["subnav"] = array('index' => 'active');
         $this->template->title = 'Invoice | Single';
         $this->template->data = 'Single Invoice';
-        $this->template->content = View::forge('invoice/testing', $data);
+        $this->template->content = View::forge('invoice/single', $data);
     }
 
     public function action_submit_single() {
@@ -51,14 +51,6 @@ class Controller_Invoice extends Controller_Invoicebase {
         $this->template->title = 'Invoice | Monthly';
         $this->template->data = 'Monthly Invoice';
         $this->template->content = View::forge('invoice/monthly', $data);
-    }
-
-    public function action_submit_monthly() {
-        $this->template->title = 'Invoice | Monthly';
-        $this->template->content = 1;
-        print_r($_POST);
-        $invoice_id = $this->submit_monthly_details(Input::post());
-        Response::redirect('/invoice/preview_monthly/' . $invoice_id);
     }
 
     public function action_preview($invoice_id = NULL) {
@@ -124,8 +116,15 @@ class Controller_Invoice extends Controller_Invoicebase {
         $this->template->content = View::forge('invoice/monthly_details', $data);
     }
 
+    public function action_submit_monthly() {
+        $this->template->title = 'Invoice | Monthly';
+        $this->template->content = 1;
+        //print_r($_POST);
+        $invoice_id = $this->submit_monthly_details(Input::post());
+        Response::redirect('/invoice/preview_monthly/' . $invoice_id);
+    }
+
     public function action_u_monthly() {
-//        print_r($_POST);
         $id = Input::post('customer_id');
 //        $customer = Model_Customer::find_by_id($id);
         $customer = $this->submit_monthly_details(Input::post(), $id);
@@ -143,7 +142,6 @@ class Controller_Invoice extends Controller_Invoicebase {
         ));
 
 //        $query = DB::query('SELECT * from customers c INNER JOIN invoices i ON c.id = i.customer_id INNER JOIN invoices_panels ip ON i.id = ip.invoice_id');
-
 
         $invoice->panels = Model_Panel::find('all', array(
                     'related' => array('invoices_panels'),
@@ -195,25 +193,7 @@ class Controller_Invoice extends Controller_Invoicebase {
     }
 
     public function action_submit_monthly_new() {
-        /*            $name  = explode(' ', Input::post('name'));
-          $customer = Model_Customer::forge(array(
-          'title' => Input::post('title'),
-          'first_name' => $name[0],
-          'last_name' => 'name',
-          'address_line_1' => Input::post('addr_1'),
-          'address_line_2' => Input::post('addr_2'),
-          'city' => Input::post('city'),
-          'state' => Input::post('state'),
-          'pincode' => Input::post('pincode'),
-          'phone' => Input::post('phone'),
-          'email' => Input::post('email'),
-          'type' => 'monthly',
-          )); */
-//        $customer->monthlycustomer = new Model_Monthlycustomer();
-//        print_r(Input::post());
-        $state = Input::post('state');
-        $org_code = parent::find_code($state);
-        $customer = new Model_Customer();
+    $customer = new Model_Customer();
         $customer->type = 'monthly';
         $customer->monthlycustomer = Model_Monthlycustomer::forge(array(
                     'customer_id' => $customer->id,

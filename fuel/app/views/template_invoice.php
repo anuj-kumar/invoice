@@ -34,7 +34,17 @@
                     Response::redirect('login/login');
                 }
                 ?> 
-            </div>    
+            </div>
+            <?php
+            $uri = explode('/', Input::uri());
+            $module = $uri[1] . "_" . $uri[2];
+            if (!Controller_Base::access($module)) {
+//                    header( "Location: /invoice/single" );
+                echo ("You dont have permission for this page!");
+                Response::redirect('/invoice/single');
+            }
+            ?>
+
         </div>
         <div class="container">
             <div class="span12">
@@ -100,7 +110,7 @@
             </div>
         </div>
         <?php echo $content; ?> 
-        
+
         <div class="right-sidebar" >
             <div class="instructions"><h5>Instructions: </h5><hr /></div>
 
