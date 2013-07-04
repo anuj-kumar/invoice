@@ -8,6 +8,8 @@ class Model_Access_Right extends \Orm\Model {
         'user_id',
         'invoice_single',
         'invoice_monthly',
+        'invoice_monthly_new',
+        'invoice_monthly_details',
         'panel_global',
         'panel_local',
         'archive_single',

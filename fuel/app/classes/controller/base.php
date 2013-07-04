@@ -12,9 +12,7 @@ class Controller_Base extends Controller_Template {
                         'where' => array('user_id' => $user->id),
                             )
             );
-            //print_r($right);
-            //echo $right->print_invoice;
-            return $right[$module];
+            return $right[$module] ? true : false;
         }
     }
 

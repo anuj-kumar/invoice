@@ -148,14 +148,14 @@ Balance:
 <br />
 Due Date:
 <br />
-Outstanding:
+Outstanding: 
 <br />
 </td>
-<td style = "text-align: right;width:140px">
-<b>'.$invoice->currency.' ' . number_format($invoice->amount_paid, 2) . '</b>
-<br /> <b>' .$invoice->currency.' '. number_format(($invoice->amount - $invoice->amount_paid), 2) . '</b>
-<br />' . date("d F Y", strtotime("+2 Months")) . '
-<br /> <b>'.$invoice->currency.' ' . number_format(($monthly_customer->outstanding), 2) . ' </b>
+<td>
+<b>'.  number_format($invoice->amount_paid,2) .'</b>
+<br /> <b>' .  number_format(($invoice->amount - $invoice->amount_paid),2) . '    </b>
+<br />
+<br /> <b>' .  number_format(($monthly_customer->outstanding),2) . '    </b>
 </td>
 <td style = "width:60px"></td>
 <td style = "width:250px" >
