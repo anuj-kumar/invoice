@@ -142,10 +142,14 @@ Balance:
 <br />
 Due Date:
 <br />
+Outstanding: 
+<br />
 </td>
 <td>
 <b>'.  number_format($invoice->amount_paid,2) .'</b>
 <br /> <b>' .  number_format(($invoice->amount - $invoice->amount_paid),2) . '    </b>
+<br />
+<br /> <b>' .  number_format(($monthly_customer->outstanding),2) . '    </b>
 </td>
 <td >
 <p>Terms and Conditions : <br />

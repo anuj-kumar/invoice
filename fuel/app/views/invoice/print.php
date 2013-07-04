@@ -82,7 +82,7 @@ TIN: NA*<br /><br />
 <br />
 </td>
 <td>
-' . date('Y-m-d') . ' <br/>
+' . date("j F  Y") . ' <br/>
     ' . '12345' . ' <br />
 </td>
 </tr>

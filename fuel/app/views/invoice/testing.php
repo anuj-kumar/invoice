@@ -159,8 +159,6 @@ endforeach;
                     <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showContent();"  style="margin-top:20px; width:100px" />
                 </div>
             </div> 
-
-
         </fieldset>
     </div>
 
@@ -217,7 +215,9 @@ endforeach;
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
-                <div class="grid-2-12 ">
+                <div class="grid-5-12 ">
+                    <label>Currency: <em class="formee-req">*</em></label>
+                    <input type="text" name="currency" id="currency" value="INR" required style="width:50px">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
                     <input type="text" name="amount_paid" id="total" value="" required style="width:150px">
                 </div>
@@ -296,7 +296,6 @@ endforeach;
         var flag = val_single();
         //alert(flag);
         if (flag) {
-            //  alert("1");
             document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
             document.getElementById('form1').style.display = "none";
             document.getElementById('form2').style.display = "block";

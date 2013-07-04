@@ -7,9 +7,6 @@
 </style>
 <?php echo Asset::css('formee-structure.css'); ?>
 <?php echo Asset::css('formee-style.css'); ?>
-<?php echo Asset::js('formee.js'); ?>
-<?php echo Asset::js('invoice.js'); ?>
-<?php echo Asset::js('validate.js'); ?>
 
 <?php
 $i = 0;
@@ -39,14 +36,14 @@ endforeach;
             <h1>Single Invoice</h1>
         </div>
         <div class="span6 pull-right" style="column-count: 2">
-            <div class="span2 pull-left" >Date: 
+            <div class="span2 pull-left" >Date: <?php echo date('Y-m-d'); ?> 
                 <br>Invoice No: 
                 <br>Billing Period: 
             </div>
             <div class="span3 pull-right">
                 PAN:
                 <br>TIN:
-                <br>FP NO: 
+
             </div>
         </div>
     </div> 
@@ -70,25 +67,27 @@ endforeach;
                     <input type="text" id="f_name" name="f_name" class="formee-large" placeholder="First Name" required autofocus autocomplete="off">
                 </div>
                 <div class="grid-4-12 ">
-                    <label>Last Name : <em class="formee-req">*</em></label>
-                    <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
+                    <label>Last Name : </label>
+                    <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" autocomplete="off">
                 </div>
             </div>  
-           <div class="grid-12-12 " style="margin-top: -30px">
-                <div class="grid-4-12 ">
+            <div class="grid-12-12 " style="margin-top: -30px">
+                <div class="grid-3-12 ">
                     <label>Fp Number :</label>
-                    <input type='text' id="fp_number"  name="fp_number" placeholder='Filter Paper' autocomplete="off" required>
+                    <input type='text' id="fp_number"  name="fp_number" placeholder='Filter Paper' autocomplete="off" required style="width:150px">
                 </div>
-                <div class="grid-4-12 ">
-                    <label>B/O: <em class="formee-req">*</em></label>
-                     <input type='text' name="baby_of" id="baby_of"  placeholder='Baby Of' autocomplete="off" value="" style="width: 150px;margin-left: 10px"  required>
+                <div class="grid-5-12 ">
+                    <label>Patient Name: </label>
+                    <input type='radio' name="select_baby_of" id="select_baby_of" value="B/O" >B/O
+                    <input type='radio' name="select_baby_of" id="select_master" value="Master" >Master
+                    <input type='text' name="baby_of" id="baby_of"  placeholder='Baby Of' autocomplete="off" value="" style="width: 150px;margin-left: 50px"  >
                 </div>
                 <div class="grid-4-12 ">
                     <label>Date Of Service :</label>
                     <input type='date' id="date_of_service"  name="date_of_service" placeholder='Date' autocomplete="off" value="<?php echo date('Y-m-d'); ?>" >
                 </div>
-                  
-           </div>
+
+            </div>
 
             <div class="grid-12-12 " style="margin-top: 0px">
                 <div class="grid-4-12 ">
@@ -96,7 +95,7 @@ endforeach;
                     <input type="text" id="addr_1" name="addr_1" class="formee-large" placeholder="Adress Line #1" autocomplete="off" required>
                 </div>
                 <div class="grid-4-12 ">
-                    <label>Address Line #2 : <em class="formee-req">*</em></label>
+                    <label>Address Line #2 : </label>
                     <input type="text" id="addr_2" name="addr_2" class="formee-large" placeholder="Address Line #2" autocomplete="off" >
                 </div>
                 <div class="grid-4-12 ">
@@ -107,7 +106,7 @@ endforeach;
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-3-12 ">
                     <label>City : <em class="formee-req">*</em></label>
-                    <input list="city" name="city" id="city" placeholder="city" required autocomplete='off' style="width: 140px">
+                    <input list="city" name="city" id="city" placeholder="city" value="Bangalore" required autocomplete='off' style="width: 140px">
                     <datalist id="city">
                         <option value="Kolkata">
                         <option value="Delhi">
@@ -121,7 +120,7 @@ endforeach;
                 </div>
                 <div class="grid-3-12 ">
                     <label>State : <em class="formee-req">*</em></label>
-                    <input list="states" name="state" id="state" placeholder="State"  style="width: 140px" autocomplete='off'>
+                    <input list="states" name="state" id="state" placeholder="State" value="Karnataka"  style="width: 140px" autocomplete='off' required>
                     <datalist id="states">
                         <?php foreach ($states as $state): ?>
                             <option value="<?php echo $state->name; ?>">
@@ -131,7 +130,7 @@ endforeach;
 
                 <div class="grid-3-12 ">
                     <label>Country : <em class="formee-req">*</em></label>
-                    <input list="country" name="country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+                    <input list="country" name="country" id="country" placeholder="country" value="India" required style="width: 140px" autocomplete='off'>
                     <datalist id="country">
                         <option value="India">
                         <option value="USA">
@@ -160,8 +159,6 @@ endforeach;
                     <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showContent();"  style="margin-top:20px; width:100px" />
                 </div>
             </div> 
-           
-               
         </fieldset>
     </div>
 
@@ -218,9 +215,11 @@ endforeach;
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
-                <div class="grid-2-12 ">
+                <div class="grid-5-12 ">
+                    <label>Currency: <em class="formee-req">*</em></label>
+                    <input type="text" name="currency" id="currency" value="INR" required style="width:50px">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
-                    <input type="text" name="amount_paid" id="total" value="" required style="width:50px">
+                    <input type="text" name="amount_paid" id="total" value="" required style="width:150px">
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
@@ -264,6 +263,9 @@ endforeach;
 
 
 
+<?php echo Asset::js('formee.js'); ?>
+<?php echo Asset::js('invoice.js'); ?>
+<?php echo Asset::js('validate.js'); ?>
 
 <script>
     function pincode_val() {
@@ -294,7 +296,6 @@ endforeach;
         var flag = val_single();
         //alert(flag);
         if (flag) {
-          //  alert("1");
             document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
             document.getElementById('form1').style.display = "none";
             document.getElementById('form2').style.display = "block";
@@ -322,7 +323,7 @@ endforeach;
         document.getElementById('form3').style.display = "none";
     }
     function DropDownChanged(oDDL) {
-        var oTextbox = document.getElementById('payment_txt');
+        var oTextbox = document.getElementById('cheque_number');
         var oBank_name = document.getElementById('bank_name');
         var oBank_city = document.getElementById('bank_city');
         var oBank_branch = document.getElementById('bank_branch');
@@ -345,7 +346,5 @@ endforeach;
         if (oHidden && oDDL && oTextbox)
             oHidden.value = (oDDL.value == "") ? oTextbox.value : oDDL.value;
     }
-
-
 
 </script>

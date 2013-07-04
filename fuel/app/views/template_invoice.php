@@ -41,7 +41,7 @@
             if (!Controller_Base::access($module)) {
 //                    header( "Location: /invoice/single" );
                 echo ("You dont have permission for this page!");
-                Response::redirect('/invoice/single');
+           //     Response::redirect('/invoice/single');
             }
             ?>
 
