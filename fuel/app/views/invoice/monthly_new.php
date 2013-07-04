@@ -112,11 +112,6 @@
                     <label>Email :</label>
                     <input type='email' id="email"  name="email" placeholder='Email: example@example.com' autocomplete="off" >
                 </div>
-
-                <div class="grid-4-12 ">
-                    <label>Contract File : <em class="formee-req"></em></label>
-                    <input type="file" name="file" class="formee-large" placeholder="Contract File" required>
-                </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-4-12 " style="float: right">

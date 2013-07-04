@@ -200,9 +200,11 @@ endforeach;
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
-                <div class="grid-2-12 ">
+                <div class="grid-5-12 ">
+                    <label>Currency: <em class="formee-req">*</em></label>
+                    <input type="text" name="currency" id="currency" value="INR" required style="width:50px">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
-                    <input type="text" name="amount_paid" id="amount_paid" value="" required style="width:50px">
+                    <input type="text" name="amount_paid" id="total" value="" required style="width:150px">
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">

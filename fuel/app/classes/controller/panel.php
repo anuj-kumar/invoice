@@ -60,7 +60,7 @@ class Controller_Panel extends Controller_Base {
         endforeach;
 
         $this->template->title = 'Panels &raquo; Global';
-        $this->template->content = "Entry created successfully";
+       Response::redirect('invoice/monthly');
     }
 
     public function action_view($customer_id = NULL) {

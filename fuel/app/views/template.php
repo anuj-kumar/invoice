@@ -38,7 +38,7 @@
             if (!Controller_Base::access($module)) {
 //                    header( "Location: /invoice/single" );
                 echo ("You dont have permission for this page!");
-                Response::redirect('/invoice/single');
+                //Response::redirect('/invoice/single');
             }
             ?>
         </div>
@@ -79,8 +79,7 @@
 
                     <li class="item2"><a href="#">Panels</a>
                         <ul>
-                            <li class="subitem1"><?php echo Html::anchor('panel/', 'Global'); ?></li>
-                            <li class="subitem2"><?php echo Html::anchor('panel/', 'Local'); ?></li>
+                            <li class="subitem1"><?php echo Html::anchor('panel/global/', 'Global'); ?></li>
                             <li class="subitem2"><?php echo Html::anchor('panel/add', 'Add'); ?></li>
 
                         </ul>
@@ -93,14 +92,12 @@
                         </ul>
                     </li>                    <li class="item4"><a href="#">Users</a>
                         <ul>
-                            <li class="subitem1"><a href="#">List All Users</a></li>
-                            <li class="subitem2"><a href="#">Create</a></li>
+                            <li class="subitem1"><?php echo Html::anchor('/user/list', 'List All Users'); ?></li>
+                            <li class="subitem2"><?php echo Html::anchor('/user/create', 'Create'); ?></li>
 
                         </ul>
                     </li>
-                    <li id="item5" class="item5 "><?php echo Html::anchor('system_log/users', 'System Log', array('class' => 'single')); ?>
 
-                    </li>
                 </ul>
             </div>
         </div>
