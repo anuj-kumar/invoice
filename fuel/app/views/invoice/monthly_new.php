@@ -16,13 +16,14 @@
                     <label>Organization Name : <em class="formee-req">*</em></label>
                     <input type="text" name="org_name" id="client_name" class="formee-large" placeholder="Organization Name" required autofocus>
                 </div>
-            <div class="grid-3-12 ">
-                <label>Organization Print Name : <em class="formee-req">*</em></label>
-                <input type="text" name="org_print_name" id="client_print" class="" placeholder="PrintName" style="width: 150px" required>
+                <div class="grid-3-12 ">
+                    <label>Organization Print Name : <em class="formee-req">*</em></label>
+                    <input type="text" name="org_print_name" id="client_print" class="" placeholder="PrintName" style="width: 150px" >
+                    <input type="hidden" name="due_date" id="due_date" class="" value="<?php echo date('Y-m-d'); ?>" >
+                </div>
             </div>
-        </div>
-        <div class="grid-12-12 " style="margin-top: -20px">
-            <div class="grid-2-12 ">
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="grid-2-12 ">
 
                     <label>Title : <em class="formee-req">*</em></label>
                     <select name="title" id="id" style="width: 60px" required>
@@ -38,7 +39,7 @@
                 </div>
                 <div class="grid-4-12 ">
                     <label>Last Name : <em class="formee-req">*</em></label>
-                    <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name" required autocomplete="off">
+                    <input type="text" id="l_name" name="l_name" class="formee-large" placeholder="Last Name"  autocomplete="off">
                 </div>
             </div>  
             <div class="grid-12-12 " style="margin-top: -20px">
@@ -80,9 +81,9 @@
                     </datalist>
                 </div>
 
-                <div class="grid-3-12 ">
+                <div class="grid-3-12 " style="width: 120px">
                     <label>Country : <em class="formee-req">*</em></label>
-                    <input list="country"  name="country" id="country" placeholder="country" required style="width: 140px" autocomplete='off'>
+                    <input list="country"  name="country" id="country" placeholder="country" required style="width: 120px" autocomplete='off' onBlur="check_country()" >
                     <datalist id="country">
                         <option value="India">
                         <option value="USA">
@@ -91,126 +92,168 @@
                         <option value="">
                         <option value="">
                     </datalist>
-            </div>
-            <div class="grid-2-12  " style="float: right" >
-                <label>Pin Code : </label>
-                <input type="text" name="pincode" id="pincode" class="formee-large" placeholder="Pincode" style="width:100px" onBlur="pincode_val()">
-            </div>
-        </div>
-
-        <div class="grid-12-12 " style="margin-top: -20px">
-            <div class="grid-4-12 ">
-                <label>Telephone : <em class="formee-req">*</em></label>
-                + <input type='tel' name="tele" id="country_code"  placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' id="tele" name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
-            </div>
-            <div class="grid-4-12 ">
-                <label>Email :</label>
-                <input type='email' id="email"  name="email" placeholder='Email: example@example.com' autocomplete="off" >
-            </div>
-
-            <div class="grid-4-12 ">
-                <label>Contract File : <em class="formee-req"></em></label>
-                <input type="file" name="file" class="formee-large" placeholder="Contract File" required>
-            </div>
-        </div>
-        <div class="grid-12-12 " style="margin-top: -20px">
-            <div class="grid-4-12 " style="float: right">
-                <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPanel()"  style="margin-left: 40px;margin-top: 20px;min-width:100px" /> 
-            </div>
-        </div>
-
-        </fieldset>
-    </div>
-    <div id="form2" style="display: none">
-        <?php
-        $i = 0;
-        foreach ($panels as $panel):
-            $j = 0;
-
-            foreach ($panel->global_panel_prices as $price_obj):
-                $panel_arr[$i][$j]['id'] = $panel->id;
-                $panel_arr[$i][$j]['name'] = $panel->name;
-                $panel_arr[$i][$j]['price'] = $price_obj->price;
-                $panel_arr[$i][$j]['vol_low'] = $price_obj->vol_low;
-                $panel_arr[$i][$j]['vol_high'] = $price_obj->vol_high;
-                $j++;
-            endforeach;
-            $i++;
-        endforeach;
-        $len = $j;
-        ?>
-        <script type="text/javascript">
-                    var panel = new Array();
-                    panel = <?php echo json_encode((array) $panel_arr); ?>;
-                    var len = <?php echo $len; ?>;
-                    console.log(len);
-        </script>
-
-
-        <?php ?>
-        <style>
-            .panel_table th,td{width: 80px;border-bottom: 1px black solid;padding-bottom: 2px;padding-top: 10px}
-        </style>
-        <script>
-            var count = 0;
-        </script>
-        <div class="row container">
-            <h2>Monthly Panel Pricing </h2>
-                <div class="span3 pull-right">
-
-            </div>
-
-        </div>
-        <div class="row container">
-
-
-            <form action="submit_<?php echo isset($monthly_customer_id) ? "local" : "global" ?>" method="POST">
-                <?php
-                if (isset($monthly_customer_id)) {
-                    echo "<input type='hidden' name='monthly_customer_id' value='" . $monthly_customer_id . "'/>";
-                }
-                ?>
-                <table class="panel_table" id="panel_table">
-                    <th>Volume</th>
-                    <?php
-                    $num_of_panels = 0;
-                    foreach ($panels as $panel):
-                        echo "<th>" . $panel->name . "</th>";
-                        $num_of_panels++;
-                    endforeach;
-                    ?>
-
-                </table>
-                <div class="span5 pull-right" style="margin-top:10px">
-                    <input class="btn btn-danger"type="submit" value="Update"/>
-                    <input class="btn btn-danger"type="button" value="Add Row" onclick="addRow('panel_table', <?php echo $num_of_panels ?>)" />
-                    <input class="btn btn-danger"type="button" value="Delete Row" onclick="deleteRow('panel_table')" />
                 </div>
-            </form>
+                <div class="grid-2-12  " style="display: none;" >
+                    <label>Org_code : </label>
+                    <input type="text" name="org_code" id="org_code" class="formee-small" placeholder="" style="width:100px" onBlur="pincode_val()">
+                </div>  
+                <div class="grid-2-12  " style="float: right" >
+                    <label>Pin Code : </label>
+                    <input type="text" name="pincode" id="pincode" class="formee-large" placeholder="Pincode" style="width:100px" onBlur="pincode_val()">
+                </div>
+            </div>
+
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="grid-4-12 ">
+                    <label>Telephone : <em class="formee-req">*</em></label>
+                    + <input type='tel' name="tele" id="country_code"  placeholder='Tele: (91)' autocomplete="off" value="91" style="width: 20px" required><input type='tel' id="tele" name="tele" pattern='\d{10}' style="width: 100px;margin-left: 10px" placeholder='9999999999' autocomplete="off" required>
+                </div>
+                <div class="grid-4-12 ">
+                    <label>Email :</label>
+                    <input type='email' id="email"  name="email" placeholder='Email: example@example.com' autocomplete="off" >
+                </div>
+
+                <div class="grid-4-12 ">
+                    <label>Contract File : <em class="formee-req"></em></label>
+                    <input type="file" name="file" class="formee-large" placeholder="Contract File" required>
+                </div>
+            </div>
+            <div class="grid-12-12 " style="margin-top: -20px">
+                <div class="grid-4-12 " style="float: right">
+                    <input type="button" class="btn btn-danger btn-large" name="Next" value="Next" onclick="showPanel()"  style="margin-left: 40px;margin-top: 20px;min-width:100px" /> 
+                </div>
+            </div>
+
+            </fieldset>
+        </div>
+        <div id="form2" style="display: none">
+            <?php
+            $i = 0;
+            foreach ($panels as $panel):
+                $j = 0;
+
+                foreach ($panel->global_panel_prices as $price_obj):
+                    $panel_arr[$i][$j]['id'] = $panel->id;
+                    $panel_arr[$i][$j]['name'] = $panel->name;
+                    $panel_arr[$i][$j]['price'] = $price_obj->price;
+                    $panel_arr[$i][$j]['vol_low'] = $price_obj->vol_low;
+                    $panel_arr[$i][$j]['vol_high'] = $price_obj->vol_high;
+                    $j++;
+                endforeach;
+                $i++;
+            endforeach;
+            $len = $j;
+            ?>
+            <script type="text/javascript">
+                        var panel = new Array();
+                        panel = <?php echo json_encode((array) $panel_arr); ?>;
+                        var len = <?php echo $len; ?>;
+                        console.log(len);
+            </script>
+
+
+            <?php ?>
+            <style>
+                .panel_table th,td{width: 80px;border-bottom: 1px black solid;padding-bottom: 2px;padding-top: 10px}
+            </style>
+            <script>
+                var count = 0;
+            </script>
+            <div class="row container">
+                <h2>Monthly Panel Pricing </h2>
+                    <div class="span3 pull-right">
+
+                </div>
+
+            </div>
+            <div class="row container">
+
+
+                <form action="submit_<?php echo isset($monthly_customer_id) ? "local" : "global" ?>" method="POST">
+                    <?php
+                    if (isset($monthly_customer_id)) {
+                        echo "<input type='hidden' name='monthly_customer_id' value='" . $monthly_customer_id . "'/>";
+                    }
+                    ?>
+                    <table class="panel_table" id="panel_table">
+                        <th>Volume</th>
+                        <?php
+                        $num_of_panels = 0;
+                        foreach ($panels as $panel):
+                            echo "<th>" . $panel->name . "</th>";
+                            $num_of_panels++;
+                        endforeach;
+                        ?>
+
+                    </table>
+                    <div class="span5 pull-right" style="margin-top:10px">
+                        <input class="btn btn-danger" type="button" value="Back" onclick="backForm()" />
+                        <input class="btn btn-danger"type="submit" value="Submit"/>
+                        <input class="btn btn-danger" type="button" value="Add Row" onclick="addRow('panel_table', <?php echo $num_of_panels ?>)" />
+                        <input class="btn btn-danger"type="button" value="Delete Row" onclick="deleteRow('panel_table')" />
+                    </div>
+                </form>
+
+            </div>
+            <?php echo Asset::js('panel.js'); ?>
+            <?php echo Asset::js('build.js'); ?>
 
         </div>
-        <?php echo Asset::js('panel.js'); ?>
-        <?php echo Asset::js('build.js'); ?>
-
-    </div>
 </div>
 <script>
-            function showPanel() {
-                var flag = val_monthly();
-                if (flag) {
-                    document.getElementById('form1').style.display = "none";
-                    document.getElementById('form2').style.display = "block";
-                }
+     function pincode_val() {
+        var country = document.getElementById('country').value;
+        if (country == "India" || country == "india") {
+            var pincode = document.getElementById('pincode').value;
+            if (pincode.length != 6)
+            {
+                document.getElementById('error').innerHTML = "* Pincode should be 6 characters";
+                document.getElementById('country_code').value = "91";
+                document.getElementById('pincode').focus();
+            }
+            else
+            {
+                document.getElementById('error').innerHTML = "";
+
             }
 
-            function backForm() {
-                document.getElementById('form1').style.display = "block";
-                document.getElementById('form2').style.display = "none";
-            }
+        }
+        else
+            document.getElementById('country_code').value = "";
+
+    }
+                function check_country() {
+                    if (document.getElementById('country').value != "India" || document.getElementById('country').value != "india")
+                    {
+                        document.getElementById('org_code').style.display = "block";
+                        //document.getElementById('org_code').attr.required = "true";
+                        document.getElementById('country_code').value = "";
+                        document.getElementById('org_code').focus();
+
+                    }
+                    else
+                    {
+                        document.getElementById('country_code').value = "91";
+                         document.getElementById('pincode').focus();
+                    }
+
+                }
+                function showPanel() {
+                    var flag = val_monthly();
+                    if (flag) {
+                        document.getElementById('form1').style.display = "none";
+                        document.getElementById('form2').style.display = "block";
+                    }
+                }
+
+                function backForm() {
+                    document.getElementById('form1').style.display = "block";
+                    document.getElementById('form2').style.display = "none";
+                }
 </script>
-<?php 
-for ($i=0;$i<$len;$i++){
-?><script>
-window.onload = addtable('panel_table', 9  );
-</script>
+<?php
+for ($i = 0; $i < $len; $i++) {
+    ?><script>
+        window.onload = addtable('panel_table', 9);
+    </script>
 <?php } ?>

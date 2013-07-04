@@ -1,4 +1,5 @@
 function ShowCurrentTime() {
+console.log('1');
 var dt = new Date();
 var d=dt.getDate();
 var m=dt.getMonth();

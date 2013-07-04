@@ -110,7 +110,7 @@ endforeach;
                 </div>
                 <div class="grid-3-12 ">
                     <label>Country : <em class="formee-req">*</em></label>
-                    <input type="text" name="country" id="country" class="formee-medium" placeholder="country" value="<?php //echo $monthly_customers->customer->country; ?>" required>
+                    <input type="text" name="country" id="country" class="formee-medium" placeholder="country" value="<?php echo $monthly_customers->customer->country; ?>" required>
                 </div>
                 <div class="grid-3-12 ">
                     <label>Pin Code : </label>
@@ -139,7 +139,7 @@ endforeach;
                 </div>
                 <div class="grid-4-12 ">
                     <input type="hidden" value="<?php echo $monthly_customers->customer_id; ?>" name="customer_id" />
-                    <h4 ><?php echo Html::anchor('panel/local/' . $monthly_customers->id, 'Panel', array('class' => 'btn btn-large btn-info span2', 'style' => '')); ?></h4>
+                    <h4 ><?php echo Html::anchor('panel/local_price/' . $monthly_customers->id, 'Panel', array('class' => 'btn btn-large btn-info span2', 'style' => '')); ?></h4>
                 </div>
 
             </div>

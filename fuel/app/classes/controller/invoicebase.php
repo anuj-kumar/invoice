@@ -7,6 +7,48 @@
  */
 class Controller_Invoicebase extends Controller_Base {
 
+    protected function find_code($str) {
+        $ct = 0;
+        $code = 0;
+        $states = Model_State::find('all');
+        foreach ($states as $state):
+            if ($state->name == $str) {
+                $code = $state->code;
+                break;
+            }
+        endforeach;
+        echo 'State Code form Db:'.$code;
+        $monthly_customers = Model_Monthlycustomer::find('all', array(
+                    'related' => array('customer'),
+        ));
+        foreach ($monthly_customers as $monthly_customer):
+            $org_codes[] = $monthly_customer->org_code;
+        endforeach;
+         print_r($org_codes);
+        if ($org_codes == NULL) {
+            return $code . '001';
+        } else {
+           
+            foreach ($org_codes as $org_code):
+                $string = $org_code[0] . $org_code[1];
+                if ($string == $code) {
+                    $ct++;
+                }
+            endforeach;
+        }
+
+        $ct++;
+        echo $code;
+        $org_code = 0;
+        $org_code = $code;
+        if ($ct < 9)
+            return $org_code . '00' . $ct;
+        if ($ct < 99)
+            return $org_code . '0' . $ct;
+        else
+            return $org_code . '0' . $ct;
+    }
+
     protected function submit_customer_details($data, $customer) {
         $customer->title = $data['title'];
         $customer->first_name = $data['f_name'];
@@ -72,7 +114,7 @@ class Controller_Invoicebase extends Controller_Base {
         $invoice->baby_of = $data['baby_of'];
         $invoice->fp_number = $data['fp_number'];
         $invoice->date_of_service = $data['date_of_service'];
-        $invoice->comment= $data['comment'];
+        $invoice->comment = $data['comment'];
         $invoice->customer_id = $customer_id;
         $invoice->user_id = Session::get('user')->id;
         $invoice->amount = $data['amount'];

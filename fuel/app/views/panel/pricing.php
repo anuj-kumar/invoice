@@ -40,7 +40,10 @@ $len=$j;
 <div class="row container">
     
     <h1><?php if($monthly_customer) { echo $monthly_customer->org_name;} else { echo 'Global Panels'; } ?></h1>
-    <form action="/panel/submit_<?php echo isset($monthly_customer_id) ? "local" : "global"?>" method="POST">
+    <?php
+     $url=isset($monthly_customer_id) ? "local" : "global";
+    echo Form::open(array("class" => "", "action" => "/panel/submit_".$url)); ?>
+    
         <?php
         if (isset($monthly_customer_id)) {
             echo "<input type='hidden' name='monthly_customer_id' value='" . $monthly_customer_id . "'/>";

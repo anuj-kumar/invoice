@@ -3,27 +3,44 @@ console.log(error);
 function isNumber(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
-function  val_single() {
-    var flag = val_customer_details();
-        if (document.getElementById('fp_number').value == "")
+function check_fp() {
+    if (document.getElementById('fp_number').value == "")
     {
         document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Filter Paper Number</h5>";
         document.getElementById('fp_number').focus();
         return false;
     }
-    else if (document.getElementById('fp_number').value != ""){
-         var number = document.getElementById('fp_number').value;
+    else if (document.getElementById('fp_number').value != "") {
+        var number = document.getElementById('fp_number').value;
         var check = isNumber(number);
-        if (!check) {
-            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
-             document.getElementById('fp_number').focus();
+        if (check && number.length == 8) {
+            document.getElementById('fp_number').style.border = "1px solid rgba(82, 168, 236, 0.8)";
+            return true;
+        }
+        else {
+            document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter 8 Digits </h5>";
+            document.getElementById('fp_number').style.border = "1px solid red";
+            document.getElementById('fp_number').focus();
             return false;
         }
-        
+
+    }
+}
+function  val_single() {
+    var flag = val_customer_details();
+    var fp = check_fp();
+
+    if (document.getElementById('select_baby_of').checked) {
+        document.getElementById('baby_of').value = "B/O " + document.getElementById('baby_of').value;
     }
 
+    if (document.getElementById('select_master').checked) {
+        document.getElementById('baby_of').value = document.getElementById('baby_of').value;
+    }
+
+
     //alert("flag"+flag);
-    if (flag) {
+    if (flag && fp) {
         return true;
     }
     else {
@@ -36,6 +53,12 @@ function  val_monthly() {
         document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Organization Name</h5>";
         document.getElementById('client_name').focus();
         return false;
+    }
+    if (document.getElementById('client_print').value == "")
+    {
+        
+        document.getElementById('client_print').value = document.getElementById('client_name').value;
+        //return false;
     }
     var flag = val_customer_details();
     //alert(flag);
@@ -54,13 +77,8 @@ function val_customer_details() {
         document.getElementById('f_name').focus();
         return false;
     }
-    if (document.getElementById('l_name').value == "")
-    {
-        document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Last Name</h5>";
-        document.getElementById('l_name').focus();
-        return false;
-    }
-    
+
+
 
     if (document.getElementById('addr_1').value == "")
     {
@@ -98,6 +116,7 @@ function val_customer_details() {
         var check = isNumber(pincode);
         if (!check) {
             document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
+            document.getElementById('pincode').style.border = "1px solid red";
             document.getElementById('pincode').focus();
             return false;
         }
@@ -106,6 +125,7 @@ function val_customer_details() {
             if (pincode.length != 6) {
                 document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Pincode</h5>";
                 document.getElementById('pincode').focus();
+                document.getElementById('pincode').style.border = "1px solid red";
                 return false;
             }
         }
@@ -116,6 +136,7 @@ function val_customer_details() {
         if (document.getElementById('pincode').value == "")
         {
             document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Pincode</h5>";
+            document.getElementById('pincode').style.border = "1px solid red";
             document.getElementById('pincode').focus();
             return false;
         }
@@ -124,6 +145,7 @@ function val_customer_details() {
         var check = isNumber(pincode);
         if (!check) {
             document.getElementById('error').innerHTML = "<h5>*Errors : <hr /><br />Enter Digits</h5>";
+            document.getElementById('pincode').style.border = "1px solid red";
             document.getElementById('pincode').focus();
             return false;
         }

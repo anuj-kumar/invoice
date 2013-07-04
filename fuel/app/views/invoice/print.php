@@ -11,7 +11,7 @@ $pdf->setPrintHeader(false);
 $pdf->setPrintFooter(false);
 
 
-$pdf->SetFont('dejavusans', '', 13);
+$pdf->SetFont('dejavusans', '', 12);
 
 // set default monospaced font
 //$pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -60,7 +60,7 @@ $html = '
 
 </table>
 <div class= "main" style="position:fixed;top:0px;width:100%;min-height:400px">
-<h4 style="text-align:center"> FIRST STEP<sup>TM</sup> SALES INVOICE </h4>
+<h2 style="text-align:center"> FIRST STEP<sup>TM</sup> SALES INVOICE </h2>
 <table>
 <tr>
 <td style="width:350px">
@@ -73,13 +73,17 @@ $html = '
                             <br />' . $invoice->customer->country . ' -' . $invoice->customer->pincode . '
                        
 </td>
-<td>
-Date: ' . date('Y-m-d') . ' <br/>
-Invoice No: ' . '12345' . ' <br />
+<td style="width:100px">
+Date: <br />
+Invoice No: <br />
 Billing Period: <br />
 PAN: <br />
 TIN: NA*<br /><br />
 <br />
+</td>
+<td>
+' . date('Y-m-d') . ' <br/>
+    ' . '12345' . ' <br />
 </td>
 </tr>
 <tr>
@@ -116,8 +120,8 @@ foreach ($invoice->panels as $panel):
         $html2 = '<table ><tr><td style="text-align:center">' . $i++ . '</td>
                        <td style="text-align:center">' . $other->panel_quantity . '</td>
                        <td style="text-align:center">' . $panel->name . '</td>
-                       <td style="text-align:right">' . $other->panel_price . '</td>        
-                       <td style="text-align:right">' . $other->panel_quantity * $other->panel_price . '</td>
+                       <td style="text-align:right">' .  number_format($other->panel_price,2) . '</td>        
+                       <td style="text-align:right">' .  number_format($other->panel_quantity * $other->panel_price,2) . '</td>
                    </tr>
                    <hr />
              </table>
@@ -133,7 +137,7 @@ $html1 = '
 <td style=""></td>
 <td style="text-align:left">Total</td>
 <td style=""></td>
-<td style="text-align:right">' . $invoice->amount . '</td>
+<td style="text-align:right">' .  number_format($invoice->amount,2). '</td>
 
 </tr>
 </table>
@@ -142,13 +146,17 @@ $html1 = '
 <div class="" style="height:400px"></div>
 <table style="top:30px">
 <tr>
-<td style="width:250px">
-Paid:' . $invoice->amount_paid . '
+<td style="width:100px">
+Paid:
 <br />
-Balance:' . ($invoice->amount - $invoice->amount_paid) . '
+Balance:
 <br />
 Due Date:
 <br />
+</td>
+<td>
+'.  number_format($invoice->amount_paid,2) .'
+<br /> ' .  number_format(($invoice->amount - $invoice->amount_paid),2) . '    
 </td>
 <td >
 <p>Comment : <br />

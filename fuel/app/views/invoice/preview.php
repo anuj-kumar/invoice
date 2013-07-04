@@ -112,7 +112,8 @@
             </div>
     
         <div class="span4" style="margin-left: 47% ">
-            <?php echo Html::anchor('invoice/print/'.$invoice_id, 'Print'); ?>
+            <?php echo Html::anchor('invoice/print/'.$invoice_id, 'Print', array('target'=>'blank')); ?>
+            <?php echo Html::anchor('invoice/', 'Back to Home'); ?>
         </div>
         
 </center>

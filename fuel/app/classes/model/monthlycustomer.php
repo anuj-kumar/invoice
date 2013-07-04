@@ -10,7 +10,6 @@ class Model_Monthlycustomer extends \Orm\Model
         'org_print_name',
         'org_code',
 		'contract_file',
-		'contract_discount',
 		'outstanding',
 		'duedate',
 		'created_at',

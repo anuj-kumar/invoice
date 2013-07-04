@@ -5,7 +5,8 @@ class Model_State extends \Orm\Model
 {
 	protected static $_properties = array(
 		'id',
-		'name',
+            	'code',
+            	'name',
 		'created_at',
 		'updated_at',
 	);

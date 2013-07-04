@@ -4,6 +4,7 @@ class Controller_Invoice extends Controller_Invoicebase {
 
     public $template = 'template_invoice';
 
+    
     public function action_index() {
         Response::redirect('/invoice/single');
     }
@@ -73,19 +74,20 @@ class Controller_Invoice extends Controller_Invoicebase {
         ));
         $data['invoice'] = $invoice;
         $data['invoice_id'] = $invoice_id;
-        $str=Controller_Numbertowords::convert_number_to_words($invoice->amount);
+        $str = Controller_Numbertowords::convert_number_to_words($invoice->amount);
         $data['amount_words'] = ucwords($str);
-                
+
         $this->template->title = 'Invoice | Preview';
         return Response::forge(View::forge('invoice/preview', $data));
     }
-     public function action_preview_monthly($invoice_id = NULL) {
+
+    public function action_preview_monthly($invoice_id = NULL) {
         $invoice = Model_Invoice::find($invoice_id, array(
                     'related' => array('customer')
         ));
-        
-       $monthly_customer = Model_Monthlycustomer::find('first', array(
-                    'where'=>array('customer_id' => $invoice->customer->id)
+
+        $monthly_customer = Model_Monthlycustomer::find('first', array(
+                    'where' => array('customer_id' => $invoice->customer->id)
         ));
         $invoice->panels = Model_Panel::find('all', array(
                     'related' => array('invoices_panels'),
@@ -95,11 +97,11 @@ class Controller_Invoice extends Controller_Invoicebase {
         $data['monthly_customer'] = $monthly_customer;
         $data['invoice'] = $invoice;
         $data['invoice_id'] = $invoice_id;
-        $str=Controller_Numbertowords::convert_number_to_words($invoice->amount);
+        $str = Controller_Numbertowords::convert_number_to_words($invoice->amount);
         $data['amount_words'] = ucwords($str);
-                
+
         $this->template->title = 'Invoice | Preview';
-        
+
         return Response::forge(View::forge('invoice/preview_monthly', $data));
     }
 
@@ -112,7 +114,7 @@ class Controller_Invoice extends Controller_Invoicebase {
         ));
         $data['panels'] = Model_Panel::find('all', array(
                     'related' => array('local_panel_prices'),
-            'where' => array('t1.monthly_customer_id' => $monthly_customer->id),
+                    'where' => array('t1.monthly_customer_id' => $monthly_customer->id),
         ));
         //print_r($data['panels']);
         $data['monthly_customers'] = $monthly_customer;
@@ -134,7 +136,8 @@ class Controller_Invoice extends Controller_Invoicebase {
         $this->template->title = 'Invoice | Monthly';
         $this->template->content = 1;
     }
-   public function action_print($invoice_id = 1) {
+
+    public function action_print($invoice_id = 1) {
         $invoice = Model_Invoice::find($invoice_id, array(
                     'related' => array('customer')
         ));
@@ -147,21 +150,21 @@ class Controller_Invoice extends Controller_Invoicebase {
                     'where' => array('t1.invoice_id' => $invoice->id)
         ));
         $data['invoice'] = $invoice;
-        $str=Controller_Numbertowords::convert_number_to_words($invoice->amount);
-        $data['amount_words'] = ucwords($str);   
+        $str = Controller_Numbertowords::convert_number_to_words($invoice->amount);
+        $data['amount_words'] = ucwords($str);
         $data['invoice_id'] = $invoice_id;
         $this->template->title = 'Invoice | Preview';
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
         return Response::forge(View::forge('invoice/print', $data));
     }
 
-       public function action_print_monthly($invoice_id = 1) {
+    public function action_print_monthly($invoice_id = 1) {
         $invoice = Model_Invoice::find($invoice_id, array(
                     'related' => array('customer')
         ));
-        
-       $monthly_customer = Model_Monthlycustomer::find('first', array(
-                    'where'=>array('customer_id' => $invoice->customer->id)
+
+        $monthly_customer = Model_Monthlycustomer::find('first', array(
+                    'where' => array('customer_id' => $invoice->customer->id)
         ));
         $invoice->panels = Model_Panel::find('all', array(
                     'related' => array('invoices_panels'),
@@ -171,9 +174,9 @@ class Controller_Invoice extends Controller_Invoicebase {
         $data['monthly_customer'] = $monthly_customer;
         $data['invoice'] = $invoice;
         $data['invoice_id'] = $invoice_id;
-        $str=Controller_Numbertowords::convert_number_to_words($invoice->amount);
+        $str = Controller_Numbertowords::convert_number_to_words($invoice->amount);
         $data['amount_words'] = ucwords($str);
-                
+
         $this->template->title = 'Invoice | Preview';
         $pdf = \Pdf::factory('tcpdf')->init('P', 'mm', 'A4', true, 'UTF-8', false);
         return Response::forge(View::forge('invoice/print_monthly', $data));
@@ -208,13 +211,16 @@ class Controller_Invoice extends Controller_Invoicebase {
           )); */
 //        $customer->monthlycustomer = new Model_Monthlycustomer();
 //        print_r(Input::post());
+        $state = Input::post('state');
+        $org_code = parent::find_code($state);
         $customer = new Model_Customer();
         $customer->type = 'monthly';
         $customer->monthlycustomer = Model_Monthlycustomer::forge(array(
                     'customer_id' => $customer->id,
                     'org_name' => Input::post('org_name'),
                     'org_print_name' => Input::post('org_name'),
-                    'org_code' => Input::post('org_code'),
+                    'org_code' => $org_code,
+                    'duedate' => Input::post('due_date'),
                     'outstanding' => 0,
         ));
         $customer = parent::submit_customer_details($_POST, $customer);
@@ -222,8 +228,7 @@ class Controller_Invoice extends Controller_Invoicebase {
         if (Upload::is_valid()) {
             Upload::save();
         }
-        $this->template->title = "Yes";
-        $this->template->content = "Yes";
+        Response::redirect('invoice/monthly');
     }
 
 }
