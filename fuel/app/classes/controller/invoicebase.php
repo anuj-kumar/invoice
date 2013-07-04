@@ -96,7 +96,7 @@ class Controller_Invoicebase extends Controller_Base {
     protected function submit_panel_pricing($data, $monthly_customer_id) {
         $i = 0;
         foreach ($data['panel'] as $row):
-            for ($j = 0; $j < 8; $j++) {
+            for ($j = 0; $j < sizeof($row); $j++) {
                 $panel_price = new Model_local_Panel_Price();
                 $panel_price->monthly_customer_id = $monthly_customer_id;
                 $panel_price->vol_low = Input::post('vol_low.' . $i);

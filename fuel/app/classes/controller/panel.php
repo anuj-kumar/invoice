@@ -11,11 +11,12 @@ class Controller_Panel extends Controller_Base {
     }
 
     public function action_submit_global() {
-        print_r(Input::post('vol_low'));
-        print_r(Input::post('vol_low.0'));
+//        print_r(Input::post('vol_low'));
+//        print_r(Input::post('vol_low.0'));
+        \DBUtil::truncate_table('global_panel_prices');
         $i = 0;
         foreach (Input::post('panel') as $row):
-            for ($j = 0; $j < 8; $j++) {
+            for ($j = 0; $j < sizeof($row); $j++) {
                 $panel_price = new Model_Global_Panel_Price();
                 $panel_price->vol_low = Input::post('vol_low.' . $i);
                 $panel_price->vol_high = Input::post('vol_high.' . $i);
@@ -46,8 +47,11 @@ class Controller_Panel extends Controller_Base {
 //        print_r($_POST);
         $i = 0;
         $monthly_customer_id = Input::post('monthly_customer_id');
+        $query = DB::delete('local_panel_prices');
+        $query->where('monthly_customer_id', $monthly_customer_id);
+        $query->execute();
         foreach (Input::post('panel') as $row):
-            for ($j = 0; $j < 8; $j++) {
+            for ($j = 0; $j < sizeof($row); $j++) {
                 $panel_price = new Model_local_Panel_Price();
                 $panel_price->monthly_customer_id = $monthly_customer_id;
                 $panel_price->vol_low = Input::post('vol_low.' . $i);

@@ -39,7 +39,6 @@
             $uri = explode('/', Input::uri());
             $module = $uri[1] . "_" . $uri[2];
             if (!Controller_Base::access($module)) {
-//                    header( "Location: /invoice/single" );
                 echo ("You dont have permission for this page!");
            //     Response::redirect('/invoice/single');
             }

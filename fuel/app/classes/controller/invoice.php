@@ -4,7 +4,6 @@ class Controller_Invoice extends Controller_Invoicebase {
 
     public $template = 'template_invoice';
 
-    
     public function action_index() {
         Response::redirect('/invoice/single');
     }
@@ -32,21 +31,24 @@ class Controller_Invoice extends Controller_Invoicebase {
         Response::redirect('/invoice/preview/' . $invoice->id);
     }
 
-    /*    public function action_monthly_single() {
-      print_r(Input::post());
-      $customer = parent::submit_customer_details(Input::post(), 'monthly');
-      //        print_r($customer);
-      $invoice = parent::submit_monthly_details(Input::post(), $customer->id);
-      $invoice = parent::submit_invoice_details(Input::post(), $customer->id);
-      parent::submit_panel_details(Input::post(), $invoice->id);
-      Response::redirect('/invoice/preview/' . $invoice->id);
-      //        return $customer->invoice->id;
-      } */
-
     public function action_monthly() {
+        $query = Input::get('q');
         $data['monthly_customers'] = Model_Monthlycustomer::find('all', array(
                     'related' => array('customer'),
-//            'where' => array('t1.type' => 'monthly')
+                    'where' => array(
+                        array(
+                            array('outstanding', 'like', '%' . $query . '%'),
+                            'or' => array(
+                                array('org_name', 'like', '%' . $query . '%'),
+                                'or' => array(
+                                    array('org_code', 'like', '%' . $query . '%'),
+/*                                    'or' => array(
+                                        array('fp_number', 'like', '%' . $query . '%'),
+                                    )*/
+                                )
+                            )
+                        )
+                    ),
         ));
         $this->template->title = 'Invoice | Monthly';
         $this->template->data = 'Monthly Invoice';
@@ -193,17 +195,17 @@ class Controller_Invoice extends Controller_Invoicebase {
         $state=Input::post('state');
         $org_code=parent::find_code($state);
         $customer->monthlycustomer = Model_Monthlycustomer::forge(array(
-                    //'customer_id' => $customer->id,
                     'org_name' => Input::post('org_name'),
                     'org_print_name' => Input::post('org_name'),
                     'org_code' => $org_code,
                     'duedate' => Input::post('due_date'),
                     'outstanding' => 0,
         ));
-        print_r($customer);
+        if (Upload::is_valid()) {
+            Upload::save();
+        }
         $customer = parent::submit_customer_details($_POST, $customer);
-        
-        $customer ->save();
+        $customer->save();
         parent::submit_panel_pricing(Input::post(), $customer->monthlycustomer->id);
         Response::redirect('invoice/monthly');
     }
