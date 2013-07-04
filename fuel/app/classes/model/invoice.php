@@ -18,6 +18,7 @@ class Model_Invoice extends \Orm\Model {
         'discount_2',
         'discount_3',
         'amount_paid',
+        'currency',
         'payment_mode',
         'cheque_number',
         'bank_name',

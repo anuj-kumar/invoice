@@ -57,8 +57,6 @@ class Controller_Invoice extends Controller_Invoicebase {
                     'related' => array('customer')
         ));
 
-//        $query = DB::query('SELECT * from customers c INNER JOIN invoices i ON c.id = i.customer_id INNER JOIN invoices_panels ip ON i.id = ip.invoice_id');
-
         $invoice->panels = Model_Panel::find('all', array(
                     'related' => array('invoices_panels'),
                     'where' => array('t1.invoice_id' => $invoice->id)
@@ -107,7 +105,6 @@ class Controller_Invoice extends Controller_Invoicebase {
                     'related' => array('local_panel_prices'),
                     'where' => array('t1.monthly_customer_id' => $monthly_customer->id),
         ));
-        //print_r($data['panels']);
         $data['monthly_customers'] = $monthly_customer;
         $data['invoice_id'] = 1;
         $this->template->title = 'Invoice | Monthly';
@@ -118,14 +115,12 @@ class Controller_Invoice extends Controller_Invoicebase {
     public function action_submit_monthly() {
         $this->template->title = 'Invoice | Monthly';
         $this->template->content = 1;
-        //print_r($_POST);
         $invoice_id = $this->submit_monthly_details(Input::post());
         Response::redirect('/invoice/preview/' . $invoice_id);
     }
 
     public function action_u_monthly() {
         $id = Input::post('customer_id');
-//        $customer = Model_Customer::find_by_id($id);
         $customer = $this->submit_monthly_details(Input::post(), $id);
         $val = $customer->save();
         echo $id . " ";
