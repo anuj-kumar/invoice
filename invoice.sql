@@ -18,7 +18,7 @@
 --
 -- Table structure for table `access_rights`
 --
-
+ 
 DROP TABLE IF EXISTS `access_rights`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
