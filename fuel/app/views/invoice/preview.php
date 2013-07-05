@@ -29,8 +29,8 @@
                         </ul>
                     </td>
                     <td>
-                        Date: <input type="text" class="" placeholder="" value="<?php echo date("m/d/y"); ?>" autocomplete="off" >  <br/>
-                        Invoice No: <input type="text"  class="" placeholder="" value="<?php echo $invoice->id; ?>" autocomplete="off" > <br />
+                        Date: <input type="text" class="" placeholder="" value="<?php echo date('F j, Y'); ?>" autocomplete="off" >  <br/>
+                        Invoice No: <input type="text"  class="" placeholder="" value="<?php echo $invoice->invoice_no; ?>" autocomplete="off" > <br />
                         Billing Period: <input type="text"  class="" placeholder="" value="<? echo date('F-Y'); ?>" autocomplete="off" ><br />
                         PAN: <input type="text"  class="" placeholder="" value="" autocomplete="off" > <br />
                         TIN: <input type="text"  class="" placeholder=" " value="" autocomplete="off" > <br /><br />
@@ -40,8 +40,14 @@
                 <br />
                 <tr>
                     <td>
+                        <?
+                        $dos = $invoice->date_of_service;
+                        $myDateTime = DateTime::createFromFormat('Y-m-d', $dos);
+                        $newDateString = $myDateTime->format('F j, Y');
+                        
+                        ?>
                         Name: <input type="text"  class="" placeholder="" value="<?php echo $invoice->baby_of; ?>" autocomplete="off" >
-                        <br />Date of Service :  <input type="text"  value="<?php echo $invoice->date_of_service; ?>" autocomplete="off" >
+                        <br />Date of Service :  <input type="text"  value="<?php echo $newDateString; ?>" autocomplete="off" >
                     </td>
                     <td>
                         FP No: <input type="text" name="country" class=""  value="<?php echo $invoice->fp_number; ?>" autocomplete="off" ><br />
@@ -105,7 +111,7 @@
                         <br />
                         Payment Mode : <input type="" id="payment_mode" value="<?php echo $invoice->payment_mode; ?>" name="" onchange="check_cheque()"> 
                         <br />
-                        <?php if ($invoice->payment_mode != "cash") { ?>
+<?php if ($invoice->payment_mode != "cash") { ?>
 
                             Cheque/DD number :  <input type="" value="<?php echo $invoice->cheque_number; ?>" name="" />
                             <br />
@@ -115,7 +121,7 @@
                             <br />
                             Bank City  :  <input type="" value="<?php echo $invoice->bank_city; ?>" name="" />
 
-                        <?php } ?>
+<?php } ?>
                         <div id="cheque" style="display:none">
                             Cheque/DD number :  <input type="" value="<?php echo $invoice->cheque_number; ?>" name="" />
                             <br />
@@ -133,19 +139,20 @@
 
     <div class="span4" style="margin-left: 47% ">
         <?php echo Html::anchor('invoice/print/' . $invoice_id, 'Print', array('class' => 'btn btn-danger', 'target' => 'blank')); ?>
-        <?php echo Html::anchor('invoice/cancel/' . $invoice_id, 'Cancel', array('class' => 'btn btn-danger')); ?>
-        <?php echo Html::anchor('invoice/single', 'Back to Home', array('class' => 'btn btn-danger')); ?>
+        <?php echo Html::anchor('invoice/print_no_header/' . $invoice_id, 'Print With No Header', array('class' => 'btn btn-danger', 'target' => 'blank')); ?>       
+<?php echo Html::anchor('invoice/cancel/' . $invoice_id, 'Cancel', array('class' => 'btn btn-danger')); ?>
+<?php echo Html::anchor('invoice/single', 'Back to Home', array('class' => 'btn btn-danger')); ?>
 
     </div>
 
 </center>
 <script>
-                    function check_cheque() {
-                        if (document.getElementById('payment_mode').value != "cash") {
-                            document.getElementById('cheque').style.display = "block";
-                        }
-                        if (document.getElementById('payment_mode').value == "cash") {
-                            document.getElementById('cheque').style.display = "none";
-                        }
-                    }
+                            function check_cheque() {
+                                if (document.getElementById('payment_mode').value != "cash") {
+                                    document.getElementById('cheque').style.display = "block";
+                                }
+                                if (document.getElementById('payment_mode').value == "cash") {
+                                    document.getElementById('cheque').style.display = "none";
+                                }
+                            }
 </script>

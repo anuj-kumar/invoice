@@ -18,7 +18,7 @@ class Controller_User extends Controller_Base {
             $user->name = Input::post('name');
             $user->password = Input::post('password');
             $access_right = new Model_Access_Right();
-            $user->access_right = $this->change_permissions(Input::post(), $access_right);
+            //$user->access_right = $this->change_permissions(Input::post(), $access_right);
         $user->access_right->invoice_single = Input::post('invoice_single');
         $user->access_right->invoice_monthly = Input::post('invoice_monthly');
         $user->access_right->invoice_monthly_new = Input::post('invoice_monthly_new');

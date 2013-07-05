@@ -7,6 +7,8 @@ $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('NeoGen Labs Pvt. Ltd.');
 $pdf->SetTitle('Invoice');
 // remove default header/footer
+$pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
 
 
 $pdf->SetFont('dejavusans', 'C1', 10);
@@ -25,10 +27,17 @@ $pdf->SetFont('dejavusans', 'C1', 10);
 //$pdf->SetFont('times', 'BI', 20);
 // add a page
 $pdf->AddPage();
-
+if($invoice->customer->country=="India" || $invoice->customer->country=="india"){
+    $str=$invoice->customer->pincode;
+    $pincode=$str[0].$str[1].$str[2].'  '.$str[3].$str[4].$str[5];
+    
+}
+else {
+    $pincode=$invoice->customer->pincode;
+}
 // set some text to print
 // create some HTML content
-$addr = "<br /> <b>" . $monthly_customer->org_name . "</b>"."<br />  ". $invoice->customer->title . "" . $invoice->customer->first_name . " " . $invoice->customer->last_name."<br />" . $invoice->customer->address_line_1;
+$addr = "<br /> <b>" . $invoice->customer->title . "" . $invoice->customer->first_name . " " . $invoice->customer->last_name . "</b>"."<br />  ". $monthly_customer->org_name."<br />" . $invoice->customer->address_line_1;
 $addr2='';
 $addr3='';
 if($invoice->customer->address_line_2!=""){
@@ -37,7 +46,14 @@ if($invoice->customer->address_line_2!=""){
 if($invoice->customer->address_line_3!=""){
     $addr3="<br />" . $invoice->customer->address_line_3 ;
 }
-$addr4=$addr.$addr2.$addr3."<br />" . $invoice->customer->city . "- " . $invoice->customer->pincode . ' '.$invoice->customer->state."<br />T : ". $invoice->customer->phone."<br />E : ". $invoice->customer->email;
+$addr6=$addr.$addr2.$addr3."<br />" . $invoice->customer->city . " " . $pincode . ' '.$invoice->customer->state."<br />T : +91 ". $invoice->customer->phone."<br />";
+if($invoice->customer->address_line_3!=""){
+    $addr5="E : ". $invoice->customer->email;
+}
+else {
+    $addr5="";
+}
+$addr4=$addr6.$addr5;
 
 
 $html = '
@@ -60,7 +76,7 @@ Lingarajuram # Bangalore 560084 # Karnataka # India <br />
 T: + 91 80 25805600 # F: 91 80 2580 5603 <br />
 E: info@neogenlabs.com <br />
 W: www.neogenlabs.com
-<h1><b>' . $invoice->id . '</b></h1> 
+
 
 </td>
 </tr>
@@ -82,8 +98,8 @@ TIN: NA*<br /><br />
 <br />
 </td>
 <td>
-' . date("j F Y") . ' <br/>
-<b>' . $invoice->id . '</b> <br />
+' . date("F j, Y") . ' <br/>
+<b>' . $invoice->invoice_no . '</b> <br />
 </td>
 </tr>
 
@@ -124,6 +140,12 @@ foreach ($invoice->panels as $panel):
         $pdf->writeHTML($html2, true, false, true, false, '');
     endforeach;
 endforeach;
+
+$dos = $monthly_customer->duedate;
+$myDateTime = DateTime::createFromFormat('Y-m-d', $dos);
+$newDateString = $myDateTime->format('F j, Y');
+
+
 $html1 = '
    <hr />
 <table border = "">
@@ -141,21 +163,20 @@ $html1 = '
 <hr /><div class = "" style = "height:400px"></div>
 <table style = "top:30px">
 <tr>
-<td style = "width:80px">
-Paid:
+<td style = "width:100px">
+Paid ('.$invoice->currency.'):
 <br />
-Balance:
+Balance ('.$invoice->currency.'):
 <br />
 Due Date:
 <br />
-Outstanding: 
-<br />
+Outstanding ('.$invoice->currency.'):
 </td>
-<td>
-<b>'.  number_format($invoice->amount_paid,2) .'</b>
-<br /> <b>' .  number_format(($invoice->amount - $invoice->amount_paid),2) . '    </b>
-<br />
-<br /> <b>' .  number_format(($monthly_customer->outstanding),2) . '    </b>
+<td style = "text-align: right;width:140px">
+<b> ' . number_format($invoice->amount_paid, 2) . '</b>
+<br /> <b> '. number_format(($invoice->amount - $invoice->amount_paid), 2) . '</b>
+<br />' . $newDateString . '
+<br /> <b>' .  number_format(($monthly_customer->outstanding),2) . '</b>
 </td>
 <td style = "width:60px"></td>
 <td style = "width:250px" >
@@ -167,6 +188,8 @@ Outstanding:
 </tr>
 </table>
 <hr />
+<div class = "" style = "height:400px"></div>
+
 Please make Cheques and DD payable at Bangalore to <b> NeoGen Labs Pvt. Ltd </b>
 
 </div>
@@ -178,4 +201,5 @@ Please make Cheques and DD payable at Bangalore to <b> NeoGen Labs Pvt. Ltd </b>
 $pdf->writeHTML($html1, true, false, true, false, '');
 // Print some HTML Cells
 //Close and output PDF document
-$pdf->Output('example_002.pdf', 'I');
+$file_name=$invoice->invoice_no;
+$pdf->Output($file_name, 'I');

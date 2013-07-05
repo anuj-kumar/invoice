@@ -30,7 +30,7 @@
                     </td>
                     <td>
                         Date: <input type="text" class="" placeholder="" value="<?php echo date("d/m/y"); ?>" autocomplete="off" >  <br/>
-                        Invoice No: <input type="text"  class="" placeholder="" value="<?php echo $invoice->id; ?>" autocomplete="off" > <br />
+                        Invoice No: <input type="text"  class="" placeholder="" value="<?php echo $invoice->invoice_no; ?>" autocomplete="off" > <br />
                         Billing Period: <input type="text"  class="" placeholder="" value="<? echo date('F-Y'); ?>" autocomplete="off" ><br />
                         PAN: <input type="text"  class="" placeholder="" value="" autocomplete="off" > <br />
                         TIN: <input type="text"  class="" placeholder=" " value="" autocomplete="off" > <br /><br />
@@ -86,9 +86,9 @@
                     <td style="width:400px">
                         <h4>Rupee <?php echo $amount_words; ?></h4>
                         <br />
-                        Total Amount :  <?php echo number_format($invoice->amount, 2); ?>
+                        Amount Paid :  <?php echo number_format($invoice->amount, 2); ?>
                         <br />
-                        Amount Paid:  <?php echo number_format($invoice->amount - $invoice->amount_paid, 2); ?>
+                        Balance Amount:  <?php echo number_format($invoice->amount - $invoice->amount_paid, 2); ?>
                         <br />
                         Due Date:<input type="" value="<?php echo date('d-m-Y', strtotime("+2 Months")); ?>" name="due_date" >
                         <br />
@@ -100,8 +100,8 @@
                         <br />
                         Payment Mode : <input type="" id="payment_mode" value="<?php echo $invoice->payment_mode; ?>" name="" onchange="check_cheque()"> 
                         <br />
-                        <?php if($invoice->payment_mode !="cash") { ?>
-                        
+                        <?php if ($invoice->payment_mode != "cash") { ?>
+
                             Cheque/DD number :  <input type="" value="<?php echo $invoice->cheque_number; ?>" name="" />
                             <br />
                             Bank Name:  <input type="" value="<?php echo $invoice->bank_name; ?>" name="" />
@@ -111,15 +111,15 @@
                             Bank City  :  <input type="" value="<?php echo $invoice->bank_city; ?>" name="" />
 
                         <?php } ?>
-                            <div id="cheque" style="display:none">
-                                     Cheque/DD number :  <input type="" value="<?php echo $invoice->cheque_number; ?>" name="" />
+                        <div id="cheque" style="display:none">
+                            Cheque/DD number :  <input type="" value="<?php echo $invoice->cheque_number; ?>" name="" />
                             <br />
                             Bank Name:  <input type="" value="<?php echo $invoice->bank_name; ?>" name="" />
                             <br />
                             Bank Branch :  <input type="" value="<?php echo $invoice->bank_branch; ?>" name="" />
                             <br />
                             Bank City  :  <input type="" value="<?php echo $invoice->bank_city; ?>" name="" />
-                            </div>
+                        </div>
 
                     </td>
                 </tr>
@@ -127,20 +127,21 @@
     </div>
 
     <div class="span4" style="margin-left: 47% ">
-        <?php echo Html::anchor('invoice/print/' . $invoice_id, 'Print', array('class' => 'btn btn-danger', 'target' => 'blank')); ?>
+        <?php echo Html::anchor('invoice/print_monthly/' . $invoice_id, 'Print', array('class' => 'btn btn-danger', 'target' => 'blank')); ?>
+        <?php echo Html::anchor('invoice/print_monthly_no_header/' . $invoice_id, 'Print With No Header', array('class' => 'btn btn-danger', 'target' => 'blank')); ?>
         <?php echo Html::anchor('invoice/cancel/' . $invoice_id, 'Cancel', array('class' => 'btn btn-danger')); ?>
         <?php echo Html::anchor('invoice/monthly', 'Back to Home', array('class' => 'btn btn-danger')); ?>
 
     </div>
 
 </center>
-        <script>
-            function check_cheque(){
-                if(document.getElementById('payment_mode').value!="cash"){
-                    document.getElementById('cheque').style.display="block";
-                }
-                if(document.getElementById('payment_mode').value=="cash"){
-                    document.getElementById('cheque').style.display="none";
-                }
-            }
-            </script>
+<script>
+                    function check_cheque() {
+                        if (document.getElementById('payment_mode').value != "cash") {
+                            document.getElementById('cheque').style.display = "block";
+                        }
+                        if (document.getElementById('payment_mode').value == "cash") {
+                            document.getElementById('cheque').style.display = "none";
+                        }
+                    }
+</script>

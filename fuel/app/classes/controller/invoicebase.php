@@ -52,8 +52,8 @@ class Controller_Invoicebase extends Controller_Base {
 
     protected function submit_customer_details($data, $customer) {
         $customer->title = $data['title'];
-        $customer->first_name = $data['f_name'];
-        $customer->last_name = $data['l_name'];
+        $customer->first_name = strtoupper($data['f_name']);
+        $customer->last_name = strtoupper($data['l_name']);
         $customer->address_line_1 = $data['addr_1'];
         $customer->address_line_2 = $data['addr_2'];
         $customer->address_line_3 = $data['addr_3'];
@@ -75,7 +75,7 @@ class Controller_Invoicebase extends Controller_Base {
         return $customer;
     }
 
-    protected function submit_monthly_details($data) {
+    protected function submit_monthly_details($data,$inovice_no) {
         $customer_id = $data['customer_id'];
         $customer = Model_Customer::find($customer_id);
         print_r($customer);
@@ -88,7 +88,7 @@ class Controller_Invoicebase extends Controller_Base {
         $customer->monthlycustomer->org_print_name = $data['org_print_name'];
         $customer->monthlycustomer->outstanding = $data['amount'] - $data['amount_paid'] + $customer->monthlycustomer->outstanding;
         $customer->save();
-        $invoice = $this->submit_invoice_details($data, $customer_id);
+        $invoice = $this->submit_invoice_details($data, $customer_id,$inovice_no);
         $this->submit_panel_details($data, $invoice->id);
         return $invoice->id;
     }
@@ -109,8 +109,9 @@ class Controller_Invoicebase extends Controller_Base {
         endforeach;
     }
 
-    protected function submit_invoice_details($data, $customer_id) {
+    protected function submit_invoice_details($data, $customer_id, $invoice_no) {
         $invoice = new Model_Invoice();
+        $invoice->invoice_no = $invoice_no;
         $invoice->baby_of = $data['baby_of'];
         $invoice->fp_number = $data['fp_number'];
         $invoice->date_of_service = $data['date_of_service'];
@@ -120,6 +121,7 @@ class Controller_Invoicebase extends Controller_Base {
         $invoice->amount = $data['amount'];
         $invoice->currency = $data['currency'];
         $invoice->payment_mode = $data['payment_mode'];
+
         $invoice->amount_paid = Input::post('amount_paid');
         if ($data['payment_mode'] == "Cheque") {
             $invoice->bank_name = Input::post('bank_name');

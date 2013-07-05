@@ -10,6 +10,7 @@
 
 <?php
 $i = 0;
+$panel_arr;
 foreach ($panels as $panel):
     $j = 0;
 
@@ -35,17 +36,7 @@ endforeach;
         <div class="span4 pull-left">
             <h1>Single Invoice</h1>
         </div>
-        <div class="span6 pull-right" style="column-count: 2">
-            <div class="span2 pull-left" >Date: <?php echo date('Y-m-d'); ?> 
-                <br>Invoice No: 
-                <br>Billing Period: 
-            </div>
-            <div class="span3 pull-right">
-                PAN:
-                <br>TIN:
 
-            </div>
-        </div>
     </div> 
 
 
@@ -296,10 +287,21 @@ endforeach;
         var flag = val_single();
         //alert(flag);
         if (flag) {
-            document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
-            document.getElementById('form1').style.display = "none";
-            document.getElementById('form2').style.display = "block";
-            document.getElementById('form3').style.display = "none";
+            if (document.getElementById('baby_of').value != "") {
+
+                if (document.getElementById('select_baby_of').checked) {
+                    document.getElementById('baby_of').value = "B/O " + document.getElementById('baby_of').value;
+                }
+
+                if (document.getElementById('select_master').checked) {
+                    document.getElementById('baby_of').value = document.getElementById('baby_of').value;
+                }
+                document.getElementById('error').innerHTML = "<h5>Errors*:</h5>";
+                document.getElementById('form1').style.display = "none";
+                document.getElementById('form2').style.display = "block";
+                document.getElementById('form3').style.display = "none";
+            }
+
         }
     }
 
