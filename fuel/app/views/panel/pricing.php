@@ -14,7 +14,8 @@ foreach ($panels as $panel):
     endforeach;
     $i++;
 endforeach;
-$len = $j;
+$len = $i+1;
+
 ?>
 <script type="text/javascript">
     var panel = new Array();
@@ -78,9 +79,6 @@ if (isset($monthly_customer_id)) {
 <?php echo Asset::js('panel.js'); ?>
 <?php echo Asset::js('build.js'); ?>
 
-<?php
-for ($i = 0; $i < $len; $i++) {
-    ?><script>
-        window.onload = addtable('panel_table', 9);
+<script>
+        window.onload = addtable('panel_table',<?php echo  $len ?>);
     </script>
-<?php } ?>

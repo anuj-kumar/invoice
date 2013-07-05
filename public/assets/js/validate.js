@@ -30,13 +30,7 @@ function  val_single() {
     var flag = val_customer_details();
     var fp = check_fp();
 
-    if (document.getElementById('select_baby_of').checked) {
-        document.getElementById('baby_of').value = "B/O " + document.getElementById('baby_of').value;
-    }
 
-    if (document.getElementById('select_master').checked) {
-        document.getElementById('baby_of').value = document.getElementById('baby_of').value;
-    }
 
 
     //alert("flag"+flag);

@@ -26,6 +26,7 @@ class Controller_Panel extends Controller_Base {
             }
             $i++;
         endforeach;
+         Response::redirect('panel/global');
     }
 
     public function action_local_price($monthly_customer_id = NULL) {

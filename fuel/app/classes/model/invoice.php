@@ -4,6 +4,7 @@ class Model_Invoice extends \Orm\Model {
 
     protected static $_properties = array(
         'id',
+        'invoice_no',
         'customer_id',
         'user_id',
         'baby_of',

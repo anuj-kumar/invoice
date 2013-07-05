@@ -87,11 +87,11 @@ endforeach;
             </div>  
             <div class="grid-12-12 " style="margin-top: -25px">
                 <div class="grid-4-12 ">
-                    <label>Address Line #1 : <em class="formee-req"></em></label>
+                    <label>Address Line #1 : <em class="formee-req">*</em></label>
                     <input type="text" name="addr_1" id="addr_1" class="formee-large" placeholder="Adress Line #1" value="<?php echo $monthly_customers->customer->address_line_1; ?>" autocomplete="off" required>
                 </div>
                 <div class="grid-4-12 ">
-                    <label>Address Line #2 : <em class="formee-req">*</em></label>
+                    <label>Address Line #2 : </label>
                     <input type="text" name="addr_2" id="addr_2" class="formee-large" placeholder="Address Line #2" value="<?php echo $monthly_customers->customer->address_line_2; ?>" autocomplete="off" >
                 </div>
                 <div class="grid-4-12 ">
@@ -200,9 +200,11 @@ endforeach;
                 </div>
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
-                <div class="grid-5-12 ">
+                <div class="grid-2-12 ">
                     <label>Currency: <em class="formee-req">*</em></label>
                     <input type="text" name="currency" id="currency" value="INR" required style="width:50px">
+                </div>
+                <div class="grid-6-12 ">
                     <label>Amount Paid: <em class="formee-req">*</em></label>
                     <input type="text" name="amount_paid" id="total" value="" required style="width:150px">
                 </div>
@@ -220,24 +222,23 @@ endforeach;
 
             </div>
             <div class="grid-12-12 " style="margin-top: -20px">
-                <div class="span5 pull-left">
-
-                    <br />Current Due (Rs.):
-                    <br />Outstanding (Rs.): <?php echo $monthly_customers->outstanding ?>
-                    <br />Due Date:
-
+                <div class="span3 pull-left">
+                    <label>Due Date: </label>
+                    <input type="text" name="amount_paid" id="total" value="<?php echo date("d-m-Y"); ?>" required style="width:150px">
                 </div>
+                
+               <!--   <div class="span3 pull-left">
+                    <label>Discount: </label>
+                    <input type="text" name="dscount" id="currency" value="0" required style="width:50px">
+                    </div> -->
                 <div class="span4 ">
                     <label>Comment Box:</label>
                     <textarea style="height: 70px;width: 300px" name="comment" >All amounts are due within 30 days of receipt of invoice. Interest on outstanding balances will be charged at a monthly rate of 1.5% </textarea>
                 </div>
-            </div>
-            <div class="grid-12-12 " style="margin-top: -20px">
                 <div class="grid-4-12 " style="float: right">
                     <input type="button" class="btn btn-danger btn-large" name="Next" value="Back" onclick="backContent();" />
                     <input  class="btn btn-large btn-danger" type='submit'  value="Preview"  onclick="val_payment();">
                 </div>
-
             </div>
         </fieldset>
     </div>
